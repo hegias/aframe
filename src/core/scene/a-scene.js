@@ -565,7 +565,8 @@ module.exports.AScene = registerElement('a-scene', {
 
         rendererConfig = {
           alpha: true,
-          antialias: !isMobile,
+          autoClearDepth: false,
+          antialias: true,
           canvas: this.canvas,
           logarithmicDepthBuffer: false
         };
@@ -602,7 +603,15 @@ module.exports.AScene = registerElement('a-scene', {
           };
         }
 
-        renderer = this.renderer = new THREE.WebGLRenderer(rendererConfig);
+        //console.log(rendererConfig);
+        //renderer = this.renderer = new THREE.WebGLRenderer(rendererConfig);
+        renderer = this.renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          autoClearDepth: false,
+          antialias: true,
+          canvas: this.canvas,
+          logarithmicDepthBuffer: false});
+        console.log(this.renderer);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.sortObjects = false;
         if (this.camera) { renderer.vr.setPoseTarget(this.camera.el.object3D); }

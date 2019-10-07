@@ -7,7 +7,7 @@ var warn = require('../utils/').debug('components:effect:warn');
 
 var lastEffectInitialized;
 
-var effectOrder = ['render', 'aa', 'ssao', 'bloom', 'sepia'/*'color_grading'*/];
+var effectOrder = ['render', 'fxaa', 'ssao', 'bloom', 'sepia'/*'color_grading'*/];
 var passes = {};
 
 var proto = {
@@ -74,6 +74,6 @@ module.exports.registerEffect = function (name, definition) {
   });
 
   proto.effectName = name;
-  //console.log("[Effects] " + name + " registered");
+  console.log("[Effects] " + name + " registered");
   registerComponent('effect-' + name, proto);
 };

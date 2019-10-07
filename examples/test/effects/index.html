@@ -58,9 +58,31 @@
 </script>
 
 <body>
-    <a-scene effect-fxaa background="color: gray">
+    <a-scene effect-bloom background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
     <a-entity camera orbit-controls="initialPosition: 1 1 1"></a-entity>
     </a-scene>
 </body>
+
+<script>
+let toggle = true;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 84){
+    let scene = document.querySelector("#scene");
+    if(toggle){
+        scene.removeAttribute("effect-bloom");
+        console.log("Removed");
+        toggle = false;
+    }
+    else{
+        scene.setAttribute("effect-bloom", true);
+        console.log("Added");
+        toggle = true;
+    }
+    }
+}
+
+)
+</script>
+
 </html>
