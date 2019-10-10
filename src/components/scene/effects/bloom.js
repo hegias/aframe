@@ -8,7 +8,7 @@ require('../../../../vendor/effects/UnrealBloomPass');
 
 registerEffect('bloom', {
   schema: {
-    strength: {default: 0.3},
+    strength: {default: 0.5},
     radius: {default: 0.4},
     threshold: {default: 0.5}
   },

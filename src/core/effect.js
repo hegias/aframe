@@ -24,7 +24,7 @@ var proto = {
       sceneEl.addEventListener('camera-set-active', this.init.bind(this));
       return;
     }
-    sceneEl.effectComposer || this.initEffectComposer();
+    this.initEffectComposer();
     this.initPass();
     this.update();
     lastEffectInitialized.renderToScreen = false;

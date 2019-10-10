@@ -5,7 +5,6 @@
 THREE.EffectComposer = function ( renderer, renderTarget ) {
 
   this.renderer = renderer;
-
   window.addEventListener( 'vrdisplaypresentchange' , this.resize.bind(this) );
   window.addEventListener( 'resize' , this.resize.bind(this) );
 
@@ -28,11 +27,9 @@ THREE.EffectComposer = function ( renderer, renderTarget ) {
   this.renderTarget1 = renderTarget;
   this.renderTarget1.depthBuffer = true;
   this.renderTarget1.depthTexture = new THREE.DepthTexture();
-  console.log(this.renderTarget1);
   this.renderTarget2 = renderTarget.clone();
   this.renderTarget2.depthBuffer = true;
-  this.renderTarget2.depthTexture = new THREE.DepthTexture()
-  console.log(this.renderTarget2);;
+  this.renderTarget2.depthTexture = new THREE.DepthTexture();
   this.renderTarget2.texture.name = 'EffectComposer.rt2';
 
   this.writeBuffer = this.renderTarget1;
@@ -223,7 +220,7 @@ Object.assign( THREE.EffectComposer.prototype, {
     this.renderer.getDrawingBufferSize(size);
     this.setSize( size.width, size.height );
 
-  }
+  },
 
 } );
 
