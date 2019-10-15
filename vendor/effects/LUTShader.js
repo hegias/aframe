@@ -17,7 +17,7 @@ THREE.LUTShader = {
     fragmentShader: [
       "#include <common>",
    
-      "#define FILTER_LUT true",
+      //"#define FILTER_LUT true",
    
       "uniform sampler2D tDiffuse;",
       "uniform sampler2D lutMap;",
@@ -54,6 +54,7 @@ THREE.LUTShader = {
       "void main() {",
         "vec4 originalColor = texture2D(tDiffuse, vUv);",
         "gl_FragColor = sampleAs3DTexture(lutMap, originalColor.xyz, lutMapSize);",
+        //"gl_FragColor = texture2D(lutMap, vUv);",
       "}",
     ].join("\n")
 };

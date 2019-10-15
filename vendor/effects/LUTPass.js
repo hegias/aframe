@@ -5,11 +5,16 @@ THREE.LUTPass = function ( width, height ) {
 
 	this.width = ( width !== undefined ) ? width : 512;
 	this.height = ( height !== undefined ) ? height : 512;
+	console.log("[LUT] Width: " + this.width);
+	console.log("[LUT] Height: " + this.height);
 
 	this.clear = true;
 
     this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
-    this.scene = new THREE.Scene();
+	this.scene = new THREE.Scene();
+	
+	// Identity LUT map
+	this.identityLUT = new new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/saturated.png" );;
 
 	// Basic pass render target
 	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
@@ -36,6 +41,10 @@ THREE.LUTPass = function ( width, height ) {
 		fragmentShader: THREE.LUTShader.fragmentShader,
 		blending: THREE.NoBlending
 	} );
+
+	this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
+	this.lutMaterial.uniforms[ 'lutMap' ].value = this.identityLUT;
+	this.lutMaterial.uniforms[ 'lutMapSize' ].value = 2.0;
 
 	//this.ssaoMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
 	//this.ssaoMaterial.uniforms[ 'tNormal' ].value = this.normalRenderTarget.texture;
@@ -96,12 +105,23 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 
 		// render beauty and depth
 
-		this.quad.material = this.basic;
 		this.basic.map = readBuffer.texture;
+		this.renderPass(renderer, this.basic, this.beautyRenderTarget);
+
+		//this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
+		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.identityLUT.texture;
+		//this.lutMaterial.uniforms[ 'lutMapSize' ].value = 2;
+		this.renderPass(renderer, this.lutMaterial, null);
+
+		//this.quad.material = this.basic;
 		//renderer.setRenderTarget( this.beautyRenderTarget );
-		renderer.setRenderTarget( null );
-		renderer.clear();
-		renderer.render( this.scene, this.camera );
+		//renderer.setRenderTarget( null );
+		//renderer.clear();
+		//renderer.render( this.scene, this.camera );
+		//this.quad.material = this.lutMaterial;
+		//renderer.setRenderTarget( null );
+		//renderer.render( this.scene, this.camera );
+		
 
 	},
 
@@ -116,13 +136,13 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 
 		// setup pass state
 		renderer.autoClear = false;
-		if ( ( clearColor !== undefined ) && ( clearColor !== null ) ) {
+		/*if ( ( clearColor !== undefined ) && ( clearColor !== null ) ) {
 
 			renderer.setClearColor( clearColor );
 			renderer.setClearAlpha( clearAlpha || 0.0 );
 			renderer.clear();
 
-		}
+		}*/
 
 		this.quad.material = passMaterial;
 		renderer.render( this.scene, this.camera );
