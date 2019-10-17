@@ -184,6 +184,8 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 
   render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
+    console.log("[Bloom] Render");
+
     this.oldClearColor.copy( renderer.getClearColor() );
     this.oldClearAlpha = renderer.getClearAlpha();
     var oldAutoClear = renderer.autoClear;
@@ -269,7 +271,7 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 
     } else {
 
-			renderer.setRenderTarget( readBuffer );
+			renderer.setRenderTarget( writeBuffer );
 			renderer.render( this.scene, this.camera );
 
     }

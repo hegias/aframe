@@ -15,6 +15,7 @@ registerEffect('bloom', {
 
   initPass: function () {
     this.pass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.5, 0.4, 0.5);
+    console.log("[Bloom] Init");
   },
 
   update: function () {
@@ -24,5 +25,6 @@ registerEffect('bloom', {
     pass.strength = data.strength;
     pass.radius = data.radius;
     pass.threshold = data.threshold;
+    console.log("[Bloom] Update");
   }
 });

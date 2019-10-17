@@ -5,8 +5,8 @@ THREE.LUTPass = function ( width, height ) {
 
 	this.width = ( width !== undefined ) ? width : 512;
 	this.height = ( height !== undefined ) ? height : 512;
-	console.log("[LUT] Width: " + this.width);
-	console.log("[LUT] Height: " + this.height);
+	//console.log("[LUT] Width: " + this.width);
+	//console.log("[LUT] Height: " + this.height);
 
 	this.clear = true;
 
@@ -14,19 +14,19 @@ THREE.LUTPass = function ( width, height ) {
 	this.scene = new THREE.Scene();
 	
 	// Identity LUT map
-	this.identityLUT = new new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/saturated.png" );;
+	this.identityLUT = new new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/posterize.png" );;
 
 	// Basic pass render target
 	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
-	this.beautyRenderTarget.texture.format = THREE.RGBFormat;
-	this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
-	this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.format = THREE.RGBAFormat;
+	//this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
+	//this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
 	this.beautyRenderTarget.texture.generateMipmaps = false;
 	this.beautyRenderTarget.stencilBuffer = false;
-	this.beautyRenderTarget.depthBuffer = true;
-	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
-	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
-	console.log(this.beautyRenderTarget);
+	this.beautyRenderTarget.depthBuffer = false;
+	//this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
+	//this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
+	//console.log(this.beautyRenderTarget);
 
 	if ( THREE.LUTShader === undefined ) {
 
@@ -111,7 +111,11 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		//this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
 		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.identityLUT.texture;
 		//this.lutMaterial.uniforms[ 'lutMapSize' ].value = 2;
-		this.renderPass(renderer, this.lutMaterial, null);
+		if ( this.renderToScreen ) {
+			this.renderPass(renderer, this.lutMaterial, null);
+    	} else {
+			this.renderPass(renderer, this.lutMaterial, writeBuffer);
+    	}
 
 		//this.quad.material = this.basic;
 		//renderer.setRenderTarget( this.beautyRenderTarget );

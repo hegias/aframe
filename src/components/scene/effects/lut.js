@@ -10,12 +10,13 @@ registerEffect('lut', {
 
   initPass: function () {
     this.pass = new THREE.LUTPass(window.innerWidth, window.innerHeight);
+    console.log("[LUT] Init");
   },
 
   update: function () {
-
     var pass = this.pass;
     if (!pass) { return; }
+    console.log("[LUT] Update");
   }
 
 });
