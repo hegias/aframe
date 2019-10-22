@@ -611,7 +611,6 @@ module.exports.AScene = registerElement('a-scene', {
           antialias: true,
           canvas: this.canvas,
           logarithmicDepthBuffer: false});
-        console.log(this.renderer);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.sortObjects = false;
         if (this.camera) { renderer.vr.setPoseTarget(this.camera.el.object3D); }

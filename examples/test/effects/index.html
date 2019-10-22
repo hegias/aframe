@@ -58,7 +58,7 @@
 </script>
 
 <body>
-    <a-scene effect-lut effect-bloom background="color: gray" id="scene">
+    <a-scene effect-lut="lutmap: color-negative" background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
     <a-entity camera orbit-controls="initialPosition: 1 1 1"></a-entity>
     </a-scene>
@@ -70,19 +70,38 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 84){
     let scene = document.querySelector("#scene");
     if(toggle){
-        scene.removeAttribute("effect-bloom");
+        scene.removeAttribute("effect-fxaa");
         console.log("Removed");
         toggle = false;
     }
     else{
-        scene.setAttribute("effect-bloom", true);
+        scene.setAttribute("effect-fxaa", true);
         console.log("Added");
         toggle = true;
     }
     }
-}
+})
 
-)
+let toggle2 = true;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 82){
+    let scene = document.querySelector("#scene");
+    let lut = scene.getAttribute("effect-lut");
+    //console.log(lut);
+    if(toggle2){
+        //scene.setAttribute("effect-lut", "color-negative");
+        lut.setAttribute("lutmap", "default");
+        console.log("Default LUT");
+        toggle2 = false;
+    }
+    else{
+        //scene.setAttribute("effect-lut", "thermal");
+        lut.setAttribute("lutmap", "color-negative");
+        console.log("Color Negative LUT");
+        toggle2 = true;
+    }
+    }
+})
 </script>
 
 </html>

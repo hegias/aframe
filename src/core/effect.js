@@ -7,7 +7,7 @@ var warn = require('../utils/').debug('components:effect:warn');
 
 var lastEffectInitialized;
 
-var effectOrder = ['render', 'fxaa', 'ssao', 'bloom', 'lut'/*'color_grading'*/];
+var effectOrder = ['render', 'ssao', 'bloom', 'lut'/*'color_grading'*/, 'fxaa'];
 var passes = {};
 
 var proto = {
@@ -59,7 +59,7 @@ var proto = {
     passes.render = renderPass;
     setTimeout(function () { effectComposer.resize(); }, 0);
     return effectComposer;
-  }
+  },
 };
 
 /**

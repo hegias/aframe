@@ -1,5 +1,5 @@
 
-THREE.LUTPass = function ( width, height ) {
+THREE.LUTPass = function ( width, height, lutmap ) {
 
 	THREE.Pass.call( this );
 
@@ -14,7 +14,11 @@ THREE.LUTPass = function ( width, height ) {
 	this.scene = new THREE.Scene();
 	
 	// Identity LUT map
-	this.identityLUT = new new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/posterize.png" );;
+	this.LUTarray = [new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/color-negative.png"),
+					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/thermal.png"),
+					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/black-white.png"),
+					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/nightvision.png")]; 
+	this.identityLUT = new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/" + lutmap + ".png" );
 
 	// Basic pass render target
 	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
@@ -81,6 +85,7 @@ THREE.LUTPass = function ( width, height ) {
 	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
 	this.quad.frustumCulled = false; // Avoid getting clipped
 	this.scene.add( this.quad );
+	this.i = 0;
 
 };
 
@@ -105,11 +110,27 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 
 		// render beauty and depth
 
-		this.basic.map = readBuffer.texture;
-		this.renderPass(renderer, this.basic, this.beautyRenderTarget);
+		//this.basic.map = readBuffer.texture;
+		//this.renderPass(renderer, this.basic, this.beautyRenderTarget);
+		//if(this.i<=60){
+		//	this.identityLUT = this.LUTarray[0];
+		//}
+		//else if(this.i<=120){
+		//	this.identityLUT = this.LUTarray[1];
+		//}
+		//else if(this.i<=180){
+		//	this.identityLUT = this.LUTarray[2];
+		//}
+		//else if(this.i<=240){
+		//	this.identityLUT = this.LUTarray[3];
+		//}
+		//else{
+		//	this.i = 0;
+		//}
+		//this.i++;
 
-		//this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
-		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.identityLUT.texture;
+		this.lutMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
+		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.identityLUT;
 		//this.lutMaterial.uniforms[ 'lutMapSize' ].value = 2;
 		if ( this.renderToScreen ) {
 			this.renderPass(renderer, this.lutMaterial, null);
@@ -132,9 +153,9 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 	renderPass: function ( renderer, passMaterial, renderTarget, clearColor, clearAlpha ) {
 
 		// save original state
-		this.originalClearColor.copy( renderer.getClearColor() );
-		var originalClearAlpha = renderer.getClearAlpha();
-		var originalAutoClear = renderer.autoClear;
+		// this.originalClearColor.copy( renderer.getClearColor() );
+		// var originalClearAlpha = renderer.getClearAlpha();
+		//var originalAutoClear = renderer.autoClear;
 
 		renderer.setRenderTarget( renderTarget );
 
@@ -152,9 +173,9 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		renderer.render( this.scene, this.camera );
 
 		// restore original state
-		renderer.autoClear = originalAutoClear;
-		renderer.setClearColor( this.originalClearColor );
-		renderer.setClearAlpha( originalClearAlpha );
+		// renderer.autoClear = originalAutoClear;
+		// renderer.setClearColor( this.originalClearColor );
+		// renderer.setClearAlpha( originalClearAlpha );
 
 
 	},
@@ -170,6 +191,10 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		//this.ssaoMaterial.uniforms[ 'cameraProjectionMatrix' ].value.copy( this.camera.projectionMatrix );
 		//this.ssaoMaterial.uniforms[ 'cameraInverseProjectionMatrix' ].value.getInverse( this.camera.projectionMatrix );
 
+	},
+
+	setMap: function( nlutMap ) {
+		this.lutMaterial.uniforms[ 'lutMap' ].value = new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/" + nlutMap + ".png" );
 	},
 
 } );
