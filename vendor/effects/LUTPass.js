@@ -18,7 +18,6 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/thermal.png"),
 					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/black-white.png"),
 					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/nightvision.png")]; 
-	this.identityLUT = new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/" + lutmap + ".png" );
 
 	// Basic pass render target
 	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
@@ -47,8 +46,8 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 	} );
 
 	this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
-	this.lutMaterial.uniforms[ 'lutMap' ].value = this.identityLUT;
-	this.lutMaterial.uniforms[ 'lutMapSize' ].value = 2.0;
+	this.setMap(lutmap);
+	this.lutMaterial.uniforms[ 'lutMapSize' ].value = 25.0;
 
 	//this.ssaoMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
 	//this.ssaoMaterial.uniforms[ 'tNormal' ].value = this.normalRenderTarget.texture;
@@ -194,7 +193,41 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 	},
 
 	setMap: function( nlutMap ) {
-		this.lutMaterial.uniforms[ 'lutMap' ].value = new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/" + nlutMap + ".png" );
+
+		//this.lutMaterial.uniforms[ 'lutMap' ].value = new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/" + nlutMap + ".png" );
+		fetch("../../../vendor/effects/LUTMaps/FG" + nlutMap + ".cube")
+  			.then(response => response.text())
+  			.then(text => this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(text, 25));
+		//var cubeFile = fs.readFileSync("../../../vendor/effects/LUTMaps/FG_" + nlutMap + ".cube");
+		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(cubeFile, 25);
 	},
+
+	lutStringToTexture: function( lutString, lutSize ) {
+		var totalNumberOfComponents = lutSize * lutSize * lutSize * 4;
+		var floatsIdx = 0;
+	
+		var floatArray = lutString
+				.split( '\n' )
+				.map( function ( line ) {
+					return line.split( ' ' );
+				})
+				.filter( function ( components ) {
+					return components.length === 3;
+				})
+				.reduce( function ( floats, components, index ) {
+					components.forEach( function ( v, idx ) { 
+						floats[ floatsIdx++ ] = v;
+						if ( idx===2 ) {
+							floats[ floatsIdx++ ] = 1.0;
+						}
+					});
+					return floats;
+				}, new Float32Array( totalNumberOfComponents ) );
+	
+		var texture = new THREE.DataTexture( floatArray, lutSize * lutSize, lutSize );
+		texture.type = THREE.FloatType;
+		texture.format = THREE.RGBAFormat;
+		return texture;
+	}
 
 } );

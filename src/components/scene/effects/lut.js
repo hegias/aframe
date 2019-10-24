@@ -20,11 +20,8 @@ registerEffect('lut', {
   update: function () {
     var pass = this.pass;
     if (!pass) { return; }
+    pass.setMap(this.data.lutmap);
     console.log("[LUT] Update");
-  },
-  
-  setAttribute: function(value) {
-    console.log(value);
   },
 
 });

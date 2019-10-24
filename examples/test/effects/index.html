@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
   </head>
   <script>
-    AFRAME.registerComponent('cube-man', {
+     /*AFRAME.registerComponent('cube-man', {
         init: function(){
             //console.log('cube-man');
             let countX = 50;
@@ -54,13 +54,14 @@
                 });
             });
         }
-    });
-</script>
+    });*/
+</script> 
 
 <body>
-    <a-scene effect-lut="lutmap: color-negative" background="color: gray" id="scene">
+    <a-scene effect-bloom background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
-    <a-entity camera orbit-controls="initialPosition: 1 1 1"></a-entity>
+    <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
+    <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
     </a-scene>
 </body>
 
@@ -70,12 +71,12 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 84){
     let scene = document.querySelector("#scene");
     if(toggle){
-        scene.removeAttribute("effect-fxaa");
+        scene.removeAttribute("effect-lut");
         console.log("Removed");
         toggle = false;
     }
     else{
-        scene.setAttribute("effect-fxaa", true);
+        scene.setAttribute("effect-lut", "lutmap", "CineWarm");
         console.log("Added");
         toggle = true;
     }
@@ -85,21 +86,17 @@ window.addEventListener("keyup", (e) => {
 let toggle2 = true;
 window.addEventListener("keyup", (e) => {
     if(e.keyCode == 82){
-    let scene = document.querySelector("#scene");
-    let lut = scene.getAttribute("effect-lut");
-    //console.log(lut);
-    if(toggle2){
-        //scene.setAttribute("effect-lut", "color-negative");
-        lut.setAttribute("lutmap", "default");
-        console.log("Default LUT");
-        toggle2 = false;
-    }
-    else{
-        //scene.setAttribute("effect-lut", "thermal");
-        lut.setAttribute("lutmap", "color-negative");
-        console.log("Color Negative LUT");
-        toggle2 = true;
-    }
+        let scene = document.querySelector("#scene");
+        if(toggle2){
+            scene.setAttribute("effect-lut", "lutmap", "CineBright");
+            console.log("Thermal LUT");
+            toggle2 = false;
+        }
+        else{
+            scene.setAttribute("effect-lut", "lutmap", "CineTealOrange1");
+            console.log("Color Negative LUT");
+            toggle2 = true;
+        }
     }
 })
 </script>
