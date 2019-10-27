@@ -58,7 +58,7 @@
 </script> 
 
 <body>
-    <a-scene effect-bloom background="color: gray" id="scene">
+    <a-scene effect-fxaa background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
     <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
     <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
@@ -71,12 +71,12 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 84){
     let scene = document.querySelector("#scene");
     if(toggle){
-        scene.removeAttribute("effect-lut");
+        scene.removeAttribute("effect-fxaa");
         console.log("Removed");
         toggle = false;
     }
     else{
-        scene.setAttribute("effect-lut", "lutmap", "CineWarm");
+        scene.setAttribute("effect-fxaa", "true");
         console.log("Added");
         toggle = true;
     }
