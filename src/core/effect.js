@@ -7,7 +7,7 @@ var warn = require('../utils/').debug('components:effect:warn');
 
 var lastEffectInitialized;
 
-var effectOrder = ['render', 'ssao', 'bloom', 'lut'/*'color_grading'*/, 'fxaa'];
+var effectOrder = ['render', 'ssao', 'bloom', 'lut', 'fxaa'];
 var passes = {};
 
 var proto = {
@@ -32,6 +32,7 @@ var proto = {
     lastEffectInitialized = this.pass;
     passes[this.effectName] = this.pass;
     this.rebuild();
+    console.log("[Effects] Init")
   },
 
   rebuild: function () {
@@ -40,7 +41,7 @@ var proto = {
     effectOrder.forEach(function (effect) {
       if (!passes[effect]) { return; }
       effectComposer.addPass(passes[effect]);
-      //console.log("[Effects] pass added: " + effect);
+      console.log("[Effects] pass added: " + effect);
     });
   },
 

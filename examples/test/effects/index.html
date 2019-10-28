@@ -58,7 +58,7 @@
 </script> 
 
 <body>
-    <a-scene effect-fxaa background="color: gray" id="scene">
+    <a-scene effect-bloom effect-fxaa background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
     <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
     <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
@@ -72,12 +72,12 @@ window.addEventListener("keyup", (e) => {
     let scene = document.querySelector("#scene");
     if(toggle){
         scene.removeAttribute("effect-fxaa");
-        console.log("Removed");
+        console.log("Antialias off");
         toggle = false;
     }
     else{
         scene.setAttribute("effect-fxaa", "true");
-        console.log("Added");
+        console.log("Antialias on");
         toggle = true;
     }
     }
@@ -89,12 +89,10 @@ window.addEventListener("keyup", (e) => {
         let scene = document.querySelector("#scene");
         if(toggle2){
             scene.setAttribute("effect-lut", "lutmap", "CineBright");
-            console.log("Thermal LUT");
             toggle2 = false;
         }
         else{
             scene.setAttribute("effect-lut", "lutmap", "CineTealOrange1");
-            console.log("Color Negative LUT");
             toggle2 = true;
         }
     }

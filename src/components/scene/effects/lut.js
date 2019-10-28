@@ -9,19 +9,17 @@ require('../../../../vendor/effects/LUTShader');
 registerEffect('lut', {
 
   schema: {
-    lutmap: {type: 'string', default: 'default'}
+    lutmap: {type: 'string', default: 'CineWarm'}
   },
 
   initPass: function () {
     this.pass = new THREE.LUTPass(window.innerWidth, window.innerHeight, this.data.lutmap);
-    console.log("[LUT] Init");
   },
 
   update: function () {
     var pass = this.pass;
     if (!pass) { return; }
     pass.setMap(this.data.lutmap);
-    console.log("[LUT] Update");
   },
 
 });

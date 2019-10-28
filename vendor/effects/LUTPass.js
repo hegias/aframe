@@ -49,17 +49,6 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 	this.setMap(lutmap);
 	this.lutMaterial.uniforms[ 'lutMapSize' ].value = 25.0;
 
-	//this.ssaoMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
-	//this.ssaoMaterial.uniforms[ 'tNormal' ].value = this.normalRenderTarget.texture;
-	//this.ssaoMaterial.uniforms[ 'tDepth' ].value = this.beautyRenderTarget.depthTexture;
-	//this.ssaoMaterial.uniforms[ 'tNoise' ].value = this.noiseTexture;
-	//this.ssaoMaterial.uniforms[ 'kernel' ].value = this.kernel;
-	//this.ssaoMaterial.uniforms[ 'cameraNear' ].value = this.camera.near;
-	//this.ssaoMaterial.uniforms[ 'cameraFar' ].value = this.camera.far;
-	//this.ssaoMaterial.uniforms[ 'resolution' ].value.set( this.width, this.height );
-	//this.ssaoMaterial.uniforms[ 'cameraProjectionMatrix' ].value.copy( this.camera.projectionMatrix );
-	//this.ssaoMaterial.uniforms[ 'cameraInverseProjectionMatrix' ].value.getInverse( this.camera.projectionMatrix );
-
 	// material for rendering the content of a render target
 
 	this.copyMaterial = new THREE.ShaderMaterial( {
@@ -106,77 +95,20 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 	},
 
 	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive ) {
-
-		// render beauty and depth
-
-		//this.basic.map = readBuffer.texture;
-		//this.renderPass(renderer, this.basic, this.beautyRenderTarget);
-		//if(this.i<=60){
-		//	this.identityLUT = this.LUTarray[0];
-		//}
-		//else if(this.i<=120){
-		//	this.identityLUT = this.LUTarray[1];
-		//}
-		//else if(this.i<=180){
-		//	this.identityLUT = this.LUTarray[2];
-		//}
-		//else if(this.i<=240){
-		//	this.identityLUT = this.LUTarray[3];
-		//}
-		//else{
-		//	this.i = 0;
-		//}
-		//this.i++;
-
-		this.lutMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
-		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.identityLUT;
-		//this.lutMaterial.uniforms[ 'lutMapSize' ].value = 2;
-		if ( this.renderToScreen ) {
-			this.renderPass(renderer, this.lutMaterial, null);
-    	} else {
-			this.renderPass(renderer, this.lutMaterial, writeBuffer);
-    	}
-
-		//this.quad.material = this.basic;
-		//renderer.setRenderTarget( this.beautyRenderTarget );
-		//renderer.setRenderTarget( null );
-		//renderer.clear();
-		//renderer.render( this.scene, this.camera );
-		//this.quad.material = this.lutMaterial;
-		//renderer.setRenderTarget( null );
-		//renderer.render( this.scene, this.camera );
 		
+		this.lutMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
+		
+		this.quad.material = this.lutMaterial;
 
-	},
-
-	renderPass: function ( renderer, passMaterial, renderTarget, clearColor, clearAlpha ) {
-
-		// save original state
-		// this.originalClearColor.copy( renderer.getClearColor() );
-		// var originalClearAlpha = renderer.getClearAlpha();
-		//var originalAutoClear = renderer.autoClear;
-
-		renderer.setRenderTarget( renderTarget );
-
-		// setup pass state
-		renderer.autoClear = false;
-		/*if ( ( clearColor !== undefined ) && ( clearColor !== null ) ) {
-
-			renderer.setClearColor( clearColor );
-			renderer.setClearAlpha( clearAlpha || 0.0 );
+		if ( this.renderToScreen ) {
+			renderer.setRenderTarget( null );
 			renderer.clear();
-
-		}*/
-
-		this.quad.material = passMaterial;
-		renderer.render( this.scene, this.camera );
-
-		// restore original state
-		// renderer.autoClear = originalAutoClear;
-		// renderer.setClearColor( this.originalClearColor );
-		// renderer.setClearAlpha( originalClearAlpha );
-
-
+			renderer.render( this.scene, this.camera );
+    	} else {
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
 	},
 
 	setSize: function ( width, height ) {
@@ -186,20 +118,12 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 
 		this.beautyRenderTarget.setSize( width, height );
 
-		//this.ssaoMaterial.uniforms[ 'resolution' ].value.set( width, height );
-		//this.ssaoMaterial.uniforms[ 'cameraProjectionMatrix' ].value.copy( this.camera.projectionMatrix );
-		//this.ssaoMaterial.uniforms[ 'cameraInverseProjectionMatrix' ].value.getInverse( this.camera.projectionMatrix );
-
 	},
 
 	setMap: function( nlutMap ) {
-
-		//this.lutMaterial.uniforms[ 'lutMap' ].value = new THREE.TextureLoader().load( "../../../vendor/effects/LUTMaps/" + nlutMap + ".png" );
 		fetch("../../../vendor/effects/LUTMaps/FG" + nlutMap + ".cube")
   			.then(response => response.text())
   			.then(text => this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(text, 25));
-		//var cubeFile = fs.readFileSync("../../../vendor/effects/LUTMaps/FG_" + nlutMap + ".cube");
-		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(cubeFile, 25);
 	},
 
 	lutStringToTexture: function( lutString, lutSize ) {

@@ -97,6 +97,14 @@ Object.assign( THREE.EffectComposer.prototype, {
   },
 
   addPass: function ( pass ) {
+    
+    // Makes certain that only the last added pass will be rendered to screen
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.renderToScreen = false;
+    });
+    
+    pass.renderToScreen = true;
 
     this.passes.push( pass );
 
