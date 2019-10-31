@@ -83,17 +83,36 @@ window.addEventListener("keyup", (e) => {
     }
 })
 
-let toggle2 = true;
+let toggle2 = false;
 window.addEventListener("keyup", (e) => {
     if(e.keyCode == 82){
         let scene = document.querySelector("#scene");
         if(toggle2){
-            scene.setAttribute("effect-lut", "lutmap", "CineBright");
+            scene.removeAttribute("effect-lut");
+            console.log("LUT off");
             toggle2 = false;
         }
         else{
             scene.setAttribute("effect-lut", "lutmap", "CineTealOrange1");
+            console.log("LUT on");
             toggle2 = true;
+        }
+    }
+})
+
+let toggle3 = true;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 66){
+        let scene = document.querySelector("#scene");
+        if(toggle3){
+            scene.removeAttribute("effect-bloom");
+            console.log("Bloom off");
+            toggle3 = false;
+        }
+        else{
+            scene.setAttribute("effect-bloom", "true");
+            console.log("Bloom on");
+            toggle3 = true;
         }
     }
 })

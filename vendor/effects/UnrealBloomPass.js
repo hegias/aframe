@@ -197,7 +197,7 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
     if ( maskActive ) renderer.context.disable( renderer.context.STENCIL_TEST );
 
     // Render input to screen
-
+    /*
     if ( this.renderToScreen ) {
 
       this.quad.material = this.basic;
@@ -207,7 +207,7 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 
-    }
+    }*/
 
     // 1. Extract Bright Areas
 
@@ -216,7 +216,7 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
     this.quad.material = this.materialHighPassFilter;
     
 		renderer.setRenderTarget( this.renderTargetBright );
-		renderer.clear();
+		//renderer.clear();
     renderer.render( this.scene, this.camera );
 
     // 2. Blur All the mips progressively
@@ -230,13 +230,13 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
       this.separableBlurMaterials[ i ].uniforms[ "colorTexture" ].value = inputRenderTarget.texture;
       this.separableBlurMaterials[ i ].uniforms[ "direction" ].value = THREE.UnrealBloomPass.BlurDirectionX;
 			renderer.setRenderTarget( this.renderTargetsHorizontal[ i ] );
-			renderer.clear();
+			//renderer.clear();
 			renderer.render( this.scene, this.camera );
 
       this.separableBlurMaterials[ i ].uniforms[ "colorTexture" ].value = this.renderTargetsHorizontal[ i ].texture;
       this.separableBlurMaterials[ i ].uniforms[ "direction" ].value = THREE.UnrealBloomPass.BlurDirectionY;
 			renderer.setRenderTarget( this.renderTargetsVertical[ i ] );
-			renderer.clear();
+			//renderer.clear();
 			renderer.render( this.scene, this.camera );
 
       inputRenderTarget = this.renderTargetsVertical[ i ];
@@ -251,7 +251,7 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
     this.compositeMaterial.uniforms[ "bloomTintColors" ].value = this.bloomTintColors;
 
 		renderer.setRenderTarget( this.renderTargetsHorizontal[ 0 ] );
-		renderer.clear();
+		//renderer.clear();
     renderer.render( this.scene, this.camera );
 
     // Blend it additively over the input texture
