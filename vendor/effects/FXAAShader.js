@@ -226,7 +226,7 @@ THREE.FXAAShader = {
 		"    //  _ = the lowest digit is directly related to performance",
 		"    // _  = the highest digit is directly related to style",
 		"    //",
-		"    #define FXAA_QUALITY_PRESET 39",
+		"    #define FXAA_QUALITY_PRESET 25",
 		"#endif",
 		"",
 		"",

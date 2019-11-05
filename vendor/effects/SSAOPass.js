@@ -216,10 +216,22 @@ THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 		this.quad.material = this.basic;
 		this.basic.map = readBuffer.texture;
-		renderer.setRenderTarget( this.beautyRenderTarget );
-		renderer.clear();
-		renderer.render( this.scene, this.camera );
+		//renderer.setRenderTarget( this.beautyRenderTarget );
+		
+		if ( this.renderToScreen ) {
+      
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
 
+    } else {
+      
+			renderer.setRenderTarget( readBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
+		/*
 		// render normals
 
 		this.renderOverride( renderer, this.normalMaterial, this.normalRenderTarget, 0x7777ff, 1.0 );
@@ -245,7 +257,7 @@ THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 		//this.copyMaterial.uniforms[ 'tDiffuse' ].value = this.blurRenderTarget.texture;
 		//this.copyMaterial.blending = THREE.CustomBlending;
 		//this.renderPass( renderer, this.copyMaterial, this.renderToScreen ? null : writeBuffer );
-
+		*/
 	},
 
 	renderPass: function ( renderer, passMaterial, renderTarget, clearColor, clearAlpha ) {

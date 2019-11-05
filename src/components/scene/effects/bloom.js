@@ -10,7 +10,7 @@ registerEffect('bloom', {
   schema: {
     strength: {default: 0.3},
     radius: {default: 0.4},
-    threshold: {default: 0.5}
+    threshold: {default: 0.6}
   },
 
   initPass: function () {

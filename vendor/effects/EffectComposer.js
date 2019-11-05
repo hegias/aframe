@@ -74,9 +74,11 @@ Object.assign( THREE.EffectComposer.prototype, {
 
       }
 
-      var tmp = this.readBuffer;
-      this.readBuffer = this.writeBuffer;
-      this.writeBuffer = tmp;
+      //var tmp = this.readBuffer;
+      this.readBuffer = this.writeBuffer.clone();
+      //this.writeBuffer.dispose();
+      this.writeBuffer = this.renderTarget1.clone();
+      console.log("Swap");
 
     }
 
@@ -101,7 +103,7 @@ Object.assign( THREE.EffectComposer.prototype, {
     // Makes certain that only the last added pass will be rendered to screen
     this.passes.forEach(function (iteratePass) {
       if (iteratePass == null) { return; }
-      iteratePass.needsSwap = true;
+      iteratePass.needsSwap = false;
     });
     
     // Makes certain that only the last added pass will be rendered to screen
@@ -119,6 +121,8 @@ Object.assign( THREE.EffectComposer.prototype, {
     this.renderer.getDrawingBufferSize(size);
     pass.setSize( size.width, size.height );
 
+    console.log("Pass added");
+
   },
 
   removePass: function ( pass ) {
@@ -132,6 +136,8 @@ Object.assign( THREE.EffectComposer.prototype, {
     this.passes[this.passes.length - 1].renderToScreen = true;
 
     this.resize();
+
+    console.log("Pass removed");
 
   },
 
