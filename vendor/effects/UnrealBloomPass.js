@@ -216,7 +216,7 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
     this.quad.material = this.materialHighPassFilter;
     
 		renderer.setRenderTarget( this.renderTargetBright );
-		//renderer.clear();
+		renderer.clear();
     renderer.render( this.scene, this.camera );
 
     // 2. Blur All the mips progressively
@@ -265,13 +265,13 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
     if ( this.renderToScreen ) {
       
       renderer.setRenderTarget( null );
-		  //renderer.clear();
+		  renderer.clear();
 			renderer.render( this.scene, this.camera );
 
     } else {
 
-      renderer.setRenderTarget( readBuffer );
-      //renderer.clear();
+      renderer.setRenderTarget( writeBuffer );
+      renderer.clear();
 			renderer.render( this.scene, this.camera );
 
     }

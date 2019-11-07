@@ -61,9 +61,9 @@ THREE.ShaderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 
-    } else {
+     } else {
       
-			renderer.setRenderTarget( readBuffer );
+			renderer.setRenderTarget( writeBuffer );
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 

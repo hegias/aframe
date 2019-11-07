@@ -32,6 +32,10 @@ THREE.EffectComposer = function ( renderer, renderTarget ) {
   this.renderTarget2.depthTexture = new THREE.DepthTexture();
   this.renderTarget2.texture.name = 'EffectComposer.rt2';
 
+  
+  this.bloomRenderTarget = renderTarget.clone();
+  this.lutRenderTarget  = renderTarget.clone();
+
   this.writeBuffer = this.renderTarget1;
   this.readBuffer = this.renderTarget2;
 
@@ -54,6 +58,14 @@ THREE.EffectComposer = function ( renderer, renderTarget ) {
 
   this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
 
+  
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+
 };
 
 Object.assign( THREE.EffectComposer.prototype, {
@@ -74,10 +86,10 @@ Object.assign( THREE.EffectComposer.prototype, {
 
       }
 
-      //var tmp = this.readBuffer;
+      var tmp = this.readBuffer;
       this.readBuffer = this.writeBuffer.clone();
       //this.writeBuffer.dispose();
-      this.writeBuffer = this.renderTarget1.clone();
+      this.writeBuffer = tmp;
       console.log("Swap");
 
     }
@@ -157,7 +169,38 @@ Object.assign( THREE.EffectComposer.prototype, {
 
     var currentOnAfterRender;
 
-    for ( i = starti || 0; i < il; i ++ ) {
+    var parameters = {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      format: THREE.RGBAFormat,
+      stencilBuffer: false
+    };
+
+    var size = new THREE.Vector2();
+    this.renderer.getDrawingBufferSize(size);
+
+    var input = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
+    var output = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
+    
+    this.passes[0].renderToScreen = false;
+    this.passes[0].render( this.renderer, output, input, delta, maskActive );
+
+    this.passes[1].renderToScreen = false;
+    this.passes[1].render( this.renderer, output, input, delta, maskActive );
+
+    this.passes[2].renderToScreen = false;
+    this.passes[2].render( this.renderer, input, output, delta, maskActive );
+    
+    this.passes[3].renderToScreen = false;
+    this.passes[3].render( this.renderer, output, input, delta, maskActive );
+    
+    this.passes[4].renderToScreen = true;
+    this.passes[4].render( this.renderer, input, output, delta, maskActive );
+
+    input.dispose();
+    output.dispose();
+
+    /*for ( i = starti || 0; i < il; i ++ ) {
 
       pass = this.passes[ i ];
       
@@ -196,7 +239,7 @@ Object.assign( THREE.EffectComposer.prototype, {
 
       this.swapBuffers(pass);
 
-    }
+    }*/
 
   },
 

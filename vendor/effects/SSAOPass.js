@@ -226,7 +226,7 @@ THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
     } else {
       
-			renderer.setRenderTarget( readBuffer );
+			renderer.setRenderTarget( writeBuffer );
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 
