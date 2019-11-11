@@ -87,10 +87,9 @@ Object.assign( THREE.EffectComposer.prototype, {
       }
 
       var tmp = this.readBuffer;
-      this.readBuffer = this.writeBuffer.clone();
+      this.readBuffer = this.writeBuffer;
       //this.writeBuffer.dispose();
       this.writeBuffer = tmp;
-      console.log("Swap");
 
     }
 
@@ -115,7 +114,7 @@ Object.assign( THREE.EffectComposer.prototype, {
     // Makes certain that only the last added pass will be rendered to screen
     this.passes.forEach(function (iteratePass) {
       if (iteratePass == null) { return; }
-      iteratePass.needsSwap = false;
+      iteratePass.needsSwap = true;
     });
     
     // Makes certain that only the last added pass will be rendered to screen
@@ -182,7 +181,7 @@ Object.assign( THREE.EffectComposer.prototype, {
     var input = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
     var output = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
     
-    this.passes[0].renderToScreen = false;
+    /*this.passes[0].renderToScreen = false;
     this.passes[0].render( this.renderer, output, input, delta, maskActive );
 
     this.passes[1].renderToScreen = false;
@@ -194,13 +193,16 @@ Object.assign( THREE.EffectComposer.prototype, {
     this.passes[3].renderToScreen = false;
     this.passes[3].render( this.renderer, output, input, delta, maskActive );
     
-    this.passes[4].renderToScreen = true;
+    this.passes[4].renderToScreen = false;
     this.passes[4].render( this.renderer, input, output, delta, maskActive );
+    
+    this.passes[5].renderToScreen = true;
+    this.passes[5].render( this.renderer, output, input, delta, maskActive );
 
     input.dispose();
-    output.dispose();
+    output.dispose();*/
 
-    /*for ( i = starti || 0; i < il; i ++ ) {
+    for ( i = starti || 0; i < il; i ++ ) {
 
       pass = this.passes[ i ];
       
@@ -239,7 +241,7 @@ Object.assign( THREE.EffectComposer.prototype, {
 
       this.swapBuffers(pass);
 
-    }*/
+    }
 
   },
 
