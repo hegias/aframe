@@ -10,7 +10,8 @@ registerEffect('bloom', {
   schema: {
     strength: {default: 0.3},
     radius: {default: 0.4},
-    threshold: {default: 0.6}
+    threshold: {default: 0.6},
+    enabled: {default: true}
   },
 
   initPass: function () {
@@ -25,6 +26,6 @@ registerEffect('bloom', {
     pass.strength = data.strength;
     pass.radius = data.radius;
     pass.threshold = data.threshold;
-    console.log("[Bloom] Update");
+    pass.enabled = data.enabled;
   }
 });

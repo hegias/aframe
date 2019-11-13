@@ -58,7 +58,7 @@
 </script> 
 
 <body>
-    <a-scene effect-bloom background="color: gray" id="scene">
+    <a-scene effect-bloom effect-lut="lutmap:CineTealOrange1" effect-fxaa background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
     <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
     <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
@@ -66,34 +66,18 @@
 </body>
 
 <script>
-let toggle = true;
-window.addEventListener("keyup", (e) => {
-    if(e.keyCode == 84){
-    let scene = document.querySelector("#scene");
-    if(toggle){
-        scene.removeAttribute("effect-fxaa");
-        console.log("Antialias off");
-        toggle = false;
-    }
-    else{
-        scene.setAttribute("effect-fxaa", "true");
-        console.log("Antialias on");
-        toggle = true;
-    }
-    }
-})
 
-let toggle2 = false;
+let toggle2 = true;
 window.addEventListener("keyup", (e) => {
     if(e.keyCode == 82){
         let scene = document.querySelector("#scene");
         if(toggle2){
-            scene.removeAttribute("effect-lut");
+            scene.setAttribute("effect-lut", "enabled", "false");
             console.log("LUT off");
             toggle2 = false;
         }
         else{
-            scene.setAttribute("effect-lut", "lutmap", "CineTealOrange1");
+            scene.setAttribute("effect-lut", "enabled", "true");
             console.log("LUT on");
             toggle2 = true;
         }
@@ -105,12 +89,12 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 66){
         let scene = document.querySelector("#scene");
         if(toggle3){
-            scene.removeAttribute("effect-bloom");
+            scene.setAttribute("effect-bloom", "enabled", "false");
             console.log("Bloom off");
             toggle3 = false;
         }
         else{
-            scene.setAttribute("effect-bloom", "true");
+            scene.setAttribute("effect-bloom", "enabled", "true");
             console.log("Bloom on");
             toggle3 = true;
         }

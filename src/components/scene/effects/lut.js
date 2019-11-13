@@ -9,7 +9,8 @@ require('../../../../vendor/effects/LUTShader');
 registerEffect('lut', {
 
   schema: {
-    lutmap: {type: 'string', default: 'CineWarm'}
+    lutmap: {type: 'string', default: 'CineWarm'},
+    enabled: {default: true}
   },
 
   initPass: function () {
@@ -18,8 +19,10 @@ registerEffect('lut', {
 
   update: function () {
     var pass = this.pass;
+    var data = this.data;
     if (!pass) { return; }
-    pass.setMap(this.data.lutmap);
+    pass.enabled = data.enabled;
+    pass.setMap(data.lutmap);
   },
 
 });

@@ -5,8 +5,6 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 
 	this.width = ( width !== undefined ) ? width : 512;
 	this.height = ( height !== undefined ) ? height : 512;
-	//console.log("[LUT] Width: " + this.width);
-	//console.log("[LUT] Height: " + this.height);
 
 	this.clear = true;
 
@@ -22,14 +20,13 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 	// Basic pass render target
 	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
 	this.beautyRenderTarget.texture.format = THREE.RGBAFormat;
-	//this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
-	//this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
 	this.beautyRenderTarget.texture.generateMipmaps = false;
 	this.beautyRenderTarget.stencilBuffer = false;
 	this.beautyRenderTarget.depthBuffer = false;
-	//this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
-	//this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
-	//console.log(this.beautyRenderTarget);
+	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
+	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
 
 	if ( THREE.LUTShader === undefined ) {
 
@@ -69,6 +66,9 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 	this.originalClearColor = new THREE.Color();
 	
 	this.basic = new THREE.MeshBasicMaterial();
+
+	this.enabled = true;
+	this.needsSwap = false;
 
 	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
 	this.quad.frustumCulled = false; // Avoid getting clipped

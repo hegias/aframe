@@ -88,7 +88,6 @@ Object.assign( THREE.EffectComposer.prototype, {
 
       var tmp = this.readBuffer;
       this.readBuffer = this.writeBuffer;
-      //this.writeBuffer.dispose();
       this.writeBuffer = tmp;
 
     }
@@ -148,8 +147,6 @@ Object.assign( THREE.EffectComposer.prototype, {
 
     this.resize();
 
-    console.log("Pass removed");
-
   },
 
   insertPass: function ( pass, index ) {
@@ -167,40 +164,6 @@ Object.assign( THREE.EffectComposer.prototype, {
     var scope = this;
 
     var currentOnAfterRender;
-
-    var parameters = {
-      minFilter: THREE.LinearFilter,
-      magFilter: THREE.LinearFilter,
-      format: THREE.RGBAFormat,
-      stencilBuffer: false
-    };
-
-    var size = new THREE.Vector2();
-    this.renderer.getDrawingBufferSize(size);
-
-    var input = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
-    var output = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
-    
-    /*this.passes[0].renderToScreen = false;
-    this.passes[0].render( this.renderer, output, input, delta, maskActive );
-
-    this.passes[1].renderToScreen = false;
-    this.passes[1].render( this.renderer, output, input, delta, maskActive );
-
-    this.passes[2].renderToScreen = false;
-    this.passes[2].render( this.renderer, input, output, delta, maskActive );
-    
-    this.passes[3].renderToScreen = false;
-    this.passes[3].render( this.renderer, output, input, delta, maskActive );
-    
-    this.passes[4].renderToScreen = false;
-    this.passes[4].render( this.renderer, input, output, delta, maskActive );
-    
-    this.passes[5].renderToScreen = true;
-    this.passes[5].render( this.renderer, output, input, delta, maskActive );
-
-    input.dispose();
-    output.dispose();*/
 
     for ( i = starti || 0; i < il; i ++ ) {
 

@@ -197,14 +197,23 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
     if ( maskActive ) renderer.context.disable( renderer.context.STENCIL_TEST );
 
     // Render input to screen
-    // TODO: if else writebuffer
 
     this.quad.material = this.basic;
     this.basic.map = readBuffer.texture;
 
-	  renderer.setRenderTarget( writeBuffer );
-		renderer.clear();
-    renderer.render( this.scene, this.camera ); 
+    if ( this.renderToScreen ) {
+      
+      renderer.setRenderTarget( null );
+      renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    } else {
+
+      renderer.setRenderTarget( writeBuffer );
+      renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
 
     // 1. Extract Bright Areas
 
