@@ -7,7 +7,7 @@ var warn = require('../utils/').debug('components:effect:warn');
 
 var lastEffectInitialized;
 
-var effectOrder = ['render', 'ssao', 'bloom', 'lut', 'fxaa', 'sepia'];
+var effectOrder = ['render', 'ssao', 'bloom', 'lut', 'aa', 'sepia'];
 var passes = {};
 
 var proto = {

@@ -66770,9 +66770,9 @@ var THREE = _dereq_('../lib/three');
 module.exports.Component = registerComponent('camera', {
   schema: {
     active: {default: true},
-    far: {default: 10000},
+    far: {default: 1000},
     fov: {default: 80, min: 0},
-    near: {default: 0.005, min: 0},
+    near: {default: 1, min: 0},
     spectator: {default: false},
     zoom: {default: 1, min: 0}
   },
@@ -79850,7 +79850,7 @@ _dereq_('./core/a-mixin');
 _dereq_('./extras/components/');
 _dereq_('./extras/primitives/');
 
-console.log('A-Frame Version: 0.9.2 (Date 2019-11-14, Commit #c6050746)');
+console.log('A-Frame Version: 0.9.2 (Date 2019-11-14, Commit #ea4dc51f)');
 console.log('three Version (https://github.com/supermedium/three.js):',
             pkg.dependencies['super-three']);
 console.log('WebVR Polyfill Version:', pkg.dependencies['webvr-polyfill']);

@@ -5,7 +5,11 @@ require('../../../../vendor/effects/CopyShader');
 require('../../../../vendor/effects/ShaderPass');
 require('../../../../vendor/effects/FXAAShader');
 
-registerEffect('fxaa', {
+registerEffect('aa', {
+  schema: {
+    mode: {default: "fxaa"}
+  },
+
   initPass: function () {
     this.pass = new THREE.ShaderPass(THREE.FXAAShader);
     this.update();
