@@ -723,6 +723,7 @@ module.exports.AScene = registerElement('a-scene', {
      */
     render: {
       value: function (time, frame) {
+        var effectComposer = this.effectComposer;
         var renderer = this.renderer;
 
         this.frame = frame;
@@ -731,7 +732,11 @@ module.exports.AScene = registerElement('a-scene', {
 
         if (this.isPlaying) { this.tick(this.time, this.delta); }
 
-        renderer.render(this.object3D, this.camera);
+        if (effectComposer) {
+          effectComposer.render();
+        } else {
+          renderer.render(this.object3D, this.camera);
+        }
       },
       writable: true
     }

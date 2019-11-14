@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Effects</title>
+    <meta name="description" content="Effects - A-Frame">
+    <script src="../../../dist/aframe-master.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+  </head>
+  <script>
+     /*AFRAME.registerComponent('cube-man', {
+        init: function(){
+            //console.log('cube-man');
+            let countX = 50;
+            let cubes = [];
+            let size = 0.3, spacing = 0.05, x;
+            let sceneEl = document.querySelector('a-scene');
+            for (let i=0; i<countX; i++){
+                
+                cubes[i] = document.createElement('a-entity'); // create the element
+                
+                // create components, id, geometry, position
+                cubes[i].setAttribute('id', 'box_'+i.toString());
+                cubes[i].setAttribute('geometry', {
+                    primitive: 'box',
+                    height: size,
+                    width: size,
+                    depth: size
+                });
+                //x = (size + spacing) * countX * (-0.5) + i * (size + spacing) ;
+                //y = Math.random() * 0.25;
+                
+			    x = Math.random() - 0.5;
+				y = Math.random() - 0.5;
+				z = Math.random() - 0.5;
+				//mesh.rotation.x = Math.random();
+				//mesh.rotation.y = Math.random();
+                //mesh.rotation.z = Math.random();
+                cubes[i].setAttribute('position', {x: x, y: y, z: z});
+                cubes[i].setAttribute('rotation', {x: x, y: y, z: z});
+      
+                // you can add event listeners here for interaction, such as mouse events.
+                sceneEl.appendChild(cubes[i]);// Append the element to the scene, so it becomes part of the DOM.
+            }
+            // If you want to access THREEjs properties, you need to access them after they have loaded into the scene.
+            // Get the cubes as THREEjs object
+            cubePosArr = [];
+            cubes.forEach(function(c){
+                c.addEventListener('loaded', function(ev){
+                    let cube3D = c.getObject3D('mesh');
+                    //console.log(cube3D);
+                    cubePosArr.push(cube3D.position.x);
+                    //console.log(cubePosArr);
+                });
+            });
+        }
+    });*/
+</script> 
+
+<body>
+    <a-scene effect-bloom effect-lut="lutmap:CineTealOrange1" effect-fxaa background="color: gray" id="scene">
+    <a-entity id="cubes" cube-man></a-entity>
+    <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
+    <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
+    </a-scene>
+</body>
+
+<script>
+
+let toggle2 = true;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 82){
+        let scene = document.querySelector("#scene");
+        if(toggle2){
+            scene.setAttribute("effect-lut", "enabled", "false");
+            console.log("LUT off");
+            toggle2 = false;
+        }
+        else{
+            scene.setAttribute("effect-lut", "enabled", "true");
+            console.log("LUT on");
+            toggle2 = true;
+        }
+    }
+})
+
+let toggle3 = true;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 66){
+        let scene = document.querySelector("#scene");
+        if(toggle3){
+            scene.setAttribute("effect-bloom", "enabled", "false");
+            console.log("Bloom off");
+            toggle3 = false;
+        }
+        else{
+            scene.setAttribute("effect-bloom", "enabled", "true");
+            console.log("Bloom on");
+            toggle3 = true;
+        }
+    }
+})
+</script>
+
+</html>
