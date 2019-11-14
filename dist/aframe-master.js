@@ -66759,7 +66759,7 @@ function isRawProperty (data) {
          data.property.startsWith(STRING_OBJECT3D);
 }
 
-},{"../core/component":131,"../lib/three":179,"../utils":204,"super-animejs":62}],81:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils":211,"super-animejs":62}],81:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 
@@ -66851,7 +66851,7 @@ module.exports.Component = registerComponent('camera', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179}],82:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186}],82:[function(_dereq_,module,exports){
 /* global THREE */
 var registerComponent = _dereq_('../core/component').registerComponent;
 var utils = _dereq_('../utils/');
@@ -67244,7 +67244,7 @@ module.exports.Component = registerComponent('cursor', {
   }
 });
 
-},{"../core/component":131,"../utils/":204}],83:[function(_dereq_,module,exports){
+},{"../core/component":137,"../utils/":211}],83:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -67419,7 +67419,7 @@ module.exports.Component = registerComponent('daydream-controls', {
   }
 });
 
-},{"../core/component":131,"../utils/bind":198,"../utils/tracked-controls":212}],84:[function(_dereq_,module,exports){
+},{"../core/component":137,"../utils/bind":205,"../utils/tracked-controls":219}],84:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -67592,7 +67592,7 @@ module.exports.Component = registerComponent('gearvr-controls', {
   }
 });
 
-},{"../core/component":131,"../utils/bind":198,"../utils/tracked-controls":212}],85:[function(_dereq_,module,exports){
+},{"../core/component":137,"../utils/bind":205,"../utils/tracked-controls":219}],85:[function(_dereq_,module,exports){
 var geometries = _dereq_('../core/geometry').geometries;
 var geometryNames = _dereq_('../core/geometry').geometryNames;
 var registerComponent = _dereq_('../core/component').registerComponent;
@@ -67671,7 +67671,7 @@ module.exports.Component = registerComponent('geometry', {
   }
 });
 
-},{"../core/component":131,"../core/geometry":132,"../lib/three":179}],86:[function(_dereq_,module,exports){
+},{"../core/component":137,"../core/geometry":139,"../lib/three":186}],86:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -67719,7 +67719,7 @@ module.exports.Component = registerComponent('gltf-model', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179,"../utils/":204}],87:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils/":211}],87:[function(_dereq_,module,exports){
 /* global THREE */
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -68115,7 +68115,7 @@ function isViveController (trackedControls) {
   return controllerId && controllerId.indexOf('OpenVR ') === 0;
 }
 
-},{"../core/component":131}],88:[function(_dereq_,module,exports){
+},{"../core/component":137}],88:[function(_dereq_,module,exports){
 _dereq_('./animation');
 _dereq_('./camera');
 _dereq_('./cursor');
@@ -68151,6 +68151,7 @@ _dereq_('./windows-motion-controls');
 
 _dereq_('./scene/background');
 _dereq_('./scene/debug');
+_dereq_('./scene/effects');
 _dereq_('./scene/embedded');
 _dereq_('./scene/inspector');
 _dereq_('./scene/fog');
@@ -68160,7 +68161,7 @@ _dereq_('./scene/screenshot');
 _dereq_('./scene/stats');
 _dereq_('./scene/vr-mode-ui');
 
-},{"./animation":80,"./camera":81,"./cursor":82,"./daydream-controls":83,"./gearvr-controls":84,"./geometry":85,"./gltf-model":86,"./hand-controls":87,"./laser-controls":89,"./light":90,"./line":91,"./link":92,"./look-controls":93,"./material":94,"./obj-model":95,"./oculus-go-controls":96,"./oculus-touch-controls":97,"./position":98,"./raycaster":99,"./rotation":100,"./scale":101,"./scene/background":102,"./scene/debug":103,"./scene/embedded":104,"./scene/fog":105,"./scene/inspector":106,"./scene/keyboard-shortcuts":107,"./scene/pool":108,"./scene/screenshot":109,"./scene/stats":110,"./scene/vr-mode-ui":111,"./shadow":112,"./sound":113,"./text":114,"./tracked-controls":117,"./tracked-controls-webvr":115,"./tracked-controls-webxr":116,"./visible":118,"./vive-controls":119,"./vive-focus-controls":120,"./wasd-controls":121,"./windows-motion-controls":122}],89:[function(_dereq_,module,exports){
+},{"./animation":80,"./camera":81,"./cursor":82,"./daydream-controls":83,"./gearvr-controls":84,"./geometry":85,"./gltf-model":86,"./hand-controls":87,"./laser-controls":89,"./light":90,"./line":91,"./link":92,"./look-controls":93,"./material":94,"./obj-model":95,"./oculus-go-controls":96,"./oculus-touch-controls":97,"./position":98,"./raycaster":99,"./rotation":100,"./scale":101,"./scene/background":102,"./scene/debug":103,"./scene/effects":106,"./scene/embedded":110,"./scene/fog":111,"./scene/inspector":112,"./scene/keyboard-shortcuts":113,"./scene/pool":114,"./scene/screenshot":115,"./scene/stats":116,"./scene/vr-mode-ui":117,"./shadow":118,"./sound":119,"./text":120,"./tracked-controls":123,"./tracked-controls-webvr":121,"./tracked-controls-webxr":122,"./visible":124,"./vive-controls":125,"./vive-focus-controls":126,"./wasd-controls":127,"./windows-motion-controls":128}],89:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var utils = _dereq_('../utils/');
 
@@ -68281,7 +68282,7 @@ registerComponent('laser-controls', {
   }
 });
 
-},{"../core/component":131,"../utils/":204}],90:[function(_dereq_,module,exports){
+},{"../core/component":137,"../utils/":211}],90:[function(_dereq_,module,exports){
 var bind = _dereq_('../utils/bind');
 var diff = _dereq_('../utils').diff;
 var debug = _dereq_('../utils/debug');
@@ -68570,7 +68571,7 @@ module.exports.Component = registerComponent('light', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179,"../utils":204,"../utils/bind":198,"../utils/debug":200}],91:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils":211,"../utils/bind":205,"../utils/debug":207}],91:[function(_dereq_,module,exports){
 /* global THREE */
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -68648,7 +68649,7 @@ function isEqualVec3 (a, b) {
   return (a.x === b.x && a.y === b.y && a.z === b.z);
 }
 
-},{"../core/component":131}],92:[function(_dereq_,module,exports){
+},{"../core/component":137}],92:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
@@ -69020,7 +69021,7 @@ registerShader('portal', {
 });
 /* eslint-enable */
 
-},{"../core/component":131,"../core/shader":141,"../lib/three":179}],93:[function(_dereq_,module,exports){
+},{"../core/component":137,"../core/shader":148,"../lib/three":186}],93:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -69459,7 +69460,7 @@ module.exports.Component = registerComponent('look-controls', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179,"../utils":204,"../utils/":204}],94:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils":211,"../utils/":211}],94:[function(_dereq_,module,exports){
 /* global Promise */
 var utils = _dereq_('../utils/');
 var component = _dereq_('../core/component');
@@ -69728,7 +69729,7 @@ function disposeMaterial (material, system) {
   system.unregisterMaterial(material);
 }
 
-},{"../core/component":131,"../core/shader":141,"../lib/three":179,"../utils/":204}],95:[function(_dereq_,module,exports){
+},{"../core/component":137,"../core/shader":148,"../lib/three":186,"../utils/":211}],95:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -69831,7 +69832,7 @@ module.exports.Component = registerComponent('obj-model', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179,"../utils/debug":200}],96:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils/debug":207}],96:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -70004,7 +70005,7 @@ module.exports.Component = registerComponent('oculus-go-controls', {
   }
 });
 
-},{"../core/component":131,"../utils/bind":198,"../utils/tracked-controls":212}],97:[function(_dereq_,module,exports){
+},{"../core/component":137,"../utils/bind":205,"../utils/tracked-controls":219}],97:[function(_dereq_,module,exports){
 var bind = _dereq_('../utils/bind');
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -70227,7 +70228,7 @@ module.exports.Component = registerComponent('oculus-touch-controls', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179,"../utils/bind":198,"../utils/tracked-controls":212}],98:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils/bind":205,"../utils/tracked-controls":219}],98:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 module.exports.Component = registerComponent('position', {
@@ -70245,7 +70246,7 @@ module.exports.Component = registerComponent('position', {
   }
 });
 
-},{"../core/component":131}],99:[function(_dereq_,module,exports){
+},{"../core/component":137}],99:[function(_dereq_,module,exports){
 /* global MutationObserver */
 
 var registerComponent = _dereq_('../core/component').registerComponent;
@@ -70682,7 +70683,7 @@ function copyArray (a, b) {
   }
 }
 
-},{"../core/component":131,"../lib/three":179,"../utils/":204}],100:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils/":211}],100:[function(_dereq_,module,exports){
 var degToRad = _dereq_('../lib/three').Math.degToRad;
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -70705,7 +70706,7 @@ module.exports.Component = registerComponent('rotation', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179}],101:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186}],101:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 // Avoids triggering a zero-determinant which makes object3D matrix non-invertible.
@@ -70732,7 +70733,7 @@ module.exports.Component = registerComponent('scale', {
   }
 });
 
-},{"../core/component":131}],102:[function(_dereq_,module,exports){
+},{"../core/component":137}],102:[function(_dereq_,module,exports){
 /* global THREE */
 var register = _dereq_('../../core/component').registerComponent;
 
@@ -70752,14 +70753,159 @@ module.exports.Component = register('background', {
   }
 });
 
-},{"../../core/component":131}],103:[function(_dereq_,module,exports){
+},{"../../core/component":137}],103:[function(_dereq_,module,exports){
 var register = _dereq_('../../core/component').registerComponent;
 
 module.exports.Component = register('debug', {
   schema: {default: true}
 });
 
-},{"../../core/component":131}],104:[function(_dereq_,module,exports){
+},{"../../core/component":137}],104:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/CopyShader');
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/LuminosityHighPassShader');
+_dereq_('../../../../vendor/effects/UnrealBloomPass');
+
+registerEffect('bloom', {
+  schema: {
+    strength: {default: 0.3},
+    radius: {default: 0.4},
+    threshold: {default: 0.6},
+    enabled: {default: true}
+  },
+
+  initPass: function () {
+    this.pass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.5, 0.4, 0.5);
+    console.log("[Bloom] Init");
+  },
+
+  update: function () {
+    var data = this.data;
+    var pass = this.pass;
+    if (!pass) { return; }
+    pass.strength = data.strength;
+    pass.radius = data.radius;
+    pass.threshold = data.threshold;
+    pass.enabled = data.enabled;
+  }
+});
+
+},{"../../../../vendor/effects/CopyShader":220,"../../../../vendor/effects/LuminosityHighPassShader":225,"../../../../vendor/effects/ShaderPass":232,"../../../../vendor/effects/UnrealBloomPass":233,"../../../core/effect":138}],105:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/CopyShader');
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/FXAAShader');
+
+registerEffect('fxaa', {
+  initPass: function () {
+    this.pass = new THREE.ShaderPass(THREE.FXAAShader);
+    this.update();
+  },
+
+  update: function () {
+    if (!this.pass) { return; }
+    this.pass.uniforms.resolution.value = new THREE.Vector2(1/window.innerWidth, 1/window.innerHeight);
+  }
+});
+},{"../../../../vendor/effects/CopyShader":220,"../../../../vendor/effects/FXAAShader":222,"../../../../vendor/effects/ShaderPass":232,"../../../core/effect":138}],106:[function(_dereq_,module,exports){
+_dereq_('./bloom');
+_dereq_('./sepia');
+_dereq_('./lut');
+_dereq_('./ssao');
+_dereq_('./fxaa');
+
+},{"./bloom":104,"./fxaa":105,"./lut":107,"./sepia":108,"./ssao":109}],107:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/CopyShader');
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/LUTPass');
+_dereq_('../../../../vendor/effects/LUTShader');
+
+registerEffect('lut', {
+
+  schema: {
+    lutmap: {type: 'string', default: 'CineWarm'},
+    enabled: {default: true}
+  },
+
+  initPass: function () {
+    this.pass = new THREE.LUTPass(window.innerWidth, window.innerHeight, this.data.lutmap);
+  },
+
+  update: function () {
+    var pass = this.pass;
+    var data = this.data;
+    if (!pass) { return; }
+    pass.enabled = data.enabled;
+    pass.setMap(data.lutmap);
+  },
+
+});
+
+},{"../../../../vendor/effects/CopyShader":220,"../../../../vendor/effects/LUTPass":223,"../../../../vendor/effects/LUTShader":224,"../../../../vendor/effects/ShaderPass":232,"../../../core/effect":138}],108:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/SepiaShader');
+
+registerEffect('sepia', {
+  schema: {
+    amount: {default: 1.0}
+  },
+
+  initPass: function () {
+    this.pass = new THREE.ShaderPass(THREE.SepiaShader);
+    this.update();
+  },
+
+  update: function () {
+    if (!this.pass) { return; }
+    this.pass.uniforms.amount.value = this.data.amount;
+    this.pass.uniforms.needsUpdate = true;
+  }
+});
+
+},{"../../../../vendor/effects/SepiaShader":231,"../../../../vendor/effects/ShaderPass":232,"../../../core/effect":138}],109:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/CopyShader');
+_dereq_('../../../../vendor/effects/SSAODepthShader');
+_dereq_('../../../../vendor/effects/SSAOBlurShader');
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/SSAOShader');
+_dereq_('../../../../vendor/effects/SSAOPass');
+
+registerEffect('ssao', {
+  schema: {
+    kernelRadius: { default: 8 },
+    minDistance: { default: 0.005 },
+    maxDistance: { default: 0.05 },
+  },
+
+  initPass: function () {
+    //this.pass = new THREE.SSAOPass(THREE.SSAOPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 8, 0.005, 0.05));
+    console.log("[SSAO] initPass");
+    this.pass = new THREE.SSAOPass(THREE.SSAOPass(window.innerWidth, window.innerHeight));
+  },
+
+  update: function () {
+    var pass = this.pass;
+    if (!pass) { return; }
+    pass.kernelRadius = this.data.kernelRadius;
+    pass.minDistance = this.data.minDistance;
+    pass.maxDistance = this.data.maxDistance;
+  }
+});
+},{"../../../../vendor/effects/CopyShader":220,"../../../../vendor/effects/SSAOBlurShader":227,"../../../../vendor/effects/SSAODepthShader":228,"../../../../vendor/effects/SSAOPass":229,"../../../../vendor/effects/SSAOShader":230,"../../../../vendor/effects/ShaderPass":232,"../../../core/effect":138}],110:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 
 /**
@@ -70784,7 +70930,7 @@ module.exports.Component = registerComponent('embedded', {
 
 });
 
-},{"../../core/component":131}],105:[function(_dereq_,module,exports){
+},{"../../core/component":137}],111:[function(_dereq_,module,exports){
 var register = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
 var debug = _dereq_('../../utils/debug');
@@ -70857,7 +71003,7 @@ function getFog (data) {
   return fog;
 }
 
-},{"../../core/component":131,"../../lib/three":179,"../../utils/debug":200}],106:[function(_dereq_,module,exports){
+},{"../../core/component":137,"../../lib/three":186,"../../utils/debug":207}],112:[function(_dereq_,module,exports){
 (function (process){
 /* global AFRAME */
 var AFRAME_INJECTED = _dereq_('../../constants').AFRAME_INJECTED;
@@ -70977,7 +71123,7 @@ module.exports.Component = registerComponent('inspector', {
 
 }).call(this,_dereq_('_process'))
 
-},{"../../../package":79,"../../constants":123,"../../core/component":131,"../../utils/":204,"_process":5}],107:[function(_dereq_,module,exports){
+},{"../../../package":79,"../../constants":129,"../../core/component":137,"../../utils/":211,"_process":5}],113:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var shouldCaptureKeyEvent = _dereq_('../../utils/').shouldCaptureKeyEvent;
 
@@ -71016,7 +71162,7 @@ module.exports.Component = registerComponent('keyboard-shortcuts', {
   }
 });
 
-},{"../../core/component":131,"../../utils/":204}],108:[function(_dereq_,module,exports){
+},{"../../core/component":137,"../../utils/":211}],114:[function(_dereq_,module,exports){
 var debug = _dereq_('../../utils/debug');
 var registerComponent = _dereq_('../../core/component').registerComponent;
 
@@ -71134,7 +71280,7 @@ module.exports.Component = registerComponent('pool', {
   }
 });
 
-},{"../../core/component":131,"../../utils/debug":200}],109:[function(_dereq_,module,exports){
+},{"../../core/component":137,"../../utils/debug":207}],115:[function(_dereq_,module,exports){
 /* global ImageData, URL */
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
@@ -71390,7 +71536,7 @@ module.exports.Component = registerComponent('screenshot', {
   }
 });
 
-},{"../../core/component":131,"../../lib/three":179}],110:[function(_dereq_,module,exports){
+},{"../../core/component":137,"../../lib/three":186}],116:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var RStats = _dereq_('../../../vendor/rStats');
 var utils = _dereq_('../../utils');
@@ -71470,7 +71616,7 @@ function createStats (scene) {
   });
 }
 
-},{"../../../vendor/rStats":214,"../../../vendor/rStats.extras":213,"../../core/component":131,"../../lib/rStatsAframe":178,"../../utils":204}],111:[function(_dereq_,module,exports){
+},{"../../../vendor/rStats":235,"../../../vendor/rStats.extras":234,"../../core/component":137,"../../lib/rStatsAframe":185,"../../utils":211}],117:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var constants = _dereq_('../../constants/');
 var utils = _dereq_('../../utils/');
@@ -71656,7 +71802,7 @@ function createOrientationModal (onClick) {
   return modal;
 }
 
-},{"../../constants/":123,"../../core/component":131,"../../utils/":204}],112:[function(_dereq_,module,exports){
+},{"../../constants/":129,"../../core/component":137,"../../utils/":211}],118:[function(_dereq_,module,exports){
 var component = _dereq_('../core/component');
 var THREE = _dereq_('../lib/three');
 var bind = _dereq_('../utils/bind');
@@ -71710,7 +71856,7 @@ module.exports.Component = registerComponent('shadow', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179,"../utils/bind":198}],113:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils/bind":205}],119:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var debug = _dereq_('../utils/debug');
 var THREE = _dereq_('../lib/three');
@@ -71961,7 +72107,7 @@ module.exports.Component = registerComponent('sound', {
   }
 });
 
-},{"../core/component":131,"../lib/three":179,"../utils/debug":200}],114:[function(_dereq_,module,exports){
+},{"../core/component":137,"../lib/three":186,"../utils/debug":207}],120:[function(_dereq_,module,exports){
 var createTextGeometry = _dereq_('three-bmfont-text');
 var loadBMFont = _dereq_('load-bmfont');
 
@@ -72446,7 +72592,7 @@ function PromiseCache () {
   };
 }
 
-},{"../core/component":131,"../core/shader":141,"../lib/three":179,"../utils/":204,"load-bmfont":44,"three-bmfont-text":68}],115:[function(_dereq_,module,exports){
+},{"../core/component":137,"../core/shader":148,"../lib/three":186,"../utils/":211,"load-bmfont":44,"three-bmfont-text":68}],121:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var controllerUtils = _dereq_('../utils/tracked-controls');
 var DEFAULT_CAMERA_HEIGHT = _dereq_('../constants').DEFAULT_CAMERA_HEIGHT;
@@ -72783,7 +72929,7 @@ module.exports.Component = registerComponent('tracked-controls-webvr', {
   }
 });
 
-},{"../constants":123,"../core/component":131,"../lib/three":179,"../utils/tracked-controls":212}],116:[function(_dereq_,module,exports){
+},{"../constants":129,"../core/component":137,"../lib/three":186,"../utils/tracked-controls":219}],122:[function(_dereq_,module,exports){
 var controllerUtils = _dereq_('../utils/tracked-controls');
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -72871,7 +73017,7 @@ module.exports.Component = registerComponent('tracked-controls-webxr', {
   }
 });
 
-},{"../core/component":131,"../utils/tracked-controls":212}],117:[function(_dereq_,module,exports){
+},{"../core/component":137,"../utils/tracked-controls":219}],123:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 /**
@@ -72908,7 +73054,7 @@ module.exports.Component = registerComponent('tracked-controls', {
   }
 });
 
-},{"../core/component":131}],118:[function(_dereq_,module,exports){
+},{"../core/component":137}],124:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 /**
@@ -72922,7 +73068,7 @@ module.exports.Component = registerComponent('visible', {
   }
 });
 
-},{"../core/component":131}],119:[function(_dereq_,module,exports){
+},{"../core/component":137}],125:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -73151,7 +73297,7 @@ module.exports.Component = registerComponent('vive-controls', {
   }
 });
 
-},{"../core/component":131,"../utils/bind":198,"../utils/tracked-controls":212}],120:[function(_dereq_,module,exports){
+},{"../core/component":137,"../utils/bind":205,"../utils/tracked-controls":219}],126:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -73333,7 +73479,7 @@ module.exports.Component = registerComponent('vive-focus-controls', {
   }
 });
 
-},{"../core/component":131,"../utils/bind":198,"../utils/tracked-controls":212}],121:[function(_dereq_,module,exports){
+},{"../core/component":137,"../utils/bind":205,"../utils/tracked-controls":219}],127:[function(_dereq_,module,exports){
 var KEYCODE_TO_CODE = _dereq_('../constants').keyboardevent.KEYCODE_TO_CODE;
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -73545,7 +73691,7 @@ function isEmptyObject (keys) {
   return true;
 }
 
-},{"../constants":123,"../core/component":131,"../lib/three":179,"../utils/":204}],122:[function(_dereq_,module,exports){
+},{"../constants":129,"../core/component":137,"../lib/three":186,"../utils/":211}],128:[function(_dereq_,module,exports){
 /* global THREE */
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
@@ -73994,7 +74140,7 @@ module.exports.Component = registerComponent('windows-motion-controls', {
   }
 });
 
-},{"../constants":123,"../core/component":131,"../utils/":204,"../utils/bind":198,"../utils/tracked-controls":212}],123:[function(_dereq_,module,exports){
+},{"../constants":129,"../core/component":137,"../utils/":211,"../utils/bind":205,"../utils/tracked-controls":219}],129:[function(_dereq_,module,exports){
 module.exports = {
   AFRAME_INJECTED: 'aframe-injected',
   DEFAULT_CAMERA_HEIGHT: 1.6,
@@ -74002,7 +74148,7 @@ module.exports = {
   keyboardevent: _dereq_('./keyboardevent')
 };
 
-},{"./keyboardevent":124}],124:[function(_dereq_,module,exports){
+},{"./keyboardevent":130}],130:[function(_dereq_,module,exports){
 module.exports = {
   // Tiny KeyboardEvent.code polyfill.
   KEYCODE_TO_CODE: {
@@ -74017,7 +74163,7 @@ module.exports = {
   }
 };
 
-},{}],125:[function(_dereq_,module,exports){
+},{}],131:[function(_dereq_,module,exports){
 var ANode = _dereq_('./a-node');
 var bind = _dereq_('../utils/bind');
 var debug = _dereq_('../utils/debug');
@@ -74282,7 +74428,7 @@ function inferResponseType (src) {
 }
 module.exports.inferResponseType = inferResponseType;
 
-},{"../lib/three":179,"../utils/bind":198,"../utils/debug":200,"./a-node":129,"./a-register-element":130}],126:[function(_dereq_,module,exports){
+},{"../lib/three":186,"../utils/bind":205,"../utils/debug":207,"./a-node":135,"./a-register-element":136}],132:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var registerElement = _dereq_('./a-register-element').registerElement;
 
@@ -74332,7 +74478,7 @@ module.exports = registerElement('a-cubemap', {
   })
 });
 
-},{"../utils/debug":200,"./a-register-element":130}],127:[function(_dereq_,module,exports){
+},{"../utils/debug":207,"./a-register-element":136}],133:[function(_dereq_,module,exports){
 var ANode = _dereq_('./a-node');
 var COMPONENTS = _dereq_('./component').components;
 var registerElement = _dereq_('./a-register-element').registerElement;
@@ -75266,7 +75412,7 @@ function getRotation (entityEl) {
 AEntity = registerElement('a-entity', {prototype: proto});
 module.exports = AEntity;
 
-},{"../lib/three":179,"../utils/":204,"./a-node":129,"./a-register-element":130,"./component":131}],128:[function(_dereq_,module,exports){
+},{"../lib/three":186,"../utils/":211,"./a-node":135,"./a-register-element":136,"./component":137}],134:[function(_dereq_,module,exports){
 var ANode = _dereq_('./a-node');
 var registerElement = _dereq_('./a-register-element').registerElement;
 var components = _dereq_('./component').components;
@@ -75382,7 +75528,7 @@ module.exports = registerElement('a-mixin', {
   })
 });
 
-},{"../utils":204,"./a-node":129,"./a-register-element":130,"./component":131}],129:[function(_dereq_,module,exports){
+},{"../utils":211,"./a-node":135,"./a-register-element":136,"./component":137}],135:[function(_dereq_,module,exports){
 /* global CustomEvent */
 var registerElement = _dereq_('./a-register-element').registerElement;
 var isNode = _dereq_('./a-register-element').isNode;
@@ -75653,7 +75799,7 @@ module.exports = registerElement('a-node', {
   })
 });
 
-},{"../utils/":204,"./a-register-element":130}],130:[function(_dereq_,module,exports){
+},{"../utils/":211,"./a-register-element":136}],136:[function(_dereq_,module,exports){
 /*
   ------------------------------------------------------------
   ------------- WARNING WARNING WARNING WARNING --------------
@@ -75840,7 +75986,7 @@ function copyProperties (source, destination) {
 ANode = _dereq_('./a-node');
 AEntity = _dereq_('./a-entity');
 
-},{"./a-entity":127,"./a-node":129,"document-register-element":13}],131:[function(_dereq_,module,exports){
+},{"./a-entity":133,"./a-node":135,"document-register-element":13}],137:[function(_dereq_,module,exports){
 /* global Node */
 var schema = _dereq_('./schema');
 var scenes = _dereq_('./scene/scenes');
@@ -76643,7 +76789,89 @@ function isObjectOrArray (value) {
          !(value instanceof window.HTMLElement);
 }
 
-},{"../utils/":204,"./scene/scenes":138,"./schema":140,"./system":142}],132:[function(_dereq_,module,exports){
+},{"../utils/":211,"./scene/scenes":145,"./schema":147,"./system":149}],138:[function(_dereq_,module,exports){
+_dereq_('../../vendor/effects/EffectComposer');
+_dereq_('../../vendor/effects/RenderPass');
+
+var registerComponent = _dereq_('./component').registerComponent;
+var THREE = _dereq_('../lib/three');
+var warn = _dereq_('../utils/').debug('components:effect:warn');
+
+var lastEffectInitialized;
+
+var effectOrder = ['render', 'ssao', 'bloom', 'lut', 'fxaa', 'sepia'];
+var passes = {};
+
+var proto = {
+  schema: {},
+  init: function () {
+    var sceneEl = this.el;
+
+    if (!this.el.isScene) {
+      warn('Effect components can only be applied to <a-scene>');
+      return;
+    }
+
+    if (!sceneEl.camera) {
+      sceneEl.addEventListener('camera-set-active', this.init.bind(this));
+      return;
+    }
+    this.initEffectComposer();
+    this.initPass();
+    this.update();
+    lastEffectInitialized.renderToScreen = false;
+    this.pass.renderToScreen = true;
+    lastEffectInitialized = this.pass;
+    passes[this.effectName] = this.pass;
+    this.rebuild();
+    console.log("[Effects] Init")
+  },
+
+  rebuild: function () {
+    var effectComposer = this.el.effectComposer;
+    effectComposer.passes = [];
+    effectOrder.forEach(function (effect) {
+      if (!passes[effect]) { return; }
+      effectComposer.addPass(passes[effect]);
+      console.log("[Effects] pass added: " + effect);
+    });
+  },
+
+  remove: function () {
+    this.el.effectComposer.removePass(this.pass);
+    passes[this.effectName] = undefined;
+  },
+
+  initEffectComposer: function () {
+    var sceneEl = this.el;
+    var effectComposer = sceneEl.effectComposer = new THREE.EffectComposer(sceneEl.renderer);
+    var renderPass = new THREE.RenderPass(sceneEl.object3D, sceneEl.camera);
+    effectComposer.addPass(renderPass);
+    lastEffectInitialized = renderPass;
+    renderPass.renderToScreen = true;
+    passes.render = renderPass;
+    setTimeout(function () { effectComposer.resize(); }, 0);
+    return effectComposer;
+  },
+};
+
+/**
+ * Registers an effect to A-Frame.
+ *
+ * @param {string} name - Effect name.
+ * @param {object} definition - Effect property and methods.
+ */
+module.exports.registerEffect = function (name, definition) {
+  Object.keys(definition).forEach(function (key) {
+    proto[key] = definition[key];
+  });
+
+  proto.effectName = name;
+  console.log("[Effects] " + name + " registered");
+  registerComponent('effect-' + name, proto);
+};
+
+},{"../../vendor/effects/EffectComposer":221,"../../vendor/effects/RenderPass":226,"../lib/three":186,"../utils/":211,"./component":137}],139:[function(_dereq_,module,exports){
 var schema = _dereq_('./schema');
 
 var processSchema = schema.process;
@@ -76717,7 +76945,7 @@ module.exports.registerGeometry = function (name, definition) {
   return NewGeometry;
 };
 
-},{"../lib/three":179,"./schema":140}],133:[function(_dereq_,module,exports){
+},{"../lib/three":186,"./schema":147}],140:[function(_dereq_,module,exports){
 var coordinates = _dereq_('../utils/coordinates');
 var debug = _dereq_('debug');
 
@@ -76942,7 +77170,7 @@ function isValidDefaultCoordinate (possibleCoordinates, dimensions) {
 }
 module.exports.isValidDefaultCoordinate = isValidDefaultCoordinate;
 
-},{"../utils/coordinates":199,"debug":9}],134:[function(_dereq_,module,exports){
+},{"../utils/coordinates":206,"debug":9}],141:[function(_dereq_,module,exports){
 /* global Promise, screen */
 var initMetaTags = _dereq_('./metaTags').inject;
 var initWakelock = _dereq_('./wakelock');
@@ -77808,7 +78036,7 @@ function setupCanvas (sceneEl) {
 }
 module.exports.setupCanvas = setupCanvas;  // For testing.
 
-},{"../../lib/three":179,"../../utils/":204,"../a-entity":127,"../a-node":129,"../a-register-element":130,"../system":142,"./loadingScreen":135,"./metaTags":136,"./postMessage":137,"./scenes":138,"./wakelock":139}],135:[function(_dereq_,module,exports){
+},{"../../lib/three":186,"../../utils/":211,"../a-entity":133,"../a-node":135,"../a-register-element":136,"../system":149,"./loadingScreen":142,"./metaTags":143,"./postMessage":144,"./scenes":145,"./wakelock":146}],142:[function(_dereq_,module,exports){
 /* global THREE */
 var utils = _dereq_('../../utils/');
 var styleParser = utils.styleParser;
@@ -77901,7 +78129,7 @@ function setupTitle () {
   sceneEl.appendChild(titleEl);
 }
 
-},{"../../utils/":204}],136:[function(_dereq_,module,exports){
+},{"../../utils/":211}],143:[function(_dereq_,module,exports){
 var constants = _dereq_('../../constants/');
 var extend = _dereq_('../../utils').extend;
 
@@ -77982,7 +78210,7 @@ function createTag (tagObj) {
   return extend(meta, tagObj.attributes);
 }
 
-},{"../../constants/":123,"../../utils":204}],137:[function(_dereq_,module,exports){
+},{"../../constants/":129,"../../utils":211}],144:[function(_dereq_,module,exports){
 var bind = _dereq_('../../utils/bind');
 var isIframed = _dereq_('../../utils/').isIframed;
 
@@ -78015,13 +78243,13 @@ function postMessageAPIHandler (event) {
   }
 }
 
-},{"../../utils/":204,"../../utils/bind":198}],138:[function(_dereq_,module,exports){
+},{"../../utils/":211,"../../utils/bind":205}],145:[function(_dereq_,module,exports){
 /*
   Scene index for keeping track of created scenes.
 */
 module.exports = [];
 
-},{}],139:[function(_dereq_,module,exports){
+},{}],146:[function(_dereq_,module,exports){
 var Wakelock = _dereq_('../../../vendor/wakelock/wakelock');
 
 module.exports = function initWakelock (scene) {
@@ -78032,7 +78260,7 @@ module.exports = function initWakelock (scene) {
   scene.addEventListener('exit-vr', function () { wakelock.release(); });
 };
 
-},{"../../../vendor/wakelock/wakelock":217}],140:[function(_dereq_,module,exports){
+},{"../../../vendor/wakelock/wakelock":238}],147:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils/');
 var PropertyTypes = _dereq_('./propertyTypes');
 
@@ -78236,7 +78464,7 @@ function stringifyProperty (value, propDefinition) {
 }
 module.exports.stringifyProperty = stringifyProperty;
 
-},{"../utils/":204,"./propertyTypes":133}],141:[function(_dereq_,module,exports){
+},{"../utils/":211,"./propertyTypes":140}],148:[function(_dereq_,module,exports){
 var schema = _dereq_('./schema');
 
 var processSchema = schema.process;
@@ -78425,7 +78653,7 @@ module.exports.registerShader = function (name, definition) {
   return NewShader;
 };
 
-},{"../lib/three":179,"../utils":204,"./schema":140}],142:[function(_dereq_,module,exports){
+},{"../lib/three":186,"../utils":211,"./schema":147}],149:[function(_dereq_,module,exports){
 var components = _dereq_('./component');
 var schema = _dereq_('./schema');
 var utils = _dereq_('../utils/');
@@ -78583,10 +78811,10 @@ module.exports.registerSystem = function (name, definition) {
   for (i = 0; i < scenes.length; i++) { scenes[i].initSystem(name); }
 };
 
-},{"../utils/":204,"./component":131,"./schema":140}],143:[function(_dereq_,module,exports){
+},{"../utils/":211,"./component":137,"./schema":147}],150:[function(_dereq_,module,exports){
 _dereq_('./pivot');
 
-},{"./pivot":144}],144:[function(_dereq_,module,exports){
+},{"./pivot":151}],151:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
 
@@ -78635,7 +78863,7 @@ registerComponent('pivot', {
   }
 });
 
-},{"../../core/component":131,"../../lib/three":179}],145:[function(_dereq_,module,exports){
+},{"../../core/component":137,"../../lib/three":186}],152:[function(_dereq_,module,exports){
 /**
  * Common mesh defaults, mappings, and transforms.
  */
@@ -78662,7 +78890,7 @@ module.exports = function getMeshMixin () {
   };
 };
 
-},{"../../core/component":131,"../../core/shader":141,"../../utils/":204}],146:[function(_dereq_,module,exports){
+},{"../../core/component":137,"../../core/shader":148,"../../utils/":211}],153:[function(_dereq_,module,exports){
 _dereq_('./primitives/a-camera');
 _dereq_('./primitives/a-cursor');
 _dereq_('./primitives/a-curvedimage');
@@ -78678,7 +78906,7 @@ _dereq_('./primitives/a-video');
 _dereq_('./primitives/a-videosphere');
 _dereq_('./primitives/meshPrimitives');
 
-},{"./primitives/a-camera":148,"./primitives/a-cursor":149,"./primitives/a-curvedimage":150,"./primitives/a-gltf-model":151,"./primitives/a-image":152,"./primitives/a-light":153,"./primitives/a-link":154,"./primitives/a-obj-model":155,"./primitives/a-sky":156,"./primitives/a-sound":157,"./primitives/a-text":158,"./primitives/a-video":159,"./primitives/a-videosphere":160,"./primitives/meshPrimitives":161}],147:[function(_dereq_,module,exports){
+},{"./primitives/a-camera":155,"./primitives/a-cursor":156,"./primitives/a-curvedimage":157,"./primitives/a-gltf-model":158,"./primitives/a-image":159,"./primitives/a-light":160,"./primitives/a-link":161,"./primitives/a-obj-model":162,"./primitives/a-sky":163,"./primitives/a-sound":164,"./primitives/a-text":165,"./primitives/a-video":166,"./primitives/a-videosphere":167,"./primitives/meshPrimitives":168}],154:[function(_dereq_,module,exports){
 var AEntity = _dereq_('../../core/a-entity');
 var components = _dereq_('../../core/component').components;
 var registerElement = _dereq_('../../core/a-register-element').registerElement;
@@ -78877,7 +79105,7 @@ function definePrimitive (tagName, defaultComponents, mappings) {
 }
 module.exports.definePrimitive = definePrimitive;
 
-},{"../../core/a-entity":127,"../../core/a-register-element":130,"../../core/component":131,"../../utils/":204}],148:[function(_dereq_,module,exports){
+},{"../../core/a-entity":133,"../../core/a-register-element":136,"../../core/component":137,"../../utils/":211}],155:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-camera', {
@@ -78901,7 +79129,7 @@ registerPrimitive('a-camera', {
   }
 });
 
-},{"../primitives":147}],149:[function(_dereq_,module,exports){
+},{"../primitives":154}],156:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -78936,7 +79164,7 @@ registerPrimitive('a-cursor', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":204,"../getMeshMixin":145,"../primitives":147}],150:[function(_dereq_,module,exports){
+},{"../../../utils/":211,"../getMeshMixin":152,"../primitives":154}],157:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -78973,7 +79201,7 @@ registerPrimitive('a-curvedimage', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":204,"../getMeshMixin":145,"../primitives":147}],151:[function(_dereq_,module,exports){
+},{"../../../utils/":211,"../getMeshMixin":152,"../primitives":154}],158:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-gltf-model', {
@@ -78982,7 +79210,7 @@ registerPrimitive('a-gltf-model', {
   }
 });
 
-},{"../primitives":147}],152:[function(_dereq_,module,exports){
+},{"../primitives":154}],159:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -79006,7 +79234,7 @@ registerPrimitive('a-image', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":204,"../getMeshMixin":145,"../primitives":147}],153:[function(_dereq_,module,exports){
+},{"../../../utils/":211,"../getMeshMixin":152,"../primitives":154}],160:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-light', {
@@ -79027,7 +79255,7 @@ registerPrimitive('a-light', {
   }
 });
 
-},{"../primitives":147}],154:[function(_dereq_,module,exports){
+},{"../primitives":154}],161:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-link', {
@@ -79044,7 +79272,7 @@ registerPrimitive('a-link', {
   }
 });
 
-},{"../primitives":147}],155:[function(_dereq_,module,exports){
+},{"../primitives":154}],162:[function(_dereq_,module,exports){
 var meshMixin = _dereq_('../getMeshMixin')();
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -79060,7 +79288,7 @@ registerPrimitive('a-obj-model', utils.extendDeep({}, meshMixin, {
   }
 }));
 
-},{"../../../utils/":204,"../getMeshMixin":145,"../primitives":147}],156:[function(_dereq_,module,exports){
+},{"../../../utils/":211,"../getMeshMixin":152,"../primitives":154}],163:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -79086,7 +79314,7 @@ registerPrimitive('a-sky', utils.extendDeep({}, getMeshMixin(), {
   mappings: utils.extendDeep({}, meshPrimitives['a-sphere'].prototype.mappings)
 }));
 
-},{"../../../utils/":204,"../getMeshMixin":145,"../primitives":147,"./meshPrimitives":161}],157:[function(_dereq_,module,exports){
+},{"../../../utils/":211,"../getMeshMixin":152,"../primitives":154,"./meshPrimitives":168}],164:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-sound', {
@@ -79103,12 +79331,12 @@ registerPrimitive('a-sound', {
   }
 });
 
-},{"../primitives":147}],158:[function(_dereq_,module,exports){
+},{"../primitives":154}],165:[function(_dereq_,module,exports){
 // <a-text> using `definePrimitive` helper.
 var definePrimitive = _dereq_('../primitives').definePrimitive;
 definePrimitive('a-text', {text: {anchor: 'align', width: 5}});
 
-},{"../primitives":147}],159:[function(_dereq_,module,exports){
+},{"../primitives":154}],166:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -79132,7 +79360,7 @@ registerPrimitive('a-video', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":204,"../getMeshMixin":145,"../primitives":147}],160:[function(_dereq_,module,exports){
+},{"../../../utils/":211,"../getMeshMixin":152,"../primitives":154}],167:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -79161,7 +79389,7 @@ registerPrimitive('a-videosphere', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":204,"../getMeshMixin":145,"../primitives":147}],161:[function(_dereq_,module,exports){
+},{"../../../utils/":211,"../getMeshMixin":152,"../primitives":154}],168:[function(_dereq_,module,exports){
 /**
  * Automated mesh primitive registration.
  */
@@ -79201,7 +79429,7 @@ function unCamelCase (str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
-},{"../../../core/geometry":132,"../../../utils/":204,"../getMeshMixin":145,"../primitives":147}],162:[function(_dereq_,module,exports){
+},{"../../../core/geometry":139,"../../../utils/":211,"../getMeshMixin":152,"../primitives":154}],169:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79222,7 +79450,7 @@ registerGeometry('box', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],163:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],170:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79242,7 +79470,7 @@ registerGeometry('circle', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],164:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],171:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79268,7 +79496,7 @@ registerGeometry('cone', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],165:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],172:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79292,7 +79520,7 @@ registerGeometry('cylinder', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],166:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],173:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79307,7 +79535,7 @@ registerGeometry('dodecahedron', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],167:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],174:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79322,7 +79550,7 @@ registerGeometry('icosahedron', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],168:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],175:[function(_dereq_,module,exports){
 _dereq_('./box.js');
 _dereq_('./circle.js');
 _dereq_('./cone.js');
@@ -79338,7 +79566,7 @@ _dereq_('./torus.js');
 _dereq_('./torusKnot.js');
 _dereq_('./triangle.js');
 
-},{"./box.js":162,"./circle.js":163,"./cone.js":164,"./cylinder.js":165,"./dodecahedron.js":166,"./icosahedron.js":167,"./octahedron.js":169,"./plane.js":170,"./ring.js":171,"./sphere.js":172,"./tetrahedron.js":173,"./torus.js":174,"./torusKnot.js":175,"./triangle.js":176}],169:[function(_dereq_,module,exports){
+},{"./box.js":169,"./circle.js":170,"./cone.js":171,"./cylinder.js":172,"./dodecahedron.js":173,"./icosahedron.js":174,"./octahedron.js":176,"./plane.js":177,"./ring.js":178,"./sphere.js":179,"./tetrahedron.js":180,"./torus.js":181,"./torusKnot.js":182,"./triangle.js":183}],176:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79353,7 +79581,7 @@ registerGeometry('octahedron', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],170:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],177:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79370,7 +79598,7 @@ registerGeometry('plane', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],171:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],178:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79393,7 +79621,7 @@ registerGeometry('ring', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],172:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],179:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79417,7 +79645,7 @@ registerGeometry('sphere', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],173:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],180:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79432,7 +79660,7 @@ registerGeometry('tetrahedron', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],174:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],181:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79454,7 +79682,7 @@ registerGeometry('torus', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],175:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],182:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79475,7 +79703,7 @@ registerGeometry('torusKnot', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],176:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],183:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -79530,7 +79758,7 @@ registerGeometry('triangle', {
   }
 });
 
-},{"../core/geometry":132,"../lib/three":179}],177:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../lib/three":186}],184:[function(_dereq_,module,exports){
 // Polyfill `Promise`.
 window.Promise = window.Promise || _dereq_('promise-polyfill');
 
@@ -79622,7 +79850,7 @@ _dereq_('./core/a-mixin');
 _dereq_('./extras/components/');
 _dereq_('./extras/primitives/');
 
-console.log('A-Frame Version: 0.9.2 (Date 2019-11-14, Commit #3a5a27cf)');
+console.log('A-Frame Version: 0.9.2 (Date 2019-11-14, Commit #c6050746)');
 console.log('three Version (https://github.com/supermedium/three.js):',
             pkg.dependencies['super-three']);
 console.log('WebVR Polyfill Version:', pkg.dependencies['webvr-polyfill']);
@@ -79655,7 +79883,7 @@ module.exports = window.AFRAME = {
   version: pkg.version
 };
 
-},{"../package":79,"../vendor/starts-with-polyfill":215,"./components/index":88,"./core/a-assets":125,"./core/a-cubemap":126,"./core/a-entity":127,"./core/a-mixin":128,"./core/a-node":129,"./core/a-register-element":130,"./core/component":131,"./core/geometry":132,"./core/scene/a-scene":134,"./core/scene/scenes":138,"./core/schema":140,"./core/shader":141,"./core/system":142,"./extras/components/":143,"./extras/primitives/":146,"./extras/primitives/getMeshMixin":145,"./extras/primitives/primitives":147,"./geometries/index":168,"./lib/three":179,"./shaders/index":181,"./style/aframe.css":186,"./style/rStats.css":187,"./systems/index":191,"./utils/":204,"./utils/isIOSOlderThan10":206,"custom-event-polyfill":8,"present":55,"promise-polyfill":56,"super-animejs":62,"webvr-polyfill":74}],178:[function(_dereq_,module,exports){
+},{"../package":79,"../vendor/starts-with-polyfill":236,"./components/index":88,"./core/a-assets":131,"./core/a-cubemap":132,"./core/a-entity":133,"./core/a-mixin":134,"./core/a-node":135,"./core/a-register-element":136,"./core/component":137,"./core/geometry":139,"./core/scene/a-scene":141,"./core/scene/scenes":145,"./core/schema":147,"./core/shader":148,"./core/system":149,"./extras/components/":150,"./extras/primitives/":153,"./extras/primitives/getMeshMixin":152,"./extras/primitives/primitives":154,"./geometries/index":175,"./lib/three":186,"./shaders/index":188,"./style/aframe.css":193,"./style/rStats.css":194,"./systems/index":198,"./utils/":211,"./utils/isIOSOlderThan10":213,"custom-event-polyfill":8,"present":55,"promise-polyfill":56,"super-animejs":62,"webvr-polyfill":74}],185:[function(_dereq_,module,exports){
 window.aframeStats = function (scene) {
   var _rS = null;
   var _scene = scene;
@@ -79712,7 +79940,7 @@ if (typeof module === 'object') {
   };
 }
 
-},{}],179:[function(_dereq_,module,exports){
+},{}],186:[function(_dereq_,module,exports){
 (function (global){
 var THREE = global.THREE = _dereq_('super-three');
 
@@ -79749,7 +79977,7 @@ module.exports = THREE;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"super-three":63,"super-three/examples/js/loaders/DRACOLoader":64,"super-three/examples/js/loaders/GLTFLoader":65,"super-three/examples/js/loaders/MTLLoader":66,"super-three/examples/js/loaders/OBJLoader":67}],180:[function(_dereq_,module,exports){
+},{"super-three":63,"super-three/examples/js/loaders/DRACOLoader":64,"super-three/examples/js/loaders/GLTFLoader":65,"super-three/examples/js/loaders/MTLLoader":66,"super-three/examples/js/loaders/OBJLoader":67}],187:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -79819,14 +80047,14 @@ function getMaterialData (data, materialData) {
   return materialData;
 }
 
-},{"../core/shader":141,"../lib/three":179,"../utils/":204}],181:[function(_dereq_,module,exports){
+},{"../core/shader":148,"../lib/three":186,"../utils/":211}],188:[function(_dereq_,module,exports){
 _dereq_('./flat');
 _dereq_('./standard');
 _dereq_('./sdf');
 _dereq_('./msdf');
 _dereq_('./ios10hls');
 
-},{"./flat":180,"./ios10hls":182,"./msdf":183,"./sdf":184,"./standard":185}],182:[function(_dereq_,module,exports){
+},{"./flat":187,"./ios10hls":189,"./msdf":190,"./sdf":191,"./standard":192}],189:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 
 /**
@@ -79861,7 +80089,7 @@ module.exports.Shader = registerShader('ios10hls', {
 });
 
 
-},{"../core/shader":141}],183:[function(_dereq_,module,exports){
+},{"../core/shader":148}],190:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 
 /**
@@ -79937,7 +80165,7 @@ module.exports.Shader = registerShader('msdf', {
   ].join('\n')
 });
 
-},{"../core/shader":141}],184:[function(_dereq_,module,exports){
+},{"../core/shader":148}],191:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 
 /**
@@ -80051,7 +80279,7 @@ module.exports.Shader = registerShader('sdf', {
   ].join('\n')
 });
 
-},{"../core/shader":141}],185:[function(_dereq_,module,exports){
+},{"../core/shader":148}],192:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -80243,11 +80471,11 @@ function getMaterialData (data, materialData) {
   return materialData;
 }
 
-},{"../core/shader":141,"../lib/three":179,"../utils/":204}],186:[function(_dereq_,module,exports){
+},{"../core/shader":148,"../lib/three":186,"../utils/":211}],193:[function(_dereq_,module,exports){
 var css = "html.a-fullscreen{bottom:0;left:0;position:fixed;right:0;top:0}html.a-fullscreen body{height:100%;margin:0;overflow:hidden;padding:0;width:100%}html.a-fullscreen .a-canvas{width:100%!important;height:100%!important;top:0!important;left:0!important;right:0!important;bottom:0!important;position:fixed!important}html:not(.a-fullscreen) .a-enter-vr{right:5px;bottom:5px}:-webkit-full-screen{background-color:transparent}.a-hidden{display:none!important}.a-canvas{height:100%;left:0;position:absolute;top:0;width:100%}.a-canvas.a-grab-cursor:hover{cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}canvas.a-canvas.a-mouse-cursor-hover:hover{cursor:pointer}.a-inspector-loader{background-color:#ed3160;position:fixed;left:3px;top:3px;padding:6px 10px;color:#fff;text-decoration:none;font-size:12px;font-family:Roboto,sans-serif;text-align:center;z-index:99999;width:204px}@keyframes dots-1{from{opacity:0}25%{opacity:1}}@keyframes dots-2{from{opacity:0}50%{opacity:1}}@keyframes dots-3{from{opacity:0}75%{opacity:1}}@-webkit-keyframes dots-1{from{opacity:0}25%{opacity:1}}@-webkit-keyframes dots-2{from{opacity:0}50%{opacity:1}}@-webkit-keyframes dots-3{from{opacity:0}75%{opacity:1}}.a-inspector-loader .dots span{animation:dots-1 2s infinite steps(1);-webkit-animation:dots-1 2s infinite steps(1)}.a-inspector-loader .dots span:first-child+span{animation-name:dots-2;-webkit-animation-name:dots-2}.a-inspector-loader .dots span:first-child+span+span{animation-name:dots-3;-webkit-animation-name:dots-3}a-scene{display:block;position:relative;height:100%;width:100%}a-assets,a-scene audio,a-scene img,a-scene video{display:none}.a-enter-vr-modal,.a-orientation-modal{font-family:Consolas,Andale Mono,Courier New,monospace}.a-enter-vr-modal a{border-bottom:1px solid #fff;padding:2px 0;text-decoration:none;transition:.1s color ease-in}.a-enter-vr-modal a:hover{background-color:#fff;color:#111;padding:2px 4px;position:relative;left:-4px}.a-enter-vr{font-family:sans-serif,monospace;font-size:13px;width:100%;font-weight:200;line-height:16px;position:absolute;right:20px;bottom:20px}.a-enter-vr-button,.a-enter-vr-modal,.a-enter-vr-modal a{color:#fff}.a-enter-vr-button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245.82%20141.73%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23fff%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3Emask%3C%2Ftitle%3E%3Cpath%20class%3D%22a%22%20d%3D%22M175.56%2C111.37c-22.52%2C0-40.77-18.84-40.77-42.07S153%2C27.24%2C175.56%2C27.24s40.77%2C18.84%2C40.77%2C42.07S198.08%2C111.37%2C175.56%2C111.37ZM26.84%2C69.31c0-23.23%2C18.25-42.07%2C40.77-42.07s40.77%2C18.84%2C40.77%2C42.07-18.26%2C42.07-40.77%2C42.07S26.84%2C92.54%2C26.84%2C69.31ZM27.27%2C0C11.54%2C0%2C0%2C12.34%2C0%2C28.58V110.9c0%2C16.24%2C11.54%2C30.83%2C27.27%2C30.83H99.57c2.17%2C0%2C4.19-1.83%2C5.4-3.7L116.47%2C118a8%2C8%2C0%2C0%2C1%2C12.52-.18l11.51%2C20.34c1.2%2C1.86%2C3.22%2C3.61%2C5.39%2C3.61h72.29c15.74%2C0%2C27.63-14.6%2C27.63-30.83V28.58C245.82%2C12.34%2C233.93%2C0%2C218.19%2C0H27.27Z%22%2F%3E%3C%2Fsvg%3E) 50% 50%/70% 70% no-repeat rgba(0,0,0,.35);border:0;bottom:0;cursor:pointer;min-width:50px;min-height:30px;padding-right:5%;padding-top:4%;position:absolute;right:0;transition:background-color .05s ease;-webkit-transition:background-color .05s ease;z-index:9999}.a-enter-vr-button:active,.a-enter-vr-button:hover{background-color:#666}[data-a-enter-vr-no-webvr] .a-enter-vr-button{border-color:#666;opacity:.65}[data-a-enter-vr-no-webvr] .a-enter-vr-button:active,[data-a-enter-vr-no-webvr] .a-enter-vr-button:hover{background-color:rgba(0,0,0,.35);cursor:not-allowed}.a-enter-vr-modal{background-color:#666;border-radius:0;display:none;min-height:32px;margin-right:70px;padding:9px;width:280px;right:2%;position:absolute}.a-enter-vr-modal:after{border-bottom:10px solid transparent;border-left:10px solid #666;border-top:10px solid transparent;display:inline-block;content:'';position:absolute;right:-5px;top:5px;width:0;height:0}.a-enter-vr-modal a,.a-enter-vr-modal p{display:inline}.a-enter-vr-modal p{margin:0}.a-enter-vr-modal p:after{content:' '}[data-a-enter-vr-no-headset].a-enter-vr:hover .a-enter-vr-modal,[data-a-enter-vr-no-webvr].a-enter-vr:hover .a-enter-vr-modal{display:block}.a-orientation-modal{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2090%2090%22%20enable-background%3D%22new%200%200%2090%2090%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20points%3D%220%2C0%200%2C0%200%2C0%20%22%3E%3C/polygon%3E%3Cg%3E%3Cpath%20d%3D%22M71.545%2C48.145h-31.98V20.743c0-2.627-2.138-4.765-4.765-4.765H18.456c-2.628%2C0-4.767%2C2.138-4.767%2C4.765v42.789%20%20%20c0%2C2.628%2C2.138%2C4.766%2C4.767%2C4.766h5.535v0.959c0%2C2.628%2C2.138%2C4.765%2C4.766%2C4.765h42.788c2.628%2C0%2C4.766-2.137%2C4.766-4.765V52.914%20%20%20C76.311%2C50.284%2C74.173%2C48.145%2C71.545%2C48.145z%20M18.455%2C16.935h16.344c2.1%2C0%2C3.808%2C1.708%2C3.808%2C3.808v27.401H37.25V22.636%20%20%20c0-0.264-0.215-0.478-0.479-0.478H16.482c-0.264%2C0-0.479%2C0.214-0.479%2C0.478v36.585c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h7.507v7.644%20%20%20h-5.534c-2.101%2C0-3.81-1.709-3.81-3.81V20.743C14.645%2C18.643%2C16.354%2C16.935%2C18.455%2C16.935z%20M16.96%2C23.116h19.331v25.031h-7.535%20%20%20c-2.628%2C0-4.766%2C2.139-4.766%2C4.768v5.828h-7.03V23.116z%20M71.545%2C73.064H28.757c-2.101%2C0-3.81-1.708-3.81-3.808V52.914%20%20%20c0-2.102%2C1.709-3.812%2C3.81-3.812h42.788c2.1%2C0%2C3.809%2C1.71%2C3.809%2C3.812v16.343C75.354%2C71.356%2C73.645%2C73.064%2C71.545%2C73.064z%22%3E%3C/path%3E%3Cpath%20d%3D%22M28.919%2C58.424c-1.466%2C0-2.659%2C1.193-2.659%2C2.66c0%2C1.466%2C1.193%2C2.658%2C2.659%2C2.658c1.468%2C0%2C2.662-1.192%2C2.662-2.658%20%20%20C31.581%2C59.617%2C30.387%2C58.424%2C28.919%2C58.424z%20M28.919%2C62.786c-0.939%2C0-1.703-0.764-1.703-1.702c0-0.939%2C0.764-1.704%2C1.703-1.704%20%20%20c0.94%2C0%2C1.705%2C0.765%2C1.705%2C1.704C30.623%2C62.022%2C29.858%2C62.786%2C28.919%2C62.786z%22%3E%3C/path%3E%3Cpath%20d%3D%22M69.654%2C50.461H33.069c-0.264%2C0-0.479%2C0.215-0.479%2C0.479v20.288c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h36.585%20%20%20c0.263%2C0%2C0.477-0.214%2C0.477-0.478V50.939C70.131%2C50.676%2C69.917%2C50.461%2C69.654%2C50.461z%20M69.174%2C51.417V70.75H33.548V51.417H69.174z%22%3E%3C/path%3E%3Cpath%20d%3D%22M45.201%2C30.296c6.651%2C0%2C12.233%2C5.351%2C12.551%2C11.977l-3.033-2.638c-0.193-0.165-0.507-0.142-0.675%2C0.048%20%20%20c-0.174%2C0.198-0.153%2C0.501%2C0.045%2C0.676l3.883%2C3.375c0.09%2C0.075%2C0.198%2C0.115%2C0.312%2C0.115c0.141%2C0%2C0.273-0.061%2C0.362-0.166%20%20%20l3.371-3.877c0.173-0.2%2C0.151-0.502-0.047-0.675c-0.194-0.166-0.508-0.144-0.676%2C0.048l-2.592%2C2.979%20%20%20c-0.18-3.417-1.629-6.605-4.099-9.001c-2.538-2.461-5.877-3.817-9.404-3.817c-0.264%2C0-0.479%2C0.215-0.479%2C0.479%20%20%20C44.72%2C30.083%2C44.936%2C30.296%2C45.201%2C30.296z%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) center/50% 50% no-repeat rgba(244,244,244,1);bottom:0;font-size:14px;font-weight:600;left:0;line-height:20px;right:0;position:fixed;top:0;z-index:9999999}.a-orientation-modal:after{color:#666;content:\"Insert phone into Cardboard holder.\";display:block;position:absolute;text-align:center;top:70%;transform:translateY(-70%);width:100%}.a-orientation-modal button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20100%20100%22%20enable-background%3D%22new%200%200%20100%20100%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M55.209%2C50l17.803-17.803c1.416-1.416%2C1.416-3.713%2C0-5.129c-1.416-1.417-3.713-1.417-5.129%2C0L50.08%2C44.872%20%20L32.278%2C27.069c-1.416-1.417-3.714-1.417-5.129%2C0c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129L44.951%2C50L27.149%2C67.803%20%20c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129c0.708%2C0.708%2C1.636%2C1.062%2C2.564%2C1.062c0.928%2C0%2C1.856-0.354%2C2.564-1.062L50.08%2C55.13l17.803%2C17.802%20%20c0.708%2C0.708%2C1.637%2C1.062%2C2.564%2C1.062s1.856-0.354%2C2.564-1.062c1.416-1.416%2C1.416-3.713%2C0-5.129L55.209%2C50z%22%3E%3C/path%3E%3C/svg%3E) no-repeat;border:none;height:50px;text-indent:-9999px;width:50px}.a-loader-title{background-color:rgba(0,0,0,.6);font-family:sans-serif,monospace;text-align:center;font-size:20px;height:50px;font-weight:300;line-height:50px;position:absolute;right:0;left:0;top:0;color:#fff}"; (_dereq_("browserify-css").createStyle(css, { "href": "src\\style\\aframe.css"})); module.exports = css;
-},{"browserify-css":4}],187:[function(_dereq_,module,exports){
+},{"browserify-css":4}],194:[function(_dereq_,module,exports){
 var css = ".rs-base{background-color:#333;color:#fafafa;border-radius:0;font:10px monospace;left:5px;line-height:1em;opacity:.85;overflow:hidden;padding:10px;position:fixed;top:5px;width:300px;z-index:10000}.rs-base div.hidden{display:none}.rs-base h1{color:#fff;cursor:pointer;font-size:1.4em;font-weight:300;margin:0 0 5px;padding:0}.rs-group{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column-reverse;flex-direction:column-reverse;margin-bottom:5px}.rs-group:last-child{margin-bottom:0}.rs-counter-base{align-items:center;display:-webkit-box;display:-webkit-flex;display:flex;height:10px;-webkit-justify-content:space-between;justify-content:space-between;margin:2px 0}.rs-counter-base.alarm{color:#b70000;text-shadow:0 0 0 #b70000,0 0 1px #fff,0 0 1px #fff,0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff,0 0 4px #fff,0 0 4px #fff}.rs-counter-id{font-weight:300;-webkit-box-ordinal-group:0;-webkit-order:0;order:0;width:54px}.rs-counter-value{font-weight:300;-webkit-box-ordinal-group:1;-webkit-order:1;order:1;text-align:right;width:35px}.rs-canvas{-webkit-box-ordinal-group:2;-webkit-order:2;order:2}@media (min-width:480px){.rs-base{left:20px;top:20px}}"; (_dereq_("browserify-css").createStyle(css, { "href": "src\\style\\rStats.css"})); module.exports = css;
-},{"browserify-css":4}],188:[function(_dereq_,module,exports){
+},{"browserify-css":4}],195:[function(_dereq_,module,exports){
 var constants = _dereq_('../constants/');
 var registerSystem = _dereq_('../core/system').registerSystem;
 
@@ -80520,7 +80748,7 @@ function removeDefaultCamera (sceneEl) {
   sceneEl.removeChild(defaultCamera);
 }
 
-},{"../constants/":123,"../core/system":142}],189:[function(_dereq_,module,exports){
+},{"../constants/":129,"../core/system":149}],196:[function(_dereq_,module,exports){
 var geometries = _dereq_('../core/geometry').geometries;
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
@@ -80660,7 +80888,7 @@ function toBufferGeometry (geometry, doBuffer) {
   return bufferGeometry;
 }
 
-},{"../core/geometry":132,"../core/system":142,"../lib/three":179}],190:[function(_dereq_,module,exports){
+},{"../core/geometry":139,"../core/system":149,"../lib/three":186}],197:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
 
@@ -80696,7 +80924,7 @@ module.exports.System = registerSystem('gltf-model', {
   }
 });
 
-},{"../core/system":142,"../lib/three":179}],191:[function(_dereq_,module,exports){
+},{"../core/system":149,"../lib/three":186}],198:[function(_dereq_,module,exports){
 _dereq_('./camera');
 _dereq_('./geometry');
 _dereq_('./gltf-model');
@@ -80707,7 +80935,7 @@ _dereq_('./shadow');
 _dereq_('./tracked-controls-webvr');
 _dereq_('./tracked-controls-webxr');
 
-},{"./camera":188,"./geometry":189,"./gltf-model":190,"./light":192,"./material":193,"./renderer":194,"./shadow":195,"./tracked-controls-webvr":196,"./tracked-controls-webxr":197}],192:[function(_dereq_,module,exports){
+},{"./camera":195,"./geometry":196,"./gltf-model":197,"./light":199,"./material":200,"./renderer":201,"./shadow":202,"./tracked-controls-webvr":203,"./tracked-controls-webxr":204}],199:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var bind = _dereq_('../utils/bind');
 var constants = _dereq_('../constants/');
@@ -80793,7 +81021,7 @@ module.exports.System = registerSystem('light', {
   }
 });
 
-},{"../constants/":123,"../core/system":142,"../utils/bind":198}],193:[function(_dereq_,module,exports){
+},{"../constants/":129,"../core/system":149,"../utils/bind":205}],200:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -81198,7 +81426,7 @@ function fixVideoAttributes (videoEl) {
   return videoEl;
 }
 
-},{"../core/system":142,"../lib/three":179,"../utils/":204,"../utils/material":207}],194:[function(_dereq_,module,exports){
+},{"../core/system":149,"../lib/three":186,"../utils/":211,"../utils/material":214}],201:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var utils = _dereq_('../utils/');
 var THREE = _dereq_('../lib/three');
@@ -81262,7 +81490,7 @@ module.exports.System = registerSystem('renderer', {
   }
 });
 
-},{"../core/system":142,"../lib/three":179,"../utils/":204}],195:[function(_dereq_,module,exports){
+},{"../core/system":149,"../lib/three":186,"../utils/":211}],202:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
 
@@ -81317,7 +81545,7 @@ module.exports.System = registerSystem('shadow', {
   }
 });
 
-},{"../core/system":142,"../lib/three":179}],196:[function(_dereq_,module,exports){
+},{"../core/system":149,"../lib/three":186}],203:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var utils = _dereq_('../utils');
 
@@ -81381,7 +81609,7 @@ module.exports.System = registerSystem('tracked-controls-webvr', {
   }
 });
 
-},{"../core/system":142,"../utils":204}],197:[function(_dereq_,module,exports){
+},{"../core/system":149,"../utils":211}],204:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var utils = _dereq_('../utils');
 
@@ -81408,7 +81636,7 @@ module.exports.System = registerSystem('tracked-controls-webxr', {
   }
 });
 
-},{"../core/system":142,"../utils":204}],198:[function(_dereq_,module,exports){
+},{"../core/system":149,"../utils":211}],205:[function(_dereq_,module,exports){
 /**
  * Faster version of Function.prototype.bind
  * @param {Function} fn - Function to wrap.
@@ -81425,7 +81653,7 @@ module.exports = function bind (fn, ctx/* , arg1, arg2 */) {
   })(Array.prototype.slice.call(arguments, 2));
 };
 
-},{}],199:[function(_dereq_,module,exports){
+},{}],206:[function(_dereq_,module,exports){
 /* global THREE */
 var debug = _dereq_('./debug');
 var extend = _dereq_('object-assign');
@@ -81537,7 +81765,7 @@ module.exports.toVector3 = function (vec3) {
   return new THREE.Vector3(vec3.x, vec3.y, vec3.z);
 };
 
-},{"./debug":200,"object-assign":46}],200:[function(_dereq_,module,exports){
+},{"./debug":207,"object-assign":46}],207:[function(_dereq_,module,exports){
 (function (process){
 var debugLib = _dereq_('debug');
 var extend = _dereq_('object-assign');
@@ -81634,7 +81862,7 @@ module.exports = debug;
 
 }).call(this,_dereq_('_process'))
 
-},{"_process":5,"debug":9,"object-assign":46}],201:[function(_dereq_,module,exports){
+},{"_process":5,"debug":9,"object-assign":46}],208:[function(_dereq_,module,exports){
 (function (process){
 var error = _dereq_('debug')('device:error');
 
@@ -81785,7 +82013,7 @@ module.exports.PolyfillControls = function PolyfillControls (object) {
 
 }).call(this,_dereq_('_process'))
 
-},{"_process":5,"debug":9}],202:[function(_dereq_,module,exports){
+},{"_process":5,"debug":9}],209:[function(_dereq_,module,exports){
 /**
  * Split a delimited component property string (e.g., `material.color`) to an object
  * containing `component` name and `property` name. If there is no delimiter, just return the
@@ -81847,7 +82075,7 @@ module.exports.setComponentProperty = function (el, name, value, delimiter) {
   el.setAttribute(name, value);
 };
 
-},{}],203:[function(_dereq_,module,exports){
+},{}],210:[function(_dereq_,module,exports){
 module.exports = function forceCanvasResizeSafariMobile (canvasEl) {
   var width = canvasEl.style.width;
   var height = canvasEl.style.height;
@@ -81863,7 +82091,7 @@ module.exports = function forceCanvasResizeSafariMobile (canvasEl) {
   }, 200);
 };
 
-},{}],204:[function(_dereq_,module,exports){
+},{}],211:[function(_dereq_,module,exports){
 /* global location */
 
 /* Centralized place to reference utilities since utils is exposed to the user. */
@@ -82193,7 +82421,7 @@ module.exports.findAllScenes = function (el) {
 // Must be at bottom to avoid circular dependency.
 module.exports.srcLoader = _dereq_('./src-loader');
 
-},{"./bind":198,"./coordinates":199,"./debug":200,"./device":201,"./entity":202,"./forceCanvasResizeSafariMobile":203,"./is-ie11":205,"./material":207,"./object-pool":208,"./split":209,"./src-loader":210,"./styleParser":211,"./tracked-controls":212,"deep-assign":11,"object-assign":46}],205:[function(_dereq_,module,exports){
+},{"./bind":205,"./coordinates":206,"./debug":207,"./device":208,"./entity":209,"./forceCanvasResizeSafariMobile":210,"./is-ie11":212,"./material":214,"./object-pool":215,"./split":216,"./src-loader":217,"./styleParser":218,"./tracked-controls":219,"deep-assign":11,"object-assign":46}],212:[function(_dereq_,module,exports){
 // https://stackoverflow.com/a/17907562
 function getInternetExplorerVersion () {
   var version = -1;
@@ -82211,7 +82439,7 @@ function getInternetExplorerVersion () {
 
 module.exports = getInternetExplorerVersion() === 11;
 
-},{}],206:[function(_dereq_,module,exports){
+},{}],213:[function(_dereq_,module,exports){
 /**
  * Check if device is iOS and older than version 10.
  */
@@ -82219,7 +82447,7 @@ module.exports = function isIOSOlderThan10 (userAgent) {
   return /(iphone|ipod|ipad).*os.(7_|8_|9_)/i.test(userAgent);
 };
 
-},{}],207:[function(_dereq_,module,exports){
+},{}],214:[function(_dereq_,module,exports){
 var THREE = _dereq_('../lib/three');
 
 var HLS_MIMETYPES = ['application/x-mpegurl', 'application/vnd.apple.mpegurl'];
@@ -82390,7 +82618,7 @@ module.exports.isHLS = function (src, type) {
   return false;
 };
 
-},{"../lib/three":179}],208:[function(_dereq_,module,exports){
+},{"../lib/three":186}],215:[function(_dereq_,module,exports){
 /*
   Adapted deePool by Kyle Simpson.
   MIT License: http://getify.mit-license.org
@@ -82481,7 +82709,7 @@ function removeUnusedKeys (obj, schema) {
 }
 module.exports.removeUnusedKeys = removeUnusedKeys;
 
-},{}],209:[function(_dereq_,module,exports){
+},{}],216:[function(_dereq_,module,exports){
 /**
  * String split with cached result.
  */
@@ -82498,7 +82726,7 @@ module.exports.split = (function () {
   };
 })();
 
-},{}],210:[function(_dereq_,module,exports){
+},{}],217:[function(_dereq_,module,exports){
 /* global Image, XMLHttpRequest */
 var debug = _dereq_('./debug');
 
@@ -82657,7 +82885,7 @@ module.exports = {
   validateCubemapSrc: validateCubemapSrc
 };
 
-},{"./debug":200}],211:[function(_dereq_,module,exports){
+},{"./debug":207}],218:[function(_dereq_,module,exports){
 /**
  * Utils for parsing style-like strings (e.g., "primitive: box; width: 5; height: 4.5").
  * Some code adapted from `style-attr` (https://github.com/joshwnj/style-attr)
@@ -82810,7 +83038,7 @@ function styleStringify (obj) {
 
 function upperCase (str) { return str[1].toUpperCase(); }
 
-},{}],212:[function(_dereq_,module,exports){
+},{}],219:[function(_dereq_,module,exports){
 var DEFAULT_HANDEDNESS = _dereq_('../constants').DEFAULT_HANDEDNESS;
 var AXIS_LABELS = ['x', 'y', 'z', 'w'];
 var NUM_HANDS = 2;  // Number of hands in a pair. Should always be 2.
@@ -83027,7 +83255,2993 @@ module.exports.onButtonEvent = function (id, evtName, component, hand) {
   }
 };
 
-},{"../constants":123}],213:[function(_dereq_,module,exports){
+},{"../constants":129}],220:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ *
+ * Full-screen textured quad shader
+ */
+
+THREE.CopyShader = {
+
+  uniforms: {
+
+    "tDiffuse": { value: null },
+    "opacity":  { value: 1.0 }
+
+  },
+
+  vertexShader: [
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vUv = uv;",
+      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+    "}"
+
+  ].join( "\n" ),
+
+  fragmentShader: [
+
+    "uniform float opacity;",
+
+    "uniform sampler2D tDiffuse;",
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vec4 texel = texture2D( tDiffuse, vUv );",
+      "gl_FragColor = opacity * texel;",
+
+    "}"
+
+  ].join( "\n" )
+
+};
+
+},{}],221:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.EffectComposer = function ( renderer, renderTarget ) {
+
+  this.renderer = renderer;
+  window.addEventListener( 'vrdisplaypresentchange' , this.resize.bind(this) );
+  window.addEventListener( 'resize' , this.resize.bind(this) );
+
+  if ( renderTarget === undefined ) {
+
+    var parameters = {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      format: THREE.RGBAFormat,
+      stencilBuffer: false
+    };
+
+    var size = new THREE.Vector2();
+    renderer.getDrawingBufferSize(size);
+    renderTarget = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
+    renderTarget.texture.name = 'EffectComposer.rt1';
+
+  }
+
+  this.renderTarget1 = renderTarget;
+  this.renderTarget1.depthBuffer = true;
+  this.renderTarget1.depthTexture = new THREE.DepthTexture();
+  this.renderTarget2 = renderTarget.clone();
+  this.renderTarget2.depthBuffer = true;
+  this.renderTarget2.depthTexture = new THREE.DepthTexture();
+  this.renderTarget2.texture.name = 'EffectComposer.rt2';
+
+  
+  this.bloomRenderTarget = renderTarget.clone();
+  this.lutRenderTarget  = renderTarget.clone();
+
+  this.writeBuffer = this.renderTarget1;
+  this.readBuffer = this.renderTarget2;
+
+  this.passes = [];
+  this.maskActive = false;
+
+  // dependencies
+
+  if ( THREE.CopyShader === undefined ) {
+
+    console.error( 'THREE.EffectComposer relies on THREE.CopyShader' );
+
+  }
+
+  if ( THREE.ShaderPass === undefined ) {
+
+    console.error( 'THREE.EffectComposer relies on THREE.ShaderPass' );
+
+  }
+
+  this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
+
+  
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+
+};
+
+Object.assign( THREE.EffectComposer.prototype, {
+
+  swapBuffers: function ( pass ) {
+
+    if ( pass.needsSwap ) {
+
+      if ( this.maskActive ) {
+
+        var context = this.renderer.context;
+
+        context.stencilFunc( context.NOTEQUAL, 1, 0xffffffff );
+
+        this.copyPass.render( this.renderer, this.writeBuffer, this.readBuffer, delta );
+
+        context.stencilFunc( context.EQUAL, 1, 0xffffffff );
+
+      }
+
+      var tmp = this.readBuffer;
+      this.readBuffer = this.writeBuffer;
+      this.writeBuffer = tmp;
+
+    }
+
+    if ( THREE.MaskPass !== undefined ) {
+
+      if ( pass instanceof THREE.MaskPass ) {
+
+        this.maskActive = true;
+
+      } else if ( pass instanceof THREE.ClearMaskPass ) {
+
+        this.maskActive = false;
+
+      }
+
+    }
+
+  },
+
+  addPass: function ( pass ) {
+
+    // Makes certain that only the last added pass will be rendered to screen
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.needsSwap = true;
+    });
+    
+    // Makes certain that only the last added pass will be rendered to screen
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.renderToScreen = false;
+    });
+    
+    pass.renderToScreen = true;
+    pass.needsSwap = false;
+
+    this.passes.push( pass );
+
+    var size = new THREE.Vector2();
+    this.renderer.getDrawingBufferSize(size);
+    pass.setSize( size.width, size.height );
+
+    console.log("Pass added");
+
+  },
+
+  removePass: function ( pass ) {
+
+    var index = this.passes.indexOf(pass);
+
+    if ( index === -1 ) { return; }
+
+    this.passes.splice( this.passes.indexOf(pass), 1 );
+
+    this.passes[this.passes.length - 1].renderToScreen = true;
+
+    this.resize();
+
+  },
+
+  insertPass: function ( pass, index ) {
+
+    this.passes.splice( index, 0, pass );
+
+  },
+
+  render: function ( delta, starti ) {
+
+    var maskActive = this.maskActive;
+
+    var pass, i, il = this.passes.length;
+
+    var scope = this;
+
+    var currentOnAfterRender;
+
+    for ( i = starti || 0; i < il; i ++ ) {
+
+      pass = this.passes[ i ];
+      
+      if ( pass.enabled === false ) continue;
+
+      // If VR mode is enabled and rendering the whole scene is required.
+      // The pass renders the scene and and postprocessing is resumed before
+      // submitting the frame to the headset by using the onAfterRender callback.
+      if ( this.renderer.vr.enabled && pass.scene ) {
+
+        currentOnAfterRender = pass.scene.onAfterRender;
+
+        pass.scene.onAfterRender = function () {
+
+          // Disable stereo rendering when doing postprocessing
+          // on a render target.
+          scope.renderer.vr.enabled = false;
+
+          scope.render( delta, i + 1, maskActive );
+
+          // Renable vr mode.
+          scope.renderer.vr.enabled = true;
+        }
+
+        pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
+        
+        // Restore onAfterRender
+        pass.scene.onAfterRender = currentOnAfterRender;
+
+        this.swapBuffers( pass );
+
+        return;
+      }
+
+      pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
+
+      this.swapBuffers(pass);
+
+    }
+
+  },
+
+  reset: function ( renderTarget ) {
+
+    if ( renderTarget === undefined ) {
+
+      var size = new THREE.Vector2();
+      this.renderer.getDrawingBufferSize(size);
+
+      renderTarget = this.renderTarget1.clone();
+      renderTarget.setSize( size.width, size.height );
+
+    }
+
+    this.renderTarget1.dispose();
+    this.renderTarget2.dispose();
+    this.renderTarget1 = renderTarget;
+    this.renderTarget2 = renderTarget.clone();
+
+    this.writeBuffer = this.renderTarget1;
+    this.readBuffer = this.renderTarget2;
+
+  },
+
+  setSize: function ( width, height ) {
+
+    this.renderTarget1.setSize( width, height );
+    this.renderTarget2.setSize( width, height );
+
+    for ( var i = 0; i < this.passes.length; i ++ ) {
+
+      this.passes[ i ].setSize( width, height );
+
+    }
+
+  },
+
+  resize: function ( ) {
+
+    var size = new THREE.Vector2();
+    this.renderer.getDrawingBufferSize(size);
+    this.setSize( size.width, size.height );
+
+  },
+
+} );
+
+
+THREE.Pass = function () {
+
+  // if set to true, the pass is processed by the composer
+  this.enabled = true;
+
+  // if set to true, the pass indicates to swap read and write buffer after rendering
+  this.needsSwap = true;
+
+  // if set to true, the pass clears its buffer before rendering
+  this.clear = false;
+
+  // if set to true, the result of the pass is rendered to screen
+  this.renderToScreen = false;
+
+};
+
+Object.assign( THREE.Pass.prototype, {
+
+  setSize: function ( width, height ) {},
+
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    console.error( 'THREE.Pass: .render() must be implemented in derived pass.' );
+
+  }
+
+} );
+
+},{}],222:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ * @author davidedc / http://www.sketchpatch.net/
+ *
+ * NVIDIA FXAA by Timothy Lottes
+ * http://timothylottes.blogspot.com/2011/06/fxaa3-source-released.html
+ * - WebGL port by @supereggbert
+ * http://www.glge.org/demos/fxaa/
+ */
+
+THREE.FXAAShader = {
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"resolution": { value: new THREE.Vector2( 1 / 1024, 1 / 512 ) }
+
+	},
+
+	vertexShader: [
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vUv = uv;",
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+		"precision highp float;",
+		"",
+		"uniform sampler2D tDiffuse;",
+		"",
+		"uniform vec2 resolution;",
+		"",
+		"varying vec2 vUv;",
+		"",
+		"// FXAA 3.11 implementation by NVIDIA, ported to WebGL by Agost Biro (biro@archilogic.com)",
+		"",
+		"//----------------------------------------------------------------------------------",
+		"// File:        es3-kepler\FXAA\assets\shaders/FXAA_DefaultES.frag",
+		"// SDK Version: v3.00",
+		"// Email:       gameworks@nvidia.com",
+		"// Site:        http://developer.nvidia.com/",
+		"//",
+		"// Copyright (c) 2014-2015, NVIDIA CORPORATION. All rights reserved.",
+		"//",
+		"// Redistribution and use in source and binary forms, with or without",
+		"// modification, are permitted provided that the following conditions",
+		"// are met:",
+		"//  * Redistributions of source code must retain the above copyright",
+		"//    notice, this list of conditions and the following disclaimer.",
+		"//  * Redistributions in binary form must reproduce the above copyright",
+		"//    notice, this list of conditions and the following disclaimer in the",
+		"//    documentation and/or other materials provided with the distribution.",
+		"//  * Neither the name of NVIDIA CORPORATION nor the names of its",
+		"//    contributors may be used to endorse or promote products derived",
+		"//    from this software without specific prior written permission.",
+		"//",
+		"// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY",
+		"// EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE",
+		"// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR",
+		"// PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR",
+		"// CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,",
+		"// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,",
+		"// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR",
+		"// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY",
+		"// OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT",
+		"// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE",
+		"// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
+		"//",
+		"//----------------------------------------------------------------------------------",
+		"",
+		"#define FXAA_PC 1",
+		"#define FXAA_GLSL_100 1",
+		"#define FXAA_QUALITY_PRESET 39",
+		"",
+		"#define FXAA_GREEN_AS_LUMA 1",
+		"",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_PC_CONSOLE",
+		"    //",
+		"    // The console algorithm for PC is included",
+		"    // for developers targeting really low spec machines.",
+		"    // Likely better to just run FXAA_PC, and use a really low preset.",
+		"    //",
+		"    #define FXAA_PC_CONSOLE 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_GLSL_120",
+		"    #define FXAA_GLSL_120 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_GLSL_130",
+		"    #define FXAA_GLSL_130 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_HLSL_3",
+		"    #define FXAA_HLSL_3 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_HLSL_4",
+		"    #define FXAA_HLSL_4 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_HLSL_5",
+		"    #define FXAA_HLSL_5 0",
+		"#endif",
+		"/*==========================================================================*/",
+		"#ifndef FXAA_GREEN_AS_LUMA",
+		"    //",
+		"    // For those using non-linear color,",
+		"    // and either not able to get luma in alpha, or not wanting to,",
+		"    // this enables FXAA to run using green as a proxy for luma.",
+		"    // So with this enabled, no need to pack luma in alpha.",
+		"    //",
+		"    // This will turn off AA on anything which lacks some amount of green.",
+		"    // Pure red and blue or combination of only R and B, will get no AA.",
+		"    //",
+		"    // Might want to lower the settings for both,",
+		"    //    fxaaConsoleEdgeThresholdMin",
+		"    //    fxaaQualityEdgeThresholdMin",
+		"    // In order to insure AA does not get turned off on colors",
+		"    // which contain a minor amount of green.",
+		"    //",
+		"    // 1 = On.",
+		"    // 0 = Off.",
+		"    //",
+		"    #define FXAA_GREEN_AS_LUMA 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_EARLY_EXIT",
+		"    //",
+		"    // Controls algorithm's early exit path.",
+		"    // On PS3 turning this ON adds 2 cycles to the shader.",
+		"    // On 360 turning this OFF adds 10ths of a millisecond to the shader.",
+		"    // Turning this off on console will result in a more blurry image.",
+		"    // So this defaults to on.",
+		"    //",
+		"    // 1 = On.",
+		"    // 0 = Off.",
+		"    //",
+		"    #define FXAA_EARLY_EXIT 1",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_DISCARD",
+		"    //",
+		"    // Only valid for PC OpenGL currently.",
+		"    // Probably will not work when FXAA_GREEN_AS_LUMA = 1.",
+		"    //",
+		"    // 1 = Use discard on pixels which don't need AA.",
+		"    //     For APIs which enable concurrent TEX+ROP from same surface.",
+		"    // 0 = Return unchanged color on pixels which don't need AA.",
+		"    //",
+		"    #define FXAA_DISCARD 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_FAST_PIXEL_OFFSET",
+		"    //",
+		"    // Used for GLSL 120 only.",
+		"    //",
+		"    // 1 = GL API supports fast pixel offsets",
+		"    // 0 = do not use fast pixel offsets",
+		"    //",
+		"    #ifdef GL_EXT_gpu_shader4",
+		"        #define FXAA_FAST_PIXEL_OFFSET 1",
+		"    #endif",
+		"    #ifdef GL_NV_gpu_shader5",
+		"        #define FXAA_FAST_PIXEL_OFFSET 1",
+		"    #endif",
+		"    #ifdef GL_ARB_gpu_shader5",
+		"        #define FXAA_FAST_PIXEL_OFFSET 1",
+		"    #endif",
+		"    #ifndef FXAA_FAST_PIXEL_OFFSET",
+		"        #define FXAA_FAST_PIXEL_OFFSET 0",
+		"    #endif",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_GATHER4_ALPHA",
+		"    //",
+		"    // 1 = API supports gather4 on alpha channel.",
+		"    // 0 = API does not support gather4 on alpha channel.",
+		"    //",
+		"    #if (FXAA_HLSL_5 == 1)",
+		"        #define FXAA_GATHER4_ALPHA 1",
+		"    #endif",
+		"    #ifdef GL_ARB_gpu_shader5",
+		"        #define FXAA_GATHER4_ALPHA 1",
+		"    #endif",
+		"    #ifdef GL_NV_gpu_shader5",
+		"        #define FXAA_GATHER4_ALPHA 1",
+		"    #endif",
+		"    #ifndef FXAA_GATHER4_ALPHA",
+		"        #define FXAA_GATHER4_ALPHA 0",
+		"    #endif",
+		"#endif",
+		"",
+		"",
+		"/*============================================================================",
+		"                        FXAA QUALITY - TUNING KNOBS",
+		"------------------------------------------------------------------------------",
+		"NOTE the other tuning knobs are now in the shader function inputs!",
+		"============================================================================*/",
+		"#ifndef FXAA_QUALITY_PRESET",
+		"    //",
+		"    // Choose the quality preset.",
+		"    // This needs to be compiled into the shader as it effects code.",
+		"    // Best option to include multiple presets is to",
+		"    // in each shader define the preset, then include this file.",
+		"    //",
+		"    // OPTIONS",
+		"    // -----------------------------------------------------------------------",
+		"    // 10 to 15 - default medium dither (10=fastest, 15=highest quality)",
+		"    // 20 to 29 - less dither, more expensive (20=fastest, 29=highest quality)",
+		"    // 39       - no dither, very expensive",
+		"    //",
+		"    // NOTES",
+		"    // -----------------------------------------------------------------------",
+		"    // 12 = slightly faster then FXAA 3.9 and higher edge quality (default)",
+		"    // 13 = about same speed as FXAA 3.9 and better than 12",
+		"    // 23 = closest to FXAA 3.9 visually and performance wise",
+		"    //  _ = the lowest digit is directly related to performance",
+		"    // _  = the highest digit is directly related to style",
+		"    //",
+		"    #define FXAA_QUALITY_PRESET 25",
+		"#endif",
+		"",
+		"",
+		"/*============================================================================",
+		"",
+		"                           FXAA QUALITY - PRESETS",
+		"",
+		"============================================================================*/",
+		"",
+		"/*============================================================================",
+		"                     FXAA QUALITY - MEDIUM DITHER PRESETS",
+		"============================================================================*/",
+		"#if (FXAA_QUALITY_PRESET == 10)",
+		"    #define FXAA_QUALITY_PS 3",
+		"    #define FXAA_QUALITY_P0 1.5",
+		"    #define FXAA_QUALITY_P1 3.0",
+		"    #define FXAA_QUALITY_P2 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 11)",
+		"    #define FXAA_QUALITY_PS 4",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 3.0",
+		"    #define FXAA_QUALITY_P3 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 12)",
+		"    #define FXAA_QUALITY_PS 5",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 4.0",
+		"    #define FXAA_QUALITY_P4 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 13)",
+		"    #define FXAA_QUALITY_PS 6",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 4.0",
+		"    #define FXAA_QUALITY_P5 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 14)",
+		"    #define FXAA_QUALITY_PS 7",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 4.0",
+		"    #define FXAA_QUALITY_P6 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 15)",
+		"    #define FXAA_QUALITY_PS 8",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 4.0",
+		"    #define FXAA_QUALITY_P7 12.0",
+		"#endif",
+		"",
+		"/*============================================================================",
+		"                     FXAA QUALITY - LOW DITHER PRESETS",
+		"============================================================================*/",
+		"#if (FXAA_QUALITY_PRESET == 20)",
+		"    #define FXAA_QUALITY_PS 3",
+		"    #define FXAA_QUALITY_P0 1.5",
+		"    #define FXAA_QUALITY_P1 2.0",
+		"    #define FXAA_QUALITY_P2 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 21)",
+		"    #define FXAA_QUALITY_PS 4",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 22)",
+		"    #define FXAA_QUALITY_PS 5",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 23)",
+		"    #define FXAA_QUALITY_PS 6",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 24)",
+		"    #define FXAA_QUALITY_PS 7",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 3.0",
+		"    #define FXAA_QUALITY_P6 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 25)",
+		"    #define FXAA_QUALITY_PS 8",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 4.0",
+		"    #define FXAA_QUALITY_P7 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 26)",
+		"    #define FXAA_QUALITY_PS 9",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 4.0",
+		"    #define FXAA_QUALITY_P8 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 27)",
+		"    #define FXAA_QUALITY_PS 10",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 2.0",
+		"    #define FXAA_QUALITY_P8 4.0",
+		"    #define FXAA_QUALITY_P9 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 28)",
+		"    #define FXAA_QUALITY_PS 11",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 2.0",
+		"    #define FXAA_QUALITY_P8 2.0",
+		"    #define FXAA_QUALITY_P9 4.0",
+		"    #define FXAA_QUALITY_P10 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 29)",
+		"    #define FXAA_QUALITY_PS 12",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 2.0",
+		"    #define FXAA_QUALITY_P8 2.0",
+		"    #define FXAA_QUALITY_P9 2.0",
+		"    #define FXAA_QUALITY_P10 4.0",
+		"    #define FXAA_QUALITY_P11 8.0",
+		"#endif",
+		"",
+		"/*============================================================================",
+		"                     FXAA QUALITY - EXTREME QUALITY",
+		"============================================================================*/",
+		"#if (FXAA_QUALITY_PRESET == 39)",
+		"    #define FXAA_QUALITY_PS 12",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.0",
+		"    #define FXAA_QUALITY_P2 1.0",
+		"    #define FXAA_QUALITY_P3 1.0",
+		"    #define FXAA_QUALITY_P4 1.0",
+		"    #define FXAA_QUALITY_P5 1.5",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 2.0",
+		"    #define FXAA_QUALITY_P8 2.0",
+		"    #define FXAA_QUALITY_P9 2.0",
+		"    #define FXAA_QUALITY_P10 4.0",
+		"    #define FXAA_QUALITY_P11 8.0",
+		"#endif",
+		"",
+		"",
+		"",
+		"/*============================================================================",
+		"",
+		"                                API PORTING",
+		"",
+		"============================================================================*/",
+		"#if (FXAA_GLSL_100 == 1) || (FXAA_GLSL_120 == 1) || (FXAA_GLSL_130 == 1)",
+		"    #define FxaaBool bool",
+		"    #define FxaaDiscard discard",
+		"    #define FxaaFloat float",
+		"    #define FxaaFloat2 vec2",
+		"    #define FxaaFloat3 vec3",
+		"    #define FxaaFloat4 vec4",
+		"    #define FxaaHalf float",
+		"    #define FxaaHalf2 vec2",
+		"    #define FxaaHalf3 vec3",
+		"    #define FxaaHalf4 vec4",
+		"    #define FxaaInt2 ivec2",
+		"    #define FxaaSat(x) clamp(x, 0.0, 1.0)",
+		"    #define FxaaTex sampler2D",
+		"#else",
+		"    #define FxaaBool bool",
+		"    #define FxaaDiscard clip(-1)",
+		"    #define FxaaFloat float",
+		"    #define FxaaFloat2 float2",
+		"    #define FxaaFloat3 float3",
+		"    #define FxaaFloat4 float4",
+		"    #define FxaaHalf half",
+		"    #define FxaaHalf2 half2",
+		"    #define FxaaHalf3 half3",
+		"    #define FxaaHalf4 half4",
+		"    #define FxaaSat(x) saturate(x)",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_GLSL_100 == 1)",
+		"  #define FxaaTexTop(t, p) texture2D(t, p, 0.0)",
+		"  #define FxaaTexOff(t, p, o, r) texture2D(t, p + (o * r), 0.0)",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_GLSL_120 == 1)",
+		"    // Requires,",
+		"    //  #version 120",
+		"    // And at least,",
+		"    //  #extension GL_EXT_gpu_shader4 : enable",
+		"    //  (or set FXAA_FAST_PIXEL_OFFSET 1 to work like DX9)",
+		"    #define FxaaTexTop(t, p) texture2DLod(t, p, 0.0)",
+		"    #if (FXAA_FAST_PIXEL_OFFSET == 1)",
+		"        #define FxaaTexOff(t, p, o, r) texture2DLodOffset(t, p, 0.0, o)",
+		"    #else",
+		"        #define FxaaTexOff(t, p, o, r) texture2DLod(t, p + (o * r), 0.0)",
+		"    #endif",
+		"    #if (FXAA_GATHER4_ALPHA == 1)",
+		"        // use #extension GL_ARB_gpu_shader5 : enable",
+		"        #define FxaaTexAlpha4(t, p) textureGather(t, p, 3)",
+		"        #define FxaaTexOffAlpha4(t, p, o) textureGatherOffset(t, p, o, 3)",
+		"        #define FxaaTexGreen4(t, p) textureGather(t, p, 1)",
+		"        #define FxaaTexOffGreen4(t, p, o) textureGatherOffset(t, p, o, 1)",
+		"    #endif",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_GLSL_130 == 1)",
+		"    // Requires \"#version 130\" or better",
+		"    #define FxaaTexTop(t, p) textureLod(t, p, 0.0)",
+		"    #define FxaaTexOff(t, p, o, r) textureLodOffset(t, p, 0.0, o)",
+		"    #if (FXAA_GATHER4_ALPHA == 1)",
+		"        // use #extension GL_ARB_gpu_shader5 : enable",
+		"        #define FxaaTexAlpha4(t, p) textureGather(t, p, 3)",
+		"        #define FxaaTexOffAlpha4(t, p, o) textureGatherOffset(t, p, o, 3)",
+		"        #define FxaaTexGreen4(t, p) textureGather(t, p, 1)",
+		"        #define FxaaTexOffGreen4(t, p, o) textureGatherOffset(t, p, o, 1)",
+		"    #endif",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_HLSL_3 == 1)",
+		"    #define FxaaInt2 float2",
+		"    #define FxaaTex sampler2D",
+		"    #define FxaaTexTop(t, p) tex2Dlod(t, float4(p, 0.0, 0.0))",
+		"    #define FxaaTexOff(t, p, o, r) tex2Dlod(t, float4(p + (o * r), 0, 0))",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_HLSL_4 == 1)",
+		"    #define FxaaInt2 int2",
+		"    struct FxaaTex { SamplerState smpl; Texture2D tex; };",
+		"    #define FxaaTexTop(t, p) t.tex.SampleLevel(t.smpl, p, 0.0)",
+		"    #define FxaaTexOff(t, p, o, r) t.tex.SampleLevel(t.smpl, p, 0.0, o)",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_HLSL_5 == 1)",
+		"    #define FxaaInt2 int2",
+		"    struct FxaaTex { SamplerState smpl; Texture2D tex; };",
+		"    #define FxaaTexTop(t, p) t.tex.SampleLevel(t.smpl, p, 0.0)",
+		"    #define FxaaTexOff(t, p, o, r) t.tex.SampleLevel(t.smpl, p, 0.0, o)",
+		"    #define FxaaTexAlpha4(t, p) t.tex.GatherAlpha(t.smpl, p)",
+		"    #define FxaaTexOffAlpha4(t, p, o) t.tex.GatherAlpha(t.smpl, p, o)",
+		"    #define FxaaTexGreen4(t, p) t.tex.GatherGreen(t.smpl, p)",
+		"    #define FxaaTexOffGreen4(t, p, o) t.tex.GatherGreen(t.smpl, p, o)",
+		"#endif",
+		"",
+		"",
+		"/*============================================================================",
+		"                   GREEN AS LUMA OPTION SUPPORT FUNCTION",
+		"============================================================================*/",
+		"#if (FXAA_GREEN_AS_LUMA == 0)",
+		"    FxaaFloat FxaaLuma(FxaaFloat4 rgba) { return rgba.w; }",
+		"#else",
+		"    FxaaFloat FxaaLuma(FxaaFloat4 rgba) { return rgba.y; }",
+		"#endif",
+		"",
+		"",
+		"",
+		"",
+		"/*============================================================================",
+		"",
+		"                             FXAA3 QUALITY - PC",
+		"",
+		"============================================================================*/",
+		"#if (FXAA_PC == 1)",
+		"/*--------------------------------------------------------------------------*/",
+		"FxaaFloat4 FxaaPixelShader(",
+		"    //",
+		"    // Use noperspective interpolation here (turn off perspective interpolation).",
+		"    // {xy} = center of pixel",
+		"    FxaaFloat2 pos,",
+		"    //",
+		"    // Used only for FXAA Console, and not used on the 360 version.",
+		"    // Use noperspective interpolation here (turn off perspective interpolation).",
+		"    // {xy_} = upper left of pixel",
+		"    // {_zw} = lower right of pixel",
+		"    FxaaFloat4 fxaaConsolePosPos,",
+		"    //",
+		"    // Input color texture.",
+		"    // {rgb_} = color in linear or perceptual color space",
+		"    // if (FXAA_GREEN_AS_LUMA == 0)",
+		"    //     {__a} = luma in perceptual color space (not linear)",
+		"    FxaaTex tex,",
+		"    //",
+		"    // Only used on the optimized 360 version of FXAA Console.",
+		"    // For everything but 360, just use the same input here as for \"tex\".",
+		"    // For 360, same texture, just alias with a 2nd sampler.",
+		"    // This sampler needs to have an exponent bias of -1.",
+		"    FxaaTex fxaaConsole360TexExpBiasNegOne,",
+		"    //",
+		"    // Only used on the optimized 360 version of FXAA Console.",
+		"    // For everything but 360, just use the same input here as for \"tex\".",
+		"    // For 360, same texture, just alias with a 3nd sampler.",
+		"    // This sampler needs to have an exponent bias of -2.",
+		"    FxaaTex fxaaConsole360TexExpBiasNegTwo,",
+		"    //",
+		"    // Only used on FXAA Quality.",
+		"    // This must be from a constant/uniform.",
+		"    // {x_} = 1.0/screenWidthInPixels",
+		"    // {_y} = 1.0/screenHeightInPixels",
+		"    FxaaFloat2 fxaaQualityRcpFrame,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // This must be from a constant/uniform.",
+		"    // This effects sub-pixel AA quality and inversely sharpness.",
+		"    //   Where N ranges between,",
+		"    //     N = 0.50 (default)",
+		"    //     N = 0.33 (sharper)",
+		"    // {x__} = -N/screenWidthInPixels",
+		"    // {_y_} = -N/screenHeightInPixels",
+		"    // {_z_} =  N/screenWidthInPixels",
+		"    // {__w} =  N/screenHeightInPixels",
+		"    FxaaFloat4 fxaaConsoleRcpFrameOpt,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // Not used on 360, but used on PS3 and PC.",
+		"    // This must be from a constant/uniform.",
+		"    // {x__} = -2.0/screenWidthInPixels",
+		"    // {_y_} = -2.0/screenHeightInPixels",
+		"    // {_z_} =  2.0/screenWidthInPixels",
+		"    // {__w} =  2.0/screenHeightInPixels",
+		"    FxaaFloat4 fxaaConsoleRcpFrameOpt2,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // Only used on 360 in place of fxaaConsoleRcpFrameOpt2.",
+		"    // This must be from a constant/uniform.",
+		"    // {x__} =  8.0/screenWidthInPixels",
+		"    // {_y_} =  8.0/screenHeightInPixels",
+		"    // {_z_} = -4.0/screenWidthInPixels",
+		"    // {__w} = -4.0/screenHeightInPixels",
+		"    FxaaFloat4 fxaaConsole360RcpFrameOpt2,",
+		"    //",
+		"    // Only used on FXAA Quality.",
+		"    // This used to be the FXAA_QUALITY_SUBPIX define.",
+		"    // It is here now to allow easier tuning.",
+		"    // Choose the amount of sub-pixel aliasing removal.",
+		"    // This can effect sharpness.",
+		"    //   1.00 - upper limit (softer)",
+		"    //   0.75 - default amount of filtering",
+		"    //   0.50 - lower limit (sharper, less sub-pixel aliasing removal)",
+		"    //   0.25 - almost off",
+		"    //   0.00 - completely off",
+		"    FxaaFloat fxaaQualitySubpix,",
+		"    //",
+		"    // Only used on FXAA Quality.",
+		"    // This used to be the FXAA_QUALITY_EDGE_THRESHOLD define.",
+		"    // It is here now to allow easier tuning.",
+		"    // The minimum amount of local contrast required to apply algorithm.",
+		"    //   0.333 - too little (faster)",
+		"    //   0.250 - low quality",
+		"    //   0.166 - default",
+		"    //   0.125 - high quality",
+		"    //   0.063 - overkill (slower)",
+		"    FxaaFloat fxaaQualityEdgeThreshold,",
+		"    //",
+		"    // Only used on FXAA Quality.",
+		"    // This used to be the FXAA_QUALITY_EDGE_THRESHOLD_MIN define.",
+		"    // It is here now to allow easier tuning.",
+		"    // Trims the algorithm from processing darks.",
+		"    //   0.0833 - upper limit (default, the start of visible unfiltered edges)",
+		"    //   0.0625 - high quality (faster)",
+		"    //   0.0312 - visible limit (slower)",
+		"    // Special notes when using FXAA_GREEN_AS_LUMA,",
+		"    //   Likely want to set this to zero.",
+		"    //   As colors that are mostly not-green",
+		"    //   will appear very dark in the green channel!",
+		"    //   Tune by looking at mostly non-green content,",
+		"    //   then start at zero and increase until aliasing is a problem.",
+		"    FxaaFloat fxaaQualityEdgeThresholdMin,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // This used to be the FXAA_CONSOLE_EDGE_SHARPNESS define.",
+		"    // It is here now to allow easier tuning.",
+		"    // This does not effect PS3, as this needs to be compiled in.",
+		"    //   Use FXAA_CONSOLE_PS3_EDGE_SHARPNESS for PS3.",
+		"    //   Due to the PS3 being ALU bound,",
+		"    //   there are only three safe values here: 2 and 4 and 8.",
+		"    //   These options use the shaders ability to a free *|/ by 2|4|8.",
+		"    // For all other platforms can be a non-power of two.",
+		"    //   8.0 is sharper (default!!!)",
+		"    //   4.0 is softer",
+		"    //   2.0 is really soft (good only for vector graphics inputs)",
+		"    FxaaFloat fxaaConsoleEdgeSharpness,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // This used to be the FXAA_CONSOLE_EDGE_THRESHOLD define.",
+		"    // It is here now to allow easier tuning.",
+		"    // This does not effect PS3, as this needs to be compiled in.",
+		"    //   Use FXAA_CONSOLE_PS3_EDGE_THRESHOLD for PS3.",
+		"    //   Due to the PS3 being ALU bound,",
+		"    //   there are only two safe values here: 1/4 and 1/8.",
+		"    //   These options use the shaders ability to a free *|/ by 2|4|8.",
+		"    // The console setting has a different mapping than the quality setting.",
+		"    // Other platforms can use other values.",
+		"    //   0.125 leaves less aliasing, but is softer (default!!!)",
+		"    //   0.25 leaves more aliasing, and is sharper",
+		"    FxaaFloat fxaaConsoleEdgeThreshold,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // This used to be the FXAA_CONSOLE_EDGE_THRESHOLD_MIN define.",
+		"    // It is here now to allow easier tuning.",
+		"    // Trims the algorithm from processing darks.",
+		"    // The console setting has a different mapping than the quality setting.",
+		"    // This only applies when FXAA_EARLY_EXIT is 1.",
+		"    // This does not apply to PS3,",
+		"    // PS3 was simplified to avoid more shader instructions.",
+		"    //   0.06 - faster but more aliasing in darks",
+		"    //   0.05 - default",
+		"    //   0.04 - slower and less aliasing in darks",
+		"    // Special notes when using FXAA_GREEN_AS_LUMA,",
+		"    //   Likely want to set this to zero.",
+		"    //   As colors that are mostly not-green",
+		"    //   will appear very dark in the green channel!",
+		"    //   Tune by looking at mostly non-green content,",
+		"    //   then start at zero and increase until aliasing is a problem.",
+		"    FxaaFloat fxaaConsoleEdgeThresholdMin,",
+		"    //",
+		"    // Extra constants for 360 FXAA Console only.",
+		"    // Use zeros or anything else for other platforms.",
+		"    // These must be in physical constant registers and NOT immediates.",
+		"    // Immediates will result in compiler un-optimizing.",
+		"    // {xyzw} = float4(1.0, -1.0, 0.25, -0.25)",
+		"    FxaaFloat4 fxaaConsole360ConstDir",
+		") {",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat2 posM;",
+		"    posM.x = pos.x;",
+		"    posM.y = pos.y;",
+		"    #if (FXAA_GATHER4_ALPHA == 1)",
+		"        #if (FXAA_DISCARD == 0)",
+		"            FxaaFloat4 rgbyM = FxaaTexTop(tex, posM);",
+		"            #if (FXAA_GREEN_AS_LUMA == 0)",
+		"                #define lumaM rgbyM.w",
+		"            #else",
+		"                #define lumaM rgbyM.y",
+		"            #endif",
+		"        #endif",
+		"        #if (FXAA_GREEN_AS_LUMA == 0)",
+		"            FxaaFloat4 luma4A = FxaaTexAlpha4(tex, posM);",
+		"            FxaaFloat4 luma4B = FxaaTexOffAlpha4(tex, posM, FxaaInt2(-1, -1));",
+		"        #else",
+		"            FxaaFloat4 luma4A = FxaaTexGreen4(tex, posM);",
+		"            FxaaFloat4 luma4B = FxaaTexOffGreen4(tex, posM, FxaaInt2(-1, -1));",
+		"        #endif",
+		"        #if (FXAA_DISCARD == 1)",
+		"            #define lumaM luma4A.w",
+		"        #endif",
+		"        #define lumaE luma4A.z",
+		"        #define lumaS luma4A.x",
+		"        #define lumaSE luma4A.y",
+		"        #define lumaNW luma4B.w",
+		"        #define lumaN luma4B.z",
+		"        #define lumaW luma4B.x",
+		"    #else",
+		"        FxaaFloat4 rgbyM = FxaaTexTop(tex, posM);",
+		"        #if (FXAA_GREEN_AS_LUMA == 0)",
+		"            #define lumaM rgbyM.w",
+		"        #else",
+		"            #define lumaM rgbyM.y",
+		"        #endif",
+		"        #if (FXAA_GLSL_100 == 1)",
+		"          FxaaFloat lumaS = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 0.0, 1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0, 0.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaN = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 0.0,-1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0, 0.0), fxaaQualityRcpFrame.xy));",
+		"        #else",
+		"          FxaaFloat lumaS = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 0, 1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1, 0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaN = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 0,-1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 0), fxaaQualityRcpFrame.xy));",
+		"        #endif",
+		"    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat maxSM = max(lumaS, lumaM);",
+		"    FxaaFloat minSM = min(lumaS, lumaM);",
+		"    FxaaFloat maxESM = max(lumaE, maxSM);",
+		"    FxaaFloat minESM = min(lumaE, minSM);",
+		"    FxaaFloat maxWN = max(lumaN, lumaW);",
+		"    FxaaFloat minWN = min(lumaN, lumaW);",
+		"    FxaaFloat rangeMax = max(maxWN, maxESM);",
+		"    FxaaFloat rangeMin = min(minWN, minESM);",
+		"    FxaaFloat rangeMaxScaled = rangeMax * fxaaQualityEdgeThreshold;",
+		"    FxaaFloat range = rangeMax - rangeMin;",
+		"    FxaaFloat rangeMaxClamped = max(fxaaQualityEdgeThresholdMin, rangeMaxScaled);",
+		"    FxaaBool earlyExit = range < rangeMaxClamped;",
+		"/*--------------------------------------------------------------------------*/",
+		"    if(earlyExit)",
+		"        #if (FXAA_DISCARD == 1)",
+		"            FxaaDiscard;",
+		"        #else",
+		"            return rgbyM;",
+		"        #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    #if (FXAA_GATHER4_ALPHA == 0)",
+		"        #if (FXAA_GLSL_100 == 1)",
+		"          FxaaFloat lumaNW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0,-1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaSE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0, 1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0,-1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0, 1.0), fxaaQualityRcpFrame.xy));",
+		"        #else",
+		"          FxaaFloat lumaNW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1,-1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaSE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1, 1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1,-1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 1), fxaaQualityRcpFrame.xy));",
+		"        #endif",
+		"    #else",
+		"        FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(1, -1), fxaaQualityRcpFrame.xy));",
+		"        FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 1), fxaaQualityRcpFrame.xy));",
+		"    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat lumaNS = lumaN + lumaS;",
+		"    FxaaFloat lumaWE = lumaW + lumaE;",
+		"    FxaaFloat subpixRcpRange = 1.0/range;",
+		"    FxaaFloat subpixNSWE = lumaNS + lumaWE;",
+		"    FxaaFloat edgeHorz1 = (-2.0 * lumaM) + lumaNS;",
+		"    FxaaFloat edgeVert1 = (-2.0 * lumaM) + lumaWE;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat lumaNESE = lumaNE + lumaSE;",
+		"    FxaaFloat lumaNWNE = lumaNW + lumaNE;",
+		"    FxaaFloat edgeHorz2 = (-2.0 * lumaE) + lumaNESE;",
+		"    FxaaFloat edgeVert2 = (-2.0 * lumaN) + lumaNWNE;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat lumaNWSW = lumaNW + lumaSW;",
+		"    FxaaFloat lumaSWSE = lumaSW + lumaSE;",
+		"    FxaaFloat edgeHorz4 = (abs(edgeHorz1) * 2.0) + abs(edgeHorz2);",
+		"    FxaaFloat edgeVert4 = (abs(edgeVert1) * 2.0) + abs(edgeVert2);",
+		"    FxaaFloat edgeHorz3 = (-2.0 * lumaW) + lumaNWSW;",
+		"    FxaaFloat edgeVert3 = (-2.0 * lumaS) + lumaSWSE;",
+		"    FxaaFloat edgeHorz = abs(edgeHorz3) + edgeHorz4;",
+		"    FxaaFloat edgeVert = abs(edgeVert3) + edgeVert4;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat subpixNWSWNESE = lumaNWSW + lumaNESE;",
+		"    FxaaFloat lengthSign = fxaaQualityRcpFrame.x;",
+		"    FxaaBool horzSpan = edgeHorz >= edgeVert;",
+		"    FxaaFloat subpixA = subpixNSWE * 2.0 + subpixNWSWNESE;",
+		"/*--------------------------------------------------------------------------*/",
+		"    if(!horzSpan) lumaN = lumaW;",
+		"    if(!horzSpan) lumaS = lumaE;",
+		"    if(horzSpan) lengthSign = fxaaQualityRcpFrame.y;",
+		"    FxaaFloat subpixB = (subpixA * (1.0/12.0)) - lumaM;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat gradientN = lumaN - lumaM;",
+		"    FxaaFloat gradientS = lumaS - lumaM;",
+		"    FxaaFloat lumaNN = lumaN + lumaM;",
+		"    FxaaFloat lumaSS = lumaS + lumaM;",
+		"    FxaaBool pairN = abs(gradientN) >= abs(gradientS);",
+		"    FxaaFloat gradient = max(abs(gradientN), abs(gradientS));",
+		"    if(pairN) lengthSign = -lengthSign;",
+		"    FxaaFloat subpixC = FxaaSat(abs(subpixB) * subpixRcpRange);",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat2 posB;",
+		"    posB.x = posM.x;",
+		"    posB.y = posM.y;",
+		"    FxaaFloat2 offNP;",
+		"    offNP.x = (!horzSpan) ? 0.0 : fxaaQualityRcpFrame.x;",
+		"    offNP.y = ( horzSpan) ? 0.0 : fxaaQualityRcpFrame.y;",
+		"    if(!horzSpan) posB.x += lengthSign * 0.5;",
+		"    if( horzSpan) posB.y += lengthSign * 0.5;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat2 posN;",
+		"    posN.x = posB.x - offNP.x * FXAA_QUALITY_P0;",
+		"    posN.y = posB.y - offNP.y * FXAA_QUALITY_P0;",
+		"    FxaaFloat2 posP;",
+		"    posP.x = posB.x + offNP.x * FXAA_QUALITY_P0;",
+		"    posP.y = posB.y + offNP.y * FXAA_QUALITY_P0;",
+		"    FxaaFloat subpixD = ((-2.0)*subpixC) + 3.0;",
+		"    FxaaFloat lumaEndN = FxaaLuma(FxaaTexTop(tex, posN));",
+		"    FxaaFloat subpixE = subpixC * subpixC;",
+		"    FxaaFloat lumaEndP = FxaaLuma(FxaaTexTop(tex, posP));",
+		"/*--------------------------------------------------------------------------*/",
+		"    if(!pairN) lumaNN = lumaSS;",
+		"    FxaaFloat gradientScaled = gradient * 1.0/4.0;",
+		"    FxaaFloat lumaMM = lumaM - lumaNN * 0.5;",
+		"    FxaaFloat subpixF = subpixD * subpixE;",
+		"    FxaaBool lumaMLTZero = lumaMM < 0.0;",
+		"/*--------------------------------------------------------------------------*/",
+		"    lumaEndN -= lumaNN * 0.5;",
+		"    lumaEndP -= lumaNN * 0.5;",
+		"    FxaaBool doneN = abs(lumaEndN) >= gradientScaled;",
+		"    FxaaBool doneP = abs(lumaEndP) >= gradientScaled;",
+		"    if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P1;",
+		"    if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P1;",
+		"    FxaaBool doneNP = (!doneN) || (!doneP);",
+		"    if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P1;",
+		"    if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P1;",
+		"/*--------------------------------------------------------------------------*/",
+		"    if(doneNP) {",
+		"        if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"        if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"        if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"        if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"        doneN = abs(lumaEndN) >= gradientScaled;",
+		"        doneP = abs(lumaEndP) >= gradientScaled;",
+		"        if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P2;",
+		"        if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P2;",
+		"        doneNP = (!doneN) || (!doneP);",
+		"        if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P2;",
+		"        if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P2;",
+		"/*--------------------------------------------------------------------------*/",
+		"        #if (FXAA_QUALITY_PS > 3)",
+		"        if(doneNP) {",
+		"            if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"            if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"            if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"            if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"            doneN = abs(lumaEndN) >= gradientScaled;",
+		"            doneP = abs(lumaEndP) >= gradientScaled;",
+		"            if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P3;",
+		"            if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P3;",
+		"            doneNP = (!doneN) || (!doneP);",
+		"            if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P3;",
+		"            if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P3;",
+		"/*--------------------------------------------------------------------------*/",
+		"            #if (FXAA_QUALITY_PS > 4)",
+		"            if(doneNP) {",
+		"                if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                doneN = abs(lumaEndN) >= gradientScaled;",
+		"                doneP = abs(lumaEndP) >= gradientScaled;",
+		"                if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P4;",
+		"                if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P4;",
+		"                doneNP = (!doneN) || (!doneP);",
+		"                if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P4;",
+		"                if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P4;",
+		"/*--------------------------------------------------------------------------*/",
+		"                #if (FXAA_QUALITY_PS > 5)",
+		"                if(doneNP) {",
+		"                    if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                    if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                    if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                    if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                    doneN = abs(lumaEndN) >= gradientScaled;",
+		"                    doneP = abs(lumaEndP) >= gradientScaled;",
+		"                    if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P5;",
+		"                    if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P5;",
+		"                    doneNP = (!doneN) || (!doneP);",
+		"                    if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P5;",
+		"                    if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P5;",
+		"/*--------------------------------------------------------------------------*/",
+		"                    #if (FXAA_QUALITY_PS > 6)",
+		"                    if(doneNP) {",
+		"                        if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                        if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                        if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                        if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                        doneN = abs(lumaEndN) >= gradientScaled;",
+		"                        doneP = abs(lumaEndP) >= gradientScaled;",
+		"                        if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P6;",
+		"                        if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P6;",
+		"                        doneNP = (!doneN) || (!doneP);",
+		"                        if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P6;",
+		"                        if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P6;",
+		"/*--------------------------------------------------------------------------*/",
+		"                        #if (FXAA_QUALITY_PS > 7)",
+		"                        if(doneNP) {",
+		"                            if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                            if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                            if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                            if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                            doneN = abs(lumaEndN) >= gradientScaled;",
+		"                            doneP = abs(lumaEndP) >= gradientScaled;",
+		"                            if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P7;",
+		"                            if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P7;",
+		"                            doneNP = (!doneN) || (!doneP);",
+		"                            if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P7;",
+		"                            if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P7;",
+		"/*--------------------------------------------------------------------------*/",
+		"    #if (FXAA_QUALITY_PS > 8)",
+		"    if(doneNP) {",
+		"        if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"        if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"        if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"        if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"        doneN = abs(lumaEndN) >= gradientScaled;",
+		"        doneP = abs(lumaEndP) >= gradientScaled;",
+		"        if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P8;",
+		"        if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P8;",
+		"        doneNP = (!doneN) || (!doneP);",
+		"        if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P8;",
+		"        if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P8;",
+		"/*--------------------------------------------------------------------------*/",
+		"        #if (FXAA_QUALITY_PS > 9)",
+		"        if(doneNP) {",
+		"            if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"            if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"            if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"            if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"            doneN = abs(lumaEndN) >= gradientScaled;",
+		"            doneP = abs(lumaEndP) >= gradientScaled;",
+		"            if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P9;",
+		"            if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P9;",
+		"            doneNP = (!doneN) || (!doneP);",
+		"            if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P9;",
+		"            if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P9;",
+		"/*--------------------------------------------------------------------------*/",
+		"            #if (FXAA_QUALITY_PS > 10)",
+		"            if(doneNP) {",
+		"                if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                doneN = abs(lumaEndN) >= gradientScaled;",
+		"                doneP = abs(lumaEndP) >= gradientScaled;",
+		"                if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P10;",
+		"                if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P10;",
+		"                doneNP = (!doneN) || (!doneP);",
+		"                if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P10;",
+		"                if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P10;",
+		"/*--------------------------------------------------------------------------*/",
+		"                #if (FXAA_QUALITY_PS > 11)",
+		"                if(doneNP) {",
+		"                    if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                    if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                    if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                    if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                    doneN = abs(lumaEndN) >= gradientScaled;",
+		"                    doneP = abs(lumaEndP) >= gradientScaled;",
+		"                    if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P11;",
+		"                    if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P11;",
+		"                    doneNP = (!doneN) || (!doneP);",
+		"                    if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P11;",
+		"                    if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P11;",
+		"/*--------------------------------------------------------------------------*/",
+		"                    #if (FXAA_QUALITY_PS > 12)",
+		"                    if(doneNP) {",
+		"                        if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                        if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                        if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                        if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                        doneN = abs(lumaEndN) >= gradientScaled;",
+		"                        doneP = abs(lumaEndP) >= gradientScaled;",
+		"                        if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P12;",
+		"                        if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P12;",
+		"                        doneNP = (!doneN) || (!doneP);",
+		"                        if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P12;",
+		"                        if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P12;",
+		"/*--------------------------------------------------------------------------*/",
+		"                    }",
+		"                    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"                }",
+		"                #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"            }",
+		"            #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"        }",
+		"        #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    }",
+		"    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"                        }",
+		"                        #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"                    }",
+		"                    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"                }",
+		"                #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"            }",
+		"            #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"        }",
+		"        #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    }",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat dstN = posM.x - posN.x;",
+		"    FxaaFloat dstP = posP.x - posM.x;",
+		"    if(!horzSpan) dstN = posM.y - posN.y;",
+		"    if(!horzSpan) dstP = posP.y - posM.y;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaBool goodSpanN = (lumaEndN < 0.0) != lumaMLTZero;",
+		"    FxaaFloat spanLength = (dstP + dstN);",
+		"    FxaaBool goodSpanP = (lumaEndP < 0.0) != lumaMLTZero;",
+		"    FxaaFloat spanLengthRcp = 1.0/spanLength;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaBool directionN = dstN < dstP;",
+		"    FxaaFloat dst = min(dstN, dstP);",
+		"    FxaaBool goodSpan = directionN ? goodSpanN : goodSpanP;",
+		"    FxaaFloat subpixG = subpixF * subpixF;",
+		"    FxaaFloat pixelOffset = (dst * (-spanLengthRcp)) + 0.5;",
+		"    FxaaFloat subpixH = subpixG * fxaaQualitySubpix;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat pixelOffsetGood = goodSpan ? pixelOffset : 0.0;",
+		"    FxaaFloat pixelOffsetSubpix = max(pixelOffsetGood, subpixH);",
+		"    if(!horzSpan) posM.x += pixelOffsetSubpix * lengthSign;",
+		"    if( horzSpan) posM.y += pixelOffsetSubpix * lengthSign;",
+		"    #if (FXAA_DISCARD == 1)",
+		"        return FxaaTexTop(tex, posM);",
+		"    #else",
+		"        return FxaaFloat4(FxaaTexTop(tex, posM).xyz, lumaM);",
+		"    #endif",
+		"}",
+		"/*==========================================================================*/",
+		"#endif",
+		"",
+		"void main() {",
+		"  gl_FragColor = FxaaPixelShader(",
+		"    vUv,",
+		"    vec4(0.0),",
+		"    tDiffuse,",
+		"    tDiffuse,",
+		"    tDiffuse,",
+		"    resolution,",
+		"    vec4(0.0),",
+		"    vec4(0.0),",
+		"    vec4(0.0),",
+		"    0.75,",
+		"    0.166,",
+		"    0.0833,",
+		"    0.0,",
+		"    0.0,",
+		"    0.0,",
+		"    vec4(0.0)",
+		"  );",
+		"",
+		"  // TODO avoid querying texture twice for same texel",
+		"  gl_FragColor.a = texture2D(tDiffuse, vUv).a;",
+		"}"
+	].join( "\n" )
+
+};
+},{}],223:[function(_dereq_,module,exports){
+
+THREE.LUTPass = function ( width, height, lutmap ) {
+
+	THREE.Pass.call( this );
+
+	this.width = ( width !== undefined ) ? width : 512;
+	this.height = ( height !== undefined ) ? height : 512;
+
+	this.clear = true;
+
+    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+	this.scene = new THREE.Scene();
+	
+	// Identity LUT map
+	this.LUTarray = [new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/color-negative.png"),
+					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/thermal.png"),
+					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/black-white.png"),
+					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/nightvision.png")]; 
+
+	// Basic pass render target
+	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
+	this.beautyRenderTarget.texture.format = THREE.RGBAFormat;
+	this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.generateMipmaps = false;
+	this.beautyRenderTarget.stencilBuffer = false;
+	this.beautyRenderTarget.depthBuffer = false;
+	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
+	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
+
+	if ( THREE.LUTShader === undefined ) {
+
+		console.error( 'THREE.LUTPass: The pass relies on LUTShader.' );
+
+	}
+
+	this.lutMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.LUTShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.LUTShader.uniforms ),
+		vertexShader: THREE.LUTShader.vertexShader,
+		fragmentShader: THREE.LUTShader.fragmentShader,
+		blending: THREE.NoBlending
+	} );
+
+	this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
+	this.setMap(lutmap);
+	this.lutMaterial.uniforms[ 'lutMapSize' ].value = 25.0;
+
+	// material for rendering the content of a render target
+
+	this.copyMaterial = new THREE.ShaderMaterial( {
+		uniforms: THREE.UniformsUtils.clone( THREE.CopyShader.uniforms ),
+		vertexShader: THREE.CopyShader.vertexShader,
+		fragmentShader: THREE.CopyShader.fragmentShader,
+		transparent: true,
+		depthTest: false,
+		depthWrite: false,
+		blendSrc: THREE.DstColorFactor,
+		blendDst: THREE.ZeroFactor,
+		blendEquation: THREE.AddEquation,
+		blendSrcAlpha: THREE.DstAlphaFactor,
+		blendDstAlpha: THREE.ZeroFactor,
+		blendEquationAlpha: THREE.AddEquation
+	} );
+
+	this.originalClearColor = new THREE.Color();
+	
+	this.basic = new THREE.MeshBasicMaterial();
+
+	this.enabled = true;
+	this.needsSwap = false;
+
+	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+	this.quad.frustumCulled = false; // Avoid getting clipped
+	this.scene.add( this.quad );
+	this.i = 0;
+
+};
+
+THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+	constructor: THREE.LUTPass,
+
+	dispose: function () {
+
+		// dispose render targets
+		this.beautyRenderTarget.dispose();
+
+		// dispose geometry
+		this.quad.geometry.dispose();
+
+		// dispose materials
+		this.copyMaterial.dispose();
+
+	},
+
+	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive ) {
+		
+		this.lutMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
+		
+		this.quad.material = this.lutMaterial;
+
+		if ( this.renderToScreen ) {
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+    	} else {
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
+	},
+
+	setSize: function ( width, height ) {
+
+		this.width = width;
+		this.height = height;
+
+		this.beautyRenderTarget.setSize( width, height );
+
+	},
+
+	setMap: function( nlutMap ) {
+		fetch("../../../vendor/effects/LUTMaps/FG" + nlutMap + ".cube")
+  			.then(response => response.text())
+  			.then(text => this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(text, 25));
+	},
+
+	lutStringToTexture: function( lutString, lutSize ) {
+		var totalNumberOfComponents = lutSize * lutSize * lutSize * 4;
+		var floatsIdx = 0;
+	
+		var floatArray = lutString
+				.split( '\n' )
+				.map( function ( line ) {
+					return line.split( ' ' );
+				})
+				.filter( function ( components ) {
+					return components.length === 3;
+				})
+				.reduce( function ( floats, components, index ) {
+					components.forEach( function ( v, idx ) { 
+						floats[ floatsIdx++ ] = v;
+						if ( idx===2 ) {
+							floats[ floatsIdx++ ] = 1.0;
+						}
+					});
+					return floats;
+				}, new Float32Array( totalNumberOfComponents ) );
+	
+		var texture = new THREE.DataTexture( floatArray, lutSize * lutSize, lutSize );
+		texture.type = THREE.FloatType;
+		texture.format = THREE.RGBAFormat;
+		return texture;
+	}
+
+} );
+},{}],224:[function(_dereq_,module,exports){
+THREE.LUTShader = {
+    
+    uniforms: {
+      tDiffuse: { value: null },
+      lutMap:  { value: null },
+      lutMapSize: { value: 1, },
+    },
+    
+    vertexShader: [
+      "varying vec2 vUv;",
+      "void main() {",
+        "vUv = uv;",
+        "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+      "}",
+    ].join("\n"),
+    
+    fragmentShader: [
+      "#include <common>",
+   
+      //"#define FILTER_LUT true",
+   
+      "uniform sampler2D tDiffuse;",
+      "uniform sampler2D lutMap;",
+      "uniform float lutMapSize;",
+   
+      "varying vec2 vUv;",
+   
+      "vec4 sampleAs3DTexture(sampler2D tex, vec3 texCoord, float size) {",
+        "float sliceSize = 1.0 / size;                  // space of 1 slice",
+        "float slicePixelSize = sliceSize / size;       // space of 1 pixel",
+        "float width = size - 1.0;",
+        "float sliceInnerSize = slicePixelSize * width; // space of size pixels",
+        "float zSlice0 = floor( texCoord.z * width);",
+        "float zSlice1 = min( zSlice0 + 1.0, width);",
+        "float xOffset = slicePixelSize * 0.5 + texCoord.x * sliceInnerSize;",
+        "float yRange = (texCoord.y * width + 0.5) / size;",
+        "float s0 = xOffset + (zSlice0 * sliceSize);",
+   
+        "#ifdef FILTER_LUT",
+   
+          "float s1 = xOffset + (zSlice1 * sliceSize);",
+          "vec4 slice0Color = texture2D(tex, vec2(s0, yRange));",
+          "vec4 slice1Color = texture2D(tex, vec2(s1, yRange));",
+          "float zOffset = mod(texCoord.z * width, 1.0);",
+          "return mix(slice0Color, slice1Color, zOffset);",
+   
+        "#else",
+   
+          "return texture2D(tex, vec2( s0, yRange));",
+   
+        "#endif",
+      "}",
+   
+      "void main() {",
+        "vec4 originalColor = texture2D(tDiffuse, vUv);",
+        "gl_FragColor = sampleAs3DTexture(lutMap, originalColor.xyz, lutMapSize);",
+        //"gl_FragColor = texture2D(lutMap, vUv);",
+      "}",
+    ].join("\n")
+};
+},{}],225:[function(_dereq_,module,exports){
+/**
+ * @author bhouston / http://clara.io/
+ *
+ * Luminosity
+ * http://en.wikipedia.org/wiki/Luminosity
+ */
+
+THREE.LuminosityHighPassShader = {
+
+  shaderID: "luminosityHighPass",
+
+  uniforms: {
+
+    "tDiffuse": { type: "t", value: null },
+    "luminosityThreshold": { type: "f", value: 1.0 },
+    "smoothWidth": { type: "f", value: 1.0 },
+    "defaultColor": { type: "c", value: new THREE.Color( 0x000000 ) },
+    "defaultOpacity":  { type: "f", value: 0.0 }
+
+  },
+
+  vertexShader: [
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vUv = uv;",
+
+      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+    "}"
+
+  ].join("\n"),
+
+  fragmentShader: [
+
+    "uniform sampler2D tDiffuse;",
+    "uniform vec3 defaultColor;",
+    "uniform float defaultOpacity;",
+    "uniform float luminosityThreshold;",
+    "uniform float smoothWidth;",
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vec4 texel = texture2D( tDiffuse, vUv );",
+
+      "vec3 luma = vec3( 0.299, 0.587, 0.114 );",
+
+      "float v = dot( texel.xyz, luma );",
+
+      "vec4 outputColor = vec4( defaultColor.rgb, defaultOpacity );",
+
+      "float alpha = smoothstep( luminosityThreshold, luminosityThreshold + smoothWidth, v );",
+
+      "gl_FragColor = mix( outputColor, texel, alpha );",
+
+    "}"
+
+  ].join("\n")
+
+};
+
+},{}],226:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
+
+  THREE.Pass.call( this );
+
+  this.scene = scene;
+  this.camera = camera;
+
+  this.overrideMaterial = overrideMaterial;
+
+  this.clearColor = clearColor;
+  this.clearAlpha = ( clearAlpha !== undefined ) ? clearAlpha : 0;
+
+  this.clear = true;
+  this.clearDepth = false;
+  this.needsSwap = false;
+
+};
+
+THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+  constructor: THREE.RenderPass,
+
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    var oldAutoClear = renderer.autoClear;
+    renderer.autoClear = false;
+
+    this.scene.overrideMaterial = this.overrideMaterial;
+
+    var oldClearColor, oldClearAlpha;
+
+    if ( this.clearColor ) {
+
+      oldClearColor = renderer.getClearColor().getHex();
+      oldClearAlpha = renderer.getClearAlpha();
+
+      renderer.setClearColor( this.clearColor, this.clearAlpha );
+
+    }
+
+    if ( this.clearDepth ) {
+
+      renderer.clearDepth();
+
+    }
+
+    renderer.setRenderTarget(this.renderToScreen ? null : readBuffer);
+    renderer.clear();
+    renderer.render( this.scene, this.camera);
+
+    if ( this.clearColor ) {
+
+      renderer.setClearColor( oldClearColor, oldClearAlpha );
+
+    }
+
+    this.scene.overrideMaterial = null;
+    renderer.autoClear = oldAutoClear;
+    this.needsSwap = false;
+  }
+
+} );
+
+},{}],227:[function(_dereq_,module,exports){
+/**
+ * @author Mugen87 / https://github.com/Mugen87
+ *
+ * References:
+ * http://john-chapman-graphics.blogspot.com/2013/01/ssao-tutorial.html
+ * https://learnopengl.com/Advanced-Lighting/SSAO
+ * https://github.com/McNopper/OpenGL/blob/master/Example28/shader/ssao.frag.glsl
+ */
+THREE.SSAOBlurShader = {
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"resolution": { value: new THREE.Vector2() }
+
+	},
+
+	vertexShader: [
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vUv = uv;",
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"uniform sampler2D tDiffuse;",
+
+		"uniform vec2 resolution;",
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vec2 texelSize = ( 1.0 / resolution );",
+		"	float result = 0.0;",
+
+		"	for ( int i = - 2; i <= 2; i ++ ) {",
+
+		"		for ( int j = - 2; j <= 2; j ++ ) {",
+
+		"			vec2 offset = ( vec2( float( i ), float( j ) ) ) * texelSize;",
+		"			result += texture2D( tDiffuse, vUv + offset ).r;",
+
+		"		}",
+
+		"	}",
+
+		"	gl_FragColor = vec4( vec3( result / ( 5.0 * 5.0 ) ), 1.0 );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+},{}],228:[function(_dereq_,module,exports){
+THREE.SSAODepthShader = {
+
+	defines: {
+		"PERSPECTIVE_CAMERA": 1
+	},
+
+	uniforms: {
+
+		"tDepth": { value: null },
+		"cameraNear": { value: null },
+		"cameraFar": { value: null },
+
+	},
+
+	vertexShader: [
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vUv = uv;",
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"uniform sampler2D tDepth;",
+
+		"uniform float cameraNear;",
+		"uniform float cameraFar;",
+
+		"varying vec2 vUv;",
+
+		"#include <packing>",
+
+		"float getLinearDepth( const in vec2 screenPosition ) {",
+
+		"	#if PERSPECTIVE_CAMERA == 1",
+
+		"		float fragCoordZ = texture2D( tDepth, screenPosition ).x;",
+		"		float viewZ = perspectiveDepthToViewZ( fragCoordZ, cameraNear, cameraFar );",
+		"		return viewZToOrthographicDepth( viewZ, cameraNear, cameraFar );",
+
+		"	#else",
+
+		"		return texture2D( depthSampler, coord ).x;",
+
+		"	#endif",
+
+		"}",
+
+		"void main() {",
+
+		"	float depth = getLinearDepth( vUv );",
+		"	gl_FragColor = vec4( vec3( 1.0 - depth ), 1.0 );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+},{}],229:[function(_dereq_,module,exports){
+
+THREE.SSAOPass = function ( width, height ) {
+
+	THREE.Pass.call( this );
+
+	this.width = ( width !== undefined ) ? width : 512;
+	this.height = ( height !== undefined ) ? height : 512;
+
+	this.clear = true;
+
+    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+    this.scene = new THREE.Scene();
+
+	this.kernelRadius = 8;
+	this.kernelSize = 32;
+	this.kernel = [];
+	this.noiseTexture = null;
+	this.output = 0;
+
+	this.minDistance = 0.005;
+	this.maxDistance = 0.1;
+
+    // Generate sample Kernel
+    for ( var i = 0; i < this.kernelSize; i ++ ) {
+		var sample = new THREE.Vector3();
+        sample.x = (Math.random() * 2 ) - 1;
+		sample.y = (Math.random() * 2 ) - 1;
+		sample.z = Math.random();
+    
+        sample.normalize();
+
+		var scale = i / this.kernelSize;
+		scale = THREE.Math.lerp( 0.1, 1, scale * scale );
+		sample.multiplyScalar( scale );
+
+		this.kernel.push( sample );
+    };
+
+    // Generate random kernel rotation
+    var _width = 4, _height = 4;
+    var size = _width * _height;
+    var data = new Float32Array( size * 4 );
+    for ( var i = 0; i < size; i ++ ) {
+        var stride = i * 4;
+        var x = ( Math.random() * 2 ) - 1;
+        var y = ( Math.random() * 2 ) - 1;
+        var z = 0;
+        data[ stride ] = x;
+        data[ stride + 1 ] = y;
+        data[ stride + 2 ] = z;
+        data[ stride + 3 ] = 1;
+    }
+    this.noiseTexture = new THREE.DataTexture( data, _width, _height, THREE.RGBAFormat, THREE.FloatType );
+    this.noiseTexture.wrapS = THREE.RepeatWrapping;
+    this.noiseTexture.wrapT = THREE.RepeatWrapping;
+    this.noiseTexture.needsUpdate = true;
+
+	// beauty render target with depth buffer
+
+	var depthTexture = new THREE.DepthTexture();
+	depthTexture.type = THREE.UnsignedShortType;
+	depthTexture.minFilter = THREE.NearestFilter;
+	depthTexture.maxFilter = THREE.NearestFilter;
+
+	/*this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, {
+		minFilter: THREE.LinearFilter,
+		magFilter: THREE.LinearFilter,
+		format: THREE.RGBAFormat,
+		depthTexture: depthTexture,
+		depthBuffer: true
+	} );*/
+	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
+	this.beautyRenderTarget.texture.format = THREE.RGBFormat;
+	this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.generateMipmaps = false;
+	this.beautyRenderTarget.stencilBuffer = false;
+	this.beautyRenderTarget.depthBuffer = true;
+	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
+	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
+	console.log(this.beautyRenderTarget);
+
+	// normal render target
+
+	this.normalRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, {
+		minFilter: THREE.NearestFilter,
+		magFilter: THREE.NearestFilter,
+		format: THREE.RGBAFormat
+	} );
+	this.depthRenderTarget = this.normalRenderTarget.clone();
+
+	// ssao render target
+
+	this.ssaoRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, {
+		minFilter: THREE.LinearFilter,
+		magFilter: THREE.LinearFilter,
+		format: THREE.RGBAFormat
+	} );
+
+	this.blurRenderTarget = this.ssaoRenderTarget.clone();
+
+	// ssao material
+
+	if ( THREE.SSAOShader === undefined ) {
+
+		console.error( 'THREE.SSAOPass: The pass relies on SSAOShader.' );
+
+	}
+
+	this.ssaoMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.SSAOShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.SSAOShader.uniforms ),
+		vertexShader: THREE.SSAOShader.vertexShader,
+		fragmentShader: THREE.SSAOShader.fragmentShader,
+		blending: THREE.NoBlending
+	} );
+
+	this.ssaoMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
+	this.ssaoMaterial.uniforms[ 'tNormal' ].value = this.normalRenderTarget.texture;
+	this.ssaoMaterial.uniforms[ 'tDepth' ].value = this.beautyRenderTarget.depthTexture;
+	this.ssaoMaterial.uniforms[ 'tNoise' ].value = this.noiseTexture;
+	this.ssaoMaterial.uniforms[ 'kernel' ].value = this.kernel;
+	this.ssaoMaterial.uniforms[ 'cameraNear' ].value = this.camera.near;
+	this.ssaoMaterial.uniforms[ 'cameraFar' ].value = this.camera.far;
+	this.ssaoMaterial.uniforms[ 'resolution' ].value.set( this.width, this.height );
+	this.ssaoMaterial.uniforms[ 'cameraProjectionMatrix' ].value.copy( this.camera.projectionMatrix );
+	this.ssaoMaterial.uniforms[ 'cameraInverseProjectionMatrix' ].value.getInverse( this.camera.projectionMatrix );
+
+	// normal material
+
+	this.normalMaterial = new THREE.MeshNormalMaterial();
+	this.normalMaterial.blending = THREE.NoBlending;
+
+	// blur material
+
+	this.blurMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.SSAOBlurShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.SSAOBlurShader.uniforms ),
+		vertexShader: THREE.SSAOBlurShader.vertexShader,
+		fragmentShader: THREE.SSAOBlurShader.fragmentShader
+	} );
+	this.blurMaterial.uniforms[ 'tDiffuse' ].value = this.ssaoRenderTarget.texture;
+	this.blurMaterial.uniforms[ 'resolution' ].value.set( this.width, this.height );
+
+	// material for rendering the depth
+
+	this.depthRenderMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.SSAODepthShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.SSAODepthShader.uniforms ),
+		vertexShader: THREE.SSAODepthShader.vertexShader,
+		fragmentShader: THREE.SSAODepthShader.fragmentShader,
+		blending: THREE.NoBlending
+	} );
+	this.depthRenderMaterial.uniforms[ 'tDepth' ].value = this.beautyRenderTarget.depthTexture;
+	this.depthRenderMaterial.uniforms[ 'cameraNear' ].value = 0.1;
+	this.depthRenderMaterial.uniforms[ 'cameraFar' ].value = 2000;
+	console.log(this.depthRenderMaterial.uniforms[ 'cameraNear' ].value);
+	console.log(this.depthRenderMaterial.uniforms[ 'cameraFar' ].value);
+
+	// material for rendering the content of a render target
+
+	this.copyMaterial = new THREE.ShaderMaterial( {
+		uniforms: THREE.UniformsUtils.clone( THREE.CopyShader.uniforms ),
+		vertexShader: THREE.CopyShader.vertexShader,
+		fragmentShader: THREE.CopyShader.fragmentShader,
+		transparent: true,
+		depthTest: false,
+		depthWrite: false,
+		blendSrc: THREE.DstColorFactor,
+		blendDst: THREE.ZeroFactor,
+		blendEquation: THREE.AddEquation,
+		blendSrcAlpha: THREE.DstAlphaFactor,
+		blendDstAlpha: THREE.ZeroFactor,
+		blendEquationAlpha: THREE.AddEquation
+	} );
+
+	this.originalClearColor = new THREE.Color();
+	
+	this.basic = new THREE.MeshBasicMaterial();
+
+	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+	this.quad.frustumCulled = false; // Avoid getting clipped
+	this.scene.add( this.quad );
+
+};
+
+THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+	constructor: THREE.SSAOPass,
+
+	dispose: function () {
+
+		// dispose render targets
+
+		this.beautyRenderTarget.dispose();
+		this.normalRenderTarget.dispose();
+		this.ssaoRenderTarget.dispose();
+		this.blurRenderTarget.dispose();
+
+		// dispose geometry
+
+		this.quad.geometry.dispose();
+
+		// dispose materials
+
+		this.normalMaterial.dispose();
+		this.blurMaterial.dispose();
+		this.copyMaterial.dispose();
+		this.depthRenderMaterial.dispose();
+
+	},
+
+	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive ) {
+
+		// render beauty and depth
+
+		this.quad.material = this.basic;
+		this.basic.map = readBuffer.texture;
+		//renderer.setRenderTarget( this.beautyRenderTarget );
+		
+		if ( this.renderToScreen ) {
+      
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    } else {
+      
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
+		/*
+		// render normals
+
+		this.renderOverride( renderer, this.normalMaterial, this.normalRenderTarget, 0x7777ff, 1.0 );
+
+		// render SSAO
+
+		this.ssaoMaterial.uniforms[ 'kernelRadius' ].value = this.kernelRadius;
+		this.ssaoMaterial.uniforms[ 'minDistance' ].value = this.minDistance;
+		this.ssaoMaterial.uniforms[ 'maxDistance' ].value = this.maxDistance;
+		this.renderPass( renderer, this.ssaoMaterial, this.ssaoRenderTarget );
+
+		// render blur
+
+		this.renderPass( renderer, this.blurMaterial, this.blurRenderTarget );
+
+		// output result to screen
+
+		this.renderPass( renderer, this.depthRenderMaterial, this.renderToScreen ? null : writeBuffer );
+		//this.copyMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
+		//this.copyMaterial.blending = THREE.NoBlending;
+		//this.renderPass( renderer, this.copyMaterial, this.renderToScreen ? null : writeBuffer );
+
+		//this.copyMaterial.uniforms[ 'tDiffuse' ].value = this.blurRenderTarget.texture;
+		//this.copyMaterial.blending = THREE.CustomBlending;
+		//this.renderPass( renderer, this.copyMaterial, this.renderToScreen ? null : writeBuffer );
+		*/
+	},
+
+	renderPass: function ( renderer, passMaterial, renderTarget, clearColor, clearAlpha ) {
+
+		// save original state
+		this.originalClearColor.copy( renderer.getClearColor() );
+		var originalClearAlpha = renderer.getClearAlpha();
+		var originalAutoClear = renderer.autoClear;
+
+		renderer.setRenderTarget( renderTarget );
+
+		// setup pass state
+		renderer.autoClear = false;
+		if ( ( clearColor !== undefined ) && ( clearColor !== null ) ) {
+
+			renderer.setClearColor( clearColor );
+			renderer.setClearAlpha( clearAlpha || 0.0 );
+			renderer.clear();
+
+		}
+
+		this.quad.material = passMaterial;
+		renderer.render( this.scene, this.camera );
+
+		// restore original state
+		renderer.autoClear = originalAutoClear;
+		renderer.setClearColor( this.originalClearColor );
+		renderer.setClearAlpha( originalClearAlpha );
+
+
+	},
+
+	renderOverride: function ( renderer, overrideMaterial, renderTarget, clearColor, clearAlpha ) {
+
+		this.originalClearColor.copy( renderer.getClearColor() );
+		var originalClearAlpha = renderer.getClearAlpha();
+		var originalAutoClear = renderer.autoClear;
+
+		renderer.setRenderTarget( renderTarget );
+		renderer.autoClear = false;
+
+		clearColor = overrideMaterial.clearColor || clearColor;
+		clearAlpha = overrideMaterial.clearAlpha || clearAlpha;
+
+		if ( ( clearColor !== undefined ) && ( clearColor !== null ) ) {
+
+			renderer.setClearColor( clearColor );
+			renderer.setClearAlpha( clearAlpha || 0.0 );
+			renderer.clear();
+
+		}
+
+		this.scene.overrideMaterial = overrideMaterial;
+		renderer.render( this.scene, this.camera );
+		this.scene.overrideMaterial = null;
+
+		// restore original state
+
+		renderer.autoClear = originalAutoClear;
+		renderer.setClearColor( this.originalClearColor );
+		renderer.setClearAlpha( originalClearAlpha );
+
+	},
+
+	setSize: function ( width, height ) {
+
+		this.width = width;
+		this.height = height;
+
+		this.beautyRenderTarget.setSize( width, height );
+		this.ssaoRenderTarget.setSize( width, height );
+		this.normalRenderTarget.setSize( width, height );
+		this.blurRenderTarget.setSize( width, height );
+
+		this.ssaoMaterial.uniforms[ 'resolution' ].value.set( width, height );
+		this.ssaoMaterial.uniforms[ 'cameraProjectionMatrix' ].value.copy( this.camera.projectionMatrix );
+		this.ssaoMaterial.uniforms[ 'cameraInverseProjectionMatrix' ].value.getInverse( this.camera.projectionMatrix );
+
+		this.blurMaterial.uniforms[ 'resolution' ].value.set( width, height );
+
+	},
+
+} );
+},{}],230:[function(_dereq_,module,exports){
+/**
+ * @author Mugen87 / https://github.com/Mugen87
+ *
+ * References:
+ * http://john-chapman-graphics.blogspot.com/2013/01/ssao-tutorial.html
+ * https://learnopengl.com/Advanced-Lighting/SSAO
+ * https://github.com/McNopper/OpenGL/blob/master/Example28/shader/ssao.frag.glsl
+ */
+
+THREE.SSAOShader = {
+
+	defines: {
+		"PERSPECTIVE_CAMERA": 1,
+		"KERNEL_SIZE": 32
+	},
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"tNormal": { value: null },
+		"tDepth": { value: null },
+		"tNoise": { value: null },
+		"kernel": { value: null },
+		"cameraNear": { value: null },
+		"cameraFar": { value: null },
+		"resolution": { value: new THREE.Vector2() },
+		"cameraProjectionMatrix": { value: new THREE.Matrix4() },
+		"cameraInverseProjectionMatrix": { value: new THREE.Matrix4() },
+		"kernelRadius": { value: 8 },
+		"minDistance": { value: 0.005 },
+		"maxDistance": { value: 0.05 },
+
+	},
+
+	vertexShader: [
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vUv = uv;",
+
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"uniform sampler2D tDiffuse;",
+		"uniform sampler2D tNormal;",
+		"uniform sampler2D tDepth;",
+		"uniform sampler2D tNoise;",
+
+		"uniform vec3 kernel[ KERNEL_SIZE ];",
+
+		"uniform vec2 resolution;",
+
+		"uniform float cameraNear;",
+		"uniform float cameraFar;",
+		"uniform mat4 cameraProjectionMatrix;",
+		"uniform mat4 cameraInverseProjectionMatrix;",
+
+		"uniform float kernelRadius;",
+		"uniform float minDistance;", // avoid artifacts caused by neighbour fragments with minimal depth difference
+		"uniform float maxDistance;", // avoid the influence of fragments which are too far away
+
+		"varying vec2 vUv;",
+
+		"#include <packing>",
+
+		"float getDepth( const in vec2 screenPosition ) {",
+
+		"	return texture2D( tDepth, screenPosition ).x;",
+
+		"}",
+
+		"float getLinearDepth( const in vec2 screenPosition ) {",
+
+		"	#if PERSPECTIVE_CAMERA == 1",
+
+		"		float fragCoordZ = texture2D( tDepth, screenPosition ).x;",
+		"		float viewZ = perspectiveDepthToViewZ( fragCoordZ, cameraNear, cameraFar );",
+		"		return viewZToOrthographicDepth( viewZ, cameraNear, cameraFar );",
+
+		"	#else",
+
+		"		return texture2D( depthSampler, coord ).x;",
+
+		"	#endif",
+
+		"}",
+
+		"float getViewZ( const in float depth ) {",
+
+		"	#if PERSPECTIVE_CAMERA == 1",
+
+		"		return perspectiveDepthToViewZ( depth, cameraNear, cameraFar );",
+
+		"	#else",
+
+		"		return orthographicDepthToViewZ( depth, cameraNear, cameraFar );",
+
+		"	#endif",
+
+		"}",
+
+		"vec3 getViewPosition( const in vec2 screenPosition, const in float depth, const in float viewZ ) {",
+
+		"	float clipW = cameraProjectionMatrix[2][3] * viewZ + cameraProjectionMatrix[3][3];",
+
+		"	vec4 clipPosition = vec4( ( vec3( screenPosition, depth ) - 0.5 ) * 2.0, 1.0 );",
+
+		"	clipPosition *= clipW; // unprojection.",
+
+		"	return ( cameraInverseProjectionMatrix * clipPosition ).xyz;",
+
+		"}",
+
+		"vec3 getViewNormal( const in vec2 screenPosition ) {",
+
+		"	return unpackRGBToNormal( texture2D( tNormal, screenPosition ).xyz );",
+
+		"}",
+
+		"void main() {",
+
+		"	float depth = getDepth( vUv );",
+		"	float viewZ = getViewZ( depth );",
+
+		"	vec3 viewPosition = getViewPosition( vUv, depth, viewZ );",
+		"	vec3 viewNormal = getViewNormal( vUv );",
+
+		" vec2 noiseScale = vec2( resolution.x / 4.0, resolution.y / 4.0 );",
+		"	vec3 random = texture2D( tNoise, vUv * noiseScale ).xyz;",
+
+		// compute matrix used to reorient a kernel vector
+
+		"	vec3 tangent = normalize( random - viewNormal * dot( random, viewNormal ) );",
+		"	vec3 bitangent = cross( viewNormal, tangent );",
+		"	mat3 kernelMatrix = mat3( tangent, bitangent, viewNormal );",
+
+		" float occlusion = 0.0;",
+
+		" for ( int i = 0; i < KERNEL_SIZE; i ++ ) {",
+
+		"		vec3 sampleVector = kernelMatrix * kernel[ i ];", // reorient sample vector in view space
+		"		vec3 samplePoint = viewPosition + ( sampleVector * kernelRadius );", // calculate sample point
+
+		"		vec4 samplePointNDC = cameraProjectionMatrix * vec4( samplePoint, 1.0 );", // project point and calculate NDC
+		"		samplePointNDC /= samplePointNDC.w;",
+
+		"		vec2 samplePointUv = samplePointNDC.xy * 0.5 + 0.5;", // compute uv coordinates
+
+		"		float realDepth = getLinearDepth( samplePointUv );", // get linear depth from depth texture
+		"		float sampleDepth = viewZToOrthographicDepth( samplePoint.z, cameraNear, cameraFar );", // compute linear depth of the sample view Z value
+		"		float delta = sampleDepth - realDepth;",
+
+		"		if ( delta > minDistance && delta < maxDistance ) {", // if fragment is before sample point, increase occlusion
+
+		"			occlusion += 1.0;",
+
+		"		}",
+
+		"	}",
+
+		"	occlusion = clamp( occlusion / float( KERNEL_SIZE ), 0.0, 1.0 );",
+
+		"	gl_FragColor = vec4( vec3( 1.0 - occlusion ), 1.0 );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+},{}],231:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ *
+ * Sepia tone shader
+ * based on glfx.js sepia shader
+ * https://github.com/evanw/glfx.js
+ */
+
+THREE.SepiaShader = {
+
+  uniforms: {
+
+    "tDiffuse": { value: null },
+    "amount":   { value: 1.0 }
+
+  },
+
+  vertexShader: [
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vUv = uv;",
+      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+    "}"
+
+  ].join( "\n" ),
+
+  fragmentShader: [
+
+    "uniform float amount;",
+
+    "uniform sampler2D tDiffuse;",
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vec4 color = texture2D( tDiffuse, vUv );",
+      "vec3 c = color.rgb;",
+
+      "color.r = dot( c, vec3( 1.0 - 0.607 * amount, 0.769 * amount, 0.189 * amount ) );",
+      "color.g = dot( c, vec3( 0.349 * amount, 1.0 - 0.314 * amount, 0.168 * amount ) );",
+      "color.b = dot( c, vec3( 0.272 * amount, 0.534 * amount, 1.0 - 0.869 * amount ) );",
+
+      "gl_FragColor = vec4( min( vec3( 1.0 ), color.rgb ), color.a );",
+
+    "}"
+
+  ].join( "\n" )
+
+};
+
+},{}],232:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.ShaderPass = function ( shader, textureID ) {
+
+  THREE.Pass.call( this );
+
+  this.textureID = ( textureID !== undefined ) ? textureID : "tDiffuse";
+
+  if ( shader instanceof THREE.ShaderMaterial ) {
+
+    this.uniforms = shader.uniforms;
+
+    this.material = shader;
+
+  } else if ( shader ) {
+
+    this.uniforms = THREE.UniformsUtils.clone( shader.uniforms );
+
+    this.material = new THREE.ShaderMaterial( {
+
+      defines: Object.assign( {}, shader.defines ),
+      uniforms: this.uniforms,
+      vertexShader: shader.vertexShader,
+      fragmentShader: shader.fragmentShader
+
+    } );
+
+  }
+
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.enabled = true;
+  this.needsSwap = false;
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+ 
+};
+
+THREE.ShaderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+  constructor: THREE.ShaderPass,
+
+  render: function( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    if ( this.uniforms[ this.textureID ] ) {
+
+      this.uniforms[ this.textureID ].value = readBuffer.texture;
+
+    }
+
+    this.quad.material = this.material;
+
+    if ( this.renderToScreen ) {
+      
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+     } else {
+      
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
+
+  }
+
+} );
+
+},{}],233:[function(_dereq_,module,exports){
+/**
+ * @author spidersharma / http://eduperiment.com/
+ * 
+ * Inspired from Unreal Engine
+ * https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/Bloom/
+ */
+THREE.UnrealBloomPass = function ( resolution, strength, radius, threshold ) {
+
+  THREE.Pass.call( this );
+
+  this.strength = ( strength !== undefined ) ? strength : 1;
+  this.radius = radius;
+  this.threshold = threshold;
+  this.resolution = ( resolution !== undefined ) ? new THREE.Vector2( resolution.x, resolution.y ) : new THREE.Vector2( 256, 256 );
+
+  // render targets
+  var pars = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat };
+  this.renderTargetsHorizontal = [];
+  this.renderTargetsVertical = [];
+  this.nMips = 5;
+  var resx = Math.round( this.resolution.x / 2 );
+  var resy = Math.round( this.resolution.y / 2 );
+
+  this.renderTargetBright = new THREE.WebGLRenderTarget( resx, resy, pars );
+  this.renderTargetBright.texture.name = "UnrealBloomPass.bright";
+  this.renderTargetBright.texture.generateMipmaps = false;
+
+  for ( var i = 0; i < this.nMips; i ++ ) {
+
+    var renderTarget = new THREE.WebGLRenderTarget( resx, resy, pars );
+
+    renderTarget.texture.name = "UnrealBloomPass.h" + i;
+    renderTarget.texture.generateMipmaps = false;
+
+    this.renderTargetsHorizontal.push( renderTarget );
+
+    var renderTarget = new THREE.WebGLRenderTarget( resx, resy, pars );
+
+    renderTarget.texture.name = "UnrealBloomPass.v" + i;
+    renderTarget.texture.generateMipmaps = false;
+
+    this.renderTargetsVertical.push( renderTarget );
+
+    resx = Math.round( resx / 2 );
+
+    resy = Math.round( resy / 2 );
+
+  }
+
+  // luminosity high pass material
+
+  if ( THREE.LuminosityHighPassShader === undefined )
+    console.error( "THREE.UnrealBloomPass relies on THREE.LuminosityHighPassShader" );
+
+  var highPassShader = THREE.LuminosityHighPassShader;
+  this.highPassUniforms = THREE.UniformsUtils.clone( highPassShader.uniforms );
+
+  this.highPassUniforms[ "luminosityThreshold" ].value = threshold;
+  this.highPassUniforms[ "smoothWidth" ].value = 0.01;
+
+  this.materialHighPassFilter = new THREE.ShaderMaterial( {
+    uniforms: this.highPassUniforms,
+    vertexShader: highPassShader.vertexShader,
+    fragmentShader: highPassShader.fragmentShader,
+    defines: {}
+  } );
+
+  // Gaussian Blur Materials
+  this.separableBlurMaterials = [];
+  var kernelSizeArray = [ 3, 5, 7, 9, 11 ];
+  var resx = Math.round( this.resolution.x / 2 );
+  var resy = Math.round( this.resolution.y / 2 );
+
+  for ( var i = 0; i < this.nMips; i ++ ) {
+
+    this.separableBlurMaterials.push( this.getSeperableBlurMaterial( kernelSizeArray[ i ] ) );
+
+    this.separableBlurMaterials[ i ].uniforms[ "texSize" ].value = new THREE.Vector2( resx, resy );
+
+    resx = Math.round( resx / 2 );
+
+    resy = Math.round( resy / 2 );
+
+  }
+
+  // Composite material
+  this.compositeMaterial = this.getCompositeMaterial( this.nMips );
+  this.compositeMaterial.uniforms[ "blurTexture1" ].value = this.renderTargetsVertical[ 0 ].texture;
+  this.compositeMaterial.uniforms[ "blurTexture2" ].value = this.renderTargetsVertical[ 1 ].texture;
+  this.compositeMaterial.uniforms[ "blurTexture3" ].value = this.renderTargetsVertical[ 2 ].texture;
+  this.compositeMaterial.uniforms[ "blurTexture4" ].value = this.renderTargetsVertical[ 3 ].texture;
+  this.compositeMaterial.uniforms[ "blurTexture5" ].value = this.renderTargetsVertical[ 4 ].texture;
+  this.compositeMaterial.uniforms[ "bloomStrength" ].value = strength;
+  this.compositeMaterial.uniforms[ "bloomRadius" ].value = 0.1;
+  this.compositeMaterial.needsUpdate = true;
+
+  var bloomFactors = [ 1.0, 0.8, 0.6, 0.4, 0.2 ];
+  this.compositeMaterial.uniforms[ "bloomFactors" ].value = bloomFactors;
+  this.bloomTintColors = [ new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ),
+               new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ) ];
+  this.compositeMaterial.uniforms[ "bloomTintColors" ].value = this.bloomTintColors;
+
+  // copy material
+  if ( THREE.CopyShader === undefined ) {
+
+    console.error( "THREE.BloomPass relies on THREE.CopyShader" );
+
+  }
+
+  var copyShader = THREE.CopyShader;
+
+  this.copyUniforms = THREE.UniformsUtils.clone( copyShader.uniforms );
+  this.copyUniforms[ "opacity" ].value = 1.0;
+
+  this.materialCopy = new THREE.ShaderMaterial( {
+    uniforms: this.copyUniforms,
+    vertexShader: copyShader.vertexShader,
+    fragmentShader: copyShader.fragmentShader,
+    blending: THREE.AdditiveBlending,
+    depthTest: false,
+    depthWrite: false,
+    transparent: true
+  } );
+
+  this.enabled = true;
+  this.needsSwap = false;
+
+  this.oldClearColor = new THREE.Color();
+  this.oldClearAlpha = 1;
+
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.basic = new THREE.MeshBasicMaterial();
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+
+};
+
+THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+  constructor: THREE.UnrealBloomPass,
+
+  dispose: function () {
+
+    for ( var i = 0; i < this.renderTargetsHorizontal.length; i ++ ) {
+
+      this.renderTargetsHorizontal[ i ].dispose();
+
+    }
+
+    for ( var i = 0; i < this.renderTargetsVertical.length; i ++ ) {
+
+      this.renderTargetsVertical[ i ].dispose();
+
+    }
+
+    this.renderTargetBright.dispose();
+
+  },
+
+  setSize: function ( width, height ) {
+
+    var resx = Math.round( width / 2 );
+    var resy = Math.round( height / 2 );
+
+    this.renderTargetBright.setSize( resx, resy );
+
+    for ( var i = 0; i < this.nMips; i ++ ) {
+
+      this.renderTargetsHorizontal[ i ].setSize( resx, resy );
+      this.renderTargetsVertical[ i ].setSize( resx, resy );
+
+      this.separableBlurMaterials[ i ].uniforms[ "texSize" ].value = new THREE.Vector2( resx, resy );
+
+      resx = Math.round( resx / 2 );
+      resy = Math.round( resy / 2 );
+
+    }
+
+  },
+
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    this.oldClearColor.copy( renderer.getClearColor() );
+    this.oldClearAlpha = renderer.getClearAlpha();
+    var oldAutoClear = renderer.autoClear;
+    renderer.autoClear = false;
+    //renderer.antialias = true;
+
+    //console.log(renderer);
+
+    renderer.setClearColor( new THREE.Color( 0, 0, 0 ), 0 );
+
+    if ( maskActive ) renderer.context.disable( renderer.context.STENCIL_TEST );
+
+    // Render input to screen
+
+    this.quad.material = this.basic;
+    this.basic.map = readBuffer.texture;
+
+    if ( this.renderToScreen ) {
+      
+      renderer.setRenderTarget( null );
+      renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    } else {
+
+      renderer.setRenderTarget( writeBuffer );
+      renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
+
+    // 1. Extract Bright Areas
+
+    this.highPassUniforms[ "tDiffuse" ].value = readBuffer.texture;
+    this.highPassUniforms[ "luminosityThreshold" ].value = this.threshold;
+    this.quad.material = this.materialHighPassFilter;
+    
+		renderer.setRenderTarget( this.renderTargetBright );
+		renderer.clear();
+    renderer.render( this.scene, this.camera );
+
+    // 2. Blur All the mips progressively
+
+    var inputRenderTarget = this.renderTargetBright;
+
+    for ( var i = 0; i < this.nMips; i ++ ) {
+
+      this.quad.material = this.separableBlurMaterials[ i ];
+
+      this.separableBlurMaterials[ i ].uniforms[ "colorTexture" ].value = inputRenderTarget.texture;
+      this.separableBlurMaterials[ i ].uniforms[ "direction" ].value = THREE.UnrealBloomPass.BlurDirectionX;
+			renderer.setRenderTarget( this.renderTargetsHorizontal[ i ] );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+      this.separableBlurMaterials[ i ].uniforms[ "colorTexture" ].value = this.renderTargetsHorizontal[ i ].texture;
+      this.separableBlurMaterials[ i ].uniforms[ "direction" ].value = THREE.UnrealBloomPass.BlurDirectionY;
+			renderer.setRenderTarget( this.renderTargetsVertical[ i ] );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+      inputRenderTarget = this.renderTargetsVertical[ i ];
+
+    }
+
+    // Composite All the mips
+
+    this.quad.material = this.compositeMaterial;
+    this.compositeMaterial.uniforms[ "bloomStrength" ].value = this.strength;
+    this.compositeMaterial.uniforms[ "bloomRadius" ].value = this.radius;
+    this.compositeMaterial.uniforms[ "bloomTintColors" ].value = this.bloomTintColors;
+
+		renderer.setRenderTarget( this.renderTargetsHorizontal[ 0 ] );
+		renderer.clear();
+    renderer.render( this.scene, this.camera );
+
+    // Blend it additively over the input texture
+
+    this.quad.material = this.materialCopy;
+    this.copyUniforms[ "tDiffuse" ].value = this.renderTargetsHorizontal[ 0 ].texture;
+
+    if ( maskActive ) renderer.context.enable( renderer.context.STENCIL_TEST );
+
+
+    if ( this.renderToScreen ) {
+      
+      renderer.setRenderTarget( null );
+			renderer.render( this.scene, this.camera );
+
+    } else {
+
+      renderer.setRenderTarget( writeBuffer );
+			renderer.render( this.scene, this.camera );
+
+    }
+
+    // Restore renderer settings
+
+    renderer.setClearColor( this.oldClearColor, this.oldClearAlpha );
+    renderer.autoClear = oldAutoClear;
+
+  },
+
+  getSeperableBlurMaterial: function ( kernelRadius ) {
+
+    return new THREE.ShaderMaterial( {
+
+      defines: {
+        "KERNEL_RADIUS": kernelRadius,
+        "SIGMA": kernelRadius
+      },
+
+      uniforms: {
+        "colorTexture": { value: null },
+        "texSize": { value: new THREE.Vector2( 0.5, 0.5 ) },
+        "direction": { value: new THREE.Vector2( 0.5, 0.5 ) }
+      },
+
+      vertexShader:
+        "varying vec2 vUv;\n\
+        void main() {\n\
+          vUv = uv;\n\
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\
+        }",
+
+      fragmentShader:
+        "#include <common>\
+        varying vec2 vUv;\n\
+        uniform sampler2D colorTexture;\n\
+        uniform vec2 texSize;\
+        uniform vec2 direction;\
+        \
+        float gaussianPdf(in float x, in float sigma) {\
+          return 0.39894 * exp( -0.5 * x * x/( sigma * sigma))/sigma;\
+        }\
+        void main() {\n\
+          vec2 invSize = 1.0 / texSize;\
+          float fSigma = float(SIGMA);\
+          float weightSum = gaussianPdf(0.0, fSigma);\
+          vec3 diffuseSum = texture2D( colorTexture, vUv).rgb * weightSum;\
+          for( int i = 1; i < KERNEL_RADIUS; i ++ ) {\
+            float x = float(i);\
+            float w = gaussianPdf(x, fSigma);\
+            vec2 uvOffset = direction * invSize * x;\
+            vec3 sample1 = texture2D( colorTexture, vUv + uvOffset).rgb;\
+            vec3 sample2 = texture2D( colorTexture, vUv - uvOffset).rgb;\
+            diffuseSum += (sample1 + sample2) * w;\
+            weightSum += 2.0 * w;\
+          }\
+          gl_FragColor = vec4(diffuseSum/weightSum, 1.0);\n\
+        }"
+    } );
+
+  },
+
+  getCompositeMaterial: function ( nMips ) {
+
+    return new THREE.ShaderMaterial( {
+
+      defines: {
+        "NUM_MIPS": nMips
+      },
+
+      uniforms: {
+        "blurTexture1": { value: null },
+        "blurTexture2": { value: null },
+        "blurTexture3": { value: null },
+        "blurTexture4": { value: null },
+        "blurTexture5": { value: null },
+        "dirtTexture": { value: null },
+        "bloomStrength": { value: 1.0 },
+        "bloomFactors": { value: null },
+        "bloomTintColors": { value: null },
+        "bloomRadius": { value: 0.0 }
+      },
+
+      vertexShader:
+        "varying vec2 vUv;\n\
+        void main() {\n\
+          vUv = uv;\n\
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\
+        }",
+
+      fragmentShader:
+        "varying vec2 vUv;\
+        uniform sampler2D blurTexture1;\
+        uniform sampler2D blurTexture2;\
+        uniform sampler2D blurTexture3;\
+        uniform sampler2D blurTexture4;\
+        uniform sampler2D blurTexture5;\
+        uniform sampler2D dirtTexture;\
+        uniform float bloomStrength;\
+        uniform float bloomRadius;\
+        uniform float bloomFactors[NUM_MIPS];\
+        uniform vec3 bloomTintColors[NUM_MIPS];\
+        \
+        float lerpBloomFactor(const in float factor) { \
+          float mirrorFactor = 1.2 - factor;\
+          return mix(factor, mirrorFactor, bloomRadius);\
+        }\
+        \
+        void main() {\
+          gl_FragColor = bloomStrength * ( lerpBloomFactor(bloomFactors[0]) * vec4(bloomTintColors[0], 1.0) * texture2D(blurTexture1, vUv) + \
+                           lerpBloomFactor(bloomFactors[1]) * vec4(bloomTintColors[1], 1.0) * texture2D(blurTexture2, vUv) + \
+                           lerpBloomFactor(bloomFactors[2]) * vec4(bloomTintColors[2], 1.0) * texture2D(blurTexture3, vUv) + \
+                           lerpBloomFactor(bloomFactors[3]) * vec4(bloomTintColors[3], 1.0) * texture2D(blurTexture4, vUv) + \
+                           lerpBloomFactor(bloomFactors[4]) * vec4(bloomTintColors[4], 1.0) * texture2D(blurTexture5, vUv) );\
+        }"
+    } );
+
+  }
+
+} );
+
+THREE.UnrealBloomPass.BlurDirectionX = new THREE.Vector2( 1.0, 0.0 );
+THREE.UnrealBloomPass.BlurDirectionY = new THREE.Vector2( 0.0, 1.0 );
+
+},{}],234:[function(_dereq_,module,exports){
 window.glStats = function () {
 
     var _rS = null;
@@ -83288,7 +86502,7 @@ if (typeof module === 'object') {
   };
 }
 
-},{}],214:[function(_dereq_,module,exports){
+},{}],235:[function(_dereq_,module,exports){
 // performance.now() polyfill from https://gist.github.com/paulirish/5438650
 'use strict';
 
@@ -83743,7 +86957,7 @@ if (typeof module === 'object') {
   module.exports = window.rStats;
 }
 
-},{}],215:[function(_dereq_,module,exports){
+},{}],236:[function(_dereq_,module,exports){
 // https://stackoverflow.com/a/36213464
 if (!String.prototype.startsWith) {
     String.prototype.startsWith = function(searchString, position){
@@ -83752,7 +86966,7 @@ if (!String.prototype.startsWith) {
   };
 }
 
-},{}],216:[function(_dereq_,module,exports){
+},{}],237:[function(_dereq_,module,exports){
 /*
  * Copyright 2015 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -83814,7 +87028,7 @@ Util.isLandscapeMode = function() {
 
 module.exports = Util;
 
-},{}],217:[function(_dereq_,module,exports){
+},{}],238:[function(_dereq_,module,exports){
 /*
  * Copyright 2015 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -83890,6 +87104,6 @@ function getWakeLock() {
 
 module.exports = getWakeLock();
 
-},{"./util.js":216}]},{},[177])(177)
+},{"./util.js":237}]},{},[184])(184)
 });
 //# sourceMappingURL=aframe-master.js.map
