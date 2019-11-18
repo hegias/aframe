@@ -4,6 +4,10 @@ var registerEffect = require('../../../core/effect').registerEffect;
 require('../../../../vendor/effects/CopyShader');
 require('../../../../vendor/effects/ShaderPass');
 require('../../../../vendor/effects/FXAAShader');
+require('../../../../vendor/effects/SMAABlendShader');
+require('../../../../vendor/effects/SMAAWeightsShader');
+require('../../../../vendor/effects/SMAAEdgesShader');
+require('../../../../vendor/effects/AAPass');
 
 registerEffect('aa', {
   schema: {
@@ -11,12 +15,14 @@ registerEffect('aa', {
   },
 
   initPass: function () {
-    this.pass = new THREE.ShaderPass(THREE.FXAAShader);
+    this.pass = new THREE.AAPass(window.innerWidth, window.innerHeight, this.data.mode);
     this.update();
   },
 
   update: function () {
-    if (!this.pass) { return; }
-    this.pass.uniforms.resolution.value = new THREE.Vector2(1/window.innerWidth, 1/window.innerHeight);
+    var data = this.data;
+    var pass = this.pass;
+    if (!pass) { return; }
+    pass.setMode(data.mode);
   }
 });

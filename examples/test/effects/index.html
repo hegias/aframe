@@ -58,7 +58,7 @@
 </script> 
 
 <body>
-    <a-scene effect-bloom="threshold:0.9" effect-lut="lutmap:CineTealOrange1" effect-fxaa background="color: gray" id="scene">
+    <a-scene effect-bloom="threshold:0.9" effect-lut="lutmap:CineTealOrange1" effect-aa="mode : smaa" background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
     <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
     <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
@@ -66,6 +66,23 @@
 </body>
 
 <script>
+
+let toggle = true;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 84){
+        let scene = document.querySelector("#scene");
+        if(toggle){
+            scene.setAttribute("effect-aa", "mode", "fxaa");
+            console.log("FXAA");
+            toggle = false;
+        }
+        else{
+            scene.setAttribute("effect-aa", "mode", "smaa");
+            console.log("SMAA");
+            toggle = true;
+        }
+    }
+})
 
 let toggle2 = true;
 window.addEventListener("keyup", (e) => {
