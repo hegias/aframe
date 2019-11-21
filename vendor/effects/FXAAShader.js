@@ -13,7 +13,7 @@ THREE.FXAAShader = {
 	uniforms: {
 
 		"tDiffuse": { value: null },
-		"resolution": { value: new THREE.Vector2( 1 / 1024, 1 / 512 ) }
+		"resolution": { value: new THREE.Vector2( 1 / 1920, 1 / 1080 ) }
 
 	},
 
@@ -226,7 +226,7 @@ THREE.FXAAShader = {
 		"    //  _ = the lowest digit is directly related to performance",
 		"    // _  = the highest digit is directly related to style",
 		"    //",
-		"    #define FXAA_QUALITY_PRESET 25",
+		"    #define FXAA_QUALITY_PRESET 39",
 		"#endif",
 		"",
 		"",

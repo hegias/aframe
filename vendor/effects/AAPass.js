@@ -4,8 +4,10 @@ THREE.AAPass = function ( width, height, mode ) {
   
     this.width = width;
     this.height = height;
-    this.mode = mode;
-
+	this.mode = mode;
+	
+    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+    this.scene = new THREE.Scene();
 
     /*--- Init FXAA ---*/
     /*---------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -127,13 +129,24 @@ THREE.AAPass = function ( width, height, mode ) {
     /*---------------------------------------------------------------------------------------------------------------------------------------------*/
     
     /*--- Init TAA ---*/
-    /*---------------------------------------------------------------------------------------------------------------------------------------------*/
-	this.sampleLevel = 0;
+	/*---------------------------------------------------------------------------------------------------------------------------------------------*/
+	this.sampleLevel = 5;
 	this.accumulate = false;
-    /*---------------------------------------------------------------------------------------------------------------------------------------------*/
+	this.unbiased = true;
 
-    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
-    this.scene = new THREE.Scene();
+	var copyShader = THREE.CopyShader;
+	this.copyUniforms = THREE.UniformsUtils.clone( copyShader.uniforms );
+	this.copyMaterial = new THREE.ShaderMaterial(	{
+		uniforms: this.copyUniforms,
+		vertexShader: copyShader.vertexShader,
+		fragmentShader: copyShader.fragmentShader,
+		premultipliedAlpha: true,
+		transparent: true,
+		blending: THREE.AdditiveBlending,
+		depthTest: false,
+		depthWrite: false
+	} );
+	/*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
     this.basic = new THREE.MeshBasicMaterial();
 
@@ -153,7 +166,7 @@ THREE.AAPass = function ( width, height, mode ) {
             this.SMAAPass(renderer, writeBuffer, readBuffer);
         }
         else if(this.mode === "taa"){
-            this.TAAPass(renderer, writeBuffer, readBuffer);
+            this.SSAAPass(renderer, writeBuffer, readBuffer);
         }
         else{
             this.FXAAPass(renderer, writeBuffer, readBuffer);
@@ -194,10 +207,156 @@ THREE.AAPass = function ( width, height, mode ) {
 		this.uniformsBlend[ "tColor" ].value = readBuffer.texture;
 
 		this.quad.material = this.materialBlend;
-    },
+	},
 
+	// TODO
+	SSAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
+		if ( ! this.sampleRenderTarget ) {
+			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
+			this.sampleRenderTarget.texture.name = "SSAARenderPass.sample";
+		}
+
+		var jitterOffsets = THREE.AAPass.JitterVectors[ Math.max( 0, Math.min( this.sampleLevel, 5 ) ) ];
+
+		var autoClear = renderer.autoClear;
+		renderer.autoClear = false;
+
+		var baseSampleWeight = 1.0 / jitterOffsets.length;
+		var roundingRange = 1 / 32;
+		this.copyUniforms[ "tDiffuse" ].value = this.sampleRenderTarget.texture;
+
+		var width = readBuffer.width, height = readBuffer.height;
+
+		// render the scene multiple times, each slightly jitter offset from the last and accumulate the results.
+		for ( var i = 0; i < jitterOffsets.length; i ++ ) {
+
+			var jitterOffset = jitterOffsets[ i ];
+
+			//if ( this.camera.setViewOffset ) {
+
+				this.camera.setViewOffset( width, height,
+					jitterOffset[ 0 ] * 0.0625, jitterOffset[ 1 ] * 0.0625, // 0.0625 = 1 / 16
+					width, height );
+
+			//}
+
+			var sampleWeight = baseSampleWeight;
+
+			if ( this.unbiased ) {
+
+				// the theory is that equal weights for each sample lead to an accumulation of rounding errors.
+				// The following equation varies the sampleWeight per sample so that it is uniformly distributed
+				// across a range of values whose rounding errors cancel each other out.
+
+				var uniformCenteredDistribution = ( - 0.5 + ( i + 0.5 ) / jitterOffsets.length );
+				sampleWeight += roundingRange * uniformCenteredDistribution;
+
+			}
+
+			this.quad.material = this.copyMaterial;
+			this.copyUniforms[ "opacity" ].value = sampleWeight;
+			renderer.setRenderTarget( this.sampleRenderTarget );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+			renderer.setRenderTarget( this.renderToScreen ? null : writeBuffer );
+
+			if ( i === 0 ) {
+
+				renderer.setClearColor( 0x000000, 0.0 );
+				renderer.clear();
+
+			}
+
+			renderer.render( this.scene, this.camera );
+
+		}
+
+		this.camera.clearViewOffset();
+	},
+
+	// TODO
     TAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
-        console.log("TAA Pass");
+        if ( ! this.accumulate ) {
+			this.SSAAPass( renderer, writeBuffer, readBuffer );
+			this.accumulateIndex = - 1;
+			//this.accumulate = true;
+			return;
+		}
+
+		console.log("TAA");
+		var jitterOffsets = THREE.AAPass.JitterVectors[ 5 ];
+
+		if ( ! this.sampleRenderTarget ) {
+			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, this.params );
+			this.sampleRenderTarget.texture.name = "TAARenderPass.sample";
+		}
+
+		if ( ! this.holdRenderTarget ) {
+			this.holdRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, this.params );
+			this.holdRenderTarget.texture.name = "TAARenderPass.hold";
+		}
+
+		if ( this.accumulate && this.accumulateIndex === - 1 ) {
+			this.SSAAPass( renderer, this.holdRenderTarget, readBuffer );
+			this.accumulateIndex = 0;
+		}
+
+		var autoClear = renderer.autoClear;
+		renderer.autoClear = false;
+
+		var sampleWeight = 1.0 / ( jitterOffsets.length );
+
+		if ( this.accumulateIndex >= 0 && this.accumulateIndex < jitterOffsets.length ) {
+			
+			this.copyUniforms[ "opacity" ].value = sampleWeight;
+			this.copyUniforms[ "tDiffuse" ].value = writeBuffer.texture;
+			
+			// render the scene multiple times, each slightly jitter offset from the last and accumulate the results.
+			var numSamplesPerFrame = Math.pow( 2, this.sampleLevel );
+			for ( var i = 0; i < numSamplesPerFrame; i ++ ) {
+				var j = this.accumulateIndex;
+				var jitterOffset = jitterOffsets[ j ];
+
+					this.camera.setViewOffset( readBuffer.width, readBuffer.height,
+						jitterOffset[ 0 ] * 0.0625, jitterOffset[ 1 ] * 0.0625, // 0.0625 = 1 / 16
+						readBuffer.width, readBuffer.height );
+
+				renderer.setRenderTarget( writeBuffer );
+				renderer.clear();
+				renderer.render( this.scene, this.camera );
+
+				renderer.setRenderTarget( this.sampleRenderTarget );
+				if ( this.accumulateIndex === 0 ) renderer.clear();
+				renderer.render( this.scene, this.camera );
+
+				this.accumulateIndex ++;
+
+				if ( this.accumulateIndex >= jitterOffsets.length ) break;
+
+			}
+
+			this.camera.clearViewOffset();
+
+		}
+
+		var accumulationWeight = this.accumulateIndex * sampleWeight;
+
+		if ( accumulationWeight > 0 ) {
+			this.copyUniforms[ "opacity" ].value = 1.0;
+			this.copyUniforms[ "tDiffuse" ].value = this.sampleRenderTarget.texture;
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
+
+		if ( accumulationWeight < 1.0 ) {
+			this.copyUniforms[ "opacity" ].value = 1.0 - accumulationWeight;
+			this.copyUniforms[ "tDiffuse" ].value = this.holdRenderTarget.texture;
+			renderer.setRenderTarget( writeBuffer );
+			if ( accumulationWeight === 0 ) renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
     },
 
 	setSize: function ( width, height ) {
@@ -228,4 +387,37 @@ THREE.AAPass = function ( width, height, mode ) {
 	}
   
   } );
+  
+THREE.AAPass.JitterVectors = [
+	[
+		[ 0, 0 ]
+	],
+	[
+		[ 4, 4 ], [ - 4, - 4 ]
+	],
+	[
+		[ - 2, - 6 ], [ 6, - 2 ], [ - 6, 2 ], [ 2, 6 ]
+	],
+	[
+		[ 1, - 3 ], [ - 1, 3 ], [ 5, 1 ], [ - 3, - 5 ],
+		[ - 5, 5 ], [ - 7, - 1 ], [ 3, 7 ], [ 7, - 7 ]
+	],
+	[
+		[ 1, 1 ], [ - 1, - 3 ], [ - 3, 2 ], [ 4, - 1 ],
+		[ - 5, - 2 ], [ 2, 5 ], [ 5, 3 ], [ 3, - 5 ],
+		[ - 2, 6 ], [ 0, - 7 ], [ - 4, - 6 ], [ - 6, 4 ],
+		[ - 8, 0 ], [ 7, - 4 ], [ 6, 7 ], [ - 7, - 8 ]
+	],
+	[
+		[ - 4, - 7 ], [ - 7, - 5 ], [ - 3, - 5 ], [ - 5, - 4 ],
+		[ - 1, - 4 ], [ - 2, - 2 ], [ - 6, - 1 ], [ - 4, 0 ],
+		[ - 7, 1 ], [ - 1, 2 ], [ - 6, 3 ], [ - 3, 3 ],
+		[ - 7, 6 ], [ - 3, 6 ], [ - 5, 7 ], [ - 1, 7 ],
+		[ 5, - 7 ], [ 1, - 6 ], [ 6, - 5 ], [ 4, - 4 ],
+		[ 2, - 3 ], [ 7, - 2 ], [ 1, - 1 ], [ 4, - 1 ],
+		[ 2, 1 ], [ 6, 2 ], [ 0, 4 ], [ 4, 4 ],
+		[ 2, 5 ], [ 7, 5 ], [ 5, 6 ], [ 3, 7 ]
+	]
+];
+
   
