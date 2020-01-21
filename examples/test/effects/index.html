@@ -89,13 +89,13 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 82){
         let scene = document.querySelector("#scene");
         if(toggle2){
-            scene.setAttribute("effect-lut", "lutmap", "warm");
-            console.log("LUT Warm");
+            scene.setAttribute("effect-lut", "enabled", "true");
+            console.log("LUT Enabled");
             toggle2 = false;
         }
         else{
-            scene.setAttribute("effect-lut", "lutmap", "cold");
-            console.log("LUT Cold");
+            scene.setAttribute("effect-lut", "enabled", "false");
+            console.log("LUT Disabled");
             toggle2 = true;
         }
     }

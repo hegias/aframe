@@ -38,7 +38,7 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 
 	this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
 	this.setMap(lutmap);
-	this.lutMaterial.uniforms[ 'lutMapSize' ].value = 25.0;
+	this.lutMaterial.uniforms[ 'lutMapSize' ].value = 64.0;
 
 	// material for rendering the content of a render target
 
@@ -115,10 +115,10 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 	},
 
 	setMap: function( nlutMap ) {
-		let map;
+		let map = THREE.LUTM31;
 
-		if(nlutMap === "basic"){
-			map = THREE.LUTBasic;
+		/*if(nlutMap === "basic"){
+			map = THREE.LUTTealOrange;
 		}
 		else if(nlutMap === "bright"){
 			map = THREE.LUTBright;
@@ -143,9 +143,9 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		}
 		else{
 			console.error("LUT map " + nlutMap + " does not exist");
-		}
+		}*/
 
-		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(map, 25);
+		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(map, 64);
 
 	},
 

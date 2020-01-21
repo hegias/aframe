@@ -9,10 +9,12 @@ require('../../../../vendor/effects/LUTMaps/LUTBasic');
 require('../../../../vendor/effects/LUTMaps/LUTBright');
 require('../../../../vendor/effects/LUTMaps/LUTCold');
 require('../../../../vendor/effects/LUTMaps/LUTDrama');
+require('../../../../vendor/effects/LUTMaps/LUTTealOrange');
 require('../../../../vendor/effects/LUTMaps/LUTTealOrange1');
 require('../../../../vendor/effects/LUTMaps/LUTTealOrange2');
 require('../../../../vendor/effects/LUTMaps/LUTVibrant');
 require('../../../../vendor/effects/LUTMaps/LUTWarm');
+require('../../../../vendor/effects/LUTMaps/LUTM31');
 
 registerEffect('lut', {
 
