@@ -58,7 +58,7 @@
 </script> 
 
 <body>
-    <a-scene effect-bloom="threshold:0.9" effect-lut="lutmap:CineTealOrange1" effect-aa="mode : smaa" background="color: gray" id="scene">
+    <a-scene effect-bloom="threshold:0.9" effect-lut="lutmap: basic" effect-aa="mode : smaa" background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
     <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
     <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
@@ -72,8 +72,8 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 84){
         let scene = document.querySelector("#scene");
         if(toggle){
-            scene.setAttribute("effect-aa", "mode", "taa");
-            console.log("TAA");
+            scene.setAttribute("effect-aa", "mode", "fxaa");
+            console.log("FXAA");
             toggle = false;
         }
         else{
@@ -89,13 +89,13 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 82){
         let scene = document.querySelector("#scene");
         if(toggle2){
-            scene.setAttribute("effect-lut", "enabled", "false");
-            console.log("LUT off");
+            scene.setAttribute("effect-lut", "lutmap", "warm");
+            console.log("LUT Warm");
             toggle2 = false;
         }
         else{
-            scene.setAttribute("effect-lut", "enabled", "true");
-            console.log("LUT on");
+            scene.setAttribute("effect-lut", "lutmap", "cold");
+            console.log("LUT Cold");
             toggle2 = true;
         }
     }

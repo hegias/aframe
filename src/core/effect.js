@@ -32,7 +32,6 @@ var proto = {
     lastEffectInitialized = this.pass;
     passes[this.effectName] = this.pass;
     this.rebuild();
-    console.log("[Effects] Init")
   },
 
   rebuild: function () {
@@ -41,7 +40,6 @@ var proto = {
     effectOrder.forEach(function (effect) {
       if (!passes[effect]) { return; }
       effectComposer.addPass(passes[effect]);
-      console.log("[Effects] pass added: " + effect);
     });
   },
 
@@ -75,6 +73,5 @@ module.exports.registerEffect = function (name, definition) {
   });
 
   proto.effectName = name;
-  console.log("[Effects] " + name + " registered");
   registerComponent('effect-' + name, proto);
 };

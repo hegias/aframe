@@ -10,12 +10,6 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 
     this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
 	this.scene = new THREE.Scene();
-	
-	// Identity LUT map
-	this.LUTarray = [new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/color-negative.png"),
-					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/thermal.png"),
-					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/black-white.png"),
-					new THREE.TextureLoader().load("../../../vendor/effects/LUTMaps/nightvision.png")]; 
 
 	// Basic pass render target
 	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
@@ -121,9 +115,38 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 	},
 
 	setMap: function( nlutMap ) {
-		fetch("../../../vendor/effects/LUTMaps/FG" + nlutMap + ".cube")
-  			.then(response => response.text())
-  			.then(text => this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(text, 25));
+		let map;
+
+		if(nlutMap === "basic"){
+			map = THREE.LUTBasic;
+		}
+		else if(nlutMap === "bright"){
+			map = THREE.LUTBright;
+		}
+		else if(nlutMap === "cold"){
+			map = THREE.LUTCold;
+		}
+		else if(nlutMap === "drama"){
+			map = THREE.LUTDrama;
+		}
+		else if(nlutMap === "tealorange1"){
+			map = THREE.LUTTealOrange1;
+		}
+		else if(nlutMap === "tealorange2"){
+			map = THREE.LUTTealOrange2;
+		}
+		else if(nlutMap === "vibrant"){
+			map = THREE.LUTVibrant;
+		}
+		else if(nlutMap === "warm"){
+			map = THREE.LUTWarm;
+		}
+		else{
+			console.error("LUT map " + nlutMap + " does not exist");
+		}
+
+		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(map, 25);
+
 	},
 
 	lutStringToTexture: function( lutString, lutSize ) {

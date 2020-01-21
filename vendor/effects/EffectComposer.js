@@ -131,8 +131,6 @@ Object.assign( THREE.EffectComposer.prototype, {
     this.renderer.getDrawingBufferSize(size);
     pass.setSize( size.width, size.height );
 
-    console.log("Pass added");
-
   },
 
   removePass: function ( pass ) {

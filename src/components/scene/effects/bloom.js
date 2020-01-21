@@ -15,8 +15,7 @@ registerEffect('bloom', {
   },
 
   initPass: function () {
-    this.pass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.5, 0.4, 0.5);
-    console.log("[Bloom] Init");
+    this.pass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.3, 0.4, 0.6);
   },
 
   update: function () {
