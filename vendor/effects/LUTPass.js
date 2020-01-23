@@ -37,8 +37,6 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 	} );
 
 	this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
-	this.setMap(lutmap);
-	this.lutMaterial.uniforms[ 'lutMapSize' ].value = 64.0;
 
 	// material for rendering the content of a render target
 
@@ -56,6 +54,22 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 		blendDstAlpha: THREE.ZeroFactor,
 		blendEquationAlpha: THREE.AddEquation
 	} );
+
+	this.lutmaps = new Map();
+	this.lutmaps.set("2strip", THREE.LUT2Strip);
+	this.lutmaps.set("3strip", THREE.LUT3Strip);
+	this.lutmaps.set("70s", THREE.LUT70s);
+	this.lutmaps.set("drive", THREE.LUTDrive);
+	this.lutmaps.set("fuji3513", THREE.LUTFuji3513);
+	this.lutmaps.set("grit", THREE.LUTGrit);
+	this.lutmaps.set("kodak2393", THREE.LUTKodak2393);
+	this.lutmaps.set("m31", THREE.LUTM31);
+	this.lutmaps.set("madmax", THREE.LUTMadMax);
+	this.lutmaps.set("moonrisekingdom", THREE.LUTMoonriseKingdom);
+	this.lutmaps.set("summer", THREE.LUTSummer);
+	this.lutmaps.set("thriller", THREE.LUTThriller);
+	
+	this.setMap(lutmap);
 
 	this.originalClearColor = new THREE.Color();
 	
@@ -115,38 +129,12 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 	},
 
 	setMap: function( nlutMap ) {
-		let map = THREE.LUTM31;
-
-		/*if(nlutMap === "basic"){
-			map = THREE.LUTTealOrange;
-		}
-		else if(nlutMap === "bright"){
-			map = THREE.LUTBright;
-		}
-		else if(nlutMap === "cold"){
-			map = THREE.LUTCold;
-		}
-		else if(nlutMap === "drama"){
-			map = THREE.LUTDrama;
-		}
-		else if(nlutMap === "tealorange1"){
-			map = THREE.LUTTealOrange1;
-		}
-		else if(nlutMap === "tealorange2"){
-			map = THREE.LUTTealOrange2;
-		}
-		else if(nlutMap === "vibrant"){
-			map = THREE.LUTVibrant;
-		}
-		else if(nlutMap === "warm"){
-			map = THREE.LUTWarm;
-		}
-		else{
-			console.error("LUT map " + nlutMap + " does not exist");
-		}*/
-
-		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(map, 64);
-
+		let selectedMap = this.lutmaps.get(nlutMap);
+		if(selectedMap == undefined)
+			console.error("LUTmap " + nlutMap + " does not exist");
+		console.log(selectedMap.title);
+		this.lutMaterial.uniforms[ 'lutMapSize' ].value = selectedMap.size;
+		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(selectedMap.map, selectedMap.size);
 	},
 
 	lutStringToTexture: function( lutString, lutSize ) {
