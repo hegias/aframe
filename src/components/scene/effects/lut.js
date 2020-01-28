@@ -5,7 +5,7 @@ require('../../../../vendor/effects/CopyShader');
 require('../../../../vendor/effects/ShaderPass');
 require('../../../../vendor/effects/LUTPass');
 require('../../../../vendor/effects/LUTShader');
-require('../../../../vendor/effects/LUTMaps/LUT2Strip');
+/*require('../../../../vendor/effects/LUTMaps/LUT2Strip');
 require('../../../../vendor/effects/LUTMaps/LUT3Strip');
 require('../../../../vendor/effects/LUTMaps/LUT70s');
 require('../../../../vendor/effects/LUTMaps/LUTDrive');
@@ -16,7 +16,8 @@ require('../../../../vendor/effects/LUTMaps/LUTM31');
 require('../../../../vendor/effects/LUTMaps/LUTMadMax');
 require('../../../../vendor/effects/LUTMaps/LUTMoonriseKingdom');
 require('../../../../vendor/effects/LUTMaps/LUTSummer');
-require('../../../../vendor/effects/LUTMaps/LUTThriller');
+require('../../../../vendor/effects/LUTMaps/LUTThriller');*/
+require('../../../../vendor/effects/LUTMaps/LUTTest');
 
 registerEffect('lut', {
 

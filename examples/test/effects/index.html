@@ -58,7 +58,7 @@
 </script> 
 
 <body>
-    <a-scene effect-bloom="threshold:0.9" effect-lut="lutmap: m31" effect-aa="mode : smaa" background="color: gray" id="scene">
+    <a-scene effect-bloom="threshold:0.9" effect-lut="lutmap: test" effect-aa="mode : smaa" background="color: gray" id="scene">
     <a-entity id="cubes" cube-man></a-entity>
     <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
     <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
@@ -86,12 +86,12 @@ window.addEventListener("keyup", (e) => {
 
 let toggle2 = true;
 let i = 0;
-let maps = ["2strip", "3strip", "70s", "drive", "fuji3513", "grit", "kodak2393", "m31", "madmax", "moonrisekingdom", "summer", "thriller"];
+let maps = ["m31", "test"];
 window.addEventListener("keyup", (e) => {
     if(e.keyCode == 82){
         scene.setAttribute("effect-lut", "lutmap", maps[i]);
         i++;
-        if(i > 11){
+        if(i > maps.length){
             i = 0;
         }
         /*let scene = document.querySelector("#scene");

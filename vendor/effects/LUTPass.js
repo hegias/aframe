@@ -56,18 +56,19 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 	} );
 
 	this.lutmaps = new Map();
-	this.lutmaps.set("2strip", THREE.LUT2Strip);
-	this.lutmaps.set("3strip", THREE.LUT3Strip);
-	this.lutmaps.set("70s", THREE.LUT70s);
-	this.lutmaps.set("drive", THREE.LUTDrive);
-	this.lutmaps.set("fuji3513", THREE.LUTFuji3513);
-	this.lutmaps.set("grit", THREE.LUTGrit);
-	this.lutmaps.set("kodak2393", THREE.LUTKodak2393);
-	this.lutmaps.set("m31", THREE.LUTM31);
-	this.lutmaps.set("madmax", THREE.LUTMadMax);
-	this.lutmaps.set("moonrisekingdom", THREE.LUTMoonriseKingdom);
-	this.lutmaps.set("summer", THREE.LUTSummer);
-	this.lutmaps.set("thriller", THREE.LUTThriller);
+	//this.lutmaps.set("2strip", THREE.LUT2Strip);
+	//this.lutmaps.set("3strip", THREE.LUT3Strip);
+	//this.lutmaps.set("70s", THREE.LUT70s);
+	//this.lutmaps.set("drive", THREE.LUTDrive);
+	//this.lutmaps.set("fuji3513", THREE.LUTFuji3513);
+	//this.lutmaps.set("grit", THREE.LUTGrit);
+	//this.lutmaps.set("kodak2393", THREE.LUTKodak2393);
+	//this.lutmaps.set("m31", THREE.LUTM31);
+	//this.lutmaps.set("madmax", THREE.LUTMadMax);
+	//this.lutmaps.set("moonrisekingdom", THREE.LUTMoonriseKingdom);
+	//this.lutmaps.set("summer", THREE.LUTSummer);
+	//this.lutmaps.set("thriller", THREE.LUTThriller);
+	this.lutmaps.set("test", THREE.LUTTest);
 	
 	this.setMap(lutmap);
 
@@ -162,6 +163,7 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		var texture = new THREE.DataTexture( floatArray, lutSize * lutSize, lutSize );
 		texture.type = THREE.FloatType;
 		texture.format = THREE.RGBAFormat;
+		console.log(texture);
 		return texture;
 	}
 
