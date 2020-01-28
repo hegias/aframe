@@ -12,7 +12,7 @@ require('../../../../vendor/effects/LUTMaps/LUTDrive');
 require('../../../../vendor/effects/LUTMaps/LUTFuji3513');
 require('../../../../vendor/effects/LUTMaps/LUTGrit');
 require('../../../../vendor/effects/LUTMaps/LUTKodak2393');
-require('../../../../vendor/effects/LUTMaps/LUTM31');
+*/require('../../../../vendor/effects/LUTMaps/LUTM31');/*
 require('../../../../vendor/effects/LUTMaps/LUTMadMax');
 require('../../../../vendor/effects/LUTMaps/LUTMoonriseKingdom');
 require('../../../../vendor/effects/LUTMaps/LUTSummer');
