@@ -1,5 +1,5 @@
 
-THREE.LUTPass = function ( width, height, lutmap ) {
+THREE.LUTPass = function ( width, height, lutmapIndex ) {
 
 	THREE.Pass.call( this );
 
@@ -22,17 +22,17 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
 	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
 
-	if ( THREE.LUTShader === undefined ) {
+	if ( THREE.MKLUTShader === undefined ) {
 
 		console.error( 'THREE.LUTPass: The pass relies on LUTShader.' );
 
 	}
 
 	this.lutMaterial = new THREE.ShaderMaterial( {
-		defines: Object.assign( {}, THREE.LUTShader.defines ),
-		uniforms: THREE.UniformsUtils.clone( THREE.LUTShader.uniforms ),
-		vertexShader: THREE.LUTShader.vertexShader,
-		fragmentShader: THREE.LUTShader.fragmentShader,
+		defines: Object.assign( {}, THREE.MKLUTShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.MKLUTShader.uniforms ),
+		vertexShader: THREE.MKLUTShader.vertexShader,
+		fragmentShader: THREE.MKLUTShader.fragmentShader,
 		blending: THREE.NoBlending
 	} );
 
@@ -55,22 +55,39 @@ THREE.LUTPass = function ( width, height, lutmap ) {
 		blendEquationAlpha: THREE.AddEquation
 	} );
 
-	this.lutmaps = new Map();
-	//this.lutmaps.set("2strip", THREE.LUT2Strip);
-	//this.lutmaps.set("3strip", THREE.LUT3Strip);
-	//this.lutmaps.set("70s", THREE.LUT70s);
-	//this.lutmaps.set("drive", THREE.LUTDrive);
-	//this.lutmaps.set("fuji3513", THREE.LUTFuji3513);
-	//this.lutmaps.set("grit", THREE.LUTGrit);
-	//this.lutmaps.set("kodak2393", THREE.LUTKodak2393);
-	this.lutmaps.set("m31", THREE.LUTM31);
-	//this.lutmaps.set("madmax", THREE.LUTMadMax);
-	//this.lutmaps.set("moonrisekingdom", THREE.LUTMoonriseKingdom);
-	//this.lutmaps.set("summer", THREE.LUTSummer);
-	//this.lutmaps.set("thriller", THREE.LUTThriller);
-	this.lutmaps.set("test", THREE.LUTTest);
-	
-	this.setMap(lutmap);
+	this.lutTextures = [
+		{ name: 'identity',        size: 2.0},
+		{ name: 'monochrome',      size: 8.0,	url: '../../../vendor/effects/LUTMaps/monochrome.png' },
+		{ name: 'sepia',           size: 8.0,	url: '../../../vendor/effects/LUTMaps/sepia.png' },
+		{ name: 'saturated',       size: 8.0,	url: '../../../vendor/effects/LUTMaps/saturated.png', },
+		{ name: 'posterize-3-rgb', size: 8.0,	url: '../../../vendor/effects/LUTMaps/posterize-3-rgb.png', },
+		{ name: 'posterize-3-lab', size: 8.0,	url: '../../../vendor/effects/LUTMaps/posterize-3-lab.png', },
+		{ name: 'posterize-4-lab', size: 8.0,	url: '../../../vendor/effects/LUTMaps/posterize-4-lab.png', },
+		{ name: 'inverse',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/inverse.png', },
+		{ name: 'color negative',  size: 8.0,	url: '../../../vendor/effects/LUTMaps/color-negative.png', },
+		{ name: 'high contrast',   size: 8.0,	url: '../../../vendor/effects/LUTMaps/high-contrast-bw.png', },
+		{ name: 'funky contrast',  size: 8.0,	url: '../../../vendor/effects/LUTMaps/funky-contrast.png', },
+		{ name: 'nightvision',     size: 8.0,	url: '../../../vendor/effects/LUTMaps/nightvision.png', },
+		{ name: 'thermal',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/thermal.png', },
+		{ name: 'b/w',             size: 8.0,	url: '../../../vendor/effects/LUTMaps/black-white.png', },
+		{ name: 'hue +60',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/hue-plus-60.png', },
+		{ name: 'hue +180',        size: 8.0,	url: '../../../vendor/effects/LUTMaps/hue-plus-180.png', },
+		{ name: 'hue -60',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/hue-minus-60.png', },
+		{ name: 'red to cyan',     size: 8.0,	url: '../../../vendor/effects/LUTMaps/red-to-cyan.png' },
+		{ name: 'blues',           size: 8.0,	url: '../../../vendor/effects/LUTMaps/blues.png' },
+		{ name: 'infrared',        size: 8.0,	url: '../../../vendor/effects/LUTMaps/infrared.png' },
+		{ name: 'radioactive',     size: 8.0,	url: '../../../vendor/effects/LUTMaps/radioactive.png' },
+		{ name: 'goolgey',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/googley.png' },
+		{ name: 'bgy',             size: 8.0,	url: '../../../vendor/effects/LUTMaps/bgy.png' },
+	];
+
+	this.lutTextures.forEach((info) => {
+		info.filter = undefined;
+		info.texture = this.makeLUTTexture(info);
+	});	
+
+	console.log(lutmapIndex);
+	this.setMap(lutmapIndex);
 
 	this.originalClearColor = new THREE.Color();
 	
@@ -129,14 +146,76 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 
 	},
 
-	setMap: function( nlutMap ) {
-		let selectedMap = this.lutmaps.get(nlutMap);
-		if(selectedMap == undefined)
-			console.error("LUTmap " + nlutMap + " does not exist");
-		console.log(selectedMap.title);
-		this.lutMaterial.uniforms[ 'lutMapSize' ].value = selectedMap.size;
-		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(selectedMap.map, selectedMap.size);
+	setMap: function( lutMapIndex ) {
+		//let selectedMap = this.lutmaps.get(nlutMap);
+		//if(selectedMap == undefined)
+		//	console.error("LUTmap " + nlutMap + " does not exist");
+		//console.log(selectedMap.title);
+		//this.lutMaterial.uniforms[ 'lutMapSize' ].value = selectedMap.size;
+		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(selectedMap.map, selectedMap.size);
+		console.log(this.lutTextures[lutMapIndex].name);
+		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutTextures[lutMapIndex].texture;
+		this.lutMaterial.uniforms[ 'lutMapSize' ].value = this.lutTextures[lutMapIndex].size;
+		console.log(this.lutMaterial.uniforms[ 'lutMapSize' ].value);
 	},
+
+	makeIdentityLutTexture: function() {
+		const identityLUT = new Uint8Array([
+			0,   0,   0, 255,  // black
+		  255,   0,   0, 255,  // red
+			0,   0, 255, 255,  // blue
+		  255,   0, 255, 255,  // magenta
+			0, 255,   0, 255,  // green
+		  255, 255,   0, 255,  // yellow
+			0, 255, 255, 255,  // cyan
+		  255, 255, 255, 255,  // white
+		]);
+	
+		return function(filter) {
+		  const texture = new THREE.DataTexture(identityLUT, 4, 2, THREE.RGBAFormat);
+		  texture.minFilter = filter;
+		  texture.magFilter = filter;
+		  texture.needsUpdate = true;
+		  texture.flipY = false;
+		  return texture;
+		};
+	  }(),
+
+	makeLUTTexture: function() {
+		const imgLoader = new THREE.ImageLoader();
+		const ctx = document.createElement('canvas').getContext('2d');
+	   
+		return function(info) {
+		  const texture = this.makeIdentityLutTexture(
+		  info.filter ? THREE.LinearFilter : THREE.NearestFilter);
+	   
+		  if (info.url) {
+			const lutSize = info.size;
+	   
+			// set the size to 2 (the identity size). We'll restore it when the
+			// image has loaded. This way the code using the lut doesn't have to
+			// care if the image has loaded or not
+			info.size = 2;
+	   
+			imgLoader.load(info.url, function(image) {
+			  const width = lutSize * lutSize;
+			  const height = lutSize;
+			  info.size = lutSize;
+			  ctx.canvas.width = width;
+			  ctx.canvas.height = height;
+			  ctx.drawImage(image, 0, 0);
+			  const imageData = ctx.getImageData(0, 0, width, height);
+
+			  texture.image.data = new Uint8Array(imageData.data.buffer);
+			  texture.image.width = width;
+			  texture.image.height = height;
+			  texture.needsUpdate = true;
+			});
+		  }
+	   
+		  return texture;
+		};
+	}(),
 
 	lutStringToTexture: function( lutString, lutSize ) {
 		var totalNumberOfComponents = lutSize * lutSize * lutSize * 4;

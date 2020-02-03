@@ -3,7 +3,7 @@ THREE.LUTShader = {
     uniforms: {
       tDiffuse: { value: null },
       lutMap:  { value: null },
-      lutMapSize: { value: 1, },
+      lutMapSize: { value: 8.0, },
     },
     
     vertexShader: [
@@ -35,20 +35,11 @@ THREE.LUTShader = {
         "float xOffset = slicePixelSize * 0.5 + texCoord.x * sliceInnerSize;",
         "float yRange = (texCoord.y * width + 0.5) / size;",
         "float s0 = xOffset + (zSlice0 * sliceSize);",
-   
-        "#ifdef FILTER_LUT",
-   
-          "float s1 = xOffset + (zSlice1 * sliceSize);",
-          "vec4 slice0Color = texture2D(tex, vec2(s0, yRange));",
-          "vec4 slice1Color = texture2D(tex, vec2(s1, yRange));",
-          "float zOffset = mod(texCoord.z * width, 1.0);",
-          "return mix(slice0Color, slice1Color, zOffset);",
-   
-        "#else",
-   
-          "return texture2D(tex, vec2( s0, yRange));",
-   
-        "#endif",
+        "float s1 = xOffset + (zSlice1 * sliceSize);",
+        "vec4 slice0Color = texture2D(tex, vec2(s0, yRange));",
+        "vec4 slice1Color = texture2D(tex, vec2(s1, yRange));",
+        "float zOffset = mod(texCoord.z * width, 1.0);",
+        "return mix(slice0Color, slice1Color, zOffset);",
       "}",
    
       "void main() {",

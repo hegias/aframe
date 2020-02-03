@@ -5,6 +5,7 @@ require('../../../../vendor/effects/CopyShader');
 require('../../../../vendor/effects/ShaderPass');
 require('../../../../vendor/effects/LUTPass');
 require('../../../../vendor/effects/LUTShader');
+require('../../../../vendor/effects/MKLUTShader');
 /*require('../../../../vendor/effects/LUTMaps/LUT2Strip');
 require('../../../../vendor/effects/LUTMaps/LUT3Strip');
 require('../../../../vendor/effects/LUTMaps/LUT70s');
@@ -22,7 +23,7 @@ require('../../../../vendor/effects/LUTMaps/LUTTest');
 registerEffect('lut', {
 
   schema: {
-    lutmap: {type: 'string', default: 'm31'},
+    lutmap: {default: 0},
     enabled: {default: true}
   },
 
