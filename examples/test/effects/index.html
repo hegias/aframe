@@ -8,59 +8,44 @@
     <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
   </head>
   <script>
-     /*AFRAME.registerComponent('cube-man', {
+     AFRAME.registerComponent('register-lutmaps', {
         init: function(){
-            //console.log('cube-man');
-            let countX = 50;
-            let cubes = [];
-            let size = 0.3, spacing = 0.05, x;
-            let sceneEl = document.querySelector('a-scene');
-            for (let i=0; i<countX; i++){
-                
-                cubes[i] = document.createElement('a-entity'); // create the element
-                
-                // create components, id, geometry, position
-                cubes[i].setAttribute('id', 'box_'+i.toString());
-                cubes[i].setAttribute('geometry', {
-                    primitive: 'box',
-                    height: size,
-                    width: size,
-                    depth: size
-                });
-                //x = (size + spacing) * countX * (-0.5) + i * (size + spacing) ;
-                //y = Math.random() * 0.25;
-                
-			    x = Math.random() - 0.5;
-				y = Math.random() - 0.5;
-				z = Math.random() - 0.5;
-				//mesh.rotation.x = Math.random();
-				//mesh.rotation.y = Math.random();
-                //mesh.rotation.z = Math.random();
-                cubes[i].setAttribute('position', {x: x, y: y, z: z});
-                cubes[i].setAttribute('rotation', {x: x, y: y, z: z});
-      
-                // you can add event listeners here for interaction, such as mouse events.
-                sceneEl.appendChild(cubes[i]);// Append the element to the scene, so it becomes part of the DOM.
-            }
-            // If you want to access THREEjs properties, you need to access them after they have loaded into the scene.
-            // Get the cubes as THREEjs object
-            cubePosArr = [];
-            cubes.forEach(function(c){
-                c.addEventListener('loaded', function(ev){
-                    let cube3D = c.getObject3D('mesh');
-                    //console.log(cube3D);
-                    cubePosArr.push(cube3D.position.x);
-                    //console.log(cubePosArr);
-                });
-            });
+    
+	        this.lutTextures = [
+		        { name: 'Normal',    	   		size: 32.0,	url: './assets/Normal.png' },
+		        { name: 'B&WHighContrastOld',	size: 32.0,	url: './assets/B&WHighContrastOld.png' },
+		        { name: 'BleachBypass',   		size: 32.0,	url: './assets/BleachBypass.png' },
+		        { name: 'Blockbuster14',     	size: 32.0,	url: './assets/Blockbuster14.png' },
+		        { name: 'BlueHue',     	   		size: 32.0,	url: './assets/BlueHue.png' },
+		        { name: 'Color',     	   		size: 32.0,	url: './assets/Color.png' },
+		        { name: 'DustyOrange',     	   	size: 32.0,	url: './assets/DustyOrange.png' },
+		        { name: 'Exposure',     	   	size: 32.0,	url: './assets/Exposure.png' },
+		        { name: 'F2AA3',     	   		size: 32.0,	url: './assets/F2AA3.png' },
+		        { name: 'GamebobAC',     	   	size: 32.0,	url: './assets/GamebobAC.png' },
+		        { name: 'Invert',     	   		size: 32.0,	url: './assets/Invert.png' },
+		        { name: 'Mask',     	   		size: 32.0,	url: './assets/Mask.png' },
+		        { name: 'Max2',     	   		size: 32.0,	url: './assets/Max2.png' },
+		        { name: 'RedDawn',     	   		size: 32.0,	url: './assets/RedDawn.png' },
+		        { name: 'RobotAction',     	   	size: 32.0,	url: './assets/RobotAction.png' },
+		        { name: 'SettingSun',     	   	size: 32.0,	url: './assets/SettingSun.png' },
+		        { name: 'SharpWasteland',     	size: 32.0,	url: './assets/SharpWasteland.png' },
+		        { name: 'Stock5',     	   		size: 32.0,	url: './assets/Stock5.png' },
+		        { name: 'Toxic',     	   		size: 32.0,	url: './assets/Toxic.png' },
+		        { name: 'Underwater',     	   	size: 32.0,	url: './assets/Underwater.png' },
+		        { name: 'Vibrance',     	   	size: 32.0,	url: './assets/Vibrance.png' },
+		        { name: 'Vibrance2',     	   	size: 32.0,	url: './assets/Vibrance2.png' },
+		        { name: 'Vintage11',     	   	size: 32.0,	url: './assets/Vintage11.png' },
+		        { name: 'WarmPurple',     	   	size: 32.0,	url: './assets/WarmPurple.png' },
+            ];
+            
         }
-    });*/
+    });
 </script> 
 
 <body>
-    <a-scene effect-bloom="threshold:0.9" effect-lut="" effect-aa="mode : smaa" background="color: gray" id="scene">
-    <a-entity id="cubes" cube-man></a-entity>
-    <a-entity gltf-model="url(./demo15Good.glb)"></a-entity>
+    <a-scene effect-lut="lutmap: 0" effect-aa="mode : smaa" background="color: gray" id="scene">
+    <a-entity id="lutmaps" register-lutmaps></a-entity>
+    <a-entity gltf-model="url(./assets/demo15Good.glb)"></a-entity>
     <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
     </a-scene>
 </body>
@@ -90,20 +75,9 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 82){
         scene.setAttribute("effect-lut", "lutmap", i);
         i++;
-        if(i > 20){
+        if(i > 23){
             i = 0;
         }
-        /*let scene = document.querySelector("#scene");
-        if(toggle2){
-            scene.setAttribute("effect-lut", "enabled", "true");
-            console.log("LUT Enabled");
-            toggle2 = false;
-        }
-        else{
-            scene.setAttribute("effect-lut", "enabled", "false");
-            console.log("LUT Disabled");
-            toggle2 = true;
-        }*/
     }
 })
 
@@ -112,13 +86,13 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 66){
         let scene = document.querySelector("#scene");
         if(toggle3){
-            scene.setAttribute("effect-bloom", "enabled", "false");
-            console.log("Bloom off");
+            scene.setAttribute("effect-lut", "enabled", "false");
+            console.log("LUT off");
             toggle3 = false;
         }
         else{
-            scene.setAttribute("effect-bloom", "enabled", "true");
-            console.log("Bloom on");
+            scene.setAttribute("effect-lut", "enabled", "true");
+            console.log("LUT on");
             toggle3 = true;
         }
     }

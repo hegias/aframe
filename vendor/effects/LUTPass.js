@@ -56,29 +56,30 @@ THREE.LUTPass = function ( width, height, lutmapIndex ) {
 	} );
 
 	this.lutTextures = [
-		{ name: 'identity',        size: 2.0},
-		{ name: 'monochrome',      size: 8.0,	url: '../../../vendor/effects/LUTMaps/monochrome.png' },
-		{ name: 'sepia',           size: 8.0,	url: '../../../vendor/effects/LUTMaps/sepia.png' },
-		{ name: 'saturated',       size: 8.0,	url: '../../../vendor/effects/LUTMaps/saturated.png', },
-		{ name: 'posterize-3-rgb', size: 8.0,	url: '../../../vendor/effects/LUTMaps/posterize-3-rgb.png', },
-		{ name: 'posterize-3-lab', size: 8.0,	url: '../../../vendor/effects/LUTMaps/posterize-3-lab.png', },
-		{ name: 'posterize-4-lab', size: 8.0,	url: '../../../vendor/effects/LUTMaps/posterize-4-lab.png', },
-		{ name: 'inverse',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/inverse.png', },
-		{ name: 'color negative',  size: 8.0,	url: '../../../vendor/effects/LUTMaps/color-negative.png', },
-		{ name: 'high contrast',   size: 8.0,	url: '../../../vendor/effects/LUTMaps/high-contrast-bw.png', },
-		{ name: 'funky contrast',  size: 8.0,	url: '../../../vendor/effects/LUTMaps/funky-contrast.png', },
-		{ name: 'nightvision',     size: 8.0,	url: '../../../vendor/effects/LUTMaps/nightvision.png', },
-		{ name: 'thermal',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/thermal.png', },
-		{ name: 'b/w',             size: 8.0,	url: '../../../vendor/effects/LUTMaps/black-white.png', },
-		{ name: 'hue +60',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/hue-plus-60.png', },
-		{ name: 'hue +180',        size: 8.0,	url: '../../../vendor/effects/LUTMaps/hue-plus-180.png', },
-		{ name: 'hue -60',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/hue-minus-60.png', },
-		{ name: 'red to cyan',     size: 8.0,	url: '../../../vendor/effects/LUTMaps/red-to-cyan.png' },
-		{ name: 'blues',           size: 8.0,	url: '../../../vendor/effects/LUTMaps/blues.png' },
-		{ name: 'infrared',        size: 8.0,	url: '../../../vendor/effects/LUTMaps/infrared.png' },
-		{ name: 'radioactive',     size: 8.0,	url: '../../../vendor/effects/LUTMaps/radioactive.png' },
-		{ name: 'goolgey',         size: 8.0,	url: '../../../vendor/effects/LUTMaps/googley.png' },
-		{ name: 'bgy',             size: 8.0,	url: '../../../vendor/effects/LUTMaps/bgy.png' },
+		{ name: 'Normal',    	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/Normal.png' },
+		{ name: 'B&WHighContrastOld',	size: 32.0,	url: '../../../vendor/effects/LUTMaps/B&WHighContrastOld.png' },
+		{ name: 'BleachBypass',   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/BleachBypass.png' },
+		{ name: 'Blockbuster14',     	size: 32.0,	url: '../../../vendor/effects/LUTMaps/Blockbuster14.png' },
+		{ name: 'BlueHue',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/BlueHue.png' },
+		{ name: 'Color',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/Color.png' },
+		{ name: 'DustyOrange',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/DustyOrange.png' },
+		{ name: 'Exposure',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/Exposure.png' },
+		{ name: 'F2AA3',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/F2AA3.png' },
+		{ name: 'GamebobAC',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/GamebobAC.png' },
+		{ name: 'Invert',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/Invert.png' },
+		{ name: 'Mask',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/Mask.png' },
+		{ name: 'Max2',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/Max2.png' },
+		{ name: 'RedDawn',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/RedDawn.png' },
+		{ name: 'RobotAction',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/RobotAction.png' },
+		{ name: 'SettingSun',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/SettingSun.png' },
+		{ name: 'SharpWasteland',     	size: 32.0,	url: '../../../vendor/effects/LUTMaps/SharpWasteland.png' },
+		{ name: 'Stock5',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/Stock5.png' },
+		{ name: 'Toxic',     	   		size: 32.0,	url: '../../../vendor/effects/LUTMaps/Toxic.png' },
+		{ name: 'Underwater',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/Underwater.png' },
+		{ name: 'Vibrance',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/Vibrance.png' },
+		{ name: 'Vibrance2',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/Vibrance2.png' },
+		{ name: 'Vintage11',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/Vintage11.png' },
+		{ name: 'WarmPurple',     	   	size: 32.0,	url: '../../../vendor/effects/LUTMaps/WarmPurple.png' },
 	];
 
 	this.lutTextures.forEach((info) => {
@@ -86,7 +87,6 @@ THREE.LUTPass = function ( width, height, lutmapIndex ) {
 		info.texture = this.makeLUTTexture(info);
 	});	
 
-	console.log(lutmapIndex);
 	this.setMap(lutmapIndex);
 
 	this.originalClearColor = new THREE.Color();
@@ -99,7 +99,6 @@ THREE.LUTPass = function ( width, height, lutmapIndex ) {
 	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
 	this.quad.frustumCulled = false; // Avoid getting clipped
 	this.scene.add( this.quad );
-	this.i = 0;
 
 };
 
@@ -153,10 +152,10 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		//console.log(selectedMap.title);
 		//this.lutMaterial.uniforms[ 'lutMapSize' ].value = selectedMap.size;
 		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(selectedMap.map, selectedMap.size);
-		console.log(this.lutTextures[lutMapIndex].name);
+		console.log("LUT name: " + this.lutTextures[lutMapIndex].name);
 		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutTextures[lutMapIndex].texture;
 		this.lutMaterial.uniforms[ 'lutMapSize' ].value = this.lutTextures[lutMapIndex].size;
-		console.log(this.lutMaterial.uniforms[ 'lutMapSize' ].value);
+		console.log("LUT size: " + this.lutMaterial.uniforms[ 'lutMapSize' ].value);
 	},
 
 	makeIdentityLutTexture: function() {
@@ -176,7 +175,7 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		  texture.minFilter = filter;
 		  texture.magFilter = filter;
 		  texture.needsUpdate = true;
-		  texture.flipY = false;
+		  texture.flipY = true;
 		  return texture;
 		};
 	  }(),
@@ -191,11 +190,6 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 	   
 		  if (info.url) {
 			const lutSize = info.size;
-	   
-			// set the size to 2 (the identity size). We'll restore it when the
-			// image has loaded. This way the code using the lut doesn't have to
-			// care if the image has loaded or not
-			info.size = 2;
 	   
 			imgLoader.load(info.url, function(image) {
 			  const width = lutSize * lutSize;
