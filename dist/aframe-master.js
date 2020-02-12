@@ -430,7 +430,7 @@ module.exports = function (a, b) {
 /*!
  * The buffer module from node.js, for the browser.
  *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @author   Feross Aboukhadijeh <http://feross.org>
  * @license  MIT
  */
 /* eslint-disable no-proto */
@@ -2219,7 +2219,7 @@ function isnan (val) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},_dereq_("buffer").Buffer)
 
-},{"base64-js":3,"buffer":7,"ieee754":37,"isarray":8}],8:[function(_dereq_,module,exports){
+},{"base64-js":3,"buffer":7,"ieee754":17,"isarray":8}],8:[function(_dereq_,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
@@ -2704,70 +2704,10 @@ module.exports = function deepAssign(target) {
 	return target;
 };
 
-},{"is-obj":42}],13:[function(_dereq_,module,exports){
-'use strict';
-
-var keys = _dereq_('object-keys');
-var hasSymbols = typeof Symbol === 'function' && typeof Symbol('foo') === 'symbol';
-
-var toStr = Object.prototype.toString;
-var concat = Array.prototype.concat;
-var origDefineProperty = Object.defineProperty;
-
-var isFunction = function (fn) {
-	return typeof fn === 'function' && toStr.call(fn) === '[object Function]';
-};
-
-var arePropertyDescriptorsSupported = function () {
-	var obj = {};
-	try {
-		origDefineProperty(obj, 'x', { enumerable: false, value: obj });
-		// eslint-disable-next-line no-unused-vars, no-restricted-syntax
-		for (var _ in obj) { // jscs:ignore disallowUnusedVariables
-			return false;
-		}
-		return obj.x === obj;
-	} catch (e) { /* this is IE 8. */
-		return false;
-	}
-};
-var supportsDescriptors = origDefineProperty && arePropertyDescriptorsSupported();
-
-var defineProperty = function (object, name, value, predicate) {
-	if (name in object && (!isFunction(predicate) || !predicate())) {
-		return;
-	}
-	if (supportsDescriptors) {
-		origDefineProperty(object, name, {
-			configurable: true,
-			enumerable: false,
-			value: value,
-			writable: true
-		});
-	} else {
-		object[name] = value;
-	}
-};
-
-var defineProperties = function (object, map) {
-	var predicates = arguments.length > 2 ? arguments[2] : {};
-	var props = keys(map);
-	if (hasSymbols) {
-		props = concat.call(props, Object.getOwnPropertySymbols(map));
-	}
-	for (var i = 0; i < props.length; i += 1) {
-		defineProperty(object, props[i], map[props[i]], predicates[props[i]]);
-	}
-};
-
-defineProperties.supportsDescriptors = !!supportsDescriptors;
-
-module.exports = defineProperties;
-
-},{"object-keys":48}],14:[function(_dereq_,module,exports){
+},{"is-obj":21}],13:[function(_dereq_,module,exports){
 /*! (C) WebReflection Mit Style License */
 (function(t,n,r,i){"use strict";function st(e,t){for(var n=0,r=e.length;n<r;n++)gt(e[n],t)}function ot(e){for(var t=0,n=e.length,r;t<n;t++)r=e[t],it(r,w[at(r)])}function ut(e){return function(t){F(t)&&(gt(t,e),st(t.querySelectorAll(E),e))}}function at(e){var t=R.call(e,"is"),n=e.nodeName.toUpperCase(),r=x.call(b,t?m+t.toUpperCase():v+n);return t&&-1<r&&!ft(n,t)?-1:r}function ft(e,t){return-1<E.indexOf(e+'[is="'+t+'"]')}function lt(e){var t=e.currentTarget,n=e.attrChange,r=e.attrName,i=e.target;Y&&(!i||i===t)&&t.attributeChangedCallback&&r!=="style"&&e.prevValue!==e.newValue&&t.attributeChangedCallback(r,n===e[f]?null:e.prevValue,n===e[c]?null:e.newValue)}function ct(e){var t=ut(e);return function(e){$.push(t,e.target)}}function ht(e){G&&(G=!1,e.currentTarget.removeEventListener(p,ht)),st((e.target||n).querySelectorAll(E),e.detail===u?u:o),j&&vt()}function pt(e,t){var n=this;U.call(n,e,t),Z.call(n,{target:n})}function dt(e,t){P(e,t),nt?nt.observe(e,X):(Q&&(e.setAttribute=pt,e[s]=tt(e),e.addEventListener(d,Z)),e.addEventListener(h,lt)),e.createdCallback&&Y&&(e.created=!0,e.createdCallback(),e.created=!1)}function vt(){for(var e,t=0,n=I.length;t<n;t++)e=I[t],S.contains(e)||(n--,I.splice(t--,1),gt(e,u))}function mt(e){throw new Error("A "+e+" type is already registered")}function gt(e,t){var n,r=at(e);-1<r&&(rt(e,w[r]),r=0,t===o&&!e[o]?(e[u]=!1,e[o]=!0,r=1,j&&x.call(I,e)<0&&I.push(e)):t===u&&!e[u]&&(e[o]=!1,e[u]=!0,r=1),r&&(n=e[t+"Callback"])&&n.call(e))}if(i in n)return;var s="__"+i+(Math.random()*1e5>>0),o="attached",u="detached",a="extends",f="ADDITION",l="MODIFICATION",c="REMOVAL",h="DOMAttrModified",p="DOMContentLoaded",d="DOMSubtreeModified",v="<",m="=",g=/^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/,y=["ANNOTATION-XML","COLOR-PROFILE","FONT-FACE","FONT-FACE-SRC","FONT-FACE-URI","FONT-FACE-FORMAT","FONT-FACE-NAME","MISSING-GLYPH"],b=[],w=[],E="",S=n.documentElement,x=b.indexOf||function(e){for(var t=this.length;t--&&this[t]!==e;);return t},T=r.prototype,N=T.hasOwnProperty,C=T.isPrototypeOf,k=r.defineProperty,L=r.getOwnPropertyDescriptor,A=r.getOwnPropertyNames,O=r.getPrototypeOf,M=r.setPrototypeOf,_=!!r.__proto__,D=r.create||function yt(e){return e?(yt.prototype=e,new yt):this},P=M||(_?function(e,t){return e.__proto__=t,e}:A&&L?function(){function e(e,t){for(var n,r=A(t),i=0,s=r.length;i<s;i++)n=r[i],N.call(e,n)||k(e,n,L(t,n))}return function(t,n){do e(t,n);while((n=O(n))&&!C.call(n,t));return t}}():function(e,t){for(var n in t)e[n]=t[n];return e}),H=t.MutationObserver||t.WebKitMutationObserver,B=(t.HTMLElement||t.Element||t.Node).prototype,j=!C.call(B,S),F=j?function(e){return e.nodeType===1}:function(e){return C.call(B,e)},I=j&&[],q=B.cloneNode,R=B.getAttribute,U=B.setAttribute,z=B.removeAttribute,W=n.createElement,X=H&&{attributes:!0,characterData:!0,attributeOldValue:!0},V=H||function(e){Q=!1,S.removeEventListener(h,V)},$,J=t.requestAnimationFrame||t.webkitRequestAnimationFrame||t.mozRequestAnimationFrame||t.msRequestAnimationFrame||function(e){setTimeout(e,10)},K=!1,Q=!0,G=!0,Y=!0,Z,et,tt,nt,rt,it;M||_?(rt=function(e,t){C.call(t,e)||dt(e,t)},it=dt):(rt=function(e,t){e[s]||(e[s]=r(!0),dt(e,t))},it=rt),j?(Q=!1,function(){var t=L(B,"addEventListener"),n=t.value,r=function(e){var t=new CustomEvent(h,{bubbles:!0});t.attrName=e,t.prevValue=R.call(this,e),t.newValue=null,t[c]=t.attrChange=2,z.call(this,e),this.dispatchEvent(t)},i=function(t,n){var r=this.hasAttribute(t),i=r&&R.call(this,t);e=new CustomEvent(h,{bubbles:!0}),U.call(this,t,n),e.attrName=t,e.prevValue=r?i:null,e.newValue=n,r?e[l]=e.attrChange=1:e[f]=e.attrChange=0,this.dispatchEvent(e)},o=function(e){var t=e.currentTarget,n=t[s],r=e.propertyName,i;n.hasOwnProperty(r)&&(n=n[r],i=new CustomEvent(h,{bubbles:!0}),i.attrName=n.name,i.prevValue=n.value||null,i.newValue=n.value=t[r]||null,i.prevValue==null?i[f]=i.attrChange=0:i[l]=i.attrChange=1,t.dispatchEvent(i))};t.value=function(e,t,u){e===h&&this.attributeChangedCallback&&this.setAttribute!==i&&(this[s]={className:{name:"class",value:this.className}},this.setAttribute=i,this.removeAttribute=r,n.call(this,"propertychange",o)),n.call(this,e,t,u)},k(B,"addEventListener",t)}()):H||(S.addEventListener(h,V),S.setAttribute(s,1),S.removeAttribute(s),Q&&(Z=function(e){var t=this,n,r,i;if(t===e.target){n=t[s],t[s]=r=tt(t);for(i in r){if(!(i in n))return et(0,t,i,n[i],r[i],f);if(r[i]!==n[i])return et(1,t,i,n[i],r[i],l)}for(i in n)if(!(i in r))return et(2,t,i,n[i],r[i],c)}},et=function(e,t,n,r,i,s){var o={attrChange:e,currentTarget:t,attrName:n,prevValue:r,newValue:i};o[s]=e,lt(o)},tt=function(e){for(var t,n,r={},i=e.attributes,s=0,o=i.length;s<o;s++)t=i[s],n=t.name,n!=="setAttribute"&&(r[n]=t.value);return r})),n[i]=function(t,r){c=t.toUpperCase(),K||(K=!0,H?(nt=function(e,t){function n(e,t){for(var n=0,r=e.length;n<r;t(e[n++]));}return new H(function(r){for(var i,s,o,u=0,a=r.length;u<a;u++)i=r[u],i.type==="childList"?(n(i.addedNodes,e),n(i.removedNodes,t)):(s=i.target,Y&&s.attributeChangedCallback&&i.attributeName!=="style"&&(o=R.call(s,i.attributeName),o!==i.oldValue&&s.attributeChangedCallback(i.attributeName,i.oldValue,o)))})}(ut(o),ut(u)),nt.observe(n,{childList:!0,subtree:!0})):($=[],J(function d(){while($.length)$.shift().call(null,$.shift());J(d)}),n.addEventListener("DOMNodeInserted",ct(o)),n.addEventListener("DOMNodeRemoved",ct(u))),n.addEventListener(p,ht),n.addEventListener("readystatechange",ht),n.createElement=function(e,t){var r=W.apply(n,arguments),i=""+e,s=x.call(b,(t?m:v)+(t||i).toUpperCase()),o=-1<s;return t&&(r.setAttribute("is",t=t.toLowerCase()),o&&(o=ft(i.toUpperCase(),t))),Y=!n.createElement.innerHTMLHelper,o&&it(r,w[s]),r},B.cloneNode=function(e){var t=q.call(this,!!e),n=at(t);return-1<n&&it(t,w[n]),e&&ot(t.querySelectorAll(E)),t}),-2<x.call(b,m+c)+x.call(b,v+c)&&mt(t);if(!g.test(c)||-1<x.call(y,c))throw new Error("The type "+t+" is invalid");var i=function(){return f?n.createElement(l,c):n.createElement(l)},s=r||T,f=N.call(s,a),l=f?r[a].toUpperCase():c,c,h;return f&&-1<x.call(b,v+l)&&mt(l),h=b.push((f?m:v)+c)-1,E=E.concat(E.length?",":"",f?l+'[is="'+t.toLowerCase()+'"]':l),i.prototype=w[h]=N.call(s,"prototype")?s.prototype:D(B),st(n.querySelectorAll(E),o),i}})(window,document,Object,"registerElement");
-},{}],15:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 module.exports = function(dtype) {
   switch (dtype) {
     case 'int8':
@@ -2793,959 +2733,7 @@ module.exports = function(dtype) {
   }
 }
 
-},{}],16:[function(_dereq_,module,exports){
-'use strict';
-
-/* globals
-	Atomics,
-	SharedArrayBuffer,
-*/
-
-var undefined; // eslint-disable-line no-shadow-restricted-names
-
-var $TypeError = TypeError;
-
-var ThrowTypeError = Object.getOwnPropertyDescriptor
-	? (function () { return Object.getOwnPropertyDescriptor(arguments, 'callee').get; }())
-	: function () { throw new $TypeError(); };
-
-var hasSymbols = _dereq_('has-symbols')();
-
-var getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto
-
-var generator; // = function * () {};
-var generatorFunction = generator ? getProto(generator) : undefined;
-var asyncFn; // async function() {};
-var asyncFunction = asyncFn ? asyncFn.constructor : undefined;
-var asyncGen; // async function * () {};
-var asyncGenFunction = asyncGen ? getProto(asyncGen) : undefined;
-var asyncGenIterator = asyncGen ? asyncGen() : undefined;
-
-var TypedArray = typeof Uint8Array === 'undefined' ? undefined : getProto(Uint8Array);
-
-var INTRINSICS = {
-	'$ %Array%': Array,
-	'$ %ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
-	'$ %ArrayBufferPrototype%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer.prototype,
-	'$ %ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,
-	'$ %ArrayPrototype%': Array.prototype,
-	'$ %ArrayProto_entries%': Array.prototype.entries,
-	'$ %ArrayProto_forEach%': Array.prototype.forEach,
-	'$ %ArrayProto_keys%': Array.prototype.keys,
-	'$ %ArrayProto_values%': Array.prototype.values,
-	'$ %AsyncFromSyncIteratorPrototype%': undefined,
-	'$ %AsyncFunction%': asyncFunction,
-	'$ %AsyncFunctionPrototype%': asyncFunction ? asyncFunction.prototype : undefined,
-	'$ %AsyncGenerator%': asyncGen ? getProto(asyncGenIterator) : undefined,
-	'$ %AsyncGeneratorFunction%': asyncGenFunction,
-	'$ %AsyncGeneratorPrototype%': asyncGenFunction ? asyncGenFunction.prototype : undefined,
-	'$ %AsyncIteratorPrototype%': asyncGenIterator && hasSymbols && Symbol.asyncIterator ? asyncGenIterator[Symbol.asyncIterator]() : undefined,
-	'$ %Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,
-	'$ %Boolean%': Boolean,
-	'$ %BooleanPrototype%': Boolean.prototype,
-	'$ %DataView%': typeof DataView === 'undefined' ? undefined : DataView,
-	'$ %DataViewPrototype%': typeof DataView === 'undefined' ? undefined : DataView.prototype,
-	'$ %Date%': Date,
-	'$ %DatePrototype%': Date.prototype,
-	'$ %decodeURI%': decodeURI,
-	'$ %decodeURIComponent%': decodeURIComponent,
-	'$ %encodeURI%': encodeURI,
-	'$ %encodeURIComponent%': encodeURIComponent,
-	'$ %Error%': Error,
-	'$ %ErrorPrototype%': Error.prototype,
-	'$ %eval%': eval, // eslint-disable-line no-eval
-	'$ %EvalError%': EvalError,
-	'$ %EvalErrorPrototype%': EvalError.prototype,
-	'$ %Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,
-	'$ %Float32ArrayPrototype%': typeof Float32Array === 'undefined' ? undefined : Float32Array.prototype,
-	'$ %Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
-	'$ %Float64ArrayPrototype%': typeof Float64Array === 'undefined' ? undefined : Float64Array.prototype,
-	'$ %Function%': Function,
-	'$ %FunctionPrototype%': Function.prototype,
-	'$ %Generator%': generator ? getProto(generator()) : undefined,
-	'$ %GeneratorFunction%': generatorFunction,
-	'$ %GeneratorPrototype%': generatorFunction ? generatorFunction.prototype : undefined,
-	'$ %Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
-	'$ %Int8ArrayPrototype%': typeof Int8Array === 'undefined' ? undefined : Int8Array.prototype,
-	'$ %Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
-	'$ %Int16ArrayPrototype%': typeof Int16Array === 'undefined' ? undefined : Int8Array.prototype,
-	'$ %Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
-	'$ %Int32ArrayPrototype%': typeof Int32Array === 'undefined' ? undefined : Int32Array.prototype,
-	'$ %isFinite%': isFinite,
-	'$ %isNaN%': isNaN,
-	'$ %IteratorPrototype%': hasSymbols ? getProto(getProto([][Symbol.iterator]())) : undefined,
-	'$ %JSON%': JSON,
-	'$ %JSONParse%': JSON.parse,
-	'$ %Map%': typeof Map === 'undefined' ? undefined : Map,
-	'$ %MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols ? undefined : getProto(new Map()[Symbol.iterator]()),
-	'$ %MapPrototype%': typeof Map === 'undefined' ? undefined : Map.prototype,
-	'$ %Math%': Math,
-	'$ %Number%': Number,
-	'$ %NumberPrototype%': Number.prototype,
-	'$ %Object%': Object,
-	'$ %ObjectPrototype%': Object.prototype,
-	'$ %ObjProto_toString%': Object.prototype.toString,
-	'$ %ObjProto_valueOf%': Object.prototype.valueOf,
-	'$ %parseFloat%': parseFloat,
-	'$ %parseInt%': parseInt,
-	'$ %Promise%': typeof Promise === 'undefined' ? undefined : Promise,
-	'$ %PromisePrototype%': typeof Promise === 'undefined' ? undefined : Promise.prototype,
-	'$ %PromiseProto_then%': typeof Promise === 'undefined' ? undefined : Promise.prototype.then,
-	'$ %Promise_all%': typeof Promise === 'undefined' ? undefined : Promise.all,
-	'$ %Promise_reject%': typeof Promise === 'undefined' ? undefined : Promise.reject,
-	'$ %Promise_resolve%': typeof Promise === 'undefined' ? undefined : Promise.resolve,
-	'$ %Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,
-	'$ %RangeError%': RangeError,
-	'$ %RangeErrorPrototype%': RangeError.prototype,
-	'$ %ReferenceError%': ReferenceError,
-	'$ %ReferenceErrorPrototype%': ReferenceError.prototype,
-	'$ %Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,
-	'$ %RegExp%': RegExp,
-	'$ %RegExpPrototype%': RegExp.prototype,
-	'$ %Set%': typeof Set === 'undefined' ? undefined : Set,
-	'$ %SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols ? undefined : getProto(new Set()[Symbol.iterator]()),
-	'$ %SetPrototype%': typeof Set === 'undefined' ? undefined : Set.prototype,
-	'$ %SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer,
-	'$ %SharedArrayBufferPrototype%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer.prototype,
-	'$ %String%': String,
-	'$ %StringIteratorPrototype%': hasSymbols ? getProto(''[Symbol.iterator]()) : undefined,
-	'$ %StringPrototype%': String.prototype,
-	'$ %Symbol%': hasSymbols ? Symbol : undefined,
-	'$ %SymbolPrototype%': hasSymbols ? Symbol.prototype : undefined,
-	'$ %SyntaxError%': SyntaxError,
-	'$ %SyntaxErrorPrototype%': SyntaxError.prototype,
-	'$ %ThrowTypeError%': ThrowTypeError,
-	'$ %TypedArray%': TypedArray,
-	'$ %TypedArrayPrototype%': TypedArray ? TypedArray.prototype : undefined,
-	'$ %TypeError%': $TypeError,
-	'$ %TypeErrorPrototype%': $TypeError.prototype,
-	'$ %Uint8Array%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array,
-	'$ %Uint8ArrayPrototype%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array.prototype,
-	'$ %Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray,
-	'$ %Uint8ClampedArrayPrototype%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray.prototype,
-	'$ %Uint16Array%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array,
-	'$ %Uint16ArrayPrototype%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array.prototype,
-	'$ %Uint32Array%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array,
-	'$ %Uint32ArrayPrototype%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array.prototype,
-	'$ %URIError%': URIError,
-	'$ %URIErrorPrototype%': URIError.prototype,
-	'$ %WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,
-	'$ %WeakMapPrototype%': typeof WeakMap === 'undefined' ? undefined : WeakMap.prototype,
-	'$ %WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet,
-	'$ %WeakSetPrototype%': typeof WeakSet === 'undefined' ? undefined : WeakSet.prototype
-};
-
-var bind = _dereq_('function-bind');
-var $replace = bind.call(Function.call, String.prototype.replace);
-
-/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
-var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
-var reEscapeChar = /\\(\\)?/g; /** Used to match backslashes in property paths. */
-var stringToPath = function stringToPath(string) {
-	var result = [];
-	$replace(string, rePropName, function (match, number, quote, subString) {
-		result[result.length] = quote ? $replace(subString, reEscapeChar, '$1') : (number || match);
-	});
-	return result;
-};
-/* end adaptation */
-
-var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
-	var key = '$ ' + name;
-	if (!(key in INTRINSICS)) {
-		throw new SyntaxError('intrinsic ' + name + ' does not exist!');
-	}
-
-	// istanbul ignore if // hopefully this is impossible to test :-)
-	if (typeof INTRINSICS[key] === 'undefined' && !allowMissing) {
-		throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
-	}
-
-	return INTRINSICS[key];
-};
-
-module.exports = function GetIntrinsic(name, allowMissing) {
-	if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
-		throw new TypeError('"allowMissing" argument must be a boolean');
-	}
-
-	var parts = stringToPath(name);
-
-	if (parts.length === 0) {
-		return getBaseIntrinsic(name, allowMissing);
-	}
-
-	var value = getBaseIntrinsic('%' + parts[0] + '%', allowMissing);
-	for (var i = 1; i < parts.length; i += 1) {
-		if (value != null) {
-			value = value[parts[i]];
-		}
-	}
-	return value;
-};
-
-},{"function-bind":32,"has-symbols":34}],17:[function(_dereq_,module,exports){
-'use strict';
-
-var GetIntrinsic = _dereq_('./GetIntrinsic');
-
-var $Object = GetIntrinsic('%Object%');
-var $EvalError = GetIntrinsic('%EvalError%');
-var $TypeError = GetIntrinsic('%TypeError%');
-var $String = GetIntrinsic('%String%');
-var $Date = GetIntrinsic('%Date%');
-var $Number = GetIntrinsic('%Number%');
-var $floor = GetIntrinsic('%Math.floor%');
-var $DateUTC = GetIntrinsic('%Date.UTC%');
-var $abs = GetIntrinsic('%Math.abs%');
-
-var assertRecord = _dereq_('./helpers/assertRecord');
-var isPropertyDescriptor = _dereq_('./helpers/isPropertyDescriptor');
-var $isNaN = _dereq_('./helpers/isNaN');
-var $isFinite = _dereq_('./helpers/isFinite');
-var sign = _dereq_('./helpers/sign');
-var mod = _dereq_('./helpers/mod');
-var isPrefixOf = _dereq_('./helpers/isPrefixOf');
-var callBound = _dereq_('./helpers/callBound');
-
-var IsCallable = _dereq_('is-callable');
-var toPrimitive = _dereq_('es-to-primitive/es5');
-
-var has = _dereq_('has');
-
-var $getUTCFullYear = callBound('Date.prototype.getUTCFullYear');
-
-var HoursPerDay = 24;
-var MinutesPerHour = 60;
-var SecondsPerMinute = 60;
-var msPerSecond = 1e3;
-var msPerMinute = msPerSecond * SecondsPerMinute;
-var msPerHour = msPerMinute * MinutesPerHour;
-var msPerDay = 86400000;
-
-// https://es5.github.io/#x9
-var ES5 = {
-	ToPrimitive: toPrimitive,
-
-	ToBoolean: function ToBoolean(value) {
-		return !!value;
-	},
-	ToNumber: function ToNumber(value) {
-		return +value; // eslint-disable-line no-implicit-coercion
-	},
-	ToInteger: function ToInteger(value) {
-		var number = this.ToNumber(value);
-		if ($isNaN(number)) { return 0; }
-		if (number === 0 || !$isFinite(number)) { return number; }
-		return sign(number) * Math.floor(Math.abs(number));
-	},
-	ToInt32: function ToInt32(x) {
-		return this.ToNumber(x) >> 0;
-	},
-	ToUint32: function ToUint32(x) {
-		return this.ToNumber(x) >>> 0;
-	},
-	ToUint16: function ToUint16(value) {
-		var number = this.ToNumber(value);
-		if ($isNaN(number) || number === 0 || !$isFinite(number)) { return 0; }
-		var posInt = sign(number) * Math.floor(Math.abs(number));
-		return mod(posInt, 0x10000);
-	},
-	ToString: function ToString(value) {
-		return $String(value);
-	},
-	ToObject: function ToObject(value) {
-		this.CheckObjectCoercible(value);
-		return $Object(value);
-	},
-	CheckObjectCoercible: function CheckObjectCoercible(value, optMessage) {
-		/* jshint eqnull:true */
-		if (value == null) {
-			throw new $TypeError(optMessage || 'Cannot call method on ' + value);
-		}
-		return value;
-	},
-	IsCallable: IsCallable,
-	SameValue: function SameValue(x, y) {
-		if (x === y) { // 0 === -0, but they are not identical.
-			if (x === 0) { return 1 / x === 1 / y; }
-			return true;
-		}
-		return $isNaN(x) && $isNaN(y);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-8
-	Type: function Type(x) {
-		if (x === null) {
-			return 'Null';
-		}
-		if (typeof x === 'undefined') {
-			return 'Undefined';
-		}
-		if (typeof x === 'function' || typeof x === 'object') {
-			return 'Object';
-		}
-		if (typeof x === 'number') {
-			return 'Number';
-		}
-		if (typeof x === 'boolean') {
-			return 'Boolean';
-		}
-		if (typeof x === 'string') {
-			return 'String';
-		}
-	},
-
-	// https://ecma-international.org/ecma-262/6.0/#sec-property-descriptor-specification-type
-	IsPropertyDescriptor: function IsPropertyDescriptor(Desc) {
-		return isPropertyDescriptor(this, Desc);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-8.10.1
-	IsAccessorDescriptor: function IsAccessorDescriptor(Desc) {
-		if (typeof Desc === 'undefined') {
-			return false;
-		}
-
-		assertRecord(this, 'Property Descriptor', 'Desc', Desc);
-
-		if (!has(Desc, '[[Get]]') && !has(Desc, '[[Set]]')) {
-			return false;
-		}
-
-		return true;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-8.10.2
-	IsDataDescriptor: function IsDataDescriptor(Desc) {
-		if (typeof Desc === 'undefined') {
-			return false;
-		}
-
-		assertRecord(this, 'Property Descriptor', 'Desc', Desc);
-
-		if (!has(Desc, '[[Value]]') && !has(Desc, '[[Writable]]')) {
-			return false;
-		}
-
-		return true;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-8.10.3
-	IsGenericDescriptor: function IsGenericDescriptor(Desc) {
-		if (typeof Desc === 'undefined') {
-			return false;
-		}
-
-		assertRecord(this, 'Property Descriptor', 'Desc', Desc);
-
-		if (!this.IsAccessorDescriptor(Desc) && !this.IsDataDescriptor(Desc)) {
-			return true;
-		}
-
-		return false;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-8.10.4
-	FromPropertyDescriptor: function FromPropertyDescriptor(Desc) {
-		if (typeof Desc === 'undefined') {
-			return Desc;
-		}
-
-		assertRecord(this, 'Property Descriptor', 'Desc', Desc);
-
-		if (this.IsDataDescriptor(Desc)) {
-			return {
-				value: Desc['[[Value]]'],
-				writable: !!Desc['[[Writable]]'],
-				enumerable: !!Desc['[[Enumerable]]'],
-				configurable: !!Desc['[[Configurable]]']
-			};
-		} else if (this.IsAccessorDescriptor(Desc)) {
-			return {
-				get: Desc['[[Get]]'],
-				set: Desc['[[Set]]'],
-				enumerable: !!Desc['[[Enumerable]]'],
-				configurable: !!Desc['[[Configurable]]']
-			};
-		} else {
-			throw new $TypeError('FromPropertyDescriptor must be called with a fully populated Property Descriptor');
-		}
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-8.10.5
-	ToPropertyDescriptor: function ToPropertyDescriptor(Obj) {
-		if (this.Type(Obj) !== 'Object') {
-			throw new $TypeError('ToPropertyDescriptor requires an object');
-		}
-
-		var desc = {};
-		if (has(Obj, 'enumerable')) {
-			desc['[[Enumerable]]'] = this.ToBoolean(Obj.enumerable);
-		}
-		if (has(Obj, 'configurable')) {
-			desc['[[Configurable]]'] = this.ToBoolean(Obj.configurable);
-		}
-		if (has(Obj, 'value')) {
-			desc['[[Value]]'] = Obj.value;
-		}
-		if (has(Obj, 'writable')) {
-			desc['[[Writable]]'] = this.ToBoolean(Obj.writable);
-		}
-		if (has(Obj, 'get')) {
-			var getter = Obj.get;
-			if (typeof getter !== 'undefined' && !this.IsCallable(getter)) {
-				throw new TypeError('getter must be a function');
-			}
-			desc['[[Get]]'] = getter;
-		}
-		if (has(Obj, 'set')) {
-			var setter = Obj.set;
-			if (typeof setter !== 'undefined' && !this.IsCallable(setter)) {
-				throw new $TypeError('setter must be a function');
-			}
-			desc['[[Set]]'] = setter;
-		}
-
-		if ((has(desc, '[[Get]]') || has(desc, '[[Set]]')) && (has(desc, '[[Value]]') || has(desc, '[[Writable]]'))) {
-			throw new $TypeError('Invalid property descriptor. Cannot both specify accessors and a value or writable attribute');
-		}
-		return desc;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-11.9.3
-	'Abstract Equality Comparison': function AbstractEqualityComparison(x, y) {
-		var xType = this.Type(x);
-		var yType = this.Type(y);
-		if (xType === yType) {
-			return x === y; // ES6+ specified this shortcut anyways.
-		}
-		if (x == null && y == null) {
-			return true;
-		}
-		if (xType === 'Number' && yType === 'String') {
-			return this['Abstract Equality Comparison'](x, this.ToNumber(y));
-		}
-		if (xType === 'String' && yType === 'Number') {
-			return this['Abstract Equality Comparison'](this.ToNumber(x), y);
-		}
-		if (xType === 'Boolean') {
-			return this['Abstract Equality Comparison'](this.ToNumber(x), y);
-		}
-		if (yType === 'Boolean') {
-			return this['Abstract Equality Comparison'](x, this.ToNumber(y));
-		}
-		if ((xType === 'String' || xType === 'Number') && yType === 'Object') {
-			return this['Abstract Equality Comparison'](x, this.ToPrimitive(y));
-		}
-		if (xType === 'Object' && (yType === 'String' || yType === 'Number')) {
-			return this['Abstract Equality Comparison'](this.ToPrimitive(x), y);
-		}
-		return false;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-11.9.6
-	'Strict Equality Comparison': function StrictEqualityComparison(x, y) {
-		var xType = this.Type(x);
-		var yType = this.Type(y);
-		if (xType !== yType) {
-			return false;
-		}
-		if (xType === 'Undefined' || xType === 'Null') {
-			return true;
-		}
-		return x === y; // shortcut for steps 4-7
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-11.8.5
-	// eslint-disable-next-line max-statements
-	'Abstract Relational Comparison': function AbstractRelationalComparison(x, y, LeftFirst) {
-		if (this.Type(LeftFirst) !== 'Boolean') {
-			throw new $TypeError('Assertion failed: LeftFirst argument must be a Boolean');
-		}
-		var px;
-		var py;
-		if (LeftFirst) {
-			px = this.ToPrimitive(x, $Number);
-			py = this.ToPrimitive(y, $Number);
-		} else {
-			py = this.ToPrimitive(y, $Number);
-			px = this.ToPrimitive(x, $Number);
-		}
-		var bothStrings = this.Type(px) === 'String' && this.Type(py) === 'String';
-		if (!bothStrings) {
-			var nx = this.ToNumber(px);
-			var ny = this.ToNumber(py);
-			if ($isNaN(nx) || $isNaN(ny)) {
-				return undefined;
-			}
-			if ($isFinite(nx) && $isFinite(ny) && nx === ny) {
-				return false;
-			}
-			if (nx === 0 && ny === 0) {
-				return false;
-			}
-			if (nx === Infinity) {
-				return false;
-			}
-			if (ny === Infinity) {
-				return true;
-			}
-			if (ny === -Infinity) {
-				return false;
-			}
-			if (nx === -Infinity) {
-				return true;
-			}
-			return nx < ny; // by now, these are both nonzero, finite, and not equal
-		}
-		if (isPrefixOf(py, px)) {
-			return false;
-		}
-		if (isPrefixOf(px, py)) {
-			return true;
-		}
-		return px < py; // both strings, neither a prefix of the other. shortcut for steps c-f
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.10
-	msFromTime: function msFromTime(t) {
-		return mod(t, msPerSecond);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.10
-	SecFromTime: function SecFromTime(t) {
-		return mod($floor(t / msPerSecond), SecondsPerMinute);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.10
-	MinFromTime: function MinFromTime(t) {
-		return mod($floor(t / msPerMinute), MinutesPerHour);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.10
-	HourFromTime: function HourFromTime(t) {
-		return mod($floor(t / msPerHour), HoursPerDay);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.2
-	Day: function Day(t) {
-		return $floor(t / msPerDay);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.2
-	TimeWithinDay: function TimeWithinDay(t) {
-		return mod(t, msPerDay);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.3
-	DayFromYear: function DayFromYear(y) {
-		return (365 * (y - 1970)) + $floor((y - 1969) / 4) - $floor((y - 1901) / 100) + $floor((y - 1601) / 400);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.3
-	TimeFromYear: function TimeFromYear(y) {
-		return msPerDay * this.DayFromYear(y);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.3
-	YearFromTime: function YearFromTime(t) {
-		// largest y such that this.TimeFromYear(y) <= t
-		return $getUTCFullYear(new $Date(t));
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.6
-	WeekDay: function WeekDay(t) {
-		return mod(this.Day(t) + 4, 7);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.3
-	DaysInYear: function DaysInYear(y) {
-		if (mod(y, 4) !== 0) {
-			return 365;
-		}
-		if (mod(y, 100) !== 0) {
-			return 366;
-		}
-		if (mod(y, 400) !== 0) {
-			return 365;
-		}
-		return 366;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.3
-	InLeapYear: function InLeapYear(t) {
-		var days = this.DaysInYear(this.YearFromTime(t));
-		if (days === 365) {
-			return 0;
-		}
-		if (days === 366) {
-			return 1;
-		}
-		throw new $EvalError('Assertion failed: there are not 365 or 366 days in a year, got: ' + days);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.4
-	DayWithinYear: function DayWithinYear(t) {
-		return this.Day(t) - this.DayFromYear(this.YearFromTime(t));
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.4
-	MonthFromTime: function MonthFromTime(t) {
-		var day = this.DayWithinYear(t);
-		if (0 <= day && day < 31) {
-			return 0;
-		}
-		var leap = this.InLeapYear(t);
-		if (31 <= day && day < (59 + leap)) {
-			return 1;
-		}
-		if ((59 + leap) <= day && day < (90 + leap)) {
-			return 2;
-		}
-		if ((90 + leap) <= day && day < (120 + leap)) {
-			return 3;
-		}
-		if ((120 + leap) <= day && day < (151 + leap)) {
-			return 4;
-		}
-		if ((151 + leap) <= day && day < (181 + leap)) {
-			return 5;
-		}
-		if ((181 + leap) <= day && day < (212 + leap)) {
-			return 6;
-		}
-		if ((212 + leap) <= day && day < (243 + leap)) {
-			return 7;
-		}
-		if ((243 + leap) <= day && day < (273 + leap)) {
-			return 8;
-		}
-		if ((273 + leap) <= day && day < (304 + leap)) {
-			return 9;
-		}
-		if ((304 + leap) <= day && day < (334 + leap)) {
-			return 10;
-		}
-		if ((334 + leap) <= day && day < (365 + leap)) {
-			return 11;
-		}
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.5
-	DateFromTime: function DateFromTime(t) {
-		var m = this.MonthFromTime(t);
-		var d = this.DayWithinYear(t);
-		if (m === 0) {
-			return d + 1;
-		}
-		if (m === 1) {
-			return d - 30;
-		}
-		var leap = this.InLeapYear(t);
-		if (m === 2) {
-			return d - 58 - leap;
-		}
-		if (m === 3) {
-			return d - 89 - leap;
-		}
-		if (m === 4) {
-			return d - 119 - leap;
-		}
-		if (m === 5) {
-			return d - 150 - leap;
-		}
-		if (m === 6) {
-			return d - 180 - leap;
-		}
-		if (m === 7) {
-			return d - 211 - leap;
-		}
-		if (m === 8) {
-			return d - 242 - leap;
-		}
-		if (m === 9) {
-			return d - 272 - leap;
-		}
-		if (m === 10) {
-			return d - 303 - leap;
-		}
-		if (m === 11) {
-			return d - 333 - leap;
-		}
-		throw new $EvalError('Assertion failed: MonthFromTime returned an impossible value: ' + m);
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.12
-	MakeDay: function MakeDay(year, month, date) {
-		if (!$isFinite(year) || !$isFinite(month) || !$isFinite(date)) {
-			return NaN;
-		}
-		var y = this.ToInteger(year);
-		var m = this.ToInteger(month);
-		var dt = this.ToInteger(date);
-		var ym = y + $floor(m / 12);
-		var mn = mod(m, 12);
-		var t = $DateUTC(ym, mn, 1);
-		if (this.YearFromTime(t) !== ym || this.MonthFromTime(t) !== mn || this.DateFromTime(t) !== 1) {
-			return NaN;
-		}
-		return this.Day(t) + dt - 1;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.13
-	MakeDate: function MakeDate(day, time) {
-		if (!$isFinite(day) || !$isFinite(time)) {
-			return NaN;
-		}
-		return (day * msPerDay) + time;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.11
-	MakeTime: function MakeTime(hour, min, sec, ms) {
-		if (!$isFinite(hour) || !$isFinite(min) || !$isFinite(sec) || !$isFinite(ms)) {
-			return NaN;
-		}
-		var h = this.ToInteger(hour);
-		var m = this.ToInteger(min);
-		var s = this.ToInteger(sec);
-		var milli = this.ToInteger(ms);
-		var t = (h * msPerHour) + (m * msPerMinute) + (s * msPerSecond) + milli;
-		return t;
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-15.9.1.14
-	TimeClip: function TimeClip(time) {
-		if (!$isFinite(time) || $abs(time) > 8.64e15) {
-			return NaN;
-		}
-		return $Number(new $Date(this.ToNumber(time)));
-	},
-
-	// https://ecma-international.org/ecma-262/5.1/#sec-5.2
-	modulo: function modulo(x, y) {
-		return mod(x, y);
-	}
-};
-
-module.exports = ES5;
-
-},{"./GetIntrinsic":16,"./helpers/assertRecord":18,"./helpers/callBound":20,"./helpers/isFinite":21,"./helpers/isNaN":22,"./helpers/isPrefixOf":23,"./helpers/isPropertyDescriptor":24,"./helpers/mod":25,"./helpers/sign":26,"es-to-primitive/es5":27,"has":36,"is-callable":40}],18:[function(_dereq_,module,exports){
-'use strict';
-
-var GetIntrinsic = _dereq_('../GetIntrinsic');
-
-var $TypeError = GetIntrinsic('%TypeError%');
-var $SyntaxError = GetIntrinsic('%SyntaxError%');
-
-var has = _dereq_('has');
-
-var predicates = {
-	// https://ecma-international.org/ecma-262/6.0/#sec-property-descriptor-specification-type
-	'Property Descriptor': function isPropertyDescriptor(ES, Desc) {
-		if (ES.Type(Desc) !== 'Object') {
-			return false;
-		}
-		var allowed = {
-			'[[Configurable]]': true,
-			'[[Enumerable]]': true,
-			'[[Get]]': true,
-			'[[Set]]': true,
-			'[[Value]]': true,
-			'[[Writable]]': true
-		};
-
-		for (var key in Desc) { // eslint-disable-line
-			if (has(Desc, key) && !allowed[key]) {
-				return false;
-			}
-		}
-
-		var isData = has(Desc, '[[Value]]');
-		var IsAccessor = has(Desc, '[[Get]]') || has(Desc, '[[Set]]');
-		if (isData && IsAccessor) {
-			throw new $TypeError('Property Descriptors may not be both accessor and data descriptors');
-		}
-		return true;
-	}
-};
-
-module.exports = function assertRecord(ES, recordType, argumentName, value) {
-	var predicate = predicates[recordType];
-	if (typeof predicate !== 'function') {
-		throw new $SyntaxError('unknown record type: ' + recordType);
-	}
-	if (!predicate(ES, value)) {
-		throw new $TypeError(argumentName + ' must be a ' + recordType);
-	}
-};
-
-},{"../GetIntrinsic":16,"has":36}],19:[function(_dereq_,module,exports){
-'use strict';
-
-var bind = _dereq_('function-bind');
-
-var GetIntrinsic = _dereq_('../GetIntrinsic');
-
-var $Function = GetIntrinsic('%Function%');
-var $apply = $Function.apply;
-var $call = $Function.call;
-
-module.exports = function callBind() {
-	return bind.apply($call, arguments);
-};
-
-module.exports.apply = function applyBind() {
-	return bind.apply($apply, arguments);
-};
-
-},{"../GetIntrinsic":16,"function-bind":32}],20:[function(_dereq_,module,exports){
-'use strict';
-
-var GetIntrinsic = _dereq_('../GetIntrinsic');
-
-var callBind = _dereq_('./callBind');
-
-var $indexOf = callBind(GetIntrinsic('String.prototype.indexOf'));
-
-module.exports = function callBoundIntrinsic(name, allowMissing) {
-	var intrinsic = GetIntrinsic(name, !!allowMissing);
-	if (typeof intrinsic === 'function' && $indexOf(name, '.prototype.')) {
-		return callBind(intrinsic);
-	}
-	return intrinsic;
-};
-
-},{"../GetIntrinsic":16,"./callBind":19}],21:[function(_dereq_,module,exports){
-'use strict';
-
-var $isNaN = Number.isNaN || function (a) { return a !== a; };
-
-module.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };
-
-},{}],22:[function(_dereq_,module,exports){
-'use strict';
-
-module.exports = Number.isNaN || function isNaN(a) {
-	return a !== a;
-};
-
-},{}],23:[function(_dereq_,module,exports){
-'use strict';
-
-var $strSlice = _dereq_('../helpers/callBound')('String.prototype.slice');
-
-module.exports = function isPrefixOf(prefix, string) {
-	if (prefix === string) {
-		return true;
-	}
-	if (prefix.length > string.length) {
-		return false;
-	}
-	return $strSlice(string, 0, prefix.length) === prefix;
-};
-
-},{"../helpers/callBound":20}],24:[function(_dereq_,module,exports){
-'use strict';
-
-var GetIntrinsic = _dereq_('../GetIntrinsic');
-
-var has = _dereq_('has');
-var $TypeError = GetIntrinsic('%TypeError%');
-
-module.exports = function IsPropertyDescriptor(ES, Desc) {
-	if (ES.Type(Desc) !== 'Object') {
-		return false;
-	}
-	var allowed = {
-		'[[Configurable]]': true,
-		'[[Enumerable]]': true,
-		'[[Get]]': true,
-		'[[Set]]': true,
-		'[[Value]]': true,
-		'[[Writable]]': true
-	};
-
-    for (var key in Desc) { // eslint-disable-line
-		if (has(Desc, key) && !allowed[key]) {
-			return false;
-		}
-	}
-
-	if (ES.IsDataDescriptor(Desc) && ES.IsAccessorDescriptor(Desc)) {
-		throw new $TypeError('Property Descriptors may not be both accessor and data descriptors');
-	}
-	return true;
-};
-
-},{"../GetIntrinsic":16,"has":36}],25:[function(_dereq_,module,exports){
-'use strict';
-
-module.exports = function mod(number, modulo) {
-	var remain = number % modulo;
-	return Math.floor(remain >= 0 ? remain : remain + modulo);
-};
-
-},{}],26:[function(_dereq_,module,exports){
-'use strict';
-
-module.exports = function sign(number) {
-	return number >= 0 ? 1 : -1;
-};
-
-},{}],27:[function(_dereq_,module,exports){
-'use strict';
-
-var toStr = Object.prototype.toString;
-
-var isPrimitive = _dereq_('./helpers/isPrimitive');
-
-var isCallable = _dereq_('is-callable');
-
-// http://ecma-international.org/ecma-262/5.1/#sec-8.12.8
-var ES5internalSlots = {
-	'[[DefaultValue]]': function (O) {
-		var actualHint;
-		if (arguments.length > 1) {
-			actualHint = arguments[1];
-		} else {
-			actualHint = toStr.call(O) === '[object Date]' ? String : Number;
-		}
-
-		if (actualHint === String || actualHint === Number) {
-			var methods = actualHint === String ? ['toString', 'valueOf'] : ['valueOf', 'toString'];
-			var value, i;
-			for (i = 0; i < methods.length; ++i) {
-				if (isCallable(O[methods[i]])) {
-					value = O[methods[i]]();
-					if (isPrimitive(value)) {
-						return value;
-					}
-				}
-			}
-			throw new TypeError('No default value');
-		}
-		throw new TypeError('invalid [[DefaultValue]] hint supplied');
-	}
-};
-
-// http://ecma-international.org/ecma-262/5.1/#sec-9.1
-module.exports = function ToPrimitive(input) {
-	if (isPrimitive(input)) {
-		return input;
-	}
-	if (arguments.length > 1) {
-		return ES5internalSlots['[[DefaultValue]]'](input, arguments[1]);
-	}
-	return ES5internalSlots['[[DefaultValue]]'](input);
-};
-
-},{"./helpers/isPrimitive":28,"is-callable":40}],28:[function(_dereq_,module,exports){
-module.exports = function isPrimitive(value) {
-	return value === null || (typeof value !== 'function' && typeof value !== 'object');
-};
-
-},{}],29:[function(_dereq_,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 /*eslint new-cap:0*/
 var dtype = _dereq_('dtype')
 
@@ -3805,132 +2793,7 @@ function flattenVertexData (data, output, offset) {
   return output
 }
 
-},{"dtype":15}],30:[function(_dereq_,module,exports){
-'use strict';
-
-var isCallable = _dereq_('is-callable');
-
-var toStr = Object.prototype.toString;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-var forEachArray = function forEachArray(array, iterator, receiver) {
-    for (var i = 0, len = array.length; i < len; i++) {
-        if (hasOwnProperty.call(array, i)) {
-            if (receiver == null) {
-                iterator(array[i], i, array);
-            } else {
-                iterator.call(receiver, array[i], i, array);
-            }
-        }
-    }
-};
-
-var forEachString = function forEachString(string, iterator, receiver) {
-    for (var i = 0, len = string.length; i < len; i++) {
-        // no such thing as a sparse string.
-        if (receiver == null) {
-            iterator(string.charAt(i), i, string);
-        } else {
-            iterator.call(receiver, string.charAt(i), i, string);
-        }
-    }
-};
-
-var forEachObject = function forEachObject(object, iterator, receiver) {
-    for (var k in object) {
-        if (hasOwnProperty.call(object, k)) {
-            if (receiver == null) {
-                iterator(object[k], k, object);
-            } else {
-                iterator.call(receiver, object[k], k, object);
-            }
-        }
-    }
-};
-
-var forEach = function forEach(list, iterator, thisArg) {
-    if (!isCallable(iterator)) {
-        throw new TypeError('iterator must be a function');
-    }
-
-    var receiver;
-    if (arguments.length >= 3) {
-        receiver = thisArg;
-    }
-
-    if (toStr.call(list) === '[object Array]') {
-        forEachArray(list, iterator, receiver);
-    } else if (typeof list === 'string') {
-        forEachString(list, iterator, receiver);
-    } else {
-        forEachObject(list, iterator, receiver);
-    }
-};
-
-module.exports = forEach;
-
-},{"is-callable":40}],31:[function(_dereq_,module,exports){
-'use strict';
-
-/* eslint no-invalid-this: 1 */
-
-var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
-var slice = Array.prototype.slice;
-var toStr = Object.prototype.toString;
-var funcType = '[object Function]';
-
-module.exports = function bind(that) {
-    var target = this;
-    if (typeof target !== 'function' || toStr.call(target) !== funcType) {
-        throw new TypeError(ERROR_MESSAGE + target);
-    }
-    var args = slice.call(arguments, 1);
-
-    var bound;
-    var binder = function () {
-        if (this instanceof bound) {
-            var result = target.apply(
-                this,
-                args.concat(slice.call(arguments))
-            );
-            if (Object(result) === result) {
-                return result;
-            }
-            return this;
-        } else {
-            return target.apply(
-                that,
-                args.concat(slice.call(arguments))
-            );
-        }
-    };
-
-    var boundLength = Math.max(0, target.length - args.length);
-    var boundArgs = [];
-    for (var i = 0; i < boundLength; i++) {
-        boundArgs.push('$' + i);
-    }
-
-    bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
-
-    if (target.prototype) {
-        var Empty = function Empty() {};
-        Empty.prototype = target.prototype;
-        bound.prototype = new Empty();
-        Empty.prototype = null;
-    }
-
-    return bound;
-};
-
-},{}],32:[function(_dereq_,module,exports){
-'use strict';
-
-var implementation = _dereq_('./implementation');
-
-module.exports = Function.prototype.bind || implementation;
-
-},{"./implementation":31}],33:[function(_dereq_,module,exports){
+},{"dtype":14}],16:[function(_dereq_,module,exports){
 (function (global){
 var win;
 
@@ -3948,76 +2811,7 @@ module.exports = win;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],34:[function(_dereq_,module,exports){
-(function (global){
-'use strict';
-
-var origSymbol = global.Symbol;
-var hasSymbolSham = _dereq_('./shams');
-
-module.exports = function hasNativeSymbols() {
-	if (typeof origSymbol !== 'function') { return false; }
-	if (typeof Symbol !== 'function') { return false; }
-	if (typeof origSymbol('foo') !== 'symbol') { return false; }
-	if (typeof Symbol('bar') !== 'symbol') { return false; }
-
-	return hasSymbolSham();
-};
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-
-},{"./shams":35}],35:[function(_dereq_,module,exports){
-'use strict';
-
-/* eslint complexity: [2, 17], max-statements: [2, 33] */
-module.exports = function hasSymbols() {
-	if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }
-	if (typeof Symbol.iterator === 'symbol') { return true; }
-
-	var obj = {};
-	var sym = Symbol('test');
-	var symObj = Object(sym);
-	if (typeof sym === 'string') { return false; }
-
-	if (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }
-	if (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }
-
-	// temp disabled per https://github.com/ljharb/object.assign/issues/17
-	// if (sym instanceof Symbol) { return false; }
-	// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
-	// if (!(symObj instanceof Symbol)) { return false; }
-
-	// if (typeof Symbol.prototype.toString !== 'function') { return false; }
-	// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
-
-	var symVal = 42;
-	obj[sym] = symVal;
-	for (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax
-	if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }
-
-	if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }
-
-	var syms = Object.getOwnPropertySymbols(obj);
-	if (syms.length !== 1 || syms[0] !== sym) { return false; }
-
-	if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }
-
-	if (typeof Object.getOwnPropertyDescriptor === 'function') {
-		var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
-		if (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }
-	}
-
-	return true;
-};
-
-},{}],36:[function(_dereq_,module,exports){
-'use strict';
-
-var bind = _dereq_('function-bind');
-
-module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
-
-},{"function-bind":32}],37:[function(_dereq_,module,exports){
+},{}],17:[function(_dereq_,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = (nBytes * 8) - mLen - 1
@@ -4103,7 +2897,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],38:[function(_dereq_,module,exports){
+},{}],18:[function(_dereq_,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -4132,7 +2926,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],39:[function(_dereq_,module,exports){
+},{}],19:[function(_dereq_,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -4155,46 +2949,7 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],40:[function(_dereq_,module,exports){
-'use strict';
-
-var fnToStr = Function.prototype.toString;
-
-var constructorRegex = /^\s*class\b/;
-var isES6ClassFn = function isES6ClassFunction(value) {
-	try {
-		var fnStr = fnToStr.call(value);
-		return constructorRegex.test(fnStr);
-	} catch (e) {
-		return false; // not a function
-	}
-};
-
-var tryFunctionObject = function tryFunctionToStr(value) {
-	try {
-		if (isES6ClassFn(value)) { return false; }
-		fnToStr.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-var toStr = Object.prototype.toString;
-var fnClass = '[object Function]';
-var genClass = '[object GeneratorFunction]';
-var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
-
-module.exports = function isCallable(value) {
-	if (!value) { return false; }
-	if (typeof value !== 'function' && typeof value !== 'object') { return false; }
-	if (typeof value === 'function' && !value.prototype) { return true; }
-	if (hasToStringTag) { return tryFunctionObject(value); }
-	if (isES6ClassFn(value)) { return false; }
-	var strClass = toStr.call(value);
-	return strClass === fnClass || strClass === genClass;
-};
-
-},{}],41:[function(_dereq_,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 module.exports = isFunction
 
 var toString = Object.prototype.toString
@@ -4211,14 +2966,14 @@ function isFunction (fn) {
       fn === window.prompt))
 };
 
-},{}],42:[function(_dereq_,module,exports){
+},{}],21:[function(_dereq_,module,exports){
 'use strict';
 module.exports = function (x) {
 	var type = typeof x;
 	return x !== null && (type === 'object' || type === 'function');
 };
 
-},{}],43:[function(_dereq_,module,exports){
+},{}],22:[function(_dereq_,module,exports){
 var wordWrap = _dereq_('word-wrapper')
 var xtend = _dereq_('xtend')
 var number = _dereq_('as-number')
@@ -4620,7 +3375,7 @@ function getBinaryOpts(opt) {
 
 }).call(this,_dereq_("buffer").Buffer)
 
-},{"./lib/is-binary":45,"buffer":7,"parse-bmfont-ascii":50,"parse-bmfont-binary":51,"parse-bmfont-xml":52,"xhr":76,"xtend":78}],45:[function(_dereq_,module,exports){
+},{"./lib/is-binary":24,"buffer":7,"parse-bmfont-ascii":26,"parse-bmfont-binary":27,"parse-bmfont-xml":28,"xhr":48,"xtend":50}],24:[function(_dereq_,module,exports){
 (function (Buffer){
 var equal = _dereq_('buffer-equal')
 var HEADER = new Buffer([66, 77, 70, 3])
@@ -4632,7 +3387,7 @@ module.exports = function(buf) {
 }
 }).call(this,_dereq_("buffer").Buffer)
 
-},{"buffer":7,"buffer-equal":6}],46:[function(_dereq_,module,exports){
+},{"buffer":7,"buffer-equal":6}],25:[function(_dereq_,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -5286,9 +4041,10 @@ function parseIntList(data) {
     return parseInt(val, 10)
   })
 }
-},{}],54:[function(_dereq_,module,exports){
-var trim = _dereq_('string.prototype.trim')
-  , forEach = _dereq_('for-each')
+},{}],30:[function(_dereq_,module,exports){
+var trim = function(string) {
+  return string.replace(/^\s+|\s+$/g, '');
+}
   , isArray = function(arg) {
       return Object.prototype.toString.call(arg) === '[object Array]';
     }
@@ -5299,27 +4055,27 @@ module.exports = function (headers) {
 
   var result = {}
 
-  forEach(
-      trim(headers).split('\n')
-    , function (row) {
-        var index = row.indexOf(':')
-          , key = trim(row.slice(0, index)).toLowerCase()
-          , value = trim(row.slice(index + 1))
+  var headersArr = trim(headers).split('\n')
 
-        if (typeof(result[key]) === 'undefined') {
-          result[key] = value
-        } else if (isArray(result[key])) {
-          result[key].push(value)
-        } else {
-          result[key] = [ result[key], value ]
-        }
-      }
-  )
+  for (var i = 0; i < headersArr.length; i++) {
+    var row = headersArr[i]
+    var index = row.indexOf(':')
+    , key = trim(row.slice(0, index)).toLowerCase()
+    , value = trim(row.slice(index + 1))
+
+    if (typeof(result[key]) === 'undefined') {
+      result[key] = value
+    } else if (isArray(result[key])) {
+      result[key].push(value)
+    } else {
+      result[key] = [ result[key], value ]
+    }
+  }
 
   return result
 }
 
-},{"for-each":30,"string.prototype.trim":59}],55:[function(_dereq_,module,exports){
+},{}],31:[function(_dereq_,module,exports){
 (function (global){
 var performance = global.performance || {};
 
@@ -5352,7 +4108,7 @@ module.exports = present;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],56:[function(_dereq_,module,exports){
+},{}],32:[function(_dereq_,module,exports){
 (function (setImmediate){
 (function(root) {
 
@@ -5551,7 +4307,7 @@ module.exports = present;
 
 }).call(this,_dereq_("timers").setImmediate)
 
-},{"timers":72}],57:[function(_dereq_,module,exports){
+},{"timers":44}],33:[function(_dereq_,module,exports){
 var dtype = _dereq_('dtype')
 var anArray = _dereq_('an-array')
 var isBuffer = _dereq_('is-buffer')
@@ -5594,74 +4350,7 @@ module.exports = function createQuadElements(array, opt) {
     }
     return indices
 }
-},{"an-array":1,"dtype":15,"is-buffer":39}],58:[function(_dereq_,module,exports){
-'use strict';
-
-var bind = _dereq_('function-bind');
-var ES = _dereq_('es-abstract/es5');
-var replace = bind.call(Function.call, String.prototype.replace);
-
-/* eslint-disable no-control-regex */
-var leftWhitespace = /^[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+/;
-var rightWhitespace = /[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+$/;
-/* eslint-enable no-control-regex */
-
-module.exports = function trim() {
-	var S = ES.ToString(ES.CheckObjectCoercible(this));
-	return replace(replace(S, leftWhitespace, ''), rightWhitespace, '');
-};
-
-},{"es-abstract/es5":17,"function-bind":32}],59:[function(_dereq_,module,exports){
-'use strict';
-
-var bind = _dereq_('function-bind');
-var define = _dereq_('define-properties');
-
-var implementation = _dereq_('./implementation');
-var getPolyfill = _dereq_('./polyfill');
-var shim = _dereq_('./shim');
-
-var boundTrim = bind.call(Function.call, getPolyfill());
-
-define(boundTrim, {
-	getPolyfill: getPolyfill,
-	implementation: implementation,
-	shim: shim
-});
-
-module.exports = boundTrim;
-
-},{"./implementation":58,"./polyfill":60,"./shim":61,"define-properties":13,"function-bind":32}],60:[function(_dereq_,module,exports){
-'use strict';
-
-var implementation = _dereq_('./implementation');
-
-var zeroWidthSpace = '\u200b';
-
-module.exports = function getPolyfill() {
-	if (String.prototype.trim && zeroWidthSpace.trim() === zeroWidthSpace) {
-		return String.prototype.trim;
-	}
-	return implementation;
-};
-
-},{"./implementation":58}],61:[function(_dereq_,module,exports){
-'use strict';
-
-var define = _dereq_('define-properties');
-var getPolyfill = _dereq_('./polyfill');
-
-module.exports = function shimStringTrim() {
-	var polyfill = getPolyfill();
-	define(String.prototype, { trim: polyfill }, {
-		trim: function testTrim() {
-			return String.prototype.trim !== polyfill;
-		}
-	});
-	return polyfill;
-};
-
-},{"./polyfill":60,"define-properties":13}],62:[function(_dereq_,module,exports){
+},{"an-array":1,"dtype":14,"is-buffer":19}],34:[function(_dereq_,module,exports){
 /*
  * anime.js v3.0.0
  * (c) 2019 Julian Garnier
@@ -7000,7 +5689,7 @@ anime.random = function (min, max) { return Math.floor(Math.random() * (max - mi
 
 module.exports = anime;
 
-},{}],63:[function(_dereq_,module,exports){
+},{}],35:[function(_dereq_,module,exports){
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -55545,7 +54234,7 @@ module.exports = anime;
 
 }));
 
-},{}],64:[function(_dereq_,module,exports){
+},{}],36:[function(_dereq_,module,exports){
 // Copyright 2016 The Draco Authors.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -56068,7 +54757,7 @@ THREE.DRACOLoader._loadArrayBuffer = function ( src ) {
   });
 };
 
-},{}],65:[function(_dereq_,module,exports){
+},{}],37:[function(_dereq_,module,exports){
 /**
  * @author Rich Tibbett / https://github.com/richtr
  * @author mrdoob / http://mrdoob.com/
@@ -59249,7 +57938,7 @@ THREE.GLTFLoader = ( function () {
 
 } )();
 
-},{}],66:[function(_dereq_,module,exports){
+},{}],38:[function(_dereq_,module,exports){
 /**
  * Loads a Wavefront .mtl file specifying materials
  *
@@ -59834,7 +58523,7 @@ THREE.MTLLoader.MaterialCreator.prototype = {
 
 };
 
-},{}],67:[function(_dereq_,module,exports){
+},{}],39:[function(_dereq_,module,exports){
 /**
  * @author mrdoob / http://mrdoob.com/
  */
@@ -60633,7 +59322,7 @@ THREE.OBJLoader = ( function () {
 
 } )();
 
-},{}],68:[function(_dereq_,module,exports){
+},{}],40:[function(_dereq_,module,exports){
 var createLayout = _dereq_('layout-bmfont-text')
 var inherits = _dereq_('inherits')
 var createIndices = _dereq_('quad-indices')
@@ -60759,7 +59448,7 @@ TextGeometry.prototype.computeBoundingBox = function () {
   utils.computeBox(positions, bbox)
 }
 
-},{"./lib/utils":69,"./lib/vertices":70,"inherits":38,"layout-bmfont-text":43,"object-assign":46,"quad-indices":57,"three-buffer-vertex-data":71}],69:[function(_dereq_,module,exports){
+},{"./lib/utils":41,"./lib/vertices":42,"inherits":18,"layout-bmfont-text":22,"object-assign":25,"quad-indices":33,"three-buffer-vertex-data":43}],41:[function(_dereq_,module,exports){
 var itemSize = 2
 var box = { min: [0, 0], max: [0, 0] }
 
@@ -60799,7 +59488,7 @@ module.exports.computeSphere = function (positions, output) {
   output.radius = length / 2
 }
 
-},{}],70:[function(_dereq_,module,exports){
+},{}],42:[function(_dereq_,module,exports){
 module.exports.pages = function pages (glyphs) {
   var pages = new Float32Array(glyphs.length * 4 * 1)
   var i = 0
@@ -60878,7 +59567,7 @@ module.exports.positions = function positions (glyphs) {
   return positions
 }
 
-},{}],71:[function(_dereq_,module,exports){
+},{}],43:[function(_dereq_,module,exports){
 var flatten = _dereq_('flatten-vertex-data')
 var warned = false;
 
@@ -60978,7 +59667,7 @@ function rebuildAttribute (attrib, data, itemSize) {
   return false
 }
 
-},{"flatten-vertex-data":29}],72:[function(_dereq_,module,exports){
+},{"flatten-vertex-data":15}],44:[function(_dereq_,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = _dereq_('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -61058,9 +59747,9 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 }).call(this,_dereq_("timers").setImmediate,_dereq_("timers").clearImmediate)
 
-},{"process/browser.js":73,"timers":72}],73:[function(_dereq_,module,exports){
+},{"process/browser.js":45,"timers":44}],45:[function(_dereq_,module,exports){
 arguments[4][5][0].apply(exports,arguments)
-},{"dup":5}],74:[function(_dereq_,module,exports){
+},{"dup":5}],46:[function(_dereq_,module,exports){
 (function (global){
 /**
  * @license
@@ -62938,8 +61627,8 @@ function CardboardViewer(params) {
 }
 DeviceInfo.Viewers = Viewers;
 var format = 1;
-var last_updated = "2018-12-10T17:01:42Z";
-var devices = [{"type":"android","rules":[{"mdmh":"asus/*/Nexus 7/*"},{"ua":"Nexus 7"}],"dpi":[320.8,323],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"asus/*/ASUS_Z00AD/*"},{"ua":"ASUS_Z00AD"}],"dpi":[403,404.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel 2 XL/*"},{"ua":"Pixel 2 XL"}],"dpi":537.9,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel 3 XL/*"},{"ua":"Pixel 3 XL"}],"dpi":[558.5,553.8],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel XL/*"},{"ua":"Pixel XL"}],"dpi":[537.9,533],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel 3/*"},{"ua":"Pixel 3"}],"dpi":442.4,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel 2/*"},{"ua":"Pixel 2"}],"dpi":441,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"Google/*/Pixel/*"},{"ua":"Pixel"}],"dpi":[432.6,436.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"HTC/*/HTC6435LVW/*"},{"ua":"HTC6435LVW"}],"dpi":[449.7,443.3],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"HTC/*/HTC One XL/*"},{"ua":"HTC One XL"}],"dpi":[315.3,314.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"htc/*/Nexus 9/*"},{"ua":"Nexus 9"}],"dpi":289,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"HTC/*/HTC One M9/*"},{"ua":"HTC One M9"}],"dpi":[442.5,443.3],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"HTC/*/HTC One_M8/*"},{"ua":"HTC One_M8"}],"dpi":[449.7,447.4],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"HTC/*/HTC One/*"},{"ua":"HTC One"}],"dpi":472.8,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Huawei/*/Nexus 6P/*"},{"ua":"Nexus 6P"}],"dpi":[515.1,518],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Huawei/*/BLN-L24/*"},{"ua":"HONORBLN-L24"}],"dpi":480,"bw":4,"ac":500},{"type":"android","rules":[{"mdmh":"Huawei/*/BKL-L09/*"},{"ua":"BKL-L09"}],"dpi":403,"bw":3.47,"ac":500},{"type":"android","rules":[{"mdmh":"LENOVO/*/Lenovo PB2-690Y/*"},{"ua":"Lenovo PB2-690Y"}],"dpi":[457.2,454.713],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"LGE/*/Nexus 5X/*"},{"ua":"Nexus 5X"}],"dpi":[422,419.9],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/LGMS345/*"},{"ua":"LGMS345"}],"dpi":[221.7,219.1],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"LGE/*/LG-D800/*"},{"ua":"LG-D800"}],"dpi":[422,424.1],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"LGE/*/LG-D850/*"},{"ua":"LG-D850"}],"dpi":[537.9,541.9],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"LGE/*/VS985 4G/*"},{"ua":"VS985 4G"}],"dpi":[537.9,535.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/Nexus 5/*"},{"ua":"Nexus 5 B"}],"dpi":[442.4,444.8],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/Nexus 4/*"},{"ua":"Nexus 4"}],"dpi":[319.8,318.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/LG-P769/*"},{"ua":"LG-P769"}],"dpi":[240.6,247.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/LGMS323/*"},{"ua":"LGMS323"}],"dpi":[206.6,204.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/LGLS996/*"},{"ua":"LGLS996"}],"dpi":[403.4,401.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Micromax/*/4560MMX/*"},{"ua":"4560MMX"}],"dpi":[240,219.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Micromax/*/A250/*"},{"ua":"Micromax A250"}],"dpi":[480,446.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Micromax/*/Micromax AQ4501/*"},{"ua":"Micromax AQ4501"}],"dpi":240,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/G5/*"},{"ua":"Moto G (5) Plus"}],"dpi":[403.4,403],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/DROID RAZR/*"},{"ua":"DROID RAZR"}],"dpi":[368.1,256.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT830C/*"},{"ua":"XT830C"}],"dpi":[254,255.9],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1021/*"},{"ua":"XT1021"}],"dpi":[254,256.7],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1023/*"},{"ua":"XT1023"}],"dpi":[254,256.7],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1028/*"},{"ua":"XT1028"}],"dpi":[326.6,327.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1034/*"},{"ua":"XT1034"}],"dpi":[326.6,328.4],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1053/*"},{"ua":"XT1053"}],"dpi":[315.3,316.1],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1562/*"},{"ua":"XT1562"}],"dpi":[403.4,402.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/Nexus 6/*"},{"ua":"Nexus 6 B"}],"dpi":[494.3,489.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1063/*"},{"ua":"XT1063"}],"dpi":[295,296.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1064/*"},{"ua":"XT1064"}],"dpi":[295,295.6],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1092/*"},{"ua":"XT1092"}],"dpi":[422,424.1],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1095/*"},{"ua":"XT1095"}],"dpi":[422,423.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/G4/*"},{"ua":"Moto G (4)"}],"dpi":401,"bw":4,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/A0001/*"},{"ua":"A0001"}],"dpi":[403.4,401],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE E1005/*"},{"ua":"ONE E1005"}],"dpi":[442.4,441.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE A2005/*"},{"ua":"ONE A2005"}],"dpi":[391.9,405.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A5000/*"},{"ua":"ONEPLUS A5000 "}],"dpi":[403.411,399.737],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE A5010/*"},{"ua":"ONEPLUS A5010"}],"dpi":[403,400],"bw":2,"ac":1000},{"type":"android","rules":[{"mdmh":"OPPO/*/X909/*"},{"ua":"X909"}],"dpi":[442.4,444.1],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9082/*"},{"ua":"GT-I9082"}],"dpi":[184.7,185.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G360P/*"},{"ua":"SM-G360P"}],"dpi":[196.7,205.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/Nexus S/*"},{"ua":"Nexus S"}],"dpi":[234.5,229.8],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9300/*"},{"ua":"GT-I9300"}],"dpi":[304.8,303.9],"bw":5,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-T230NU/*"},{"ua":"SM-T230NU"}],"dpi":216,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SGH-T399/*"},{"ua":"SGH-T399"}],"dpi":[217.7,231.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SGH-M919/*"},{"ua":"SGH-M919"}],"dpi":[440.8,437.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N9005/*"},{"ua":"SM-N9005"}],"dpi":[386.4,387],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SAMSUNG-SM-N900A/*"},{"ua":"SAMSUNG-SM-N900A"}],"dpi":[386.4,387.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9500/*"},{"ua":"GT-I9500"}],"dpi":[442.5,443.3],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9505/*"},{"ua":"GT-I9505"}],"dpi":439.4,"bw":4,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G900F/*"},{"ua":"SM-G900F"}],"dpi":[415.6,431.6],"bw":5,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G900M/*"},{"ua":"SM-G900M"}],"dpi":[415.6,431.6],"bw":5,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G800F/*"},{"ua":"SM-G800F"}],"dpi":326.8,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G906S/*"},{"ua":"SM-G906S"}],"dpi":[562.7,572.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9300/*"},{"ua":"GT-I9300"}],"dpi":[306.7,304.8],"bw":5,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-T535/*"},{"ua":"SM-T535"}],"dpi":[142.6,136.4],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N920C/*"},{"ua":"SM-N920C"}],"dpi":[515.1,518.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N920P/*"},{"ua":"SM-N920P"}],"dpi":[386.3655,390.144],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N920W8/*"},{"ua":"SM-N920W8"}],"dpi":[515.1,518.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9300I/*"},{"ua":"GT-I9300I"}],"dpi":[304.8,305.8],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9195/*"},{"ua":"GT-I9195"}],"dpi":[249.4,256.7],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SPH-L520/*"},{"ua":"SPH-L520"}],"dpi":[249.4,255.9],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SAMSUNG-SGH-I717/*"},{"ua":"SAMSUNG-SGH-I717"}],"dpi":285.8,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SPH-D710/*"},{"ua":"SPH-D710"}],"dpi":[217.7,204.2],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-N7100/*"},{"ua":"GT-N7100"}],"dpi":265.1,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SCH-I605/*"},{"ua":"SCH-I605"}],"dpi":265.1,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/Galaxy Nexus/*"},{"ua":"Galaxy Nexus"}],"dpi":[315.3,314.2],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N910H/*"},{"ua":"SM-N910H"}],"dpi":[515.1,518],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N910C/*"},{"ua":"SM-N910C"}],"dpi":[515.2,520.2],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G130M/*"},{"ua":"SM-G130M"}],"dpi":[165.9,164.8],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G928I/*"},{"ua":"SM-G928I"}],"dpi":[515.1,518.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G920F/*"},{"ua":"SM-G920F"}],"dpi":580.6,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G920P/*"},{"ua":"SM-G920P"}],"dpi":[522.5,577],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G925F/*"},{"ua":"SM-G925F"}],"dpi":580.6,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G925V/*"},{"ua":"SM-G925V"}],"dpi":[522.5,576.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G930F/*"},{"ua":"SM-G930F"}],"dpi":576.6,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G935F/*"},{"ua":"SM-G935F"}],"dpi":533,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G950F/*"},{"ua":"SM-G950F"}],"dpi":[562.707,565.293],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G955U/*"},{"ua":"SM-G955U"}],"dpi":[522.514,525.762],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G955F/*"},{"ua":"SM-G955F"}],"dpi":[522.514,525.762],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"Sony/*/C6903/*"},{"ua":"C6903"}],"dpi":[442.5,443.3],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"Sony/*/D6653/*"},{"ua":"D6653"}],"dpi":[428.6,427.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Sony/*/E6653/*"},{"ua":"E6653"}],"dpi":[428.6,425.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Sony/*/E6853/*"},{"ua":"E6853"}],"dpi":[403.4,401.9],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Sony/*/SGP321/*"},{"ua":"SGP321"}],"dpi":[224.7,224.1],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"TCT/*/ALCATEL ONE TOUCH Fierce/*"},{"ua":"ALCATEL ONE TOUCH Fierce"}],"dpi":[240,247.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"THL/*/thl 5000/*"},{"ua":"thl 5000"}],"dpi":[480,443.3],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Fly/*/IQ4412/*"},{"ua":"IQ4412"}],"dpi":307.9,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"ZTE/*/ZTE Blade L2/*"},{"ua":"ZTE Blade L2"}],"dpi":240,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"BENEVE/*/VR518/*"},{"ua":"VR518"}],"dpi":480,"bw":3,"ac":500},{"type":"ios","rules":[{"res":[640,960]}],"dpi":[325.1,328.4],"bw":4,"ac":1000},{"type":"ios","rules":[{"res":[640,1136]}],"dpi":[317.1,320.2],"bw":3,"ac":1000},{"type":"ios","rules":[{"res":[750,1334]}],"dpi":326.4,"bw":4,"ac":1000},{"type":"ios","rules":[{"res":[1242,2208]}],"dpi":[453.6,458.4],"bw":4,"ac":1000},{"type":"ios","rules":[{"res":[1125,2001]}],"dpi":[410.9,415.4],"bw":4,"ac":1000},{"type":"ios","rules":[{"res":[1125,2436]}],"dpi":458,"bw":4,"ac":1000}];
+var last_updated = "2019-11-09T17:36:14Z";
+var devices = [{"type":"android","rules":[{"mdmh":"asus/*/Nexus 7/*"},{"ua":"Nexus 7"}],"dpi":[320.8,323],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"asus/*/ASUS_X00PD/*"},{"ua":"ASUS_X00PD"}],"dpi":245,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"asus/*/ASUS_X008D/*"},{"ua":"ASUS_X008D"}],"dpi":282,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"asus/*/ASUS_Z00AD/*"},{"ua":"ASUS_Z00AD"}],"dpi":[403,404.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel 2 XL/*"},{"ua":"Pixel 2 XL"}],"dpi":537.9,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel 3 XL/*"},{"ua":"Pixel 3 XL"}],"dpi":[558.5,553.8],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel XL/*"},{"ua":"Pixel XL"}],"dpi":[537.9,533],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel 3/*"},{"ua":"Pixel 3"}],"dpi":442.4,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Google/*/Pixel 2/*"},{"ua":"Pixel 2"}],"dpi":441,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"Google/*/Pixel/*"},{"ua":"Pixel"}],"dpi":[432.6,436.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"HTC/*/HTC6435LVW/*"},{"ua":"HTC6435LVW"}],"dpi":[449.7,443.3],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"HTC/*/HTC One XL/*"},{"ua":"HTC One XL"}],"dpi":[315.3,314.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"htc/*/Nexus 9/*"},{"ua":"Nexus 9"}],"dpi":289,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"HTC/*/HTC One M9/*"},{"ua":"HTC One M9"}],"dpi":[442.5,443.3],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"HTC/*/HTC One_M8/*"},{"ua":"HTC One_M8"}],"dpi":[449.7,447.4],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"HTC/*/HTC One/*"},{"ua":"HTC One"}],"dpi":472.8,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Huawei/*/Nexus 6P/*"},{"ua":"Nexus 6P"}],"dpi":[515.1,518],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Huawei/*/BLN-L24/*"},{"ua":"HONORBLN-L24"}],"dpi":480,"bw":4,"ac":500},{"type":"android","rules":[{"mdmh":"Huawei/*/BKL-L09/*"},{"ua":"BKL-L09"}],"dpi":403,"bw":3.47,"ac":500},{"type":"android","rules":[{"mdmh":"LENOVO/*/Lenovo PB2-690Y/*"},{"ua":"Lenovo PB2-690Y"}],"dpi":[457.2,454.713],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"LGE/*/Nexus 5X/*"},{"ua":"Nexus 5X"}],"dpi":[422,419.9],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/LGMS345/*"},{"ua":"LGMS345"}],"dpi":[221.7,219.1],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"LGE/*/LG-D800/*"},{"ua":"LG-D800"}],"dpi":[422,424.1],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"LGE/*/LG-D850/*"},{"ua":"LG-D850"}],"dpi":[537.9,541.9],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"LGE/*/VS985 4G/*"},{"ua":"VS985 4G"}],"dpi":[537.9,535.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/Nexus 5/*"},{"ua":"Nexus 5 B"}],"dpi":[442.4,444.8],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/Nexus 4/*"},{"ua":"Nexus 4"}],"dpi":[319.8,318.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/LG-P769/*"},{"ua":"LG-P769"}],"dpi":[240.6,247.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/LGMS323/*"},{"ua":"LGMS323"}],"dpi":[206.6,204.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"LGE/*/LGLS996/*"},{"ua":"LGLS996"}],"dpi":[403.4,401.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Micromax/*/4560MMX/*"},{"ua":"4560MMX"}],"dpi":[240,219.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Micromax/*/A250/*"},{"ua":"Micromax A250"}],"dpi":[480,446.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Micromax/*/Micromax AQ4501/*"},{"ua":"Micromax AQ4501"}],"dpi":240,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/G5/*"},{"ua":"Moto G (5) Plus"}],"dpi":[403.4,403],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/DROID RAZR/*"},{"ua":"DROID RAZR"}],"dpi":[368.1,256.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT830C/*"},{"ua":"XT830C"}],"dpi":[254,255.9],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1021/*"},{"ua":"XT1021"}],"dpi":[254,256.7],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1023/*"},{"ua":"XT1023"}],"dpi":[254,256.7],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1028/*"},{"ua":"XT1028"}],"dpi":[326.6,327.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1034/*"},{"ua":"XT1034"}],"dpi":[326.6,328.4],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1053/*"},{"ua":"XT1053"}],"dpi":[315.3,316.1],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1562/*"},{"ua":"XT1562"}],"dpi":[403.4,402.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/Nexus 6/*"},{"ua":"Nexus 6 B"}],"dpi":[494.3,489.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1063/*"},{"ua":"XT1063"}],"dpi":[295,296.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/XT1064/*"},{"ua":"XT1064"}],"dpi":[295,295.6],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1092/*"},{"ua":"XT1092"}],"dpi":[422,424.1],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"motorola/*/XT1095/*"},{"ua":"XT1095"}],"dpi":[422,423.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"motorola/*/G4/*"},{"ua":"Moto G (4)"}],"dpi":401,"bw":4,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/A0001/*"},{"ua":"A0001"}],"dpi":[403.4,401],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE E1001/*"},{"ua":"ONE E1001"}],"dpi":[442.4,441.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE E1003/*"},{"ua":"ONE E1003"}],"dpi":[442.4,441.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE E1005/*"},{"ua":"ONE E1005"}],"dpi":[442.4,441.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE A2001/*"},{"ua":"ONE A2001"}],"dpi":[391.9,405.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE A2003/*"},{"ua":"ONE A2003"}],"dpi":[391.9,405.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE A2005/*"},{"ua":"ONE A2005"}],"dpi":[391.9,405.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A3000/*"},{"ua":"ONEPLUS A3000"}],"dpi":401,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A3003/*"},{"ua":"ONEPLUS A3003"}],"dpi":401,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A3010/*"},{"ua":"ONEPLUS A3010"}],"dpi":401,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A5000/*"},{"ua":"ONEPLUS A5000 "}],"dpi":[403.411,399.737],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONE A5010/*"},{"ua":"ONEPLUS A5010"}],"dpi":[403,400],"bw":2,"ac":1000},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A6000/*"},{"ua":"ONEPLUS A6000"}],"dpi":401,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A6003/*"},{"ua":"ONEPLUS A6003"}],"dpi":401,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A6010/*"},{"ua":"ONEPLUS A6010"}],"dpi":401,"bw":2,"ac":500},{"type":"android","rules":[{"mdmh":"OnePlus/*/ONEPLUS A6013/*"},{"ua":"ONEPLUS A6013"}],"dpi":401,"bw":2,"ac":500},{"type":"android","rules":[{"mdmh":"OPPO/*/X909/*"},{"ua":"X909"}],"dpi":[442.4,444.1],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9082/*"},{"ua":"GT-I9082"}],"dpi":[184.7,185.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G360P/*"},{"ua":"SM-G360P"}],"dpi":[196.7,205.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/Nexus S/*"},{"ua":"Nexus S"}],"dpi":[234.5,229.8],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9300/*"},{"ua":"GT-I9300"}],"dpi":[304.8,303.9],"bw":5,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-T230NU/*"},{"ua":"SM-T230NU"}],"dpi":216,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SGH-T399/*"},{"ua":"SGH-T399"}],"dpi":[217.7,231.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SGH-M919/*"},{"ua":"SGH-M919"}],"dpi":[440.8,437.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N9005/*"},{"ua":"SM-N9005"}],"dpi":[386.4,387],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SAMSUNG-SM-N900A/*"},{"ua":"SAMSUNG-SM-N900A"}],"dpi":[386.4,387.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9500/*"},{"ua":"GT-I9500"}],"dpi":[442.5,443.3],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9505/*"},{"ua":"GT-I9505"}],"dpi":439.4,"bw":4,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G900F/*"},{"ua":"SM-G900F"}],"dpi":[415.6,431.6],"bw":5,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G900M/*"},{"ua":"SM-G900M"}],"dpi":[415.6,431.6],"bw":5,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G800F/*"},{"ua":"SM-G800F"}],"dpi":326.8,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G906S/*"},{"ua":"SM-G906S"}],"dpi":[562.7,572.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9300/*"},{"ua":"GT-I9300"}],"dpi":[306.7,304.8],"bw":5,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-T535/*"},{"ua":"SM-T535"}],"dpi":[142.6,136.4],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N920C/*"},{"ua":"SM-N920C"}],"dpi":[515.1,518.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N920P/*"},{"ua":"SM-N920P"}],"dpi":[386.3655,390.144],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N920W8/*"},{"ua":"SM-N920W8"}],"dpi":[515.1,518.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9300I/*"},{"ua":"GT-I9300I"}],"dpi":[304.8,305.8],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-I9195/*"},{"ua":"GT-I9195"}],"dpi":[249.4,256.7],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SPH-L520/*"},{"ua":"SPH-L520"}],"dpi":[249.4,255.9],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SAMSUNG-SGH-I717/*"},{"ua":"SAMSUNG-SGH-I717"}],"dpi":285.8,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SPH-D710/*"},{"ua":"SPH-D710"}],"dpi":[217.7,204.2],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/GT-N7100/*"},{"ua":"GT-N7100"}],"dpi":265.1,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SCH-I605/*"},{"ua":"SCH-I605"}],"dpi":265.1,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/Galaxy Nexus/*"},{"ua":"Galaxy Nexus"}],"dpi":[315.3,314.2],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N910H/*"},{"ua":"SM-N910H"}],"dpi":[515.1,518],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-N910C/*"},{"ua":"SM-N910C"}],"dpi":[515.2,520.2],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G130M/*"},{"ua":"SM-G130M"}],"dpi":[165.9,164.8],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G928I/*"},{"ua":"SM-G928I"}],"dpi":[515.1,518.4],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G920F/*"},{"ua":"SM-G920F"}],"dpi":580.6,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G920P/*"},{"ua":"SM-G920P"}],"dpi":[522.5,577],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G925F/*"},{"ua":"SM-G925F"}],"dpi":580.6,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G925V/*"},{"ua":"SM-G925V"}],"dpi":[522.5,576.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G930F/*"},{"ua":"SM-G930F"}],"dpi":576.6,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G935F/*"},{"ua":"SM-G935F"}],"dpi":533,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G950F/*"},{"ua":"SM-G950F"}],"dpi":[562.707,565.293],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G955U/*"},{"ua":"SM-G955U"}],"dpi":[522.514,525.762],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G955F/*"},{"ua":"SM-G955F"}],"dpi":[522.514,525.762],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G960F/*"},{"ua":"SM-G960F"}],"dpi":[569.575,571.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G9600/*"},{"ua":"SM-G9600"}],"dpi":[569.575,571.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G960T/*"},{"ua":"SM-G960T"}],"dpi":[569.575,571.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G960N/*"},{"ua":"SM-G960N"}],"dpi":[569.575,571.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G960U/*"},{"ua":"SM-G960U"}],"dpi":[569.575,571.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G9608/*"},{"ua":"SM-G9608"}],"dpi":[569.575,571.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G960FD/*"},{"ua":"SM-G960FD"}],"dpi":[569.575,571.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G960W/*"},{"ua":"SM-G960W"}],"dpi":[569.575,571.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G965F/*"},{"ua":"SM-G965F"}],"dpi":529,"bw":2,"ac":1000},{"type":"android","rules":[{"mdmh":"Sony/*/C6903/*"},{"ua":"C6903"}],"dpi":[442.5,443.3],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"Sony/*/D6653/*"},{"ua":"D6653"}],"dpi":[428.6,427.6],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Sony/*/E6653/*"},{"ua":"E6653"}],"dpi":[428.6,425.7],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Sony/*/E6853/*"},{"ua":"E6853"}],"dpi":[403.4,401.9],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Sony/*/SGP321/*"},{"ua":"SGP321"}],"dpi":[224.7,224.1],"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"TCT/*/ALCATEL ONE TOUCH Fierce/*"},{"ua":"ALCATEL ONE TOUCH Fierce"}],"dpi":[240,247.5],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"THL/*/thl 5000/*"},{"ua":"thl 5000"}],"dpi":[480,443.3],"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"Fly/*/IQ4412/*"},{"ua":"IQ4412"}],"dpi":307.9,"bw":3,"ac":1000},{"type":"android","rules":[{"mdmh":"ZTE/*/ZTE Blade L2/*"},{"ua":"ZTE Blade L2"}],"dpi":240,"bw":3,"ac":500},{"type":"android","rules":[{"mdmh":"BENEVE/*/VR518/*"},{"ua":"VR518"}],"dpi":480,"bw":3,"ac":500},{"type":"ios","rules":[{"res":[640,960]}],"dpi":[325.1,328.4],"bw":4,"ac":1000},{"type":"ios","rules":[{"res":[640,1136]}],"dpi":[317.1,320.2],"bw":3,"ac":1000},{"type":"ios","rules":[{"res":[750,1334]}],"dpi":326.4,"bw":4,"ac":1000},{"type":"ios","rules":[{"res":[1242,2208]}],"dpi":[453.6,458.4],"bw":4,"ac":1000},{"type":"ios","rules":[{"res":[1125,2001]}],"dpi":[410.9,415.4],"bw":4,"ac":1000},{"type":"ios","rules":[{"res":[1125,2436]}],"dpi":458,"bw":4,"ac":1000},{"type":"android","rules":[{"mdmh":"Huawei/*/EML-L29/*"},{"ua":"EML-L29"}],"dpi":428,"bw":3.45,"ac":500},{"type":"android","rules":[{"mdmh":"Nokia/*/Nokia 7.1/*"},{"ua":"Nokia 7.1"}],"dpi":[432,431.9],"bw":3,"ac":500},{"type":"ios","rules":[{"res":[1242,2688]}],"dpi":458,"bw":4,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G570M/*"},{"ua":"SM-G570M"}],"dpi":320,"bw":3.684,"ac":1000},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G970F/*"},{"ua":"SM-G970F"}],"dpi":438,"bw":2.281,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G973F/*"},{"ua":"SM-G973F"}],"dpi":550,"bw":2.002,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G975F/*"},{"ua":"SM-G975F"}],"dpi":522,"bw":2.054,"ac":500},{"type":"android","rules":[{"mdmh":"samsung/*/SM-G977F/*"},{"ua":"SM-G977F"}],"dpi":505,"bw":2.334,"ac":500},{"type":"ios","rules":[{"res":[828,1792]}],"dpi":326,"bw":5,"ac":500}];
 var DPDB_CACHE = {
 	format: format,
 	last_updated: last_updated,
@@ -64367,7 +63056,10 @@ CardboardVRDisplay.prototype.submitFrame = function (pose) {
     this.updateBounds_();
     this.distorter_.submitFrame();
   } else if (this.cardboardUI_ && this.layer_) {
-    var canvas = this.layer_.source.getContext('webgl').canvas;
+    var gl = this.layer_.source.getContext('webgl');
+    if (!gl) gl = this.layer_.source.getContext('experimental-webgl');
+    if (!gl) gl = this.layer_.source.getContext('webgl2');
+    var canvas = gl.canvas;
     if (canvas.width != this.lastWidth || canvas.height != this.lastHeight) {
       this.cardboardUI_.onResize();
     }
@@ -64386,6 +63078,8 @@ CardboardVRDisplay.prototype.onOrientationChange_ = function (e) {
 CardboardVRDisplay.prototype.onResize_ = function (e) {
   if (this.layer_) {
     var gl = this.layer_.source.getContext('webgl');
+    if (!gl) gl = this.layer_.source.getContext('experimental-webgl');
+    if (!gl) gl = this.layer_.source.getContext('webgl2');
     var cssProperties = ['position: absolute', 'top: 0', 'left: 0',
     'width: 100vw', 'height: 100vh', 'border: 0', 'margin: 0',
     'padding: 0px', 'box-sizing: content-box'];
@@ -64913,7 +63607,7 @@ function getXml(xhr) {
 
 function noop() {}
 
-},{"global/window":33,"is-function":41,"parse-headers":54,"xtend":78}],77:[function(_dereq_,module,exports){
+},{"global/window":16,"is-function":20,"parse-headers":30,"xtend":50}],49:[function(_dereq_,module,exports){
 module.exports = (function xmlparser() {
   //common browsers
   if (typeof self.DOMParser !== 'undefined') {
@@ -65723,7 +64417,7 @@ function isRawProperty (data) {
          data.property.startsWith(STRING_OBJECT3D);
 }
 
-},{"../core/component":131,"../lib/three":179,"../utils":204,"super-animejs":62}],81:[function(_dereq_,module,exports){
+},{"../core/component":103,"../lib/three":151,"../utils":176,"super-animejs":34}],53:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 
@@ -69941,7 +68635,7 @@ module.exports.Component = registerComponent('inspector', {
 
 }).call(this,_dereq_('_process'))
 
-},{"../../../package":79,"../../constants":123,"../../core/component":131,"../../utils/":204,"_process":5}],107:[function(_dereq_,module,exports){
+},{"../../../package":51,"../../constants":95,"../../core/component":103,"../../utils/":176,"_process":5}],79:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var shouldCaptureKeyEvent = _dereq_('../../utils/').shouldCaptureKeyEvent;
 
@@ -71410,7 +70104,7 @@ function PromiseCache () {
   };
 }
 
-},{"../core/component":131,"../core/shader":141,"../lib/three":179,"../utils/":204,"load-bmfont":44,"three-bmfont-text":68}],115:[function(_dereq_,module,exports){
+},{"../core/component":103,"../core/shader":113,"../lib/three":151,"../utils/":176,"load-bmfont":23,"three-bmfont-text":40}],87:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var controllerUtils = _dereq_('../utils/tracked-controls');
 var DEFAULT_CAMERA_HEIGHT = _dereq_('../constants').DEFAULT_CAMERA_HEIGHT;
@@ -74804,7 +73498,7 @@ function copyProperties (source, destination) {
 ANode = _dereq_('./a-node');
 AEntity = _dereq_('./a-entity');
 
-},{"./a-entity":127,"./a-node":129,"document-register-element":14}],131:[function(_dereq_,module,exports){
+},{"./a-entity":99,"./a-node":101,"document-register-element":13}],103:[function(_dereq_,module,exports){
 /* global Node */
 var schema = _dereq_('./schema');
 var scenes = _dereq_('./scene/scenes');
@@ -75906,7 +74600,7 @@ function isValidDefaultCoordinate (possibleCoordinates, dimensions) {
 }
 module.exports.isValidDefaultCoordinate = isValidDefaultCoordinate;
 
-},{"../utils/coordinates":199,"debug":10}],134:[function(_dereq_,module,exports){
+},{"../utils/coordinates":171,"debug":10}],106:[function(_dereq_,module,exports){
 /* global Promise, screen */
 var initMetaTags = _dereq_('./metaTags').inject;
 var initWakelock = _dereq_('./wakelock');
@@ -78581,7 +77275,7 @@ _dereq_('./core/a-mixin');
 _dereq_('./extras/components/');
 _dereq_('./extras/primitives/');
 
-console.log('A-Frame Version: 0.9.2 (Date 2019-10-21, Commit #528d681e)');
+console.log('A-Frame Version: 0.9.2 (Date 2020-02-12, Commit #e8e72bf1)');
 console.log('three Version (https://github.com/supermedium/three.js):',
             pkg.dependencies['super-three']);
 console.log('WebVR Polyfill Version:', pkg.dependencies['webvr-polyfill']);
@@ -78614,7 +77308,7 @@ module.exports = window.AFRAME = {
   version: pkg.version
 };
 
-},{"../package":79,"../vendor/starts-with-polyfill":215,"./components/index":88,"./core/a-assets":125,"./core/a-cubemap":126,"./core/a-entity":127,"./core/a-mixin":128,"./core/a-node":129,"./core/a-register-element":130,"./core/component":131,"./core/geometry":132,"./core/scene/a-scene":134,"./core/scene/scenes":138,"./core/schema":140,"./core/shader":141,"./core/system":142,"./extras/components/":143,"./extras/primitives/":146,"./extras/primitives/getMeshMixin":145,"./extras/primitives/primitives":147,"./geometries/index":168,"./lib/three":179,"./shaders/index":181,"./style/aframe.css":186,"./style/rStats.css":187,"./systems/index":191,"./utils/":204,"./utils/isIOSOlderThan10":206,"custom-event-polyfill":9,"present":55,"promise-polyfill":56,"super-animejs":62,"webvr-polyfill":74}],178:[function(_dereq_,module,exports){
+},{"../package":51,"../vendor/starts-with-polyfill":187,"./components/index":60,"./core/a-assets":97,"./core/a-cubemap":98,"./core/a-entity":99,"./core/a-mixin":100,"./core/a-node":101,"./core/a-register-element":102,"./core/component":103,"./core/geometry":104,"./core/scene/a-scene":106,"./core/scene/scenes":110,"./core/schema":112,"./core/shader":113,"./core/system":114,"./extras/components/":115,"./extras/primitives/":118,"./extras/primitives/getMeshMixin":117,"./extras/primitives/primitives":119,"./geometries/index":140,"./lib/three":151,"./shaders/index":153,"./style/aframe.css":158,"./style/rStats.css":159,"./systems/index":163,"./utils/":176,"./utils/isIOSOlderThan10":178,"custom-event-polyfill":9,"present":31,"promise-polyfill":32,"super-animejs":34,"webvr-polyfill":46}],150:[function(_dereq_,module,exports){
 window.aframeStats = function (scene) {
   var _rS = null;
   var _scene = scene;
@@ -78708,7 +77402,7 @@ module.exports = THREE;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"super-three":63,"super-three/examples/js/loaders/DRACOLoader":64,"super-three/examples/js/loaders/GLTFLoader":65,"super-three/examples/js/loaders/MTLLoader":66,"super-three/examples/js/loaders/OBJLoader":67}],180:[function(_dereq_,module,exports){
+},{"super-three":35,"super-three/examples/js/loaders/DRACOLoader":36,"super-three/examples/js/loaders/GLTFLoader":37,"super-three/examples/js/loaders/MTLLoader":38,"super-three/examples/js/loaders/OBJLoader":39}],152:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -79202,11 +77896,11 @@ function getMaterialData (data, materialData) {
   return materialData;
 }
 
-},{"../core/shader":141,"../lib/three":179,"../utils/":204}],186:[function(_dereq_,module,exports){
+},{"../core/shader":113,"../lib/three":151,"../utils/":176}],158:[function(_dereq_,module,exports){
 var css = "html.a-fullscreen{bottom:0;left:0;position:fixed;right:0;top:0}html.a-fullscreen body{height:100%;margin:0;overflow:hidden;padding:0;width:100%}html.a-fullscreen .a-canvas{width:100%!important;height:100%!important;top:0!important;left:0!important;right:0!important;bottom:0!important;position:fixed!important}html:not(.a-fullscreen) .a-enter-vr{right:5px;bottom:5px}:-webkit-full-screen{background-color:transparent}.a-hidden{display:none!important}.a-canvas{height:100%;left:0;position:absolute;top:0;width:100%}.a-canvas.a-grab-cursor:hover{cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}canvas.a-canvas.a-mouse-cursor-hover:hover{cursor:pointer}.a-inspector-loader{background-color:#ed3160;position:fixed;left:3px;top:3px;padding:6px 10px;color:#fff;text-decoration:none;font-size:12px;font-family:Roboto,sans-serif;text-align:center;z-index:99999;width:204px}@keyframes dots-1{from{opacity:0}25%{opacity:1}}@keyframes dots-2{from{opacity:0}50%{opacity:1}}@keyframes dots-3{from{opacity:0}75%{opacity:1}}@-webkit-keyframes dots-1{from{opacity:0}25%{opacity:1}}@-webkit-keyframes dots-2{from{opacity:0}50%{opacity:1}}@-webkit-keyframes dots-3{from{opacity:0}75%{opacity:1}}.a-inspector-loader .dots span{animation:dots-1 2s infinite steps(1);-webkit-animation:dots-1 2s infinite steps(1)}.a-inspector-loader .dots span:first-child+span{animation-name:dots-2;-webkit-animation-name:dots-2}.a-inspector-loader .dots span:first-child+span+span{animation-name:dots-3;-webkit-animation-name:dots-3}a-scene{display:block;position:relative;height:100%;width:100%}a-assets,a-scene audio,a-scene img,a-scene video{display:none}.a-enter-vr-modal,.a-orientation-modal{font-family:Consolas,Andale Mono,Courier New,monospace}.a-enter-vr-modal a{border-bottom:1px solid #fff;padding:2px 0;text-decoration:none;transition:.1s color ease-in}.a-enter-vr-modal a:hover{background-color:#fff;color:#111;padding:2px 4px;position:relative;left:-4px}.a-enter-vr{font-family:sans-serif,monospace;font-size:13px;width:100%;font-weight:200;line-height:16px;position:absolute;right:20px;bottom:20px}.a-enter-vr-button,.a-enter-vr-modal,.a-enter-vr-modal a{color:#fff}.a-enter-vr-button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245.82%20141.73%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23fff%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3Emask%3C%2Ftitle%3E%3Cpath%20class%3D%22a%22%20d%3D%22M175.56%2C111.37c-22.52%2C0-40.77-18.84-40.77-42.07S153%2C27.24%2C175.56%2C27.24s40.77%2C18.84%2C40.77%2C42.07S198.08%2C111.37%2C175.56%2C111.37ZM26.84%2C69.31c0-23.23%2C18.25-42.07%2C40.77-42.07s40.77%2C18.84%2C40.77%2C42.07-18.26%2C42.07-40.77%2C42.07S26.84%2C92.54%2C26.84%2C69.31ZM27.27%2C0C11.54%2C0%2C0%2C12.34%2C0%2C28.58V110.9c0%2C16.24%2C11.54%2C30.83%2C27.27%2C30.83H99.57c2.17%2C0%2C4.19-1.83%2C5.4-3.7L116.47%2C118a8%2C8%2C0%2C0%2C1%2C12.52-.18l11.51%2C20.34c1.2%2C1.86%2C3.22%2C3.61%2C5.39%2C3.61h72.29c15.74%2C0%2C27.63-14.6%2C27.63-30.83V28.58C245.82%2C12.34%2C233.93%2C0%2C218.19%2C0H27.27Z%22%2F%3E%3C%2Fsvg%3E) 50% 50%/70% 70% no-repeat rgba(0,0,0,.35);border:0;bottom:0;cursor:pointer;min-width:50px;min-height:30px;padding-right:5%;padding-top:4%;position:absolute;right:0;transition:background-color .05s ease;-webkit-transition:background-color .05s ease;z-index:9999}.a-enter-vr-button:active,.a-enter-vr-button:hover{background-color:#666}[data-a-enter-vr-no-webvr] .a-enter-vr-button{border-color:#666;opacity:.65}[data-a-enter-vr-no-webvr] .a-enter-vr-button:active,[data-a-enter-vr-no-webvr] .a-enter-vr-button:hover{background-color:rgba(0,0,0,.35);cursor:not-allowed}.a-enter-vr-modal{background-color:#666;border-radius:0;display:none;min-height:32px;margin-right:70px;padding:9px;width:280px;right:2%;position:absolute}.a-enter-vr-modal:after{border-bottom:10px solid transparent;border-left:10px solid #666;border-top:10px solid transparent;display:inline-block;content:'';position:absolute;right:-5px;top:5px;width:0;height:0}.a-enter-vr-modal a,.a-enter-vr-modal p{display:inline}.a-enter-vr-modal p{margin:0}.a-enter-vr-modal p:after{content:' '}[data-a-enter-vr-no-headset].a-enter-vr:hover .a-enter-vr-modal,[data-a-enter-vr-no-webvr].a-enter-vr:hover .a-enter-vr-modal{display:block}.a-orientation-modal{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2090%2090%22%20enable-background%3D%22new%200%200%2090%2090%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20points%3D%220%2C0%200%2C0%200%2C0%20%22%3E%3C/polygon%3E%3Cg%3E%3Cpath%20d%3D%22M71.545%2C48.145h-31.98V20.743c0-2.627-2.138-4.765-4.765-4.765H18.456c-2.628%2C0-4.767%2C2.138-4.767%2C4.765v42.789%20%20%20c0%2C2.628%2C2.138%2C4.766%2C4.767%2C4.766h5.535v0.959c0%2C2.628%2C2.138%2C4.765%2C4.766%2C4.765h42.788c2.628%2C0%2C4.766-2.137%2C4.766-4.765V52.914%20%20%20C76.311%2C50.284%2C74.173%2C48.145%2C71.545%2C48.145z%20M18.455%2C16.935h16.344c2.1%2C0%2C3.808%2C1.708%2C3.808%2C3.808v27.401H37.25V22.636%20%20%20c0-0.264-0.215-0.478-0.479-0.478H16.482c-0.264%2C0-0.479%2C0.214-0.479%2C0.478v36.585c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h7.507v7.644%20%20%20h-5.534c-2.101%2C0-3.81-1.709-3.81-3.81V20.743C14.645%2C18.643%2C16.354%2C16.935%2C18.455%2C16.935z%20M16.96%2C23.116h19.331v25.031h-7.535%20%20%20c-2.628%2C0-4.766%2C2.139-4.766%2C4.768v5.828h-7.03V23.116z%20M71.545%2C73.064H28.757c-2.101%2C0-3.81-1.708-3.81-3.808V52.914%20%20%20c0-2.102%2C1.709-3.812%2C3.81-3.812h42.788c2.1%2C0%2C3.809%2C1.71%2C3.809%2C3.812v16.343C75.354%2C71.356%2C73.645%2C73.064%2C71.545%2C73.064z%22%3E%3C/path%3E%3Cpath%20d%3D%22M28.919%2C58.424c-1.466%2C0-2.659%2C1.193-2.659%2C2.66c0%2C1.466%2C1.193%2C2.658%2C2.659%2C2.658c1.468%2C0%2C2.662-1.192%2C2.662-2.658%20%20%20C31.581%2C59.617%2C30.387%2C58.424%2C28.919%2C58.424z%20M28.919%2C62.786c-0.939%2C0-1.703-0.764-1.703-1.702c0-0.939%2C0.764-1.704%2C1.703-1.704%20%20%20c0.94%2C0%2C1.705%2C0.765%2C1.705%2C1.704C30.623%2C62.022%2C29.858%2C62.786%2C28.919%2C62.786z%22%3E%3C/path%3E%3Cpath%20d%3D%22M69.654%2C50.461H33.069c-0.264%2C0-0.479%2C0.215-0.479%2C0.479v20.288c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h36.585%20%20%20c0.263%2C0%2C0.477-0.214%2C0.477-0.478V50.939C70.131%2C50.676%2C69.917%2C50.461%2C69.654%2C50.461z%20M69.174%2C51.417V70.75H33.548V51.417H69.174z%22%3E%3C/path%3E%3Cpath%20d%3D%22M45.201%2C30.296c6.651%2C0%2C12.233%2C5.351%2C12.551%2C11.977l-3.033-2.638c-0.193-0.165-0.507-0.142-0.675%2C0.048%20%20%20c-0.174%2C0.198-0.153%2C0.501%2C0.045%2C0.676l3.883%2C3.375c0.09%2C0.075%2C0.198%2C0.115%2C0.312%2C0.115c0.141%2C0%2C0.273-0.061%2C0.362-0.166%20%20%20l3.371-3.877c0.173-0.2%2C0.151-0.502-0.047-0.675c-0.194-0.166-0.508-0.144-0.676%2C0.048l-2.592%2C2.979%20%20%20c-0.18-3.417-1.629-6.605-4.099-9.001c-2.538-2.461-5.877-3.817-9.404-3.817c-0.264%2C0-0.479%2C0.215-0.479%2C0.479%20%20%20C44.72%2C30.083%2C44.936%2C30.296%2C45.201%2C30.296z%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) center/50% 50% no-repeat rgba(244,244,244,1);bottom:0;font-size:14px;font-weight:600;left:0;line-height:20px;right:0;position:fixed;top:0;z-index:9999999}.a-orientation-modal:after{color:#666;content:\"Insert phone into Cardboard holder.\";display:block;position:absolute;text-align:center;top:70%;transform:translateY(-70%);width:100%}.a-orientation-modal button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20100%20100%22%20enable-background%3D%22new%200%200%20100%20100%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M55.209%2C50l17.803-17.803c1.416-1.416%2C1.416-3.713%2C0-5.129c-1.416-1.417-3.713-1.417-5.129%2C0L50.08%2C44.872%20%20L32.278%2C27.069c-1.416-1.417-3.714-1.417-5.129%2C0c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129L44.951%2C50L27.149%2C67.803%20%20c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129c0.708%2C0.708%2C1.636%2C1.062%2C2.564%2C1.062c0.928%2C0%2C1.856-0.354%2C2.564-1.062L50.08%2C55.13l17.803%2C17.802%20%20c0.708%2C0.708%2C1.637%2C1.062%2C2.564%2C1.062s1.856-0.354%2C2.564-1.062c1.416-1.416%2C1.416-3.713%2C0-5.129L55.209%2C50z%22%3E%3C/path%3E%3C/svg%3E) no-repeat;border:none;height:50px;text-indent:-9999px;width:50px}.a-loader-title{background-color:rgba(0,0,0,.6);font-family:sans-serif,monospace;text-align:center;font-size:20px;height:50px;font-weight:300;line-height:50px;position:absolute;right:0;left:0;top:0;color:#fff}"; (_dereq_("browserify-css").createStyle(css, { "href": "src\\style\\aframe.css"})); module.exports = css;
-},{"browserify-css":4}],187:[function(_dereq_,module,exports){
+},{"browserify-css":4}],159:[function(_dereq_,module,exports){
 var css = ".rs-base{background-color:#333;color:#fafafa;border-radius:0;font:10px monospace;left:5px;line-height:1em;opacity:.85;overflow:hidden;padding:10px;position:fixed;top:5px;width:300px;z-index:10000}.rs-base div.hidden{display:none}.rs-base h1{color:#fff;cursor:pointer;font-size:1.4em;font-weight:300;margin:0 0 5px;padding:0}.rs-group{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column-reverse;flex-direction:column-reverse;margin-bottom:5px}.rs-group:last-child{margin-bottom:0}.rs-counter-base{align-items:center;display:-webkit-box;display:-webkit-flex;display:flex;height:10px;-webkit-justify-content:space-between;justify-content:space-between;margin:2px 0}.rs-counter-base.alarm{color:#b70000;text-shadow:0 0 0 #b70000,0 0 1px #fff,0 0 1px #fff,0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff,0 0 4px #fff,0 0 4px #fff}.rs-counter-id{font-weight:300;-webkit-box-ordinal-group:0;-webkit-order:0;order:0;width:54px}.rs-counter-value{font-weight:300;-webkit-box-ordinal-group:1;-webkit-order:1;order:1;text-align:right;width:35px}.rs-canvas{-webkit-box-ordinal-group:2;-webkit-order:2;order:2}@media (min-width:480px){.rs-base{left:20px;top:20px}}"; (_dereq_("browserify-css").createStyle(css, { "href": "src\\style\\rStats.css"})); module.exports = css;
-},{"browserify-css":4}],188:[function(_dereq_,module,exports){
+},{"browserify-css":4}],160:[function(_dereq_,module,exports){
 var constants = _dereq_('../constants/');
 var registerSystem = _dereq_('../core/system').registerSystem;
 
@@ -80593,35 +79287,77 @@ module.exports = debug;
 
 }).call(this,_dereq_('_process'))
 
-},{"_process":5,"debug":10,"object-assign":46}],201:[function(_dereq_,module,exports){
+},{"_process":5,"debug":10,"object-assign":25}],173:[function(_dereq_,module,exports){
 (function (process){
 var error = _dereq_('debug')('device:error');
 
 var vrDisplay;
+var supportsVRSession = false;
+var supportsARSession = false;
+
+/**
+ * Oculus Browser 7 doesn't support the WebXR gamepads module.
+ * We fallback to WebVR API and will hotfix when implementation is complete.
+ */
+var isWebXRAvailable = module.exports.isWebXRAvailable = !window.debug && navigator.xr !== undefined;
 
 // Catch vrdisplayactivate early to ensure we can enter VR mode after the scene loads.
 window.addEventListener('vrdisplayactivate', function (evt) {
   var canvasEl;
   // WebXR takes priority if available.
-  if (navigator.xr) { return; }
+  if (isWebXRAvailable) { return; }
   canvasEl = document.createElement('canvas');
   vrDisplay = evt.display;
+  // We need to make sure the canvas has a WebGL context associated with it.
+  // Otherwise, the requestPresent could be denied.
+  canvasEl.getContext('webgl', {});
   // Request present immediately. a-scene will be allowed to enter VR without user gesture.
   vrDisplay.requestPresent([{source: canvasEl}]).then(function () {}, function () {});
 });
 
 // Support both WebVR and WebXR APIs.
-if (navigator.xr) {
-  navigator.xr.requestDevice().then(function (device) {
-    if (!device) { return; }
-    device.supportsSession({immersive: true, exclusive: true}).then(function () {
-      var sceneEl = document.querySelector('a-scene');
-      vrDisplay = device;
-      if (sceneEl) { sceneEl.emit('displayconnected', {vrDisplay: vrDisplay}); }
-    });
-  }).catch(function (err) {
-    error('WebXR Request Device: ' + err.message);
-  });
+if (isWebXRAvailable) {
+  var updateEnterInterfaces = function () {
+    var sceneEl = document.querySelector('a-scene');
+    if (!sceneEl) {
+      window.addEventListener('DOMContentLoaded', updateEnterInterfaces);
+      return;
+    }
+    if (sceneEl.hasLoaded) {
+      sceneEl.components['vr-mode-ui'].updateEnterInterfaces();
+    } else {
+      sceneEl.addEventListener('loaded', updateEnterInterfaces);
+    }
+  };
+  var errorHandler = function (err) {
+    error('WebXR session support error: ' + err.message);
+  };
+  if (navigator.xr.isSessionSupported) {
+    // Current WebXR spec uses a boolean-returning isSessionSupported promise
+    navigator.xr.isSessionSupported('immersive-vr').then(function (supported) {
+      supportsVRSession = supported;
+      updateEnterInterfaces();
+    }).catch(errorHandler);
+
+    navigator.xr.isSessionSupported('immersive-ar').then(function (supported) {
+      supportsARSession = supported;
+      updateEnterInterfaces();
+    }).catch(function () {});
+  } else if (navigator.xr.supportsSession) {
+    // Fallback for implementations that haven't updated to the new spec yet,
+    // the old version used supportsSession which is rejected for missing
+    // support.
+    navigator.xr.supportsSession('immersive-vr').then(function () {
+      supportsVRSession = true;
+      updateEnterInterfaces();
+    }).catch(errorHandler);
+    navigator.xr.supportsSession('immersive-ar').then(function () {
+      supportsARSession = true;
+      updateEnterInterfaces();
+    }).catch(function () {});
+  } else {
+    error('WebXR has neither isSessionSupported or supportsSession?!');
+  }
 } else {
   if (navigator.getVRDisplays) {
     navigator.getVRDisplays().then(function (displays) {
@@ -80632,16 +79368,19 @@ if (navigator.xr) {
   }
 }
 
-module.exports.isWebXRAvailable = navigator.xr !== undefined;
-
 function getVRDisplay () { return vrDisplay; }
 module.exports.getVRDisplay = getVRDisplay;
 
 /**
  * Determine if a headset is connected by checking if a vrDisplay is available.
  */
-function checkHeadsetConnected () { return !!getVRDisplay(); }
+function checkHeadsetConnected () {
+  return supportsVRSession || supportsARSession || !!getVRDisplay();
+}
 module.exports.checkHeadsetConnected = checkHeadsetConnected;
+
+function checkARSupport () { return supportsARSession; }
+module.exports.checkARSupport = checkARSupport;
 
 /**
  * Checks if browser is mobile and not stand-alone dedicated vr device.
@@ -80744,7 +79483,7 @@ module.exports.PolyfillControls = function PolyfillControls (object) {
 
 }).call(this,_dereq_('_process'))
 
-},{"_process":5,"debug":10}],202:[function(_dereq_,module,exports){
+},{"_process":5,"debug":10}],174:[function(_dereq_,module,exports){
 /**
  * Split a delimited component property string (e.g., `material.color`) to an object
  * containing `component` name and `property` name. If there is no delimiter, just return the
@@ -81152,7 +79891,7 @@ module.exports.findAllScenes = function (el) {
 // Must be at bottom to avoid circular dependency.
 module.exports.srcLoader = _dereq_('./src-loader');
 
-},{"./bind":198,"./coordinates":199,"./debug":200,"./device":201,"./entity":202,"./forceCanvasResizeSafariMobile":203,"./is-ie11":205,"./material":207,"./object-pool":208,"./split":209,"./src-loader":210,"./styleParser":211,"./tracked-controls":212,"deep-assign":12,"object-assign":46}],205:[function(_dereq_,module,exports){
+},{"./bind":170,"./coordinates":171,"./debug":172,"./device":173,"./entity":174,"./forceCanvasResizeSafariMobile":175,"./is-ie11":177,"./material":179,"./object-pool":180,"./split":181,"./src-loader":182,"./styleParser":183,"./tracked-controls":184,"deep-assign":12,"object-assign":25}],177:[function(_dereq_,module,exports){
 // https://stackoverflow.com/a/17907562
 function getInternetExplorerVersion () {
   var version = -1;
