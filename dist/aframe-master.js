@@ -2219,14 +2219,7 @@ function isnan (val) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},_dereq_("buffer").Buffer)
 
-},{"base64-js":3,"buffer":7,"ieee754":17,"isarray":8}],8:[function(_dereq_,module,exports){
-var toString = {}.toString;
-
-module.exports = Array.isArray || function (arr) {
-  return toString.call(arr) == '[object Array]';
-};
-
-},{}],9:[function(_dereq_,module,exports){
+},{"base64-js":3,"buffer":7,"ieee754":16,"isarray":21}],8:[function(_dereq_,module,exports){
 // Polyfill for creating CustomEvents on IE9/10/11
 
 // code pulled from:
@@ -2704,10 +2697,10 @@ module.exports = function deepAssign(target) {
 	return target;
 };
 
-},{"is-obj":21}],13:[function(_dereq_,module,exports){
+},{"is-obj":20}],12:[function(_dereq_,module,exports){
 /*! (C) WebReflection Mit Style License */
 (function(t,n,r,i){"use strict";function st(e,t){for(var n=0,r=e.length;n<r;n++)gt(e[n],t)}function ot(e){for(var t=0,n=e.length,r;t<n;t++)r=e[t],it(r,w[at(r)])}function ut(e){return function(t){F(t)&&(gt(t,e),st(t.querySelectorAll(E),e))}}function at(e){var t=R.call(e,"is"),n=e.nodeName.toUpperCase(),r=x.call(b,t?m+t.toUpperCase():v+n);return t&&-1<r&&!ft(n,t)?-1:r}function ft(e,t){return-1<E.indexOf(e+'[is="'+t+'"]')}function lt(e){var t=e.currentTarget,n=e.attrChange,r=e.attrName,i=e.target;Y&&(!i||i===t)&&t.attributeChangedCallback&&r!=="style"&&e.prevValue!==e.newValue&&t.attributeChangedCallback(r,n===e[f]?null:e.prevValue,n===e[c]?null:e.newValue)}function ct(e){var t=ut(e);return function(e){$.push(t,e.target)}}function ht(e){G&&(G=!1,e.currentTarget.removeEventListener(p,ht)),st((e.target||n).querySelectorAll(E),e.detail===u?u:o),j&&vt()}function pt(e,t){var n=this;U.call(n,e,t),Z.call(n,{target:n})}function dt(e,t){P(e,t),nt?nt.observe(e,X):(Q&&(e.setAttribute=pt,e[s]=tt(e),e.addEventListener(d,Z)),e.addEventListener(h,lt)),e.createdCallback&&Y&&(e.created=!0,e.createdCallback(),e.created=!1)}function vt(){for(var e,t=0,n=I.length;t<n;t++)e=I[t],S.contains(e)||(n--,I.splice(t--,1),gt(e,u))}function mt(e){throw new Error("A "+e+" type is already registered")}function gt(e,t){var n,r=at(e);-1<r&&(rt(e,w[r]),r=0,t===o&&!e[o]?(e[u]=!1,e[o]=!0,r=1,j&&x.call(I,e)<0&&I.push(e)):t===u&&!e[u]&&(e[o]=!1,e[u]=!0,r=1),r&&(n=e[t+"Callback"])&&n.call(e))}if(i in n)return;var s="__"+i+(Math.random()*1e5>>0),o="attached",u="detached",a="extends",f="ADDITION",l="MODIFICATION",c="REMOVAL",h="DOMAttrModified",p="DOMContentLoaded",d="DOMSubtreeModified",v="<",m="=",g=/^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/,y=["ANNOTATION-XML","COLOR-PROFILE","FONT-FACE","FONT-FACE-SRC","FONT-FACE-URI","FONT-FACE-FORMAT","FONT-FACE-NAME","MISSING-GLYPH"],b=[],w=[],E="",S=n.documentElement,x=b.indexOf||function(e){for(var t=this.length;t--&&this[t]!==e;);return t},T=r.prototype,N=T.hasOwnProperty,C=T.isPrototypeOf,k=r.defineProperty,L=r.getOwnPropertyDescriptor,A=r.getOwnPropertyNames,O=r.getPrototypeOf,M=r.setPrototypeOf,_=!!r.__proto__,D=r.create||function yt(e){return e?(yt.prototype=e,new yt):this},P=M||(_?function(e,t){return e.__proto__=t,e}:A&&L?function(){function e(e,t){for(var n,r=A(t),i=0,s=r.length;i<s;i++)n=r[i],N.call(e,n)||k(e,n,L(t,n))}return function(t,n){do e(t,n);while((n=O(n))&&!C.call(n,t));return t}}():function(e,t){for(var n in t)e[n]=t[n];return e}),H=t.MutationObserver||t.WebKitMutationObserver,B=(t.HTMLElement||t.Element||t.Node).prototype,j=!C.call(B,S),F=j?function(e){return e.nodeType===1}:function(e){return C.call(B,e)},I=j&&[],q=B.cloneNode,R=B.getAttribute,U=B.setAttribute,z=B.removeAttribute,W=n.createElement,X=H&&{attributes:!0,characterData:!0,attributeOldValue:!0},V=H||function(e){Q=!1,S.removeEventListener(h,V)},$,J=t.requestAnimationFrame||t.webkitRequestAnimationFrame||t.mozRequestAnimationFrame||t.msRequestAnimationFrame||function(e){setTimeout(e,10)},K=!1,Q=!0,G=!0,Y=!0,Z,et,tt,nt,rt,it;M||_?(rt=function(e,t){C.call(t,e)||dt(e,t)},it=dt):(rt=function(e,t){e[s]||(e[s]=r(!0),dt(e,t))},it=rt),j?(Q=!1,function(){var t=L(B,"addEventListener"),n=t.value,r=function(e){var t=new CustomEvent(h,{bubbles:!0});t.attrName=e,t.prevValue=R.call(this,e),t.newValue=null,t[c]=t.attrChange=2,z.call(this,e),this.dispatchEvent(t)},i=function(t,n){var r=this.hasAttribute(t),i=r&&R.call(this,t);e=new CustomEvent(h,{bubbles:!0}),U.call(this,t,n),e.attrName=t,e.prevValue=r?i:null,e.newValue=n,r?e[l]=e.attrChange=1:e[f]=e.attrChange=0,this.dispatchEvent(e)},o=function(e){var t=e.currentTarget,n=t[s],r=e.propertyName,i;n.hasOwnProperty(r)&&(n=n[r],i=new CustomEvent(h,{bubbles:!0}),i.attrName=n.name,i.prevValue=n.value||null,i.newValue=n.value=t[r]||null,i.prevValue==null?i[f]=i.attrChange=0:i[l]=i.attrChange=1,t.dispatchEvent(i))};t.value=function(e,t,u){e===h&&this.attributeChangedCallback&&this.setAttribute!==i&&(this[s]={className:{name:"class",value:this.className}},this.setAttribute=i,this.removeAttribute=r,n.call(this,"propertychange",o)),n.call(this,e,t,u)},k(B,"addEventListener",t)}()):H||(S.addEventListener(h,V),S.setAttribute(s,1),S.removeAttribute(s),Q&&(Z=function(e){var t=this,n,r,i;if(t===e.target){n=t[s],t[s]=r=tt(t);for(i in r){if(!(i in n))return et(0,t,i,n[i],r[i],f);if(r[i]!==n[i])return et(1,t,i,n[i],r[i],l)}for(i in n)if(!(i in r))return et(2,t,i,n[i],r[i],c)}},et=function(e,t,n,r,i,s){var o={attrChange:e,currentTarget:t,attrName:n,prevValue:r,newValue:i};o[s]=e,lt(o)},tt=function(e){for(var t,n,r={},i=e.attributes,s=0,o=i.length;s<o;s++)t=i[s],n=t.name,n!=="setAttribute"&&(r[n]=t.value);return r})),n[i]=function(t,r){c=t.toUpperCase(),K||(K=!0,H?(nt=function(e,t){function n(e,t){for(var n=0,r=e.length;n<r;t(e[n++]));}return new H(function(r){for(var i,s,o,u=0,a=r.length;u<a;u++)i=r[u],i.type==="childList"?(n(i.addedNodes,e),n(i.removedNodes,t)):(s=i.target,Y&&s.attributeChangedCallback&&i.attributeName!=="style"&&(o=R.call(s,i.attributeName),o!==i.oldValue&&s.attributeChangedCallback(i.attributeName,i.oldValue,o)))})}(ut(o),ut(u)),nt.observe(n,{childList:!0,subtree:!0})):($=[],J(function d(){while($.length)$.shift().call(null,$.shift());J(d)}),n.addEventListener("DOMNodeInserted",ct(o)),n.addEventListener("DOMNodeRemoved",ct(u))),n.addEventListener(p,ht),n.addEventListener("readystatechange",ht),n.createElement=function(e,t){var r=W.apply(n,arguments),i=""+e,s=x.call(b,(t?m:v)+(t||i).toUpperCase()),o=-1<s;return t&&(r.setAttribute("is",t=t.toLowerCase()),o&&(o=ft(i.toUpperCase(),t))),Y=!n.createElement.innerHTMLHelper,o&&it(r,w[s]),r},B.cloneNode=function(e){var t=q.call(this,!!e),n=at(t);return-1<n&&it(t,w[n]),e&&ot(t.querySelectorAll(E)),t}),-2<x.call(b,m+c)+x.call(b,v+c)&&mt(t);if(!g.test(c)||-1<x.call(y,c))throw new Error("The type "+t+" is invalid");var i=function(){return f?n.createElement(l,c):n.createElement(l)},s=r||T,f=N.call(s,a),l=f?r[a].toUpperCase():c,c,h;return f&&-1<x.call(b,v+l)&&mt(l),h=b.push((f?m:v)+c)-1,E=E.concat(E.length?",":"",f?l+'[is="'+t.toLowerCase()+'"]':l),i.prototype=w[h]=N.call(s,"prototype")?s.prototype:D(B),st(n.querySelectorAll(E),o),i}})(window,document,Object,"registerElement");
-},{}],14:[function(_dereq_,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 module.exports = function(dtype) {
   switch (dtype) {
     case 'int8':
@@ -2733,7 +2726,7 @@ module.exports = function(dtype) {
   }
 }
 
-},{}],15:[function(_dereq_,module,exports){
+},{}],14:[function(_dereq_,module,exports){
 /*eslint new-cap:0*/
 var dtype = _dereq_('dtype')
 
@@ -2793,7 +2786,7 @@ function flattenVertexData (data, output, offset) {
   return output
 }
 
-},{"dtype":14}],16:[function(_dereq_,module,exports){
+},{"dtype":13}],15:[function(_dereq_,module,exports){
 (function (global){
 var win;
 
@@ -2811,7 +2804,7 @@ module.exports = win;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],17:[function(_dereq_,module,exports){
+},{}],16:[function(_dereq_,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = (nBytes * 8) - mLen - 1
@@ -2897,7 +2890,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],18:[function(_dereq_,module,exports){
+},{}],17:[function(_dereq_,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -2926,7 +2919,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],19:[function(_dereq_,module,exports){
+},{}],18:[function(_dereq_,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -2949,7 +2942,7 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],20:[function(_dereq_,module,exports){
+},{}],19:[function(_dereq_,module,exports){
 module.exports = isFunction
 
 var toString = Object.prototype.toString
@@ -2966,11 +2959,18 @@ function isFunction (fn) {
       fn === window.prompt))
 };
 
-},{}],21:[function(_dereq_,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 'use strict';
 module.exports = function (x) {
 	var type = typeof x;
 	return x !== null && (type === 'object' || type === 'function');
+};
+
+},{}],21:[function(_dereq_,module,exports){
+var toString = {}.toString;
+
+module.exports = Array.isArray || function (arr) {
+  return toString.call(arr) == '[object Array]';
 };
 
 },{}],22:[function(_dereq_,module,exports){
@@ -4173,7 +4173,7 @@ module.exports = function createQuadElements(array, opt) {
     }
     return indices
 }
-},{"an-array":1,"dtype":14,"is-buffer":19}],34:[function(_dereq_,module,exports){
+},{"an-array":1,"dtype":13,"is-buffer":18}],34:[function(_dereq_,module,exports){
 /*
  * anime.js v3.0.0
  * (c) 2019 Julian Garnier
@@ -59271,7 +59271,7 @@ TextGeometry.prototype.computeBoundingBox = function () {
   utils.computeBox(positions, bbox)
 }
 
-},{"./lib/utils":41,"./lib/vertices":42,"inherits":18,"layout-bmfont-text":22,"object-assign":25,"quad-indices":33,"three-buffer-vertex-data":43}],41:[function(_dereq_,module,exports){
+},{"./lib/utils":41,"./lib/vertices":42,"inherits":17,"layout-bmfont-text":22,"object-assign":25,"quad-indices":33,"three-buffer-vertex-data":43}],41:[function(_dereq_,module,exports){
 var itemSize = 2
 var box = { min: [0, 0], max: [0, 0] }
 
@@ -59490,7 +59490,7 @@ function rebuildAttribute (attrib, data, itemSize) {
   return false
 }
 
-},{"flatten-vertex-data":15}],44:[function(_dereq_,module,exports){
+},{"flatten-vertex-data":14}],44:[function(_dereq_,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = _dereq_('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -63430,7 +63430,7 @@ function getXml(xhr) {
 
 function noop() {}
 
-},{"global/window":16,"is-function":20,"parse-headers":30,"xtend":50}],49:[function(_dereq_,module,exports){
+},{"global/window":15,"is-function":19,"parse-headers":30,"xtend":50}],49:[function(_dereq_,module,exports){
 module.exports = (function xmlparser() {
   //common browsers
   if (typeof self.DOMParser !== 'undefined') {
@@ -64240,7 +64240,7 @@ function isRawProperty (data) {
          data.property.startsWith(STRING_OBJECT3D);
 }
 
-},{"../core/component":103,"../lib/three":151,"../utils":176,"super-animejs":34}],53:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils":183,"super-animejs":34}],53:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 
@@ -64332,7 +64332,7 @@ module.exports.Component = registerComponent('camera', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151}],54:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158}],54:[function(_dereq_,module,exports){
 /* global THREE */
 var registerComponent = _dereq_('../core/component').registerComponent;
 var utils = _dereq_('../utils/');
@@ -64725,7 +64725,7 @@ module.exports.Component = registerComponent('cursor', {
   }
 });
 
-},{"../core/component":103,"../utils/":176}],55:[function(_dereq_,module,exports){
+},{"../core/component":109,"../utils/":183}],55:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -64900,7 +64900,7 @@ module.exports.Component = registerComponent('daydream-controls', {
   }
 });
 
-},{"../core/component":103,"../utils/bind":170,"../utils/tracked-controls":184}],56:[function(_dereq_,module,exports){
+},{"../core/component":109,"../utils/bind":177,"../utils/tracked-controls":191}],56:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -65073,7 +65073,7 @@ module.exports.Component = registerComponent('gearvr-controls', {
   }
 });
 
-},{"../core/component":103,"../utils/bind":170,"../utils/tracked-controls":184}],57:[function(_dereq_,module,exports){
+},{"../core/component":109,"../utils/bind":177,"../utils/tracked-controls":191}],57:[function(_dereq_,module,exports){
 var geometries = _dereq_('../core/geometry').geometries;
 var geometryNames = _dereq_('../core/geometry').geometryNames;
 var registerComponent = _dereq_('../core/component').registerComponent;
@@ -65152,7 +65152,7 @@ module.exports.Component = registerComponent('geometry', {
   }
 });
 
-},{"../core/component":103,"../core/geometry":104,"../lib/three":151}],58:[function(_dereq_,module,exports){
+},{"../core/component":109,"../core/geometry":111,"../lib/three":158}],58:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -65200,7 +65200,7 @@ module.exports.Component = registerComponent('gltf-model', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151,"../utils/":176}],59:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils/":183}],59:[function(_dereq_,module,exports){
 /* global THREE */
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -65596,7 +65596,7 @@ function isViveController (trackedControls) {
   return controllerId && controllerId.indexOf('OpenVR ') === 0;
 }
 
-},{"../core/component":103}],60:[function(_dereq_,module,exports){
+},{"../core/component":109}],60:[function(_dereq_,module,exports){
 _dereq_('./animation');
 _dereq_('./camera');
 _dereq_('./cursor');
@@ -65642,7 +65642,7 @@ _dereq_('./scene/screenshot');
 _dereq_('./scene/stats');
 _dereq_('./scene/vr-mode-ui');
 
-},{"./animation":52,"./camera":53,"./cursor":54,"./daydream-controls":55,"./gearvr-controls":56,"./geometry":57,"./gltf-model":58,"./hand-controls":59,"./laser-controls":61,"./light":62,"./line":63,"./link":64,"./look-controls":65,"./material":66,"./obj-model":67,"./oculus-go-controls":68,"./oculus-touch-controls":69,"./position":70,"./raycaster":71,"./rotation":72,"./scale":73,"./scene/background":74,"./scene/debug":75,"./scene/embedded":76,"./scene/fog":77,"./scene/inspector":78,"./scene/keyboard-shortcuts":79,"./scene/pool":80,"./scene/screenshot":81,"./scene/stats":82,"./scene/vr-mode-ui":83,"./shadow":84,"./sound":85,"./text":86,"./tracked-controls":89,"./tracked-controls-webvr":87,"./tracked-controls-webxr":88,"./visible":90,"./vive-controls":91,"./vive-focus-controls":92,"./wasd-controls":93,"./windows-motion-controls":94}],61:[function(_dereq_,module,exports){
+},{"./animation":52,"./camera":53,"./cursor":54,"./daydream-controls":55,"./gearvr-controls":56,"./geometry":57,"./gltf-model":58,"./hand-controls":59,"./laser-controls":61,"./light":62,"./line":63,"./link":64,"./look-controls":65,"./material":66,"./obj-model":67,"./oculus-go-controls":68,"./oculus-touch-controls":69,"./position":70,"./raycaster":71,"./rotation":72,"./scale":73,"./scene/background":74,"./scene/debug":75,"./scene/effects":78,"./scene/embedded":82,"./scene/fog":83,"./scene/inspector":84,"./scene/keyboard-shortcuts":85,"./scene/pool":86,"./scene/screenshot":87,"./scene/stats":88,"./scene/vr-mode-ui":89,"./shadow":90,"./sound":91,"./text":92,"./tracked-controls":95,"./tracked-controls-webvr":93,"./tracked-controls-webxr":94,"./visible":96,"./vive-controls":97,"./vive-focus-controls":98,"./wasd-controls":99,"./windows-motion-controls":100}],61:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var utils = _dereq_('../utils/');
 
@@ -65763,7 +65763,7 @@ registerComponent('laser-controls', {
   }
 });
 
-},{"../core/component":103,"../utils/":176}],62:[function(_dereq_,module,exports){
+},{"../core/component":109,"../utils/":183}],62:[function(_dereq_,module,exports){
 var bind = _dereq_('../utils/bind');
 var diff = _dereq_('../utils').diff;
 var debug = _dereq_('../utils/debug');
@@ -66052,7 +66052,7 @@ module.exports.Component = registerComponent('light', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151,"../utils":176,"../utils/bind":170,"../utils/debug":172}],63:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils":183,"../utils/bind":177,"../utils/debug":179}],63:[function(_dereq_,module,exports){
 /* global THREE */
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -66130,7 +66130,7 @@ function isEqualVec3 (a, b) {
   return (a.x === b.x && a.y === b.y && a.z === b.z);
 }
 
-},{"../core/component":103}],64:[function(_dereq_,module,exports){
+},{"../core/component":109}],64:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
@@ -66502,7 +66502,7 @@ registerShader('portal', {
 });
 /* eslint-enable */
 
-},{"../core/component":103,"../core/shader":113,"../lib/three":151}],65:[function(_dereq_,module,exports){
+},{"../core/component":109,"../core/shader":120,"../lib/three":158}],65:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -66941,7 +66941,7 @@ module.exports.Component = registerComponent('look-controls', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151,"../utils":176,"../utils/":176}],66:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils":183,"../utils/":183}],66:[function(_dereq_,module,exports){
 /* global Promise */
 var utils = _dereq_('../utils/');
 var component = _dereq_('../core/component');
@@ -67210,7 +67210,7 @@ function disposeMaterial (material, system) {
   system.unregisterMaterial(material);
 }
 
-},{"../core/component":103,"../core/shader":113,"../lib/three":151,"../utils/":176}],67:[function(_dereq_,module,exports){
+},{"../core/component":109,"../core/shader":120,"../lib/three":158,"../utils/":183}],67:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -67313,7 +67313,7 @@ module.exports.Component = registerComponent('obj-model', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151,"../utils/debug":172}],68:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils/debug":179}],68:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -67486,7 +67486,7 @@ module.exports.Component = registerComponent('oculus-go-controls', {
   }
 });
 
-},{"../core/component":103,"../utils/bind":170,"../utils/tracked-controls":184}],69:[function(_dereq_,module,exports){
+},{"../core/component":109,"../utils/bind":177,"../utils/tracked-controls":191}],69:[function(_dereq_,module,exports){
 var bind = _dereq_('../utils/bind');
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -67709,7 +67709,7 @@ module.exports.Component = registerComponent('oculus-touch-controls', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151,"../utils/bind":170,"../utils/tracked-controls":184}],70:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils/bind":177,"../utils/tracked-controls":191}],70:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 module.exports.Component = registerComponent('position', {
@@ -67727,7 +67727,7 @@ module.exports.Component = registerComponent('position', {
   }
 });
 
-},{"../core/component":103}],71:[function(_dereq_,module,exports){
+},{"../core/component":109}],71:[function(_dereq_,module,exports){
 /* global MutationObserver */
 
 var registerComponent = _dereq_('../core/component').registerComponent;
@@ -68164,7 +68164,7 @@ function copyArray (a, b) {
   }
 }
 
-},{"../core/component":103,"../lib/three":151,"../utils/":176}],72:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils/":183}],72:[function(_dereq_,module,exports){
 var degToRad = _dereq_('../lib/three').Math.degToRad;
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -68187,7 +68187,7 @@ module.exports.Component = registerComponent('rotation', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151}],73:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158}],73:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 // Avoids triggering a zero-determinant which makes object3D matrix non-invertible.
@@ -68214,7 +68214,7 @@ module.exports.Component = registerComponent('scale', {
   }
 });
 
-},{"../core/component":103}],74:[function(_dereq_,module,exports){
+},{"../core/component":109}],74:[function(_dereq_,module,exports){
 /* global THREE */
 var register = _dereq_('../../core/component').registerComponent;
 
@@ -68234,14 +68234,169 @@ module.exports.Component = register('background', {
   }
 });
 
-},{"../../core/component":103}],75:[function(_dereq_,module,exports){
+},{"../../core/component":109}],75:[function(_dereq_,module,exports){
 var register = _dereq_('../../core/component').registerComponent;
 
 module.exports.Component = register('debug', {
   schema: {default: true}
 });
 
-},{"../../core/component":103}],76:[function(_dereq_,module,exports){
+},{"../../core/component":109}],76:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/CopyShader');
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/FXAAShader');
+_dereq_('../../../../vendor/effects/SMAABlendShader');
+_dereq_('../../../../vendor/effects/SMAAWeightsShader');
+_dereq_('../../../../vendor/effects/SMAAEdgesShader');
+_dereq_('../../../../vendor/effects/AAPass');
+
+registerEffect('aa', {
+  schema: {
+    mode: {default: "fxaa"}
+  },
+
+  initPass: function () {
+    this.pass = new THREE.AAPass(window.innerWidth, window.innerHeight, this.data.mode);
+    this.update();
+  },
+
+  update: function () {
+    var data = this.data;
+    var pass = this.pass;
+    if (!pass) { return; }
+    pass.setMode(data.mode);
+  }
+});
+},{"../../../../vendor/effects/AAPass":192,"../../../../vendor/effects/CopyShader":193,"../../../../vendor/effects/FXAAShader":195,"../../../../vendor/effects/SMAABlendShader":201,"../../../../vendor/effects/SMAAEdgesShader":202,"../../../../vendor/effects/SMAAWeightsShader":203,"../../../../vendor/effects/ShaderPass":209,"../../../core/effect":110}],77:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/CopyShader');
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/LuminosityHighPassShader');
+_dereq_('../../../../vendor/effects/UnrealBloomPass');
+
+registerEffect('bloom', {
+  schema: {
+    strength: {default: 0.3},
+    radius: {default: 0.4},
+    threshold: {default: 0.6},
+    enabled: {default: true}
+  },
+
+  initPass: function () {
+    this.pass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.3, 0.4, 0.6);
+  },
+
+  update: function () {
+    var data = this.data;
+    var pass = this.pass;
+    if (!pass) { return; }
+    pass.strength = data.strength;
+    pass.radius = data.radius;
+    pass.threshold = data.threshold;
+    pass.enabled = data.enabled;
+  }
+});
+
+},{"../../../../vendor/effects/CopyShader":193,"../../../../vendor/effects/LuminosityHighPassShader":198,"../../../../vendor/effects/ShaderPass":209,"../../../../vendor/effects/UnrealBloomPass":210,"../../../core/effect":110}],78:[function(_dereq_,module,exports){
+_dereq_('./bloom');
+_dereq_('./sepia');
+_dereq_('./lut');
+_dereq_('./ssao');
+_dereq_('./aa');
+
+},{"./aa":76,"./bloom":77,"./lut":79,"./sepia":80,"./ssao":81}],79:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/CopyShader');
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/LUTPass');
+_dereq_('../../../../vendor/effects/LUTShader');
+_dereq_('../../../../vendor/effects/MKLUTShader');
+
+registerEffect('lut', {
+
+  schema: {
+    lutmap: {default: 3},
+    enabled: {default: true}
+  },
+
+  initPass: function () {
+    this.pass = new THREE.LUTPass(window.innerWidth, window.innerHeight, this.data.lutmap);
+  },
+
+  update: function () {
+    var pass = this.pass;
+    var data = this.data;
+    if (!pass) { return; }
+    pass.enabled = data.enabled;
+    pass.setMap(data.lutmap);
+  },
+
+});
+
+},{"../../../../vendor/effects/CopyShader":193,"../../../../vendor/effects/LUTPass":196,"../../../../vendor/effects/LUTShader":197,"../../../../vendor/effects/MKLUTShader":199,"../../../../vendor/effects/ShaderPass":209,"../../../core/effect":110}],80:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/SepiaShader');
+
+registerEffect('sepia', {
+  schema: {
+    amount: {default: 1.0}
+  },
+
+  initPass: function () {
+    this.pass = new THREE.ShaderPass(THREE.SepiaShader);
+    this.update();
+  },
+
+  update: function () {
+    if (!this.pass) { return; }
+    this.pass.uniforms.amount.value = this.data.amount;
+    this.pass.uniforms.needsUpdate = true;
+  }
+});
+
+},{"../../../../vendor/effects/SepiaShader":208,"../../../../vendor/effects/ShaderPass":209,"../../../core/effect":110}],81:[function(_dereq_,module,exports){
+/* global THREE */
+var registerEffect = _dereq_('../../../core/effect').registerEffect;
+
+_dereq_('../../../../vendor/effects/CopyShader');
+_dereq_('../../../../vendor/effects/SSAODepthShader');
+_dereq_('../../../../vendor/effects/SSAOBlurShader');
+_dereq_('../../../../vendor/effects/ShaderPass');
+_dereq_('../../../../vendor/effects/SSAOShader');
+_dereq_('../../../../vendor/effects/SSAOPass');
+
+registerEffect('ssao', {
+  schema: {
+    kernelRadius: { default: 8 },
+    minDistance: { default: 0.005 },
+    maxDistance: { default: 0.05 },
+  },
+
+  initPass: function () {
+    //this.pass = new THREE.SSAOPass(THREE.SSAOPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 8, 0.005, 0.05));
+    console.log("[SSAO] initPass");
+    this.pass = new THREE.SSAOPass(THREE.SSAOPass(window.innerWidth, window.innerHeight));
+  },
+
+  update: function () {
+    var pass = this.pass;
+    if (!pass) { return; }
+    pass.kernelRadius = this.data.kernelRadius;
+    pass.minDistance = this.data.minDistance;
+    pass.maxDistance = this.data.maxDistance;
+  }
+});
+},{"../../../../vendor/effects/CopyShader":193,"../../../../vendor/effects/SSAOBlurShader":204,"../../../../vendor/effects/SSAODepthShader":205,"../../../../vendor/effects/SSAOPass":206,"../../../../vendor/effects/SSAOShader":207,"../../../../vendor/effects/ShaderPass":209,"../../../core/effect":110}],82:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 
 /**
@@ -68266,7 +68421,7 @@ module.exports.Component = registerComponent('embedded', {
 
 });
 
-},{"../../core/component":103}],77:[function(_dereq_,module,exports){
+},{"../../core/component":109}],83:[function(_dereq_,module,exports){
 var register = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
 var debug = _dereq_('../../utils/debug');
@@ -68339,7 +68494,7 @@ function getFog (data) {
   return fog;
 }
 
-},{"../../core/component":103,"../../lib/three":151,"../../utils/debug":172}],78:[function(_dereq_,module,exports){
+},{"../../core/component":109,"../../lib/three":158,"../../utils/debug":179}],84:[function(_dereq_,module,exports){
 (function (process){
 /* global AFRAME */
 var AFRAME_INJECTED = _dereq_('../../constants').AFRAME_INJECTED;
@@ -68459,7 +68614,7 @@ module.exports.Component = registerComponent('inspector', {
 
 }).call(this,_dereq_('_process'))
 
-},{"../../../package":51,"../../constants":95,"../../core/component":103,"../../utils/":176,"_process":5}],79:[function(_dereq_,module,exports){
+},{"../../../package":51,"../../constants":101,"../../core/component":109,"../../utils/":183,"_process":5}],85:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var shouldCaptureKeyEvent = _dereq_('../../utils/').shouldCaptureKeyEvent;
 
@@ -68498,7 +68653,7 @@ module.exports.Component = registerComponent('keyboard-shortcuts', {
   }
 });
 
-},{"../../core/component":103,"../../utils/":176}],80:[function(_dereq_,module,exports){
+},{"../../core/component":109,"../../utils/":183}],86:[function(_dereq_,module,exports){
 var debug = _dereq_('../../utils/debug');
 var registerComponent = _dereq_('../../core/component').registerComponent;
 
@@ -68616,7 +68771,7 @@ module.exports.Component = registerComponent('pool', {
   }
 });
 
-},{"../../core/component":103,"../../utils/debug":172}],81:[function(_dereq_,module,exports){
+},{"../../core/component":109,"../../utils/debug":179}],87:[function(_dereq_,module,exports){
 /* global ImageData, URL */
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
@@ -68872,7 +69027,7 @@ module.exports.Component = registerComponent('screenshot', {
   }
 });
 
-},{"../../core/component":103,"../../lib/three":151}],82:[function(_dereq_,module,exports){
+},{"../../core/component":109,"../../lib/three":158}],88:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var RStats = _dereq_('../../../vendor/rStats');
 var utils = _dereq_('../../utils');
@@ -68952,7 +69107,7 @@ function createStats (scene) {
   });
 }
 
-},{"../../../vendor/rStats":186,"../../../vendor/rStats.extras":185,"../../core/component":103,"../../lib/rStatsAframe":150,"../../utils":176}],83:[function(_dereq_,module,exports){
+},{"../../../vendor/rStats":212,"../../../vendor/rStats.extras":211,"../../core/component":109,"../../lib/rStatsAframe":157,"../../utils":183}],89:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var constants = _dereq_('../../constants/');
 var utils = _dereq_('../../utils/');
@@ -69138,7 +69293,7 @@ function createOrientationModal (onClick) {
   return modal;
 }
 
-},{"../../constants/":95,"../../core/component":103,"../../utils/":176}],84:[function(_dereq_,module,exports){
+},{"../../constants/":101,"../../core/component":109,"../../utils/":183}],90:[function(_dereq_,module,exports){
 var component = _dereq_('../core/component');
 var THREE = _dereq_('../lib/three');
 var bind = _dereq_('../utils/bind');
@@ -69192,7 +69347,7 @@ module.exports.Component = registerComponent('shadow', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151,"../utils/bind":170}],85:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils/bind":177}],91:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var debug = _dereq_('../utils/debug');
 var THREE = _dereq_('../lib/three');
@@ -69443,7 +69598,7 @@ module.exports.Component = registerComponent('sound', {
   }
 });
 
-},{"../core/component":103,"../lib/three":151,"../utils/debug":172}],86:[function(_dereq_,module,exports){
+},{"../core/component":109,"../lib/three":158,"../utils/debug":179}],92:[function(_dereq_,module,exports){
 var createTextGeometry = _dereq_('three-bmfont-text');
 var loadBMFont = _dereq_('load-bmfont');
 
@@ -69928,7 +70083,7 @@ function PromiseCache () {
   };
 }
 
-},{"../core/component":103,"../core/shader":113,"../lib/three":151,"../utils/":176,"load-bmfont":23,"three-bmfont-text":40}],87:[function(_dereq_,module,exports){
+},{"../core/component":109,"../core/shader":120,"../lib/three":158,"../utils/":183,"load-bmfont":23,"three-bmfont-text":40}],93:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var controllerUtils = _dereq_('../utils/tracked-controls');
 var DEFAULT_CAMERA_HEIGHT = _dereq_('../constants').DEFAULT_CAMERA_HEIGHT;
@@ -70265,7 +70420,7 @@ module.exports.Component = registerComponent('tracked-controls-webvr', {
   }
 });
 
-},{"../constants":95,"../core/component":103,"../lib/three":151,"../utils/tracked-controls":184}],88:[function(_dereq_,module,exports){
+},{"../constants":101,"../core/component":109,"../lib/three":158,"../utils/tracked-controls":191}],94:[function(_dereq_,module,exports){
 var controllerUtils = _dereq_('../utils/tracked-controls');
 var registerComponent = _dereq_('../core/component').registerComponent;
 
@@ -70353,7 +70508,7 @@ module.exports.Component = registerComponent('tracked-controls-webxr', {
   }
 });
 
-},{"../core/component":103,"../utils/tracked-controls":184}],89:[function(_dereq_,module,exports){
+},{"../core/component":109,"../utils/tracked-controls":191}],95:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 /**
@@ -70390,7 +70545,7 @@ module.exports.Component = registerComponent('tracked-controls', {
   }
 });
 
-},{"../core/component":103}],90:[function(_dereq_,module,exports){
+},{"../core/component":109}],96:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 
 /**
@@ -70404,7 +70559,7 @@ module.exports.Component = registerComponent('visible', {
   }
 });
 
-},{"../core/component":103}],91:[function(_dereq_,module,exports){
+},{"../core/component":109}],97:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -70633,7 +70788,7 @@ module.exports.Component = registerComponent('vive-controls', {
   }
 });
 
-},{"../core/component":103,"../utils/bind":170,"../utils/tracked-controls":184}],92:[function(_dereq_,module,exports){
+},{"../core/component":109,"../utils/bind":177,"../utils/tracked-controls":191}],98:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
 
@@ -70815,7 +70970,7 @@ module.exports.Component = registerComponent('vive-focus-controls', {
   }
 });
 
-},{"../core/component":103,"../utils/bind":170,"../utils/tracked-controls":184}],93:[function(_dereq_,module,exports){
+},{"../core/component":109,"../utils/bind":177,"../utils/tracked-controls":191}],99:[function(_dereq_,module,exports){
 var KEYCODE_TO_CODE = _dereq_('../constants').keyboardevent.KEYCODE_TO_CODE;
 var registerComponent = _dereq_('../core/component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -71027,7 +71182,7 @@ function isEmptyObject (keys) {
   return true;
 }
 
-},{"../constants":95,"../core/component":103,"../lib/three":151,"../utils/":176}],94:[function(_dereq_,module,exports){
+},{"../constants":101,"../core/component":109,"../lib/three":158,"../utils/":183}],100:[function(_dereq_,module,exports){
 /* global THREE */
 var registerComponent = _dereq_('../core/component').registerComponent;
 var bind = _dereq_('../utils/bind');
@@ -71476,7 +71631,7 @@ module.exports.Component = registerComponent('windows-motion-controls', {
   }
 });
 
-},{"../constants":95,"../core/component":103,"../utils/":176,"../utils/bind":170,"../utils/tracked-controls":184}],95:[function(_dereq_,module,exports){
+},{"../constants":101,"../core/component":109,"../utils/":183,"../utils/bind":177,"../utils/tracked-controls":191}],101:[function(_dereq_,module,exports){
 module.exports = {
   AFRAME_INJECTED: 'aframe-injected',
   DEFAULT_CAMERA_HEIGHT: 1.6,
@@ -71484,7 +71639,7 @@ module.exports = {
   keyboardevent: _dereq_('./keyboardevent')
 };
 
-},{"./keyboardevent":96}],96:[function(_dereq_,module,exports){
+},{"./keyboardevent":102}],102:[function(_dereq_,module,exports){
 module.exports = {
   // Tiny KeyboardEvent.code polyfill.
   KEYCODE_TO_CODE: {
@@ -71499,7 +71654,7 @@ module.exports = {
   }
 };
 
-},{}],97:[function(_dereq_,module,exports){
+},{}],103:[function(_dereq_,module,exports){
 var ANode = _dereq_('./a-node');
 var bind = _dereq_('../utils/bind');
 var debug = _dereq_('../utils/debug');
@@ -71764,7 +71919,7 @@ function inferResponseType (src) {
 }
 module.exports.inferResponseType = inferResponseType;
 
-},{"../lib/three":151,"../utils/bind":170,"../utils/debug":172,"./a-node":101,"./a-register-element":102}],98:[function(_dereq_,module,exports){
+},{"../lib/three":158,"../utils/bind":177,"../utils/debug":179,"./a-node":107,"./a-register-element":108}],104:[function(_dereq_,module,exports){
 var debug = _dereq_('../utils/debug');
 var registerElement = _dereq_('./a-register-element').registerElement;
 
@@ -71814,7 +71969,7 @@ module.exports = registerElement('a-cubemap', {
   })
 });
 
-},{"../utils/debug":172,"./a-register-element":102}],99:[function(_dereq_,module,exports){
+},{"../utils/debug":179,"./a-register-element":108}],105:[function(_dereq_,module,exports){
 var ANode = _dereq_('./a-node');
 var COMPONENTS = _dereq_('./component').components;
 var registerElement = _dereq_('./a-register-element').registerElement;
@@ -72748,7 +72903,7 @@ function getRotation (entityEl) {
 AEntity = registerElement('a-entity', {prototype: proto});
 module.exports = AEntity;
 
-},{"../lib/three":151,"../utils/":176,"./a-node":101,"./a-register-element":102,"./component":103}],100:[function(_dereq_,module,exports){
+},{"../lib/three":158,"../utils/":183,"./a-node":107,"./a-register-element":108,"./component":109}],106:[function(_dereq_,module,exports){
 var ANode = _dereq_('./a-node');
 var registerElement = _dereq_('./a-register-element').registerElement;
 var components = _dereq_('./component').components;
@@ -72864,7 +73019,7 @@ module.exports = registerElement('a-mixin', {
   })
 });
 
-},{"../utils":176,"./a-node":101,"./a-register-element":102,"./component":103}],101:[function(_dereq_,module,exports){
+},{"../utils":183,"./a-node":107,"./a-register-element":108,"./component":109}],107:[function(_dereq_,module,exports){
 /* global CustomEvent */
 var registerElement = _dereq_('./a-register-element').registerElement;
 var isNode = _dereq_('./a-register-element').isNode;
@@ -73135,7 +73290,7 @@ module.exports = registerElement('a-node', {
   })
 });
 
-},{"../utils/":176,"./a-register-element":102}],102:[function(_dereq_,module,exports){
+},{"../utils/":183,"./a-register-element":108}],108:[function(_dereq_,module,exports){
 /*
   ------------------------------------------------------------
   ------------- WARNING WARNING WARNING WARNING --------------
@@ -73322,7 +73477,7 @@ function copyProperties (source, destination) {
 ANode = _dereq_('./a-node');
 AEntity = _dereq_('./a-entity');
 
-},{"./a-entity":99,"./a-node":101,"document-register-element":13}],103:[function(_dereq_,module,exports){
+},{"./a-entity":105,"./a-node":107,"document-register-element":12}],109:[function(_dereq_,module,exports){
 /* global Node */
 var schema = _dereq_('./schema');
 var scenes = _dereq_('./scene/scenes');
@@ -74125,7 +74280,86 @@ function isObjectOrArray (value) {
          !(value instanceof window.HTMLElement);
 }
 
-},{"../utils/":176,"./scene/scenes":110,"./schema":112,"./system":114}],104:[function(_dereq_,module,exports){
+},{"../utils/":183,"./scene/scenes":117,"./schema":119,"./system":121}],110:[function(_dereq_,module,exports){
+_dereq_('../../vendor/effects/EffectComposer');
+_dereq_('../../vendor/effects/RenderPass');
+
+var registerComponent = _dereq_('./component').registerComponent;
+var THREE = _dereq_('../lib/three');
+var warn = _dereq_('../utils/').debug('components:effect:warn');
+
+var lastEffectInitialized;
+
+var effectOrder = ['render', 'ssao', 'bloom', 'lut', 'aa'];
+var passes = {};
+
+var proto = {
+  schema: {},
+  init: function () {
+    var sceneEl = this.el;
+
+    if (!this.el.isScene) {
+      warn('Effect components can only be applied to <a-scene>');
+      return;
+    }
+
+    if (!sceneEl.camera) {
+      sceneEl.addEventListener('camera-set-active', this.init.bind(this));
+      return;
+    }
+    this.initEffectComposer();
+    this.initPass();
+    this.update();
+    lastEffectInitialized.renderToScreen = false;
+    this.pass.renderToScreen = true;
+    lastEffectInitialized = this.pass;
+    passes[this.effectName] = this.pass;
+    this.rebuild();
+  },
+
+  rebuild: function () {
+    var effectComposer = this.el.effectComposer;
+    effectComposer.passes = [];
+    effectOrder.forEach(function (effect) {
+      if (!passes[effect]) { return; }
+      effectComposer.addPass(passes[effect]);
+    });
+  },
+
+  remove: function () {
+    this.el.effectComposer.removePass(this.pass);
+    passes[this.effectName] = undefined;
+  },
+
+  initEffectComposer: function () {
+    var sceneEl = this.el;
+    var effectComposer = sceneEl.effectComposer = new THREE.EffectComposer(sceneEl.renderer);
+    var renderPass = new THREE.RenderPass(sceneEl.object3D, sceneEl.camera);
+    effectComposer.addPass(renderPass);
+    lastEffectInitialized = renderPass;
+    renderPass.renderToScreen = true;
+    passes.render = renderPass;
+    setTimeout(function () { effectComposer.resize(); }, 0);
+    return effectComposer;
+  },
+};
+
+/**
+ * Registers an effect to A-Frame.
+ *
+ * @param {string} name - Effect name.
+ * @param {object} definition - Effect property and methods.
+ */
+module.exports.registerEffect = function (name, definition) {
+  Object.keys(definition).forEach(function (key) {
+    proto[key] = definition[key];
+  });
+
+  proto.effectName = name;
+  registerComponent('effect-' + name, proto);
+};
+
+},{"../../vendor/effects/EffectComposer":194,"../../vendor/effects/RenderPass":200,"../lib/three":158,"../utils/":183,"./component":109}],111:[function(_dereq_,module,exports){
 var schema = _dereq_('./schema');
 
 var processSchema = schema.process;
@@ -74199,7 +74433,7 @@ module.exports.registerGeometry = function (name, definition) {
   return NewGeometry;
 };
 
-},{"../lib/three":151,"./schema":112}],105:[function(_dereq_,module,exports){
+},{"../lib/three":158,"./schema":119}],112:[function(_dereq_,module,exports){
 var coordinates = _dereq_('../utils/coordinates');
 var debug = _dereq_('debug');
 
@@ -74424,7 +74658,7 @@ function isValidDefaultCoordinate (possibleCoordinates, dimensions) {
 }
 module.exports.isValidDefaultCoordinate = isValidDefaultCoordinate;
 
-},{"../utils/coordinates":171,"debug":10}],106:[function(_dereq_,module,exports){
+},{"../utils/coordinates":178,"debug":9}],113:[function(_dereq_,module,exports){
 /* global Promise, screen */
 var initMetaTags = _dereq_('./metaTags').inject;
 var initWakelock = _dereq_('./wakelock');
@@ -75290,7 +75524,7 @@ function setupCanvas (sceneEl) {
 }
 module.exports.setupCanvas = setupCanvas;  // For testing.
 
-},{"../../lib/three":151,"../../utils/":176,"../a-entity":99,"../a-node":101,"../a-register-element":102,"../system":114,"./loadingScreen":107,"./metaTags":108,"./postMessage":109,"./scenes":110,"./wakelock":111}],107:[function(_dereq_,module,exports){
+},{"../../lib/three":158,"../../utils/":183,"../a-entity":105,"../a-node":107,"../a-register-element":108,"../system":121,"./loadingScreen":114,"./metaTags":115,"./postMessage":116,"./scenes":117,"./wakelock":118}],114:[function(_dereq_,module,exports){
 /* global THREE */
 var utils = _dereq_('../../utils/');
 var styleParser = utils.styleParser;
@@ -75383,7 +75617,7 @@ function setupTitle () {
   sceneEl.appendChild(titleEl);
 }
 
-},{"../../utils/":176}],108:[function(_dereq_,module,exports){
+},{"../../utils/":183}],115:[function(_dereq_,module,exports){
 var constants = _dereq_('../../constants/');
 var extend = _dereq_('../../utils').extend;
 
@@ -75464,7 +75698,7 @@ function createTag (tagObj) {
   return extend(meta, tagObj.attributes);
 }
 
-},{"../../constants/":95,"../../utils":176}],109:[function(_dereq_,module,exports){
+},{"../../constants/":101,"../../utils":183}],116:[function(_dereq_,module,exports){
 var bind = _dereq_('../../utils/bind');
 var isIframed = _dereq_('../../utils/').isIframed;
 
@@ -75497,13 +75731,13 @@ function postMessageAPIHandler (event) {
   }
 }
 
-},{"../../utils/":176,"../../utils/bind":170}],110:[function(_dereq_,module,exports){
+},{"../../utils/":183,"../../utils/bind":177}],117:[function(_dereq_,module,exports){
 /*
   Scene index for keeping track of created scenes.
 */
 module.exports = [];
 
-},{}],111:[function(_dereq_,module,exports){
+},{}],118:[function(_dereq_,module,exports){
 var Wakelock = _dereq_('../../../vendor/wakelock/wakelock');
 
 module.exports = function initWakelock (scene) {
@@ -75514,7 +75748,7 @@ module.exports = function initWakelock (scene) {
   scene.addEventListener('exit-vr', function () { wakelock.release(); });
 };
 
-},{"../../../vendor/wakelock/wakelock":189}],112:[function(_dereq_,module,exports){
+},{"../../../vendor/wakelock/wakelock":215}],119:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils/');
 var PropertyTypes = _dereq_('./propertyTypes');
 
@@ -75718,7 +75952,7 @@ function stringifyProperty (value, propDefinition) {
 }
 module.exports.stringifyProperty = stringifyProperty;
 
-},{"../utils/":176,"./propertyTypes":105}],113:[function(_dereq_,module,exports){
+},{"../utils/":183,"./propertyTypes":112}],120:[function(_dereq_,module,exports){
 var schema = _dereq_('./schema');
 
 var processSchema = schema.process;
@@ -75907,7 +76141,7 @@ module.exports.registerShader = function (name, definition) {
   return NewShader;
 };
 
-},{"../lib/three":151,"../utils":176,"./schema":112}],114:[function(_dereq_,module,exports){
+},{"../lib/three":158,"../utils":183,"./schema":119}],121:[function(_dereq_,module,exports){
 var components = _dereq_('./component');
 var schema = _dereq_('./schema');
 var utils = _dereq_('../utils/');
@@ -76065,10 +76299,10 @@ module.exports.registerSystem = function (name, definition) {
   for (i = 0; i < scenes.length; i++) { scenes[i].initSystem(name); }
 };
 
-},{"../utils/":176,"./component":103,"./schema":112}],115:[function(_dereq_,module,exports){
+},{"../utils/":183,"./component":109,"./schema":119}],122:[function(_dereq_,module,exports){
 _dereq_('./pivot');
 
-},{"./pivot":116}],116:[function(_dereq_,module,exports){
+},{"./pivot":123}],123:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var THREE = _dereq_('../../lib/three');
 
@@ -76117,7 +76351,7 @@ registerComponent('pivot', {
   }
 });
 
-},{"../../core/component":103,"../../lib/three":151}],117:[function(_dereq_,module,exports){
+},{"../../core/component":109,"../../lib/three":158}],124:[function(_dereq_,module,exports){
 /**
  * Common mesh defaults, mappings, and transforms.
  */
@@ -76144,7 +76378,7 @@ module.exports = function getMeshMixin () {
   };
 };
 
-},{"../../core/component":103,"../../core/shader":113,"../../utils/":176}],118:[function(_dereq_,module,exports){
+},{"../../core/component":109,"../../core/shader":120,"../../utils/":183}],125:[function(_dereq_,module,exports){
 _dereq_('./primitives/a-camera');
 _dereq_('./primitives/a-cursor');
 _dereq_('./primitives/a-curvedimage');
@@ -76160,7 +76394,7 @@ _dereq_('./primitives/a-video');
 _dereq_('./primitives/a-videosphere');
 _dereq_('./primitives/meshPrimitives');
 
-},{"./primitives/a-camera":120,"./primitives/a-cursor":121,"./primitives/a-curvedimage":122,"./primitives/a-gltf-model":123,"./primitives/a-image":124,"./primitives/a-light":125,"./primitives/a-link":126,"./primitives/a-obj-model":127,"./primitives/a-sky":128,"./primitives/a-sound":129,"./primitives/a-text":130,"./primitives/a-video":131,"./primitives/a-videosphere":132,"./primitives/meshPrimitives":133}],119:[function(_dereq_,module,exports){
+},{"./primitives/a-camera":127,"./primitives/a-cursor":128,"./primitives/a-curvedimage":129,"./primitives/a-gltf-model":130,"./primitives/a-image":131,"./primitives/a-light":132,"./primitives/a-link":133,"./primitives/a-obj-model":134,"./primitives/a-sky":135,"./primitives/a-sound":136,"./primitives/a-text":137,"./primitives/a-video":138,"./primitives/a-videosphere":139,"./primitives/meshPrimitives":140}],126:[function(_dereq_,module,exports){
 var AEntity = _dereq_('../../core/a-entity');
 var components = _dereq_('../../core/component').components;
 var registerElement = _dereq_('../../core/a-register-element').registerElement;
@@ -76359,7 +76593,7 @@ function definePrimitive (tagName, defaultComponents, mappings) {
 }
 module.exports.definePrimitive = definePrimitive;
 
-},{"../../core/a-entity":99,"../../core/a-register-element":102,"../../core/component":103,"../../utils/":176}],120:[function(_dereq_,module,exports){
+},{"../../core/a-entity":105,"../../core/a-register-element":108,"../../core/component":109,"../../utils/":183}],127:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-camera', {
@@ -76383,7 +76617,7 @@ registerPrimitive('a-camera', {
   }
 });
 
-},{"../primitives":119}],121:[function(_dereq_,module,exports){
+},{"../primitives":126}],128:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -76418,7 +76652,7 @@ registerPrimitive('a-cursor', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":176,"../getMeshMixin":117,"../primitives":119}],122:[function(_dereq_,module,exports){
+},{"../../../utils/":183,"../getMeshMixin":124,"../primitives":126}],129:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -76455,7 +76689,7 @@ registerPrimitive('a-curvedimage', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":176,"../getMeshMixin":117,"../primitives":119}],123:[function(_dereq_,module,exports){
+},{"../../../utils/":183,"../getMeshMixin":124,"../primitives":126}],130:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-gltf-model', {
@@ -76464,7 +76698,7 @@ registerPrimitive('a-gltf-model', {
   }
 });
 
-},{"../primitives":119}],124:[function(_dereq_,module,exports){
+},{"../primitives":126}],131:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -76488,7 +76722,7 @@ registerPrimitive('a-image', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":176,"../getMeshMixin":117,"../primitives":119}],125:[function(_dereq_,module,exports){
+},{"../../../utils/":183,"../getMeshMixin":124,"../primitives":126}],132:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-light', {
@@ -76509,7 +76743,7 @@ registerPrimitive('a-light', {
   }
 });
 
-},{"../primitives":119}],126:[function(_dereq_,module,exports){
+},{"../primitives":126}],133:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-link', {
@@ -76526,7 +76760,7 @@ registerPrimitive('a-link', {
   }
 });
 
-},{"../primitives":119}],127:[function(_dereq_,module,exports){
+},{"../primitives":126}],134:[function(_dereq_,module,exports){
 var meshMixin = _dereq_('../getMeshMixin')();
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -76542,7 +76776,7 @@ registerPrimitive('a-obj-model', utils.extendDeep({}, meshMixin, {
   }
 }));
 
-},{"../../../utils/":176,"../getMeshMixin":117,"../primitives":119}],128:[function(_dereq_,module,exports){
+},{"../../../utils/":183,"../getMeshMixin":124,"../primitives":126}],135:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -76568,7 +76802,7 @@ registerPrimitive('a-sky', utils.extendDeep({}, getMeshMixin(), {
   mappings: utils.extendDeep({}, meshPrimitives['a-sphere'].prototype.mappings)
 }));
 
-},{"../../../utils/":176,"../getMeshMixin":117,"../primitives":119,"./meshPrimitives":133}],129:[function(_dereq_,module,exports){
+},{"../../../utils/":183,"../getMeshMixin":124,"../primitives":126,"./meshPrimitives":140}],136:[function(_dereq_,module,exports){
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 
 registerPrimitive('a-sound', {
@@ -76585,12 +76819,12 @@ registerPrimitive('a-sound', {
   }
 });
 
-},{"../primitives":119}],130:[function(_dereq_,module,exports){
+},{"../primitives":126}],137:[function(_dereq_,module,exports){
 // <a-text> using `definePrimitive` helper.
 var definePrimitive = _dereq_('../primitives').definePrimitive;
 definePrimitive('a-text', {text: {anchor: 'align', width: 5}});
 
-},{"../primitives":119}],131:[function(_dereq_,module,exports){
+},{"../primitives":126}],138:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -76614,7 +76848,7 @@ registerPrimitive('a-video', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":176,"../getMeshMixin":117,"../primitives":119}],132:[function(_dereq_,module,exports){
+},{"../../../utils/":183,"../getMeshMixin":124,"../primitives":126}],139:[function(_dereq_,module,exports){
 var getMeshMixin = _dereq_('../getMeshMixin');
 var registerPrimitive = _dereq_('../primitives').registerPrimitive;
 var utils = _dereq_('../../../utils/');
@@ -76643,7 +76877,7 @@ registerPrimitive('a-videosphere', utils.extendDeep({}, getMeshMixin(), {
   }
 }));
 
-},{"../../../utils/":176,"../getMeshMixin":117,"../primitives":119}],133:[function(_dereq_,module,exports){
+},{"../../../utils/":183,"../getMeshMixin":124,"../primitives":126}],140:[function(_dereq_,module,exports){
 /**
  * Automated mesh primitive registration.
  */
@@ -76683,7 +76917,7 @@ function unCamelCase (str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
-},{"../../../core/geometry":104,"../../../utils/":176,"../getMeshMixin":117,"../primitives":119}],134:[function(_dereq_,module,exports){
+},{"../../../core/geometry":111,"../../../utils/":183,"../getMeshMixin":124,"../primitives":126}],141:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76704,7 +76938,7 @@ registerGeometry('box', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],135:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],142:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76724,7 +76958,7 @@ registerGeometry('circle', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],136:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],143:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76750,7 +76984,7 @@ registerGeometry('cone', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],137:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],144:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76774,7 +77008,7 @@ registerGeometry('cylinder', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],138:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],145:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76789,7 +77023,7 @@ registerGeometry('dodecahedron', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],139:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],146:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76804,7 +77038,7 @@ registerGeometry('icosahedron', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],140:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],147:[function(_dereq_,module,exports){
 _dereq_('./box.js');
 _dereq_('./circle.js');
 _dereq_('./cone.js');
@@ -76820,7 +77054,7 @@ _dereq_('./torus.js');
 _dereq_('./torusKnot.js');
 _dereq_('./triangle.js');
 
-},{"./box.js":134,"./circle.js":135,"./cone.js":136,"./cylinder.js":137,"./dodecahedron.js":138,"./icosahedron.js":139,"./octahedron.js":141,"./plane.js":142,"./ring.js":143,"./sphere.js":144,"./tetrahedron.js":145,"./torus.js":146,"./torusKnot.js":147,"./triangle.js":148}],141:[function(_dereq_,module,exports){
+},{"./box.js":141,"./circle.js":142,"./cone.js":143,"./cylinder.js":144,"./dodecahedron.js":145,"./icosahedron.js":146,"./octahedron.js":148,"./plane.js":149,"./ring.js":150,"./sphere.js":151,"./tetrahedron.js":152,"./torus.js":153,"./torusKnot.js":154,"./triangle.js":155}],148:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76835,7 +77069,7 @@ registerGeometry('octahedron', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],142:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],149:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76852,7 +77086,7 @@ registerGeometry('plane', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],143:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],150:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76875,7 +77109,7 @@ registerGeometry('ring', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],144:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],151:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76899,7 +77133,7 @@ registerGeometry('sphere', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],145:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],152:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76914,7 +77148,7 @@ registerGeometry('tetrahedron', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],146:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],153:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76936,7 +77170,7 @@ registerGeometry('torus', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],147:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],154:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -76957,7 +77191,7 @@ registerGeometry('torusKnot', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],148:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],155:[function(_dereq_,module,exports){
 var registerGeometry = _dereq_('../core/geometry').registerGeometry;
 var THREE = _dereq_('../lib/three');
 
@@ -77012,7 +77246,7 @@ registerGeometry('triangle', {
   }
 });
 
-},{"../core/geometry":104,"../lib/three":151}],149:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../lib/three":158}],156:[function(_dereq_,module,exports){
 // Polyfill `Promise`.
 window.Promise = window.Promise || _dereq_('promise-polyfill');
 
@@ -77104,7 +77338,7 @@ _dereq_('./core/a-mixin');
 _dereq_('./extras/components/');
 _dereq_('./extras/primitives/');
 
-console.log('A-Frame Version: 0.9.2 (Date 2020-02-12, Commit #b3aca967)');
+console.log('A-Frame Version: 0.9.2 (Date 2020-02-18, Commit #1db84db4)');
 console.log('three Version (https://github.com/supermedium/three.js):',
             pkg.dependencies['super-three']);
 console.log('WebVR Polyfill Version:', pkg.dependencies['webvr-polyfill']);
@@ -77137,7 +77371,7 @@ module.exports = window.AFRAME = {
   version: pkg.version
 };
 
-},{"../package":51,"../vendor/starts-with-polyfill":187,"./components/index":60,"./core/a-assets":97,"./core/a-cubemap":98,"./core/a-entity":99,"./core/a-mixin":100,"./core/a-node":101,"./core/a-register-element":102,"./core/component":103,"./core/geometry":104,"./core/scene/a-scene":106,"./core/scene/scenes":110,"./core/schema":112,"./core/shader":113,"./core/system":114,"./extras/components/":115,"./extras/primitives/":118,"./extras/primitives/getMeshMixin":117,"./extras/primitives/primitives":119,"./geometries/index":140,"./lib/three":151,"./shaders/index":153,"./style/aframe.css":158,"./style/rStats.css":159,"./systems/index":163,"./utils/":176,"./utils/isIOSOlderThan10":178,"custom-event-polyfill":9,"present":31,"promise-polyfill":32,"super-animejs":34,"webvr-polyfill":46}],150:[function(_dereq_,module,exports){
+},{"../package":51,"../vendor/starts-with-polyfill":213,"./components/index":60,"./core/a-assets":103,"./core/a-cubemap":104,"./core/a-entity":105,"./core/a-mixin":106,"./core/a-node":107,"./core/a-register-element":108,"./core/component":109,"./core/geometry":111,"./core/scene/a-scene":113,"./core/scene/scenes":117,"./core/schema":119,"./core/shader":120,"./core/system":121,"./extras/components/":122,"./extras/primitives/":125,"./extras/primitives/getMeshMixin":124,"./extras/primitives/primitives":126,"./geometries/index":147,"./lib/three":158,"./shaders/index":160,"./style/aframe.css":165,"./style/rStats.css":166,"./systems/index":170,"./utils/":183,"./utils/isIOSOlderThan10":185,"custom-event-polyfill":8,"present":31,"promise-polyfill":32,"super-animejs":34,"webvr-polyfill":46}],157:[function(_dereq_,module,exports){
 window.aframeStats = function (scene) {
   var _rS = null;
   var _scene = scene;
@@ -77194,7 +77428,7 @@ if (typeof module === 'object') {
   };
 }
 
-},{}],151:[function(_dereq_,module,exports){
+},{}],158:[function(_dereq_,module,exports){
 (function (global){
 var THREE = global.THREE = _dereq_('super-three');
 
@@ -77231,7 +77465,7 @@ module.exports = THREE;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"super-three":35,"super-three/examples/js/loaders/DRACOLoader":36,"super-three/examples/js/loaders/GLTFLoader":37,"super-three/examples/js/loaders/MTLLoader":38,"super-three/examples/js/loaders/OBJLoader":39}],152:[function(_dereq_,module,exports){
+},{"super-three":35,"super-three/examples/js/loaders/DRACOLoader":36,"super-three/examples/js/loaders/GLTFLoader":37,"super-three/examples/js/loaders/MTLLoader":38,"super-three/examples/js/loaders/OBJLoader":39}],159:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -77301,14 +77535,14 @@ function getMaterialData (data, materialData) {
   return materialData;
 }
 
-},{"../core/shader":113,"../lib/three":151,"../utils/":176}],153:[function(_dereq_,module,exports){
+},{"../core/shader":120,"../lib/three":158,"../utils/":183}],160:[function(_dereq_,module,exports){
 _dereq_('./flat');
 _dereq_('./standard');
 _dereq_('./sdf');
 _dereq_('./msdf');
 _dereq_('./ios10hls');
 
-},{"./flat":152,"./ios10hls":154,"./msdf":155,"./sdf":156,"./standard":157}],154:[function(_dereq_,module,exports){
+},{"./flat":159,"./ios10hls":161,"./msdf":162,"./sdf":163,"./standard":164}],161:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 
 /**
@@ -77343,7 +77577,7 @@ module.exports.Shader = registerShader('ios10hls', {
 });
 
 
-},{"../core/shader":113}],155:[function(_dereq_,module,exports){
+},{"../core/shader":120}],162:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 
 /**
@@ -77419,7 +77653,7 @@ module.exports.Shader = registerShader('msdf', {
   ].join('\n')
 });
 
-},{"../core/shader":113}],156:[function(_dereq_,module,exports){
+},{"../core/shader":120}],163:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 
 /**
@@ -77533,7 +77767,7 @@ module.exports.Shader = registerShader('sdf', {
   ].join('\n')
 });
 
-},{"../core/shader":113}],157:[function(_dereq_,module,exports){
+},{"../core/shader":120}],164:[function(_dereq_,module,exports){
 var registerShader = _dereq_('../core/shader').registerShader;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -77725,11 +77959,11 @@ function getMaterialData (data, materialData) {
   return materialData;
 }
 
-},{"../core/shader":113,"../lib/three":151,"../utils/":176}],158:[function(_dereq_,module,exports){
+},{"../core/shader":120,"../lib/three":158,"../utils/":183}],165:[function(_dereq_,module,exports){
 var css = "html.a-fullscreen{bottom:0;left:0;position:fixed;right:0;top:0}html.a-fullscreen body{height:100%;margin:0;overflow:hidden;padding:0;width:100%}html.a-fullscreen .a-canvas{width:100%!important;height:100%!important;top:0!important;left:0!important;right:0!important;bottom:0!important;position:fixed!important}html:not(.a-fullscreen) .a-enter-vr{right:5px;bottom:5px}:-webkit-full-screen{background-color:transparent}.a-hidden{display:none!important}.a-canvas{height:100%;left:0;position:absolute;top:0;width:100%}.a-canvas.a-grab-cursor:hover{cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}canvas.a-canvas.a-mouse-cursor-hover:hover{cursor:pointer}.a-inspector-loader{background-color:#ed3160;position:fixed;left:3px;top:3px;padding:6px 10px;color:#fff;text-decoration:none;font-size:12px;font-family:Roboto,sans-serif;text-align:center;z-index:99999;width:204px}@keyframes dots-1{from{opacity:0}25%{opacity:1}}@keyframes dots-2{from{opacity:0}50%{opacity:1}}@keyframes dots-3{from{opacity:0}75%{opacity:1}}@-webkit-keyframes dots-1{from{opacity:0}25%{opacity:1}}@-webkit-keyframes dots-2{from{opacity:0}50%{opacity:1}}@-webkit-keyframes dots-3{from{opacity:0}75%{opacity:1}}.a-inspector-loader .dots span{animation:dots-1 2s infinite steps(1);-webkit-animation:dots-1 2s infinite steps(1)}.a-inspector-loader .dots span:first-child+span{animation-name:dots-2;-webkit-animation-name:dots-2}.a-inspector-loader .dots span:first-child+span+span{animation-name:dots-3;-webkit-animation-name:dots-3}a-scene{display:block;position:relative;height:100%;width:100%}a-assets,a-scene audio,a-scene img,a-scene video{display:none}.a-enter-vr-modal,.a-orientation-modal{font-family:Consolas,Andale Mono,Courier New,monospace}.a-enter-vr-modal a{border-bottom:1px solid #fff;padding:2px 0;text-decoration:none;transition:.1s color ease-in}.a-enter-vr-modal a:hover{background-color:#fff;color:#111;padding:2px 4px;position:relative;left:-4px}.a-enter-vr{font-family:sans-serif,monospace;font-size:13px;width:100%;font-weight:200;line-height:16px;position:absolute;right:20px;bottom:20px}.a-enter-vr-button,.a-enter-vr-modal,.a-enter-vr-modal a{color:#fff}.a-enter-vr-button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245.82%20141.73%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23fff%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3Emask%3C%2Ftitle%3E%3Cpath%20class%3D%22a%22%20d%3D%22M175.56%2C111.37c-22.52%2C0-40.77-18.84-40.77-42.07S153%2C27.24%2C175.56%2C27.24s40.77%2C18.84%2C40.77%2C42.07S198.08%2C111.37%2C175.56%2C111.37ZM26.84%2C69.31c0-23.23%2C18.25-42.07%2C40.77-42.07s40.77%2C18.84%2C40.77%2C42.07-18.26%2C42.07-40.77%2C42.07S26.84%2C92.54%2C26.84%2C69.31ZM27.27%2C0C11.54%2C0%2C0%2C12.34%2C0%2C28.58V110.9c0%2C16.24%2C11.54%2C30.83%2C27.27%2C30.83H99.57c2.17%2C0%2C4.19-1.83%2C5.4-3.7L116.47%2C118a8%2C8%2C0%2C0%2C1%2C12.52-.18l11.51%2C20.34c1.2%2C1.86%2C3.22%2C3.61%2C5.39%2C3.61h72.29c15.74%2C0%2C27.63-14.6%2C27.63-30.83V28.58C245.82%2C12.34%2C233.93%2C0%2C218.19%2C0H27.27Z%22%2F%3E%3C%2Fsvg%3E) 50% 50%/70% 70% no-repeat rgba(0,0,0,.35);border:0;bottom:0;cursor:pointer;min-width:50px;min-height:30px;padding-right:5%;padding-top:4%;position:absolute;right:0;transition:background-color .05s ease;-webkit-transition:background-color .05s ease;z-index:9999}.a-enter-vr-button:active,.a-enter-vr-button:hover{background-color:#666}[data-a-enter-vr-no-webvr] .a-enter-vr-button{border-color:#666;opacity:.65}[data-a-enter-vr-no-webvr] .a-enter-vr-button:active,[data-a-enter-vr-no-webvr] .a-enter-vr-button:hover{background-color:rgba(0,0,0,.35);cursor:not-allowed}.a-enter-vr-modal{background-color:#666;border-radius:0;display:none;min-height:32px;margin-right:70px;padding:9px;width:280px;right:2%;position:absolute}.a-enter-vr-modal:after{border-bottom:10px solid transparent;border-left:10px solid #666;border-top:10px solid transparent;display:inline-block;content:'';position:absolute;right:-5px;top:5px;width:0;height:0}.a-enter-vr-modal a,.a-enter-vr-modal p{display:inline}.a-enter-vr-modal p{margin:0}.a-enter-vr-modal p:after{content:' '}[data-a-enter-vr-no-headset].a-enter-vr:hover .a-enter-vr-modal,[data-a-enter-vr-no-webvr].a-enter-vr:hover .a-enter-vr-modal{display:block}.a-orientation-modal{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2090%2090%22%20enable-background%3D%22new%200%200%2090%2090%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20points%3D%220%2C0%200%2C0%200%2C0%20%22%3E%3C/polygon%3E%3Cg%3E%3Cpath%20d%3D%22M71.545%2C48.145h-31.98V20.743c0-2.627-2.138-4.765-4.765-4.765H18.456c-2.628%2C0-4.767%2C2.138-4.767%2C4.765v42.789%20%20%20c0%2C2.628%2C2.138%2C4.766%2C4.767%2C4.766h5.535v0.959c0%2C2.628%2C2.138%2C4.765%2C4.766%2C4.765h42.788c2.628%2C0%2C4.766-2.137%2C4.766-4.765V52.914%20%20%20C76.311%2C50.284%2C74.173%2C48.145%2C71.545%2C48.145z%20M18.455%2C16.935h16.344c2.1%2C0%2C3.808%2C1.708%2C3.808%2C3.808v27.401H37.25V22.636%20%20%20c0-0.264-0.215-0.478-0.479-0.478H16.482c-0.264%2C0-0.479%2C0.214-0.479%2C0.478v36.585c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h7.507v7.644%20%20%20h-5.534c-2.101%2C0-3.81-1.709-3.81-3.81V20.743C14.645%2C18.643%2C16.354%2C16.935%2C18.455%2C16.935z%20M16.96%2C23.116h19.331v25.031h-7.535%20%20%20c-2.628%2C0-4.766%2C2.139-4.766%2C4.768v5.828h-7.03V23.116z%20M71.545%2C73.064H28.757c-2.101%2C0-3.81-1.708-3.81-3.808V52.914%20%20%20c0-2.102%2C1.709-3.812%2C3.81-3.812h42.788c2.1%2C0%2C3.809%2C1.71%2C3.809%2C3.812v16.343C75.354%2C71.356%2C73.645%2C73.064%2C71.545%2C73.064z%22%3E%3C/path%3E%3Cpath%20d%3D%22M28.919%2C58.424c-1.466%2C0-2.659%2C1.193-2.659%2C2.66c0%2C1.466%2C1.193%2C2.658%2C2.659%2C2.658c1.468%2C0%2C2.662-1.192%2C2.662-2.658%20%20%20C31.581%2C59.617%2C30.387%2C58.424%2C28.919%2C58.424z%20M28.919%2C62.786c-0.939%2C0-1.703-0.764-1.703-1.702c0-0.939%2C0.764-1.704%2C1.703-1.704%20%20%20c0.94%2C0%2C1.705%2C0.765%2C1.705%2C1.704C30.623%2C62.022%2C29.858%2C62.786%2C28.919%2C62.786z%22%3E%3C/path%3E%3Cpath%20d%3D%22M69.654%2C50.461H33.069c-0.264%2C0-0.479%2C0.215-0.479%2C0.479v20.288c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h36.585%20%20%20c0.263%2C0%2C0.477-0.214%2C0.477-0.478V50.939C70.131%2C50.676%2C69.917%2C50.461%2C69.654%2C50.461z%20M69.174%2C51.417V70.75H33.548V51.417H69.174z%22%3E%3C/path%3E%3Cpath%20d%3D%22M45.201%2C30.296c6.651%2C0%2C12.233%2C5.351%2C12.551%2C11.977l-3.033-2.638c-0.193-0.165-0.507-0.142-0.675%2C0.048%20%20%20c-0.174%2C0.198-0.153%2C0.501%2C0.045%2C0.676l3.883%2C3.375c0.09%2C0.075%2C0.198%2C0.115%2C0.312%2C0.115c0.141%2C0%2C0.273-0.061%2C0.362-0.166%20%20%20l3.371-3.877c0.173-0.2%2C0.151-0.502-0.047-0.675c-0.194-0.166-0.508-0.144-0.676%2C0.048l-2.592%2C2.979%20%20%20c-0.18-3.417-1.629-6.605-4.099-9.001c-2.538-2.461-5.877-3.817-9.404-3.817c-0.264%2C0-0.479%2C0.215-0.479%2C0.479%20%20%20C44.72%2C30.083%2C44.936%2C30.296%2C45.201%2C30.296z%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) center/50% 50% no-repeat rgba(244,244,244,1);bottom:0;font-size:14px;font-weight:600;left:0;line-height:20px;right:0;position:fixed;top:0;z-index:9999999}.a-orientation-modal:after{color:#666;content:\"Insert phone into Cardboard holder.\";display:block;position:absolute;text-align:center;top:70%;transform:translateY(-70%);width:100%}.a-orientation-modal button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20100%20100%22%20enable-background%3D%22new%200%200%20100%20100%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M55.209%2C50l17.803-17.803c1.416-1.416%2C1.416-3.713%2C0-5.129c-1.416-1.417-3.713-1.417-5.129%2C0L50.08%2C44.872%20%20L32.278%2C27.069c-1.416-1.417-3.714-1.417-5.129%2C0c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129L44.951%2C50L27.149%2C67.803%20%20c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129c0.708%2C0.708%2C1.636%2C1.062%2C2.564%2C1.062c0.928%2C0%2C1.856-0.354%2C2.564-1.062L50.08%2C55.13l17.803%2C17.802%20%20c0.708%2C0.708%2C1.637%2C1.062%2C2.564%2C1.062s1.856-0.354%2C2.564-1.062c1.416-1.416%2C1.416-3.713%2C0-5.129L55.209%2C50z%22%3E%3C/path%3E%3C/svg%3E) no-repeat;border:none;height:50px;text-indent:-9999px;width:50px}.a-loader-title{background-color:rgba(0,0,0,.6);font-family:sans-serif,monospace;text-align:center;font-size:20px;height:50px;font-weight:300;line-height:50px;position:absolute;right:0;left:0;top:0;color:#fff}"; (_dereq_("browserify-css").createStyle(css, { "href": "src\\style\\aframe.css"})); module.exports = css;
-},{"browserify-css":4}],159:[function(_dereq_,module,exports){
+},{"browserify-css":4}],166:[function(_dereq_,module,exports){
 var css = ".rs-base{background-color:#333;color:#fafafa;border-radius:0;font:10px monospace;left:5px;line-height:1em;opacity:.85;overflow:hidden;padding:10px;position:fixed;top:5px;width:300px;z-index:10000}.rs-base div.hidden{display:none}.rs-base h1{color:#fff;cursor:pointer;font-size:1.4em;font-weight:300;margin:0 0 5px;padding:0}.rs-group{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column-reverse;flex-direction:column-reverse;margin-bottom:5px}.rs-group:last-child{margin-bottom:0}.rs-counter-base{align-items:center;display:-webkit-box;display:-webkit-flex;display:flex;height:10px;-webkit-justify-content:space-between;justify-content:space-between;margin:2px 0}.rs-counter-base.alarm{color:#b70000;text-shadow:0 0 0 #b70000,0 0 1px #fff,0 0 1px #fff,0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff,0 0 4px #fff,0 0 4px #fff}.rs-counter-id{font-weight:300;-webkit-box-ordinal-group:0;-webkit-order:0;order:0;width:54px}.rs-counter-value{font-weight:300;-webkit-box-ordinal-group:1;-webkit-order:1;order:1;text-align:right;width:35px}.rs-canvas{-webkit-box-ordinal-group:2;-webkit-order:2;order:2}@media (min-width:480px){.rs-base{left:20px;top:20px}}"; (_dereq_("browserify-css").createStyle(css, { "href": "src\\style\\rStats.css"})); module.exports = css;
-},{"browserify-css":4}],160:[function(_dereq_,module,exports){
+},{"browserify-css":4}],167:[function(_dereq_,module,exports){
 var constants = _dereq_('../constants/');
 var registerSystem = _dereq_('../core/system').registerSystem;
 
@@ -78002,7 +78236,7 @@ function removeDefaultCamera (sceneEl) {
   sceneEl.removeChild(defaultCamera);
 }
 
-},{"../constants/":95,"../core/system":114}],161:[function(_dereq_,module,exports){
+},{"../constants/":101,"../core/system":121}],168:[function(_dereq_,module,exports){
 var geometries = _dereq_('../core/geometry').geometries;
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
@@ -78142,7 +78376,7 @@ function toBufferGeometry (geometry, doBuffer) {
   return bufferGeometry;
 }
 
-},{"../core/geometry":104,"../core/system":114,"../lib/three":151}],162:[function(_dereq_,module,exports){
+},{"../core/geometry":111,"../core/system":121,"../lib/three":158}],169:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
 
@@ -78178,7 +78412,7 @@ module.exports.System = registerSystem('gltf-model', {
   }
 });
 
-},{"../core/system":114,"../lib/three":151}],163:[function(_dereq_,module,exports){
+},{"../core/system":121,"../lib/three":158}],170:[function(_dereq_,module,exports){
 _dereq_('./camera');
 _dereq_('./geometry');
 _dereq_('./gltf-model');
@@ -78189,7 +78423,7 @@ _dereq_('./shadow');
 _dereq_('./tracked-controls-webvr');
 _dereq_('./tracked-controls-webxr');
 
-},{"./camera":160,"./geometry":161,"./gltf-model":162,"./light":164,"./material":165,"./renderer":166,"./shadow":167,"./tracked-controls-webvr":168,"./tracked-controls-webxr":169}],164:[function(_dereq_,module,exports){
+},{"./camera":167,"./geometry":168,"./gltf-model":169,"./light":171,"./material":172,"./renderer":173,"./shadow":174,"./tracked-controls-webvr":175,"./tracked-controls-webxr":176}],171:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var bind = _dereq_('../utils/bind');
 var constants = _dereq_('../constants/');
@@ -78275,7 +78509,7 @@ module.exports.System = registerSystem('light', {
   }
 });
 
-},{"../constants/":95,"../core/system":114,"../utils/bind":170}],165:[function(_dereq_,module,exports){
+},{"../constants/":101,"../core/system":121,"../utils/bind":177}],172:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
 var utils = _dereq_('../utils/');
@@ -78680,7 +78914,7 @@ function fixVideoAttributes (videoEl) {
   return videoEl;
 }
 
-},{"../core/system":114,"../lib/three":151,"../utils/":176,"../utils/material":179}],166:[function(_dereq_,module,exports){
+},{"../core/system":121,"../lib/three":158,"../utils/":183,"../utils/material":186}],173:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var utils = _dereq_('../utils/');
 var THREE = _dereq_('../lib/three');
@@ -78744,7 +78978,7 @@ module.exports.System = registerSystem('renderer', {
   }
 });
 
-},{"../core/system":114,"../lib/three":151,"../utils/":176}],167:[function(_dereq_,module,exports){
+},{"../core/system":121,"../lib/three":158,"../utils/":183}],174:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var THREE = _dereq_('../lib/three');
 
@@ -78799,7 +79033,7 @@ module.exports.System = registerSystem('shadow', {
   }
 });
 
-},{"../core/system":114,"../lib/three":151}],168:[function(_dereq_,module,exports){
+},{"../core/system":121,"../lib/three":158}],175:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var utils = _dereq_('../utils');
 
@@ -78863,7 +79097,7 @@ module.exports.System = registerSystem('tracked-controls-webvr', {
   }
 });
 
-},{"../core/system":114,"../utils":176}],169:[function(_dereq_,module,exports){
+},{"../core/system":121,"../utils":183}],176:[function(_dereq_,module,exports){
 var registerSystem = _dereq_('../core/system').registerSystem;
 var utils = _dereq_('../utils');
 
@@ -78890,7 +79124,7 @@ module.exports.System = registerSystem('tracked-controls-webxr', {
   }
 });
 
-},{"../core/system":114,"../utils":176}],170:[function(_dereq_,module,exports){
+},{"../core/system":121,"../utils":183}],177:[function(_dereq_,module,exports){
 /**
  * Faster version of Function.prototype.bind
  * @param {Function} fn - Function to wrap.
@@ -78907,7 +79141,7 @@ module.exports = function bind (fn, ctx/* , arg1, arg2 */) {
   })(Array.prototype.slice.call(arguments, 2));
 };
 
-},{}],171:[function(_dereq_,module,exports){
+},{}],178:[function(_dereq_,module,exports){
 /* global THREE */
 var debug = _dereq_('./debug');
 var extend = _dereq_('object-assign');
@@ -79019,7 +79253,7 @@ module.exports.toVector3 = function (vec3) {
   return new THREE.Vector3(vec3.x, vec3.y, vec3.z);
 };
 
-},{"./debug":172,"object-assign":25}],172:[function(_dereq_,module,exports){
+},{"./debug":179,"object-assign":25}],179:[function(_dereq_,module,exports){
 (function (process){
 var debugLib = _dereq_('debug');
 var extend = _dereq_('object-assign');
@@ -79116,7 +79350,7 @@ module.exports = debug;
 
 }).call(this,_dereq_('_process'))
 
-},{"_process":5,"debug":10,"object-assign":25}],173:[function(_dereq_,module,exports){
+},{"_process":5,"debug":9,"object-assign":25}],180:[function(_dereq_,module,exports){
 (function (process){
 var error = _dereq_('debug')('device:error');
 
@@ -79312,7 +79546,7 @@ module.exports.PolyfillControls = function PolyfillControls (object) {
 
 }).call(this,_dereq_('_process'))
 
-},{"_process":5,"debug":10}],174:[function(_dereq_,module,exports){
+},{"_process":5,"debug":9}],181:[function(_dereq_,module,exports){
 /**
  * Split a delimited component property string (e.g., `material.color`) to an object
  * containing `component` name and `property` name. If there is no delimiter, just return the
@@ -79374,7 +79608,7 @@ module.exports.setComponentProperty = function (el, name, value, delimiter) {
   el.setAttribute(name, value);
 };
 
-},{}],175:[function(_dereq_,module,exports){
+},{}],182:[function(_dereq_,module,exports){
 module.exports = function forceCanvasResizeSafariMobile (canvasEl) {
   var width = canvasEl.style.width;
   var height = canvasEl.style.height;
@@ -79390,7 +79624,7 @@ module.exports = function forceCanvasResizeSafariMobile (canvasEl) {
   }, 200);
 };
 
-},{}],176:[function(_dereq_,module,exports){
+},{}],183:[function(_dereq_,module,exports){
 /* global location */
 
 /* Centralized place to reference utilities since utils is exposed to the user. */
@@ -79720,7 +79954,7 @@ module.exports.findAllScenes = function (el) {
 // Must be at bottom to avoid circular dependency.
 module.exports.srcLoader = _dereq_('./src-loader');
 
-},{"./bind":170,"./coordinates":171,"./debug":172,"./device":173,"./entity":174,"./forceCanvasResizeSafariMobile":175,"./is-ie11":177,"./material":179,"./object-pool":180,"./split":181,"./src-loader":182,"./styleParser":183,"./tracked-controls":184,"deep-assign":12,"object-assign":25}],177:[function(_dereq_,module,exports){
+},{"./bind":177,"./coordinates":178,"./debug":179,"./device":180,"./entity":181,"./forceCanvasResizeSafariMobile":182,"./is-ie11":184,"./material":186,"./object-pool":187,"./split":188,"./src-loader":189,"./styleParser":190,"./tracked-controls":191,"deep-assign":11,"object-assign":25}],184:[function(_dereq_,module,exports){
 // https://stackoverflow.com/a/17907562
 function getInternetExplorerVersion () {
   var version = -1;
@@ -79738,7 +79972,7 @@ function getInternetExplorerVersion () {
 
 module.exports = getInternetExplorerVersion() === 11;
 
-},{}],178:[function(_dereq_,module,exports){
+},{}],185:[function(_dereq_,module,exports){
 /**
  * Check if device is iOS and older than version 10.
  */
@@ -79746,7 +79980,7 @@ module.exports = function isIOSOlderThan10 (userAgent) {
   return /(iphone|ipod|ipad).*os.(7_|8_|9_)/i.test(userAgent);
 };
 
-},{}],179:[function(_dereq_,module,exports){
+},{}],186:[function(_dereq_,module,exports){
 var THREE = _dereq_('../lib/three');
 
 var HLS_MIMETYPES = ['application/x-mpegurl', 'application/vnd.apple.mpegurl'];
@@ -79917,7 +80151,7 @@ module.exports.isHLS = function (src, type) {
   return false;
 };
 
-},{"../lib/three":151}],180:[function(_dereq_,module,exports){
+},{"../lib/three":158}],187:[function(_dereq_,module,exports){
 /*
   Adapted deePool by Kyle Simpson.
   MIT License: http://getify.mit-license.org
@@ -80008,7 +80242,7 @@ function removeUnusedKeys (obj, schema) {
 }
 module.exports.removeUnusedKeys = removeUnusedKeys;
 
-},{}],181:[function(_dereq_,module,exports){
+},{}],188:[function(_dereq_,module,exports){
 /**
  * String split with cached result.
  */
@@ -80025,7 +80259,7 @@ module.exports.split = (function () {
   };
 })();
 
-},{}],182:[function(_dereq_,module,exports){
+},{}],189:[function(_dereq_,module,exports){
 /* global Image, XMLHttpRequest */
 var debug = _dereq_('./debug');
 
@@ -80184,7 +80418,7 @@ module.exports = {
   validateCubemapSrc: validateCubemapSrc
 };
 
-},{"./debug":172}],183:[function(_dereq_,module,exports){
+},{"./debug":179}],190:[function(_dereq_,module,exports){
 /**
  * Utils for parsing style-like strings (e.g., "primitive: box; width: 5; height: 4.5").
  * Some code adapted from `style-attr` (https://github.com/joshwnj/style-attr)
@@ -80337,7 +80571,7 @@ function styleStringify (obj) {
 
 function upperCase (str) { return str[1].toUpperCase(); }
 
-},{}],184:[function(_dereq_,module,exports){
+},{}],191:[function(_dereq_,module,exports){
 var DEFAULT_HANDEDNESS = _dereq_('../constants').DEFAULT_HANDEDNESS;
 var AXIS_LABELS = ['x', 'y', 'z', 'w'];
 var NUM_HANDS = 2;  // Number of hands in a pair. Should always be 2.
@@ -80554,7 +80788,4025 @@ module.exports.onButtonEvent = function (id, evtName, component, hand) {
   }
 };
 
-},{"../constants":95}],185:[function(_dereq_,module,exports){
+},{"../constants":101}],192:[function(_dereq_,module,exports){
+THREE.AAPass = function ( width, height, mode ) {
+
+    THREE.Pass.call( this );
+  
+    this.width = width;
+    this.height = height;
+	this.mode = mode;
+	
+    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+    this.scene = new THREE.Scene();
+
+    /*--- Init FXAA ---*/
+    /*---------------------------------------------------------------------------------------------------------------------------------------------*/
+    var fxaaPassShader = THREE.FXAAShader;
+    this.fxaaPassUniforms = THREE.UniformsUtils.clone( fxaaPassShader.uniforms );
+
+    this.materialFXAAPassFilter = new THREE.ShaderMaterial( {
+        uniforms: this.fxaaPassUniforms,
+        vertexShader: fxaaPassShader.vertexShader,
+        fragmentShader: fxaaPassShader.fragmentShader,
+        defines: {}
+    } );
+    /*---------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    /*--- Init SMAA ---*/
+    /*---------------------------------------------------------------------------------------------------------------------------------------------*/
+    this.edgesRT = new THREE.WebGLRenderTarget( width, height, {
+		depthBuffer: false,
+		stencilBuffer: false,
+		generateMipmaps: false,
+		minFilter: THREE.LinearFilter,
+		format: THREE.RGBFormat
+	} );
+	this.edgesRT.texture.name = "SMAAPass.edges";
+
+	this.weightsRT = new THREE.WebGLRenderTarget( width, height, {
+		depthBuffer: false,
+		stencilBuffer: false,
+		generateMipmaps: false,
+		minFilter: THREE.LinearFilter,
+		format: THREE.RGBAFormat
+	} );
+	this.weightsRT.texture.name = "SMAAPass.weights";
+
+	// Textures
+	var scope = this;
+
+	var areaTextureImage = new Image();
+	areaTextureImage.src = this.getAreaTexture();
+	areaTextureImage.onload = function () {
+
+		// Assigning data to HTMLImageElement.src is asynchronous (see #15162)
+		scope.areaTexture.needsUpdate = true;
+
+	};
+
+	this.areaTexture = new THREE.Texture();
+	this.areaTexture.name = "SMAAPass.area";
+	this.areaTexture.image = areaTextureImage;
+	this.areaTexture.format = THREE.RGBFormat;
+	this.areaTexture.minFilter = THREE.LinearFilter;
+	this.areaTexture.generateMipmaps = false;
+	this.areaTexture.flipY = false;
+
+	var searchTextureImage = new Image();
+	searchTextureImage.src = this.getSearchTexture();
+	searchTextureImage.onload = function () {
+
+		// Assigning data to HTMLImageElement.src is asynchronous (see #15162)
+		scope.searchTexture.needsUpdate = true;
+
+	};
+
+	this.searchTexture = new THREE.Texture();
+	this.searchTexture.name = "SMAAPass.search";
+	this.searchTexture.image = searchTextureImage;
+	this.searchTexture.magFilter = THREE.NearestFilter;
+	this.searchTexture.minFilter = THREE.NearestFilter;
+	this.searchTexture.generateMipmaps = false;
+	this.searchTexture.flipY = false;
+
+	// Materials - pass 1
+
+	if ( THREE.SMAAEdgesShader === undefined ) {
+
+		console.error( "SMAAPass relies on SMAAShader" );
+
+	}
+
+	this.uniformsEdges = THREE.UniformsUtils.clone( THREE.SMAAEdgesShader.uniforms );
+
+	this.uniformsEdges[ "resolution" ].value.set( 1 / width, 1 / height );
+
+	this.materialEdges = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.SMAAEdgesShader.defines ),
+		uniforms: this.uniformsEdges,
+		vertexShader: THREE.SMAAEdgesShader.vertexShader,
+		fragmentShader: THREE.SMAAEdgesShader.fragmentShader
+	} );
+
+	// Materials - pass 2
+
+	this.uniformsWeights = THREE.UniformsUtils.clone( THREE.SMAAWeightsShader.uniforms );
+
+	this.uniformsWeights[ "resolution" ].value.set( 1 / width, 1 / height );
+	this.uniformsWeights[ "tDiffuse" ].value = this.edgesRT.texture;
+	this.uniformsWeights[ "tArea" ].value = this.areaTexture;
+	this.uniformsWeights[ "tSearch" ].value = this.searchTexture;
+
+	this.materialWeights = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.SMAAWeightsShader.defines ),
+		uniforms: this.uniformsWeights,
+		vertexShader: THREE.SMAAWeightsShader.vertexShader,
+		fragmentShader: THREE.SMAAWeightsShader.fragmentShader
+	} );
+
+	// Materials - pass 3
+
+	this.uniformsBlend = THREE.UniformsUtils.clone( THREE.SMAABlendShader.uniforms );
+
+	this.uniformsBlend[ "resolution" ].value.set( 1 / width, 1 / height );
+	this.uniformsBlend[ "tDiffuse" ].value = this.weightsRT.texture;
+
+	this.materialBlend = new THREE.ShaderMaterial( {
+		uniforms: this.uniformsBlend,
+		vertexShader: THREE.SMAABlendShader.vertexShader,
+		fragmentShader: THREE.SMAABlendShader.fragmentShader
+	} );
+    /*---------------------------------------------------------------------------------------------------------------------------------------------*/
+    
+    /*--- Init TAA ---*/
+	/*---------------------------------------------------------------------------------------------------------------------------------------------*/
+	this.sampleLevel = 5;
+	this.accumulate = false;
+	this.unbiased = true;
+
+	var copyShader = THREE.CopyShader;
+	this.copyUniforms = THREE.UniformsUtils.clone( copyShader.uniforms );
+	this.copyMaterial = new THREE.ShaderMaterial(	{
+		uniforms: this.copyUniforms,
+		vertexShader: copyShader.vertexShader,
+		fragmentShader: copyShader.fragmentShader,
+		premultipliedAlpha: true,
+		transparent: true,
+		blending: THREE.AdditiveBlending,
+		depthTest: false,
+		depthWrite: false
+	} );
+	/*---------------------------------------------------------------------------------------------------------------------------------------------*/
+
+    this.basic = new THREE.MeshBasicMaterial();
+
+    this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+    this.quad.frustumCulled = false; // Avoid getting clipped
+    this.scene.add( this.quad );
+  
+  };
+  
+  THREE.AAPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+  
+    constructor: THREE.AAPass,
+  
+    render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+        
+        if(this.mode === "smaa"){
+            this.SMAAPass(renderer, writeBuffer, readBuffer);
+        }
+        else if(this.mode === "taa"){
+            this.SSAAPass(renderer, writeBuffer, readBuffer);
+        }
+        else{
+            this.FXAAPass(renderer, writeBuffer, readBuffer);
+        }
+      
+		renderer.setRenderTarget( null );
+		renderer.clear();
+		renderer.render( this.scene, this.camera );
+
+    },
+
+    FXAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
+        this.fxaaPassUniforms[ "tDiffuse" ].value = readBuffer.texture;
+        this.quad.material = this.materialFXAAPassFilter;
+    },
+
+    SMAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
+        // Pass 1
+
+		this.uniformsEdges[ "tDiffuse" ].value = readBuffer.texture;
+
+		this.quad.material = this.materialEdges;
+
+		renderer.setRenderTarget( this.edgesRT );
+		renderer.clear();
+		renderer.render( this.scene, this.camera );
+
+		// Pass 2
+
+		this.quad.material = this.materialWeights;
+
+		renderer.setRenderTarget( this.weightsRT );
+		renderer.clear();
+		renderer.render( this.scene, this.camera );
+
+		// Pass 3
+
+		this.uniformsBlend[ "tColor" ].value = readBuffer.texture;
+
+		this.quad.material = this.materialBlend;
+	},
+
+	// TODO
+	SSAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
+		if ( ! this.sampleRenderTarget ) {
+			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
+			this.sampleRenderTarget.texture.name = "SSAARenderPass.sample";
+		}
+
+		var jitterOffsets = THREE.AAPass.JitterVectors[ Math.max( 0, Math.min( this.sampleLevel, 5 ) ) ];
+
+		var autoClear = renderer.autoClear;
+		renderer.autoClear = false;
+
+		var baseSampleWeight = 1.0 / jitterOffsets.length;
+		var roundingRange = 1 / 32;
+		this.copyUniforms[ "tDiffuse" ].value = this.sampleRenderTarget.texture;
+
+		var width = readBuffer.width, height = readBuffer.height;
+
+		// render the scene multiple times, each slightly jitter offset from the last and accumulate the results.
+		for ( var i = 0; i < jitterOffsets.length; i ++ ) {
+
+			var jitterOffset = jitterOffsets[ i ];
+
+			//if ( this.camera.setViewOffset ) {
+
+				this.camera.setViewOffset( width, height,
+					jitterOffset[ 0 ] * 0.0625, jitterOffset[ 1 ] * 0.0625, // 0.0625 = 1 / 16
+					width, height );
+
+			//}
+
+			var sampleWeight = baseSampleWeight;
+
+			if ( this.unbiased ) {
+
+				// the theory is that equal weights for each sample lead to an accumulation of rounding errors.
+				// The following equation varies the sampleWeight per sample so that it is uniformly distributed
+				// across a range of values whose rounding errors cancel each other out.
+
+				var uniformCenteredDistribution = ( - 0.5 + ( i + 0.5 ) / jitterOffsets.length );
+				sampleWeight += roundingRange * uniformCenteredDistribution;
+
+			}
+
+			this.quad.material = this.copyMaterial;
+			this.copyUniforms[ "opacity" ].value = sampleWeight;
+			renderer.setRenderTarget( this.sampleRenderTarget );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+			renderer.setRenderTarget( this.renderToScreen ? null : writeBuffer );
+
+			if ( i === 0 ) {
+
+				renderer.setClearColor( 0x000000, 0.0 );
+				renderer.clear();
+
+			}
+
+			renderer.render( this.scene, this.camera );
+
+		}
+
+		this.camera.clearViewOffset();
+	},
+
+	// TODO
+    TAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
+        if ( ! this.accumulate ) {
+			this.SSAAPass( renderer, writeBuffer, readBuffer );
+			this.accumulateIndex = - 1;
+			//this.accumulate = true;
+			return;
+		}
+
+		console.log("TAA");
+		var jitterOffsets = THREE.AAPass.JitterVectors[ 5 ];
+
+		if ( ! this.sampleRenderTarget ) {
+			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, this.params );
+			this.sampleRenderTarget.texture.name = "TAARenderPass.sample";
+		}
+
+		if ( ! this.holdRenderTarget ) {
+			this.holdRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, this.params );
+			this.holdRenderTarget.texture.name = "TAARenderPass.hold";
+		}
+
+		if ( this.accumulate && this.accumulateIndex === - 1 ) {
+			this.SSAAPass( renderer, this.holdRenderTarget, readBuffer );
+			this.accumulateIndex = 0;
+		}
+
+		var autoClear = renderer.autoClear;
+		renderer.autoClear = false;
+
+		var sampleWeight = 1.0 / ( jitterOffsets.length );
+
+		if ( this.accumulateIndex >= 0 && this.accumulateIndex < jitterOffsets.length ) {
+			
+			this.copyUniforms[ "opacity" ].value = sampleWeight;
+			this.copyUniforms[ "tDiffuse" ].value = writeBuffer.texture;
+			
+			// render the scene multiple times, each slightly jitter offset from the last and accumulate the results.
+			var numSamplesPerFrame = Math.pow( 2, this.sampleLevel );
+			for ( var i = 0; i < numSamplesPerFrame; i ++ ) {
+				var j = this.accumulateIndex;
+				var jitterOffset = jitterOffsets[ j ];
+
+					this.camera.setViewOffset( readBuffer.width, readBuffer.height,
+						jitterOffset[ 0 ] * 0.0625, jitterOffset[ 1 ] * 0.0625, // 0.0625 = 1 / 16
+						readBuffer.width, readBuffer.height );
+
+				renderer.setRenderTarget( writeBuffer );
+				renderer.clear();
+				renderer.render( this.scene, this.camera );
+
+				renderer.setRenderTarget( this.sampleRenderTarget );
+				if ( this.accumulateIndex === 0 ) renderer.clear();
+				renderer.render( this.scene, this.camera );
+
+				this.accumulateIndex ++;
+
+				if ( this.accumulateIndex >= jitterOffsets.length ) break;
+
+			}
+
+			this.camera.clearViewOffset();
+
+		}
+
+		var accumulationWeight = this.accumulateIndex * sampleWeight;
+
+		if ( accumulationWeight > 0 ) {
+			this.copyUniforms[ "opacity" ].value = 1.0;
+			this.copyUniforms[ "tDiffuse" ].value = this.sampleRenderTarget.texture;
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
+
+		if ( accumulationWeight < 1.0 ) {
+			this.copyUniforms[ "opacity" ].value = 1.0 - accumulationWeight;
+			this.copyUniforms[ "tDiffuse" ].value = this.holdRenderTarget.texture;
+			renderer.setRenderTarget( writeBuffer );
+			if ( accumulationWeight === 0 ) renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
+    },
+
+	setSize: function ( width, height ) {
+
+		this.edgesRT.setSize( width, height );
+		this.weightsRT.setSize( width, height );
+
+		this.materialEdges.uniforms[ 'resolution' ].value.set( 1 / width, 1 / height );
+		this.materialWeights.uniforms[ 'resolution' ].value.set( 1 / width, 1 / height );
+		this.materialBlend.uniforms[ 'resolution' ].value.set( 1 / width, 1 / height );
+
+    },
+    
+    setMode: function(nMode){
+        this.mode = nMode;
+    },
+
+	getAreaTexture: function () {
+
+		return 'data:image/png;base64,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';
+
+	},
+
+	getSearchTexture: function () {
+
+		return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAAhCAAAAABIXyLAAAAAOElEQVRIx2NgGAWjYBSMglEwEICREYRgFBZBqDCSLA2MGPUIVQETE9iNUAqLR5gIeoQKRgwXjwAAGn4AtaFeYLEAAAAASUVORK5CYII=';
+
+	}
+  
+  } );
+  
+THREE.AAPass.JitterVectors = [
+	[
+		[ 0, 0 ]
+	],
+	[
+		[ 4, 4 ], [ - 4, - 4 ]
+	],
+	[
+		[ - 2, - 6 ], [ 6, - 2 ], [ - 6, 2 ], [ 2, 6 ]
+	],
+	[
+		[ 1, - 3 ], [ - 1, 3 ], [ 5, 1 ], [ - 3, - 5 ],
+		[ - 5, 5 ], [ - 7, - 1 ], [ 3, 7 ], [ 7, - 7 ]
+	],
+	[
+		[ 1, 1 ], [ - 1, - 3 ], [ - 3, 2 ], [ 4, - 1 ],
+		[ - 5, - 2 ], [ 2, 5 ], [ 5, 3 ], [ 3, - 5 ],
+		[ - 2, 6 ], [ 0, - 7 ], [ - 4, - 6 ], [ - 6, 4 ],
+		[ - 8, 0 ], [ 7, - 4 ], [ 6, 7 ], [ - 7, - 8 ]
+	],
+	[
+		[ - 4, - 7 ], [ - 7, - 5 ], [ - 3, - 5 ], [ - 5, - 4 ],
+		[ - 1, - 4 ], [ - 2, - 2 ], [ - 6, - 1 ], [ - 4, 0 ],
+		[ - 7, 1 ], [ - 1, 2 ], [ - 6, 3 ], [ - 3, 3 ],
+		[ - 7, 6 ], [ - 3, 6 ], [ - 5, 7 ], [ - 1, 7 ],
+		[ 5, - 7 ], [ 1, - 6 ], [ 6, - 5 ], [ 4, - 4 ],
+		[ 2, - 3 ], [ 7, - 2 ], [ 1, - 1 ], [ 4, - 1 ],
+		[ 2, 1 ], [ 6, 2 ], [ 0, 4 ], [ 4, 4 ],
+		[ 2, 5 ], [ 7, 5 ], [ 5, 6 ], [ 3, 7 ]
+	]
+];
+
+  
+},{}],193:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ *
+ * Full-screen textured quad shader
+ */
+
+THREE.CopyShader = {
+
+  uniforms: {
+
+    "tDiffuse": { value: null },
+    "opacity":  { value: 1.0 }
+
+  },
+
+  vertexShader: [
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vUv = uv;",
+      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+    "}"
+
+  ].join( "\n" ),
+
+  fragmentShader: [
+
+    "uniform float opacity;",
+
+    "uniform sampler2D tDiffuse;",
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vec4 texel = texture2D( tDiffuse, vUv );",
+      "gl_FragColor = opacity * texel;",
+
+    "}"
+
+  ].join( "\n" )
+
+};
+
+},{}],194:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.EffectComposer = function ( renderer, renderTarget ) {
+
+  this.renderer = renderer;
+  window.addEventListener( 'vrdisplaypresentchange' , this.resize.bind(this) );
+  window.addEventListener( 'resize' , this.resize.bind(this) );
+
+  if ( renderTarget === undefined ) {
+
+    var parameters = {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      format: THREE.RGBAFormat,
+      stencilBuffer: false
+    };
+
+    var size = new THREE.Vector2();
+    renderer.getDrawingBufferSize(size);
+    renderTarget = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
+    renderTarget.texture.name = 'EffectComposer.rt1';
+
+  }
+
+  this.renderTarget1 = renderTarget;
+  this.renderTarget1.depthBuffer = true;
+  this.renderTarget1.depthTexture = new THREE.DepthTexture();
+  this.renderTarget2 = renderTarget.clone();
+  this.renderTarget2.depthBuffer = true;
+  this.renderTarget2.depthTexture = new THREE.DepthTexture();
+  this.renderTarget2.texture.name = 'EffectComposer.rt2';
+  this.normalRenderTarget = renderTarget.clone();
+  
+  this.bloomRenderTarget = renderTarget.clone();
+  this.lutRenderTarget  = renderTarget.clone();
+
+  this.writeBuffer = this.renderTarget1;
+  this.readBuffer = this.renderTarget2;
+
+  this.passes = [];
+  this.maskActive = false;
+
+  // dependencies
+
+  if ( THREE.CopyShader === undefined ) {
+
+    console.error( 'THREE.EffectComposer relies on THREE.CopyShader' );
+
+  }
+
+  if ( THREE.ShaderPass === undefined ) {
+
+    console.error( 'THREE.EffectComposer relies on THREE.ShaderPass' );
+
+  }
+
+  this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
+
+  
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+
+};
+
+Object.assign( THREE.EffectComposer.prototype, {
+
+  swapBuffers: function ( pass ) {
+
+    if ( pass.needsSwap ) {
+
+      if ( this.maskActive ) {
+
+        var context = this.renderer.context;
+
+        context.stencilFunc( context.NOTEQUAL, 1, 0xffffffff );
+
+        this.copyPass.render( this.renderer, this.writeBuffer, this.readBuffer, delta );
+
+        context.stencilFunc( context.EQUAL, 1, 0xffffffff );
+
+      }
+
+      var tmp = this.readBuffer;
+      this.readBuffer = this.writeBuffer;
+      this.writeBuffer = tmp;
+
+    }
+
+    if ( THREE.MaskPass !== undefined ) {
+
+      if ( pass instanceof THREE.MaskPass ) {
+
+        this.maskActive = true;
+
+      } else if ( pass instanceof THREE.ClearMaskPass ) {
+
+        this.maskActive = false;
+
+      }
+
+    }
+
+  },
+
+  addPass: function ( pass ) {
+
+    // Makes certain that only the last added pass will be rendered to screen
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.needsSwap = true;
+    });
+    
+    // Makes certain that only the last added pass will be rendered to screen
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.renderToScreen = false;
+    });
+    
+    pass.renderToScreen = true;
+    pass.needsSwap = false;
+
+    this.passes.push( pass );
+
+    var size = new THREE.Vector2();
+    this.renderer.getDrawingBufferSize(size);
+    pass.setSize( size.width, size.height );
+
+  },
+
+  removePass: function ( pass ) {
+
+    var index = this.passes.indexOf(pass);
+
+    if ( index === -1 ) { return; }
+
+    this.passes.splice( this.passes.indexOf(pass), 1 );
+
+    this.passes[this.passes.length - 1].renderToScreen = true;
+
+    this.resize();
+
+  },
+
+  insertPass: function ( pass, index ) {
+
+    this.passes.splice( index, 0, pass );
+
+  },
+
+  render: function ( delta, starti ) {
+
+    var maskActive = this.maskActive;
+
+    var pass, i, il = this.passes.length;
+
+    var scope = this;
+
+    var currentOnAfterRender;
+
+    for ( i = starti || 0; i < il; i ++ ) {
+
+      pass = this.passes[ i ];
+      
+      if ( pass.enabled === false ) continue;
+
+      // If VR mode is enabled and rendering the whole scene is required.
+      // The pass renders the scene and and postprocessing is resumed before
+      // submitting the frame to the headset by using the onAfterRender callback.
+      if ( this.renderer.vr.enabled && pass.scene ) {
+
+        currentOnAfterRender = pass.scene.onAfterRender;
+
+        pass.scene.onAfterRender = function () {
+
+          // Disable stereo rendering when doing postprocessing
+          // on a render target.
+          scope.renderer.vr.enabled = false;
+
+          scope.render( delta, i + 1, maskActive );
+
+          // Renable vr mode.
+          scope.renderer.vr.enabled = true;
+        }
+
+        pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive, this.normalRenderTarget );
+        
+        // Restore onAfterRender
+        pass.scene.onAfterRender = currentOnAfterRender;
+
+        this.swapBuffers( pass );
+
+        return;
+      }
+
+      pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive, this.normalRenderTarget );
+
+      this.swapBuffers(pass);
+
+    }
+
+  },
+
+  reset: function ( renderTarget ) {
+
+    if ( renderTarget === undefined ) {
+
+      var size = new THREE.Vector2();
+      this.renderer.getDrawingBufferSize(size);
+
+      renderTarget = this.renderTarget1.clone();
+      renderTarget.setSize( size.width, size.height );
+
+    }
+
+    this.renderTarget1.dispose();
+    this.renderTarget2.dispose();
+    this.renderTarget1 = renderTarget;
+    this.renderTarget2 = renderTarget.clone();
+
+    this.writeBuffer = this.renderTarget1;
+    this.readBuffer = this.renderTarget2;
+
+  },
+
+  setSize: function ( width, height ) {
+
+    this.renderTarget1.setSize( width, height );
+    this.renderTarget2.setSize( width, height );
+
+    for ( var i = 0; i < this.passes.length; i ++ ) {
+
+      this.passes[ i ].setSize( width, height );
+
+    }
+
+  },
+
+  resize: function ( ) {
+
+    var size = new THREE.Vector2();
+    this.renderer.getDrawingBufferSize(size);
+    this.setSize( size.width, size.height );
+
+  },
+
+} );
+
+
+THREE.Pass = function () {
+
+  // if set to true, the pass is processed by the composer
+  this.enabled = true;
+
+  // if set to true, the pass indicates to swap read and write buffer after rendering
+  this.needsSwap = true;
+
+  // if set to true, the pass clears its buffer before rendering
+  this.clear = false;
+
+  // if set to true, the result of the pass is rendered to screen
+  this.renderToScreen = false;
+
+};
+
+Object.assign( THREE.Pass.prototype, {
+
+  setSize: function ( width, height ) {},
+
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    console.error( 'THREE.Pass: .render() must be implemented in derived pass.' );
+
+  }
+
+} );
+
+},{}],195:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ * @author davidedc / http://www.sketchpatch.net/
+ *
+ * NVIDIA FXAA by Timothy Lottes
+ * http://timothylottes.blogspot.com/2011/06/fxaa3-source-released.html
+ * - WebGL port by @supereggbert
+ * http://www.glge.org/demos/fxaa/
+ */
+
+THREE.FXAAShader = {
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"resolution": { value: new THREE.Vector2( 1 / 1920, 1 / 1080 ) }
+
+	},
+
+	vertexShader: [
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vUv = uv;",
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+		"precision highp float;",
+		"",
+		"uniform sampler2D tDiffuse;",
+		"",
+		"uniform vec2 resolution;",
+		"",
+		"varying vec2 vUv;",
+		"",
+		"// FXAA 3.11 implementation by NVIDIA, ported to WebGL by Agost Biro (biro@archilogic.com)",
+		"",
+		"//----------------------------------------------------------------------------------",
+		"// File:        es3-kepler\FXAA\assets\shaders/FXAA_DefaultES.frag",
+		"// SDK Version: v3.00",
+		"// Email:       gameworks@nvidia.com",
+		"// Site:        http://developer.nvidia.com/",
+		"//",
+		"// Copyright (c) 2014-2015, NVIDIA CORPORATION. All rights reserved.",
+		"//",
+		"// Redistribution and use in source and binary forms, with or without",
+		"// modification, are permitted provided that the following conditions",
+		"// are met:",
+		"//  * Redistributions of source code must retain the above copyright",
+		"//    notice, this list of conditions and the following disclaimer.",
+		"//  * Redistributions in binary form must reproduce the above copyright",
+		"//    notice, this list of conditions and the following disclaimer in the",
+		"//    documentation and/or other materials provided with the distribution.",
+		"//  * Neither the name of NVIDIA CORPORATION nor the names of its",
+		"//    contributors may be used to endorse or promote products derived",
+		"//    from this software without specific prior written permission.",
+		"//",
+		"// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY",
+		"// EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE",
+		"// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR",
+		"// PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR",
+		"// CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,",
+		"// EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,",
+		"// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR",
+		"// PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY",
+		"// OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT",
+		"// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE",
+		"// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
+		"//",
+		"//----------------------------------------------------------------------------------",
+		"",
+		"#define FXAA_PC 1",
+		"#define FXAA_GLSL_100 1",
+		"#define FXAA_QUALITY_PRESET 39",
+		"",
+		"#define FXAA_GREEN_AS_LUMA 1",
+		"",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_PC_CONSOLE",
+		"    //",
+		"    // The console algorithm for PC is included",
+		"    // for developers targeting really low spec machines.",
+		"    // Likely better to just run FXAA_PC, and use a really low preset.",
+		"    //",
+		"    #define FXAA_PC_CONSOLE 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_GLSL_120",
+		"    #define FXAA_GLSL_120 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_GLSL_130",
+		"    #define FXAA_GLSL_130 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_HLSL_3",
+		"    #define FXAA_HLSL_3 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_HLSL_4",
+		"    #define FXAA_HLSL_4 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_HLSL_5",
+		"    #define FXAA_HLSL_5 0",
+		"#endif",
+		"/*==========================================================================*/",
+		"#ifndef FXAA_GREEN_AS_LUMA",
+		"    //",
+		"    // For those using non-linear color,",
+		"    // and either not able to get luma in alpha, or not wanting to,",
+		"    // this enables FXAA to run using green as a proxy for luma.",
+		"    // So with this enabled, no need to pack luma in alpha.",
+		"    //",
+		"    // This will turn off AA on anything which lacks some amount of green.",
+		"    // Pure red and blue or combination of only R and B, will get no AA.",
+		"    //",
+		"    // Might want to lower the settings for both,",
+		"    //    fxaaConsoleEdgeThresholdMin",
+		"    //    fxaaQualityEdgeThresholdMin",
+		"    // In order to insure AA does not get turned off on colors",
+		"    // which contain a minor amount of green.",
+		"    //",
+		"    // 1 = On.",
+		"    // 0 = Off.",
+		"    //",
+		"    #define FXAA_GREEN_AS_LUMA 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_EARLY_EXIT",
+		"    //",
+		"    // Controls algorithm's early exit path.",
+		"    // On PS3 turning this ON adds 2 cycles to the shader.",
+		"    // On 360 turning this OFF adds 10ths of a millisecond to the shader.",
+		"    // Turning this off on console will result in a more blurry image.",
+		"    // So this defaults to on.",
+		"    //",
+		"    // 1 = On.",
+		"    // 0 = Off.",
+		"    //",
+		"    #define FXAA_EARLY_EXIT 1",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_DISCARD",
+		"    //",
+		"    // Only valid for PC OpenGL currently.",
+		"    // Probably will not work when FXAA_GREEN_AS_LUMA = 1.",
+		"    //",
+		"    // 1 = Use discard on pixels which don't need AA.",
+		"    //     For APIs which enable concurrent TEX+ROP from same surface.",
+		"    // 0 = Return unchanged color on pixels which don't need AA.",
+		"    //",
+		"    #define FXAA_DISCARD 0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_FAST_PIXEL_OFFSET",
+		"    //",
+		"    // Used for GLSL 120 only.",
+		"    //",
+		"    // 1 = GL API supports fast pixel offsets",
+		"    // 0 = do not use fast pixel offsets",
+		"    //",
+		"    #ifdef GL_EXT_gpu_shader4",
+		"        #define FXAA_FAST_PIXEL_OFFSET 1",
+		"    #endif",
+		"    #ifdef GL_NV_gpu_shader5",
+		"        #define FXAA_FAST_PIXEL_OFFSET 1",
+		"    #endif",
+		"    #ifdef GL_ARB_gpu_shader5",
+		"        #define FXAA_FAST_PIXEL_OFFSET 1",
+		"    #endif",
+		"    #ifndef FXAA_FAST_PIXEL_OFFSET",
+		"        #define FXAA_FAST_PIXEL_OFFSET 0",
+		"    #endif",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#ifndef FXAA_GATHER4_ALPHA",
+		"    //",
+		"    // 1 = API supports gather4 on alpha channel.",
+		"    // 0 = API does not support gather4 on alpha channel.",
+		"    //",
+		"    #if (FXAA_HLSL_5 == 1)",
+		"        #define FXAA_GATHER4_ALPHA 1",
+		"    #endif",
+		"    #ifdef GL_ARB_gpu_shader5",
+		"        #define FXAA_GATHER4_ALPHA 1",
+		"    #endif",
+		"    #ifdef GL_NV_gpu_shader5",
+		"        #define FXAA_GATHER4_ALPHA 1",
+		"    #endif",
+		"    #ifndef FXAA_GATHER4_ALPHA",
+		"        #define FXAA_GATHER4_ALPHA 0",
+		"    #endif",
+		"#endif",
+		"",
+		"",
+		"/*============================================================================",
+		"                        FXAA QUALITY - TUNING KNOBS",
+		"------------------------------------------------------------------------------",
+		"NOTE the other tuning knobs are now in the shader function inputs!",
+		"============================================================================*/",
+		"#ifndef FXAA_QUALITY_PRESET",
+		"    //",
+		"    // Choose the quality preset.",
+		"    // This needs to be compiled into the shader as it effects code.",
+		"    // Best option to include multiple presets is to",
+		"    // in each shader define the preset, then include this file.",
+		"    //",
+		"    // OPTIONS",
+		"    // -----------------------------------------------------------------------",
+		"    // 10 to 15 - default medium dither (10=fastest, 15=highest quality)",
+		"    // 20 to 29 - less dither, more expensive (20=fastest, 29=highest quality)",
+		"    // 39       - no dither, very expensive",
+		"    //",
+		"    // NOTES",
+		"    // -----------------------------------------------------------------------",
+		"    // 12 = slightly faster then FXAA 3.9 and higher edge quality (default)",
+		"    // 13 = about same speed as FXAA 3.9 and better than 12",
+		"    // 23 = closest to FXAA 3.9 visually and performance wise",
+		"    //  _ = the lowest digit is directly related to performance",
+		"    // _  = the highest digit is directly related to style",
+		"    //",
+		"    #define FXAA_QUALITY_PRESET 39",
+		"#endif",
+		"",
+		"",
+		"/*============================================================================",
+		"",
+		"                           FXAA QUALITY - PRESETS",
+		"",
+		"============================================================================*/",
+		"",
+		"/*============================================================================",
+		"                     FXAA QUALITY - MEDIUM DITHER PRESETS",
+		"============================================================================*/",
+		"#if (FXAA_QUALITY_PRESET == 10)",
+		"    #define FXAA_QUALITY_PS 3",
+		"    #define FXAA_QUALITY_P0 1.5",
+		"    #define FXAA_QUALITY_P1 3.0",
+		"    #define FXAA_QUALITY_P2 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 11)",
+		"    #define FXAA_QUALITY_PS 4",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 3.0",
+		"    #define FXAA_QUALITY_P3 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 12)",
+		"    #define FXAA_QUALITY_PS 5",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 4.0",
+		"    #define FXAA_QUALITY_P4 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 13)",
+		"    #define FXAA_QUALITY_PS 6",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 4.0",
+		"    #define FXAA_QUALITY_P5 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 14)",
+		"    #define FXAA_QUALITY_PS 7",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 4.0",
+		"    #define FXAA_QUALITY_P6 12.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 15)",
+		"    #define FXAA_QUALITY_PS 8",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 4.0",
+		"    #define FXAA_QUALITY_P7 12.0",
+		"#endif",
+		"",
+		"/*============================================================================",
+		"                     FXAA QUALITY - LOW DITHER PRESETS",
+		"============================================================================*/",
+		"#if (FXAA_QUALITY_PRESET == 20)",
+		"    #define FXAA_QUALITY_PS 3",
+		"    #define FXAA_QUALITY_P0 1.5",
+		"    #define FXAA_QUALITY_P1 2.0",
+		"    #define FXAA_QUALITY_P2 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 21)",
+		"    #define FXAA_QUALITY_PS 4",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 22)",
+		"    #define FXAA_QUALITY_PS 5",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 23)",
+		"    #define FXAA_QUALITY_PS 6",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 24)",
+		"    #define FXAA_QUALITY_PS 7",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 3.0",
+		"    #define FXAA_QUALITY_P6 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 25)",
+		"    #define FXAA_QUALITY_PS 8",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 4.0",
+		"    #define FXAA_QUALITY_P7 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 26)",
+		"    #define FXAA_QUALITY_PS 9",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 4.0",
+		"    #define FXAA_QUALITY_P8 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 27)",
+		"    #define FXAA_QUALITY_PS 10",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 2.0",
+		"    #define FXAA_QUALITY_P8 4.0",
+		"    #define FXAA_QUALITY_P9 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 28)",
+		"    #define FXAA_QUALITY_PS 11",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 2.0",
+		"    #define FXAA_QUALITY_P8 2.0",
+		"    #define FXAA_QUALITY_P9 4.0",
+		"    #define FXAA_QUALITY_P10 8.0",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_QUALITY_PRESET == 29)",
+		"    #define FXAA_QUALITY_PS 12",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.5",
+		"    #define FXAA_QUALITY_P2 2.0",
+		"    #define FXAA_QUALITY_P3 2.0",
+		"    #define FXAA_QUALITY_P4 2.0",
+		"    #define FXAA_QUALITY_P5 2.0",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 2.0",
+		"    #define FXAA_QUALITY_P8 2.0",
+		"    #define FXAA_QUALITY_P9 2.0",
+		"    #define FXAA_QUALITY_P10 4.0",
+		"    #define FXAA_QUALITY_P11 8.0",
+		"#endif",
+		"",
+		"/*============================================================================",
+		"                     FXAA QUALITY - EXTREME QUALITY",
+		"============================================================================*/",
+		"#if (FXAA_QUALITY_PRESET == 39)",
+		"    #define FXAA_QUALITY_PS 12",
+		"    #define FXAA_QUALITY_P0 1.0",
+		"    #define FXAA_QUALITY_P1 1.0",
+		"    #define FXAA_QUALITY_P2 1.0",
+		"    #define FXAA_QUALITY_P3 1.0",
+		"    #define FXAA_QUALITY_P4 1.0",
+		"    #define FXAA_QUALITY_P5 1.5",
+		"    #define FXAA_QUALITY_P6 2.0",
+		"    #define FXAA_QUALITY_P7 2.0",
+		"    #define FXAA_QUALITY_P8 2.0",
+		"    #define FXAA_QUALITY_P9 2.0",
+		"    #define FXAA_QUALITY_P10 4.0",
+		"    #define FXAA_QUALITY_P11 8.0",
+		"#endif",
+		"",
+		"",
+		"",
+		"/*============================================================================",
+		"",
+		"                                API PORTING",
+		"",
+		"============================================================================*/",
+		"#if (FXAA_GLSL_100 == 1) || (FXAA_GLSL_120 == 1) || (FXAA_GLSL_130 == 1)",
+		"    #define FxaaBool bool",
+		"    #define FxaaDiscard discard",
+		"    #define FxaaFloat float",
+		"    #define FxaaFloat2 vec2",
+		"    #define FxaaFloat3 vec3",
+		"    #define FxaaFloat4 vec4",
+		"    #define FxaaHalf float",
+		"    #define FxaaHalf2 vec2",
+		"    #define FxaaHalf3 vec3",
+		"    #define FxaaHalf4 vec4",
+		"    #define FxaaInt2 ivec2",
+		"    #define FxaaSat(x) clamp(x, 0.0, 1.0)",
+		"    #define FxaaTex sampler2D",
+		"#else",
+		"    #define FxaaBool bool",
+		"    #define FxaaDiscard clip(-1)",
+		"    #define FxaaFloat float",
+		"    #define FxaaFloat2 float2",
+		"    #define FxaaFloat3 float3",
+		"    #define FxaaFloat4 float4",
+		"    #define FxaaHalf half",
+		"    #define FxaaHalf2 half2",
+		"    #define FxaaHalf3 half3",
+		"    #define FxaaHalf4 half4",
+		"    #define FxaaSat(x) saturate(x)",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_GLSL_100 == 1)",
+		"  #define FxaaTexTop(t, p) texture2D(t, p, 0.0)",
+		"  #define FxaaTexOff(t, p, o, r) texture2D(t, p + (o * r), 0.0)",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_GLSL_120 == 1)",
+		"    // Requires,",
+		"    //  #version 120",
+		"    // And at least,",
+		"    //  #extension GL_EXT_gpu_shader4 : enable",
+		"    //  (or set FXAA_FAST_PIXEL_OFFSET 1 to work like DX9)",
+		"    #define FxaaTexTop(t, p) texture2DLod(t, p, 0.0)",
+		"    #if (FXAA_FAST_PIXEL_OFFSET == 1)",
+		"        #define FxaaTexOff(t, p, o, r) texture2DLodOffset(t, p, 0.0, o)",
+		"    #else",
+		"        #define FxaaTexOff(t, p, o, r) texture2DLod(t, p + (o * r), 0.0)",
+		"    #endif",
+		"    #if (FXAA_GATHER4_ALPHA == 1)",
+		"        // use #extension GL_ARB_gpu_shader5 : enable",
+		"        #define FxaaTexAlpha4(t, p) textureGather(t, p, 3)",
+		"        #define FxaaTexOffAlpha4(t, p, o) textureGatherOffset(t, p, o, 3)",
+		"        #define FxaaTexGreen4(t, p) textureGather(t, p, 1)",
+		"        #define FxaaTexOffGreen4(t, p, o) textureGatherOffset(t, p, o, 1)",
+		"    #endif",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_GLSL_130 == 1)",
+		"    // Requires \"#version 130\" or better",
+		"    #define FxaaTexTop(t, p) textureLod(t, p, 0.0)",
+		"    #define FxaaTexOff(t, p, o, r) textureLodOffset(t, p, 0.0, o)",
+		"    #if (FXAA_GATHER4_ALPHA == 1)",
+		"        // use #extension GL_ARB_gpu_shader5 : enable",
+		"        #define FxaaTexAlpha4(t, p) textureGather(t, p, 3)",
+		"        #define FxaaTexOffAlpha4(t, p, o) textureGatherOffset(t, p, o, 3)",
+		"        #define FxaaTexGreen4(t, p) textureGather(t, p, 1)",
+		"        #define FxaaTexOffGreen4(t, p, o) textureGatherOffset(t, p, o, 1)",
+		"    #endif",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_HLSL_3 == 1)",
+		"    #define FxaaInt2 float2",
+		"    #define FxaaTex sampler2D",
+		"    #define FxaaTexTop(t, p) tex2Dlod(t, float4(p, 0.0, 0.0))",
+		"    #define FxaaTexOff(t, p, o, r) tex2Dlod(t, float4(p + (o * r), 0, 0))",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_HLSL_4 == 1)",
+		"    #define FxaaInt2 int2",
+		"    struct FxaaTex { SamplerState smpl; Texture2D tex; };",
+		"    #define FxaaTexTop(t, p) t.tex.SampleLevel(t.smpl, p, 0.0)",
+		"    #define FxaaTexOff(t, p, o, r) t.tex.SampleLevel(t.smpl, p, 0.0, o)",
+		"#endif",
+		"/*--------------------------------------------------------------------------*/",
+		"#if (FXAA_HLSL_5 == 1)",
+		"    #define FxaaInt2 int2",
+		"    struct FxaaTex { SamplerState smpl; Texture2D tex; };",
+		"    #define FxaaTexTop(t, p) t.tex.SampleLevel(t.smpl, p, 0.0)",
+		"    #define FxaaTexOff(t, p, o, r) t.tex.SampleLevel(t.smpl, p, 0.0, o)",
+		"    #define FxaaTexAlpha4(t, p) t.tex.GatherAlpha(t.smpl, p)",
+		"    #define FxaaTexOffAlpha4(t, p, o) t.tex.GatherAlpha(t.smpl, p, o)",
+		"    #define FxaaTexGreen4(t, p) t.tex.GatherGreen(t.smpl, p)",
+		"    #define FxaaTexOffGreen4(t, p, o) t.tex.GatherGreen(t.smpl, p, o)",
+		"#endif",
+		"",
+		"",
+		"/*============================================================================",
+		"                   GREEN AS LUMA OPTION SUPPORT FUNCTION",
+		"============================================================================*/",
+		"#if (FXAA_GREEN_AS_LUMA == 0)",
+		"    FxaaFloat FxaaLuma(FxaaFloat4 rgba) { return rgba.w; }",
+		"#else",
+		"    FxaaFloat FxaaLuma(FxaaFloat4 rgba) { return rgba.y; }",
+		"#endif",
+		"",
+		"",
+		"",
+		"",
+		"/*============================================================================",
+		"",
+		"                             FXAA3 QUALITY - PC",
+		"",
+		"============================================================================*/",
+		"#if (FXAA_PC == 1)",
+		"/*--------------------------------------------------------------------------*/",
+		"FxaaFloat4 FxaaPixelShader(",
+		"    //",
+		"    // Use noperspective interpolation here (turn off perspective interpolation).",
+		"    // {xy} = center of pixel",
+		"    FxaaFloat2 pos,",
+		"    //",
+		"    // Used only for FXAA Console, and not used on the 360 version.",
+		"    // Use noperspective interpolation here (turn off perspective interpolation).",
+		"    // {xy_} = upper left of pixel",
+		"    // {_zw} = lower right of pixel",
+		"    FxaaFloat4 fxaaConsolePosPos,",
+		"    //",
+		"    // Input color texture.",
+		"    // {rgb_} = color in linear or perceptual color space",
+		"    // if (FXAA_GREEN_AS_LUMA == 0)",
+		"    //     {__a} = luma in perceptual color space (not linear)",
+		"    FxaaTex tex,",
+		"    //",
+		"    // Only used on the optimized 360 version of FXAA Console.",
+		"    // For everything but 360, just use the same input here as for \"tex\".",
+		"    // For 360, same texture, just alias with a 2nd sampler.",
+		"    // This sampler needs to have an exponent bias of -1.",
+		"    FxaaTex fxaaConsole360TexExpBiasNegOne,",
+		"    //",
+		"    // Only used on the optimized 360 version of FXAA Console.",
+		"    // For everything but 360, just use the same input here as for \"tex\".",
+		"    // For 360, same texture, just alias with a 3nd sampler.",
+		"    // This sampler needs to have an exponent bias of -2.",
+		"    FxaaTex fxaaConsole360TexExpBiasNegTwo,",
+		"    //",
+		"    // Only used on FXAA Quality.",
+		"    // This must be from a constant/uniform.",
+		"    // {x_} = 1.0/screenWidthInPixels",
+		"    // {_y} = 1.0/screenHeightInPixels",
+		"    FxaaFloat2 fxaaQualityRcpFrame,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // This must be from a constant/uniform.",
+		"    // This effects sub-pixel AA quality and inversely sharpness.",
+		"    //   Where N ranges between,",
+		"    //     N = 0.50 (default)",
+		"    //     N = 0.33 (sharper)",
+		"    // {x__} = -N/screenWidthInPixels",
+		"    // {_y_} = -N/screenHeightInPixels",
+		"    // {_z_} =  N/screenWidthInPixels",
+		"    // {__w} =  N/screenHeightInPixels",
+		"    FxaaFloat4 fxaaConsoleRcpFrameOpt,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // Not used on 360, but used on PS3 and PC.",
+		"    // This must be from a constant/uniform.",
+		"    // {x__} = -2.0/screenWidthInPixels",
+		"    // {_y_} = -2.0/screenHeightInPixels",
+		"    // {_z_} =  2.0/screenWidthInPixels",
+		"    // {__w} =  2.0/screenHeightInPixels",
+		"    FxaaFloat4 fxaaConsoleRcpFrameOpt2,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // Only used on 360 in place of fxaaConsoleRcpFrameOpt2.",
+		"    // This must be from a constant/uniform.",
+		"    // {x__} =  8.0/screenWidthInPixels",
+		"    // {_y_} =  8.0/screenHeightInPixels",
+		"    // {_z_} = -4.0/screenWidthInPixels",
+		"    // {__w} = -4.0/screenHeightInPixels",
+		"    FxaaFloat4 fxaaConsole360RcpFrameOpt2,",
+		"    //",
+		"    // Only used on FXAA Quality.",
+		"    // This used to be the FXAA_QUALITY_SUBPIX define.",
+		"    // It is here now to allow easier tuning.",
+		"    // Choose the amount of sub-pixel aliasing removal.",
+		"    // This can effect sharpness.",
+		"    //   1.00 - upper limit (softer)",
+		"    //   0.75 - default amount of filtering",
+		"    //   0.50 - lower limit (sharper, less sub-pixel aliasing removal)",
+		"    //   0.25 - almost off",
+		"    //   0.00 - completely off",
+		"    FxaaFloat fxaaQualitySubpix,",
+		"    //",
+		"    // Only used on FXAA Quality.",
+		"    // This used to be the FXAA_QUALITY_EDGE_THRESHOLD define.",
+		"    // It is here now to allow easier tuning.",
+		"    // The minimum amount of local contrast required to apply algorithm.",
+		"    //   0.333 - too little (faster)",
+		"    //   0.250 - low quality",
+		"    //   0.166 - default",
+		"    //   0.125 - high quality",
+		"    //   0.063 - overkill (slower)",
+		"    FxaaFloat fxaaQualityEdgeThreshold,",
+		"    //",
+		"    // Only used on FXAA Quality.",
+		"    // This used to be the FXAA_QUALITY_EDGE_THRESHOLD_MIN define.",
+		"    // It is here now to allow easier tuning.",
+		"    // Trims the algorithm from processing darks.",
+		"    //   0.0833 - upper limit (default, the start of visible unfiltered edges)",
+		"    //   0.0625 - high quality (faster)",
+		"    //   0.0312 - visible limit (slower)",
+		"    // Special notes when using FXAA_GREEN_AS_LUMA,",
+		"    //   Likely want to set this to zero.",
+		"    //   As colors that are mostly not-green",
+		"    //   will appear very dark in the green channel!",
+		"    //   Tune by looking at mostly non-green content,",
+		"    //   then start at zero and increase until aliasing is a problem.",
+		"    FxaaFloat fxaaQualityEdgeThresholdMin,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // This used to be the FXAA_CONSOLE_EDGE_SHARPNESS define.",
+		"    // It is here now to allow easier tuning.",
+		"    // This does not effect PS3, as this needs to be compiled in.",
+		"    //   Use FXAA_CONSOLE_PS3_EDGE_SHARPNESS for PS3.",
+		"    //   Due to the PS3 being ALU bound,",
+		"    //   there are only three safe values here: 2 and 4 and 8.",
+		"    //   These options use the shaders ability to a free *|/ by 2|4|8.",
+		"    // For all other platforms can be a non-power of two.",
+		"    //   8.0 is sharper (default!!!)",
+		"    //   4.0 is softer",
+		"    //   2.0 is really soft (good only for vector graphics inputs)",
+		"    FxaaFloat fxaaConsoleEdgeSharpness,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // This used to be the FXAA_CONSOLE_EDGE_THRESHOLD define.",
+		"    // It is here now to allow easier tuning.",
+		"    // This does not effect PS3, as this needs to be compiled in.",
+		"    //   Use FXAA_CONSOLE_PS3_EDGE_THRESHOLD for PS3.",
+		"    //   Due to the PS3 being ALU bound,",
+		"    //   there are only two safe values here: 1/4 and 1/8.",
+		"    //   These options use the shaders ability to a free *|/ by 2|4|8.",
+		"    // The console setting has a different mapping than the quality setting.",
+		"    // Other platforms can use other values.",
+		"    //   0.125 leaves less aliasing, but is softer (default!!!)",
+		"    //   0.25 leaves more aliasing, and is sharper",
+		"    FxaaFloat fxaaConsoleEdgeThreshold,",
+		"    //",
+		"    // Only used on FXAA Console.",
+		"    // This used to be the FXAA_CONSOLE_EDGE_THRESHOLD_MIN define.",
+		"    // It is here now to allow easier tuning.",
+		"    // Trims the algorithm from processing darks.",
+		"    // The console setting has a different mapping than the quality setting.",
+		"    // This only applies when FXAA_EARLY_EXIT is 1.",
+		"    // This does not apply to PS3,",
+		"    // PS3 was simplified to avoid more shader instructions.",
+		"    //   0.06 - faster but more aliasing in darks",
+		"    //   0.05 - default",
+		"    //   0.04 - slower and less aliasing in darks",
+		"    // Special notes when using FXAA_GREEN_AS_LUMA,",
+		"    //   Likely want to set this to zero.",
+		"    //   As colors that are mostly not-green",
+		"    //   will appear very dark in the green channel!",
+		"    //   Tune by looking at mostly non-green content,",
+		"    //   then start at zero and increase until aliasing is a problem.",
+		"    FxaaFloat fxaaConsoleEdgeThresholdMin,",
+		"    //",
+		"    // Extra constants for 360 FXAA Console only.",
+		"    // Use zeros or anything else for other platforms.",
+		"    // These must be in physical constant registers and NOT immediates.",
+		"    // Immediates will result in compiler un-optimizing.",
+		"    // {xyzw} = float4(1.0, -1.0, 0.25, -0.25)",
+		"    FxaaFloat4 fxaaConsole360ConstDir",
+		") {",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat2 posM;",
+		"    posM.x = pos.x;",
+		"    posM.y = pos.y;",
+		"    #if (FXAA_GATHER4_ALPHA == 1)",
+		"        #if (FXAA_DISCARD == 0)",
+		"            FxaaFloat4 rgbyM = FxaaTexTop(tex, posM);",
+		"            #if (FXAA_GREEN_AS_LUMA == 0)",
+		"                #define lumaM rgbyM.w",
+		"            #else",
+		"                #define lumaM rgbyM.y",
+		"            #endif",
+		"        #endif",
+		"        #if (FXAA_GREEN_AS_LUMA == 0)",
+		"            FxaaFloat4 luma4A = FxaaTexAlpha4(tex, posM);",
+		"            FxaaFloat4 luma4B = FxaaTexOffAlpha4(tex, posM, FxaaInt2(-1, -1));",
+		"        #else",
+		"            FxaaFloat4 luma4A = FxaaTexGreen4(tex, posM);",
+		"            FxaaFloat4 luma4B = FxaaTexOffGreen4(tex, posM, FxaaInt2(-1, -1));",
+		"        #endif",
+		"        #if (FXAA_DISCARD == 1)",
+		"            #define lumaM luma4A.w",
+		"        #endif",
+		"        #define lumaE luma4A.z",
+		"        #define lumaS luma4A.x",
+		"        #define lumaSE luma4A.y",
+		"        #define lumaNW luma4B.w",
+		"        #define lumaN luma4B.z",
+		"        #define lumaW luma4B.x",
+		"    #else",
+		"        FxaaFloat4 rgbyM = FxaaTexTop(tex, posM);",
+		"        #if (FXAA_GREEN_AS_LUMA == 0)",
+		"            #define lumaM rgbyM.w",
+		"        #else",
+		"            #define lumaM rgbyM.y",
+		"        #endif",
+		"        #if (FXAA_GLSL_100 == 1)",
+		"          FxaaFloat lumaS = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 0.0, 1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0, 0.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaN = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 0.0,-1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0, 0.0), fxaaQualityRcpFrame.xy));",
+		"        #else",
+		"          FxaaFloat lumaS = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 0, 1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1, 0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaN = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 0,-1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 0), fxaaQualityRcpFrame.xy));",
+		"        #endif",
+		"    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat maxSM = max(lumaS, lumaM);",
+		"    FxaaFloat minSM = min(lumaS, lumaM);",
+		"    FxaaFloat maxESM = max(lumaE, maxSM);",
+		"    FxaaFloat minESM = min(lumaE, minSM);",
+		"    FxaaFloat maxWN = max(lumaN, lumaW);",
+		"    FxaaFloat minWN = min(lumaN, lumaW);",
+		"    FxaaFloat rangeMax = max(maxWN, maxESM);",
+		"    FxaaFloat rangeMin = min(minWN, minESM);",
+		"    FxaaFloat rangeMaxScaled = rangeMax * fxaaQualityEdgeThreshold;",
+		"    FxaaFloat range = rangeMax - rangeMin;",
+		"    FxaaFloat rangeMaxClamped = max(fxaaQualityEdgeThresholdMin, rangeMaxScaled);",
+		"    FxaaBool earlyExit = range < rangeMaxClamped;",
+		"/*--------------------------------------------------------------------------*/",
+		"    if(earlyExit)",
+		"        #if (FXAA_DISCARD == 1)",
+		"            FxaaDiscard;",
+		"        #else",
+		"            return rgbyM;",
+		"        #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    #if (FXAA_GATHER4_ALPHA == 0)",
+		"        #if (FXAA_GLSL_100 == 1)",
+		"          FxaaFloat lumaNW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0,-1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaSE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0, 1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0,-1.0), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0, 1.0), fxaaQualityRcpFrame.xy));",
+		"        #else",
+		"          FxaaFloat lumaNW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1,-1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaSE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1, 1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1,-1), fxaaQualityRcpFrame.xy));",
+		"          FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 1), fxaaQualityRcpFrame.xy));",
+		"        #endif",
+		"    #else",
+		"        FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(1, -1), fxaaQualityRcpFrame.xy));",
+		"        FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 1), fxaaQualityRcpFrame.xy));",
+		"    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat lumaNS = lumaN + lumaS;",
+		"    FxaaFloat lumaWE = lumaW + lumaE;",
+		"    FxaaFloat subpixRcpRange = 1.0/range;",
+		"    FxaaFloat subpixNSWE = lumaNS + lumaWE;",
+		"    FxaaFloat edgeHorz1 = (-2.0 * lumaM) + lumaNS;",
+		"    FxaaFloat edgeVert1 = (-2.0 * lumaM) + lumaWE;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat lumaNESE = lumaNE + lumaSE;",
+		"    FxaaFloat lumaNWNE = lumaNW + lumaNE;",
+		"    FxaaFloat edgeHorz2 = (-2.0 * lumaE) + lumaNESE;",
+		"    FxaaFloat edgeVert2 = (-2.0 * lumaN) + lumaNWNE;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat lumaNWSW = lumaNW + lumaSW;",
+		"    FxaaFloat lumaSWSE = lumaSW + lumaSE;",
+		"    FxaaFloat edgeHorz4 = (abs(edgeHorz1) * 2.0) + abs(edgeHorz2);",
+		"    FxaaFloat edgeVert4 = (abs(edgeVert1) * 2.0) + abs(edgeVert2);",
+		"    FxaaFloat edgeHorz3 = (-2.0 * lumaW) + lumaNWSW;",
+		"    FxaaFloat edgeVert3 = (-2.0 * lumaS) + lumaSWSE;",
+		"    FxaaFloat edgeHorz = abs(edgeHorz3) + edgeHorz4;",
+		"    FxaaFloat edgeVert = abs(edgeVert3) + edgeVert4;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat subpixNWSWNESE = lumaNWSW + lumaNESE;",
+		"    FxaaFloat lengthSign = fxaaQualityRcpFrame.x;",
+		"    FxaaBool horzSpan = edgeHorz >= edgeVert;",
+		"    FxaaFloat subpixA = subpixNSWE * 2.0 + subpixNWSWNESE;",
+		"/*--------------------------------------------------------------------------*/",
+		"    if(!horzSpan) lumaN = lumaW;",
+		"    if(!horzSpan) lumaS = lumaE;",
+		"    if(horzSpan) lengthSign = fxaaQualityRcpFrame.y;",
+		"    FxaaFloat subpixB = (subpixA * (1.0/12.0)) - lumaM;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat gradientN = lumaN - lumaM;",
+		"    FxaaFloat gradientS = lumaS - lumaM;",
+		"    FxaaFloat lumaNN = lumaN + lumaM;",
+		"    FxaaFloat lumaSS = lumaS + lumaM;",
+		"    FxaaBool pairN = abs(gradientN) >= abs(gradientS);",
+		"    FxaaFloat gradient = max(abs(gradientN), abs(gradientS));",
+		"    if(pairN) lengthSign = -lengthSign;",
+		"    FxaaFloat subpixC = FxaaSat(abs(subpixB) * subpixRcpRange);",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat2 posB;",
+		"    posB.x = posM.x;",
+		"    posB.y = posM.y;",
+		"    FxaaFloat2 offNP;",
+		"    offNP.x = (!horzSpan) ? 0.0 : fxaaQualityRcpFrame.x;",
+		"    offNP.y = ( horzSpan) ? 0.0 : fxaaQualityRcpFrame.y;",
+		"    if(!horzSpan) posB.x += lengthSign * 0.5;",
+		"    if( horzSpan) posB.y += lengthSign * 0.5;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat2 posN;",
+		"    posN.x = posB.x - offNP.x * FXAA_QUALITY_P0;",
+		"    posN.y = posB.y - offNP.y * FXAA_QUALITY_P0;",
+		"    FxaaFloat2 posP;",
+		"    posP.x = posB.x + offNP.x * FXAA_QUALITY_P0;",
+		"    posP.y = posB.y + offNP.y * FXAA_QUALITY_P0;",
+		"    FxaaFloat subpixD = ((-2.0)*subpixC) + 3.0;",
+		"    FxaaFloat lumaEndN = FxaaLuma(FxaaTexTop(tex, posN));",
+		"    FxaaFloat subpixE = subpixC * subpixC;",
+		"    FxaaFloat lumaEndP = FxaaLuma(FxaaTexTop(tex, posP));",
+		"/*--------------------------------------------------------------------------*/",
+		"    if(!pairN) lumaNN = lumaSS;",
+		"    FxaaFloat gradientScaled = gradient * 1.0/4.0;",
+		"    FxaaFloat lumaMM = lumaM - lumaNN * 0.5;",
+		"    FxaaFloat subpixF = subpixD * subpixE;",
+		"    FxaaBool lumaMLTZero = lumaMM < 0.0;",
+		"/*--------------------------------------------------------------------------*/",
+		"    lumaEndN -= lumaNN * 0.5;",
+		"    lumaEndP -= lumaNN * 0.5;",
+		"    FxaaBool doneN = abs(lumaEndN) >= gradientScaled;",
+		"    FxaaBool doneP = abs(lumaEndP) >= gradientScaled;",
+		"    if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P1;",
+		"    if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P1;",
+		"    FxaaBool doneNP = (!doneN) || (!doneP);",
+		"    if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P1;",
+		"    if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P1;",
+		"/*--------------------------------------------------------------------------*/",
+		"    if(doneNP) {",
+		"        if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"        if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"        if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"        if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"        doneN = abs(lumaEndN) >= gradientScaled;",
+		"        doneP = abs(lumaEndP) >= gradientScaled;",
+		"        if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P2;",
+		"        if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P2;",
+		"        doneNP = (!doneN) || (!doneP);",
+		"        if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P2;",
+		"        if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P2;",
+		"/*--------------------------------------------------------------------------*/",
+		"        #if (FXAA_QUALITY_PS > 3)",
+		"        if(doneNP) {",
+		"            if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"            if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"            if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"            if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"            doneN = abs(lumaEndN) >= gradientScaled;",
+		"            doneP = abs(lumaEndP) >= gradientScaled;",
+		"            if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P3;",
+		"            if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P3;",
+		"            doneNP = (!doneN) || (!doneP);",
+		"            if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P3;",
+		"            if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P3;",
+		"/*--------------------------------------------------------------------------*/",
+		"            #if (FXAA_QUALITY_PS > 4)",
+		"            if(doneNP) {",
+		"                if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                doneN = abs(lumaEndN) >= gradientScaled;",
+		"                doneP = abs(lumaEndP) >= gradientScaled;",
+		"                if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P4;",
+		"                if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P4;",
+		"                doneNP = (!doneN) || (!doneP);",
+		"                if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P4;",
+		"                if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P4;",
+		"/*--------------------------------------------------------------------------*/",
+		"                #if (FXAA_QUALITY_PS > 5)",
+		"                if(doneNP) {",
+		"                    if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                    if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                    if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                    if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                    doneN = abs(lumaEndN) >= gradientScaled;",
+		"                    doneP = abs(lumaEndP) >= gradientScaled;",
+		"                    if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P5;",
+		"                    if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P5;",
+		"                    doneNP = (!doneN) || (!doneP);",
+		"                    if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P5;",
+		"                    if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P5;",
+		"/*--------------------------------------------------------------------------*/",
+		"                    #if (FXAA_QUALITY_PS > 6)",
+		"                    if(doneNP) {",
+		"                        if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                        if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                        if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                        if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                        doneN = abs(lumaEndN) >= gradientScaled;",
+		"                        doneP = abs(lumaEndP) >= gradientScaled;",
+		"                        if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P6;",
+		"                        if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P6;",
+		"                        doneNP = (!doneN) || (!doneP);",
+		"                        if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P6;",
+		"                        if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P6;",
+		"/*--------------------------------------------------------------------------*/",
+		"                        #if (FXAA_QUALITY_PS > 7)",
+		"                        if(doneNP) {",
+		"                            if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                            if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                            if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                            if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                            doneN = abs(lumaEndN) >= gradientScaled;",
+		"                            doneP = abs(lumaEndP) >= gradientScaled;",
+		"                            if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P7;",
+		"                            if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P7;",
+		"                            doneNP = (!doneN) || (!doneP);",
+		"                            if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P7;",
+		"                            if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P7;",
+		"/*--------------------------------------------------------------------------*/",
+		"    #if (FXAA_QUALITY_PS > 8)",
+		"    if(doneNP) {",
+		"        if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"        if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"        if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"        if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"        doneN = abs(lumaEndN) >= gradientScaled;",
+		"        doneP = abs(lumaEndP) >= gradientScaled;",
+		"        if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P8;",
+		"        if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P8;",
+		"        doneNP = (!doneN) || (!doneP);",
+		"        if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P8;",
+		"        if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P8;",
+		"/*--------------------------------------------------------------------------*/",
+		"        #if (FXAA_QUALITY_PS > 9)",
+		"        if(doneNP) {",
+		"            if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"            if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"            if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"            if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"            doneN = abs(lumaEndN) >= gradientScaled;",
+		"            doneP = abs(lumaEndP) >= gradientScaled;",
+		"            if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P9;",
+		"            if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P9;",
+		"            doneNP = (!doneN) || (!doneP);",
+		"            if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P9;",
+		"            if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P9;",
+		"/*--------------------------------------------------------------------------*/",
+		"            #if (FXAA_QUALITY_PS > 10)",
+		"            if(doneNP) {",
+		"                if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                doneN = abs(lumaEndN) >= gradientScaled;",
+		"                doneP = abs(lumaEndP) >= gradientScaled;",
+		"                if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P10;",
+		"                if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P10;",
+		"                doneNP = (!doneN) || (!doneP);",
+		"                if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P10;",
+		"                if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P10;",
+		"/*--------------------------------------------------------------------------*/",
+		"                #if (FXAA_QUALITY_PS > 11)",
+		"                if(doneNP) {",
+		"                    if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                    if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                    if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                    if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                    doneN = abs(lumaEndN) >= gradientScaled;",
+		"                    doneP = abs(lumaEndP) >= gradientScaled;",
+		"                    if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P11;",
+		"                    if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P11;",
+		"                    doneNP = (!doneN) || (!doneP);",
+		"                    if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P11;",
+		"                    if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P11;",
+		"/*--------------------------------------------------------------------------*/",
+		"                    #if (FXAA_QUALITY_PS > 12)",
+		"                    if(doneNP) {",
+		"                        if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));",
+		"                        if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));",
+		"                        if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;",
+		"                        if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;",
+		"                        doneN = abs(lumaEndN) >= gradientScaled;",
+		"                        doneP = abs(lumaEndP) >= gradientScaled;",
+		"                        if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P12;",
+		"                        if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P12;",
+		"                        doneNP = (!doneN) || (!doneP);",
+		"                        if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P12;",
+		"                        if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P12;",
+		"/*--------------------------------------------------------------------------*/",
+		"                    }",
+		"                    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"                }",
+		"                #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"            }",
+		"            #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"        }",
+		"        #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    }",
+		"    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"                        }",
+		"                        #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"                    }",
+		"                    #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"                }",
+		"                #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"            }",
+		"            #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"        }",
+		"        #endif",
+		"/*--------------------------------------------------------------------------*/",
+		"    }",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat dstN = posM.x - posN.x;",
+		"    FxaaFloat dstP = posP.x - posM.x;",
+		"    if(!horzSpan) dstN = posM.y - posN.y;",
+		"    if(!horzSpan) dstP = posP.y - posM.y;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaBool goodSpanN = (lumaEndN < 0.0) != lumaMLTZero;",
+		"    FxaaFloat spanLength = (dstP + dstN);",
+		"    FxaaBool goodSpanP = (lumaEndP < 0.0) != lumaMLTZero;",
+		"    FxaaFloat spanLengthRcp = 1.0/spanLength;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaBool directionN = dstN < dstP;",
+		"    FxaaFloat dst = min(dstN, dstP);",
+		"    FxaaBool goodSpan = directionN ? goodSpanN : goodSpanP;",
+		"    FxaaFloat subpixG = subpixF * subpixF;",
+		"    FxaaFloat pixelOffset = (dst * (-spanLengthRcp)) + 0.5;",
+		"    FxaaFloat subpixH = subpixG * fxaaQualitySubpix;",
+		"/*--------------------------------------------------------------------------*/",
+		"    FxaaFloat pixelOffsetGood = goodSpan ? pixelOffset : 0.0;",
+		"    FxaaFloat pixelOffsetSubpix = max(pixelOffsetGood, subpixH);",
+		"    if(!horzSpan) posM.x += pixelOffsetSubpix * lengthSign;",
+		"    if( horzSpan) posM.y += pixelOffsetSubpix * lengthSign;",
+		"    #if (FXAA_DISCARD == 1)",
+		"        return FxaaTexTop(tex, posM);",
+		"    #else",
+		"        return FxaaFloat4(FxaaTexTop(tex, posM).xyz, lumaM);",
+		"    #endif",
+		"}",
+		"/*==========================================================================*/",
+		"#endif",
+		"",
+		"void main() {",
+		"  gl_FragColor = FxaaPixelShader(",
+		"    vUv,",
+		"    vec4(0.0),",
+		"    tDiffuse,",
+		"    tDiffuse,",
+		"    tDiffuse,",
+		"    resolution,",
+		"    vec4(0.0),",
+		"    vec4(0.0),",
+		"    vec4(0.0),",
+		"    0.75,",
+		"    0.166,",
+		"    0.0833,",
+		"    0.0,",
+		"    0.0,",
+		"    0.0,",
+		"    vec4(0.0)",
+		"  );",
+		"",
+		"  // TODO avoid querying texture twice for same texel",
+		"  gl_FragColor.a = texture2D(tDiffuse, vUv).a;",
+		"}"
+	].join( "\n" )
+
+};
+},{}],196:[function(_dereq_,module,exports){
+
+THREE.LUTPass = function ( width, height, lutmapIndex ) {
+
+	THREE.Pass.call( this );
+
+	this.width = ( width !== undefined ) ? width : 512;
+	this.height = ( height !== undefined ) ? height : 512;
+
+	this.clear = true;
+
+    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+	this.scene = new THREE.Scene();
+
+	// Basic pass render target
+	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
+	this.beautyRenderTarget.texture.format = THREE.RGBAFormat;
+	this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.generateMipmaps = false;
+	this.beautyRenderTarget.stencilBuffer = false;
+	this.beautyRenderTarget.depthBuffer = false;
+	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
+	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
+
+	if ( THREE.MKLUTShader === undefined ) {
+
+		console.error( 'THREE.LUTPass: The pass relies on LUTShader.' );
+
+	}
+
+	this.lutMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.MKLUTShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.MKLUTShader.uniforms ),
+		vertexShader: THREE.MKLUTShader.vertexShader,
+		fragmentShader: THREE.MKLUTShader.fragmentShader,
+		blending: THREE.NoBlending
+	} );
+
+	this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
+
+	// material for rendering the content of a render target
+
+	this.copyMaterial = new THREE.ShaderMaterial( {
+		uniforms: THREE.UniformsUtils.clone( THREE.CopyShader.uniforms ),
+		vertexShader: THREE.CopyShader.vertexShader,
+		fragmentShader: THREE.CopyShader.fragmentShader,
+		transparent: true,
+		depthTest: false,
+		depthWrite: false,
+		blendSrc: THREE.DstColorFactor,
+		blendDst: THREE.ZeroFactor,
+		blendEquation: THREE.AddEquation,
+		blendSrcAlpha: THREE.DstAlphaFactor,
+		blendDstAlpha: THREE.ZeroFactor,
+		blendEquationAlpha: THREE.AddEquation
+	} );
+
+	this.lutTextures = [
+		{ name: 'Normal',    	   		size: 32.0,	url: '../media/LUTMaps/Normal.png' },
+		{ name: 'B&WHighContrastOld',	size: 32.0,	url: '../media/LUTMaps/B&WHighContrastOld.png' },
+		{ name: 'BleachBypass',   		size: 32.0,	url: '../media/LUTMaps/BleachBypass.png' },
+		{ name: 'Blockbuster14',     	size: 32.0,	url: '../media/LUTMaps/Blockbuster14.png' },
+		{ name: 'BlueHue',     	   		size: 32.0,	url: '../media/LUTMaps/BlueHue.png' },
+		{ name: 'Color',     	   		size: 32.0,	url: '../media/LUTMaps/Color.png' },
+		{ name: 'DustyOrange',     	   	size: 32.0,	url: '../media/LUTMaps/DustyOrange.png' },
+		{ name: 'Exposure',     	   	size: 32.0,	url: '../media/LUTMaps/Exposure.png' },
+		{ name: 'F2AA3',     	   		size: 32.0,	url: '../media/LUTMaps/F2AA3.png' },
+		{ name: 'GamebobAC',     	   	size: 32.0,	url: '../media/LUTMaps/GamebobAC.png' },
+		{ name: 'Invert',     	   		size: 32.0,	url: '../media/LUTMaps/Invert.png' },
+		{ name: 'Mask',     	   		size: 32.0,	url: '../media/LUTMaps/Mask.png' },
+		{ name: 'Max2',     	   		size: 32.0,	url: '../media/LUTMaps/Max2.png' },
+		{ name: 'RedDawn',     	   		size: 32.0,	url: '../media/LUTMaps/RedDawn.png' },
+		{ name: 'RobotAction',     	   	size: 32.0,	url: '../media/LUTMaps/RobotAction.png' },
+		{ name: 'SettingSun',     	   	size: 32.0,	url: '../media/LUTMaps/SettingSun.png' },
+		{ name: 'SharpWasteland',     	size: 32.0,	url: '../media/LUTMaps/SharpWasteland.png' },
+		{ name: 'Stock5',     	   		size: 32.0,	url: '../media/LUTMaps/Stock5.png' },
+		{ name: 'Toxic',     	   		size: 32.0,	url: '../media/LUTMaps/Toxic.png' },
+		{ name: 'Underwater',     	   	size: 32.0,	url: '../media/LUTMaps/Underwater.png' },
+		{ name: 'Vibrance',     	   	size: 32.0,	url: '../media/LUTMaps/Vibrance.png' },
+		{ name: 'Vibrance2',     	   	size: 32.0,	url: '../media/LUTMaps/Vibrance2.png' },
+		{ name: 'Vintage11',     	   	size: 32.0,	url: '../media/LUTMaps/Vintage11.png' },
+		{ name: 'WarmPurple',     	   	size: 32.0,	url: '../media/LUTMaps/WarmPurple.png' },
+	];
+
+	this.lutTextures.forEach((info) => {
+		info.filter = undefined;
+		info.texture = this.makeLUTTexture(info);
+	});	
+
+	this.setMap(lutmapIndex);
+
+	this.originalClearColor = new THREE.Color();
+	
+	this.basic = new THREE.MeshBasicMaterial();
+
+	this.enabled = true;
+	this.needsSwap = false;
+
+	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+	this.quad.frustumCulled = false; // Avoid getting clipped
+	this.scene.add( this.quad );
+
+};
+
+THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+	constructor: THREE.LUTPass,
+
+	dispose: function () {
+
+		// dispose render targets
+		this.beautyRenderTarget.dispose();
+
+		// dispose geometry
+		this.quad.geometry.dispose();
+
+		// dispose materials
+		this.copyMaterial.dispose();
+
+	},
+
+	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive ) {
+		
+		this.lutMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
+		
+		this.quad.material = this.lutMaterial;
+
+		if ( this.renderToScreen ) {
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+    	} else {
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
+	},
+
+	setSize: function ( width, height ) {
+
+		this.width = width;
+		this.height = height;
+
+		this.beautyRenderTarget.setSize( width, height );
+
+	},
+
+	setMap: function( lutMapIndex ) {
+		//let selectedMap = this.lutmaps.get(nlutMap);
+		//if(selectedMap == undefined)
+		//	console.error("LUTmap " + nlutMap + " does not exist");
+		//console.log(selectedMap.title);
+		//this.lutMaterial.uniforms[ 'lutMapSize' ].value = selectedMap.size;
+		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(selectedMap.map, selectedMap.size);
+		console.log("LUT name: " + this.lutTextures[lutMapIndex].name);
+		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutTextures[lutMapIndex].texture;
+		this.lutMaterial.uniforms[ 'lutMapSize' ].value = this.lutTextures[lutMapIndex].size;
+		console.log("LUT size: " + this.lutMaterial.uniforms[ 'lutMapSize' ].value);
+	},
+
+	makeIdentityLutTexture: function() {
+		const identityLUT = new Uint8Array([
+			0,   0,   0, 255,  // black
+		  255,   0,   0, 255,  // red
+			0,   0, 255, 255,  // blue
+		  255,   0, 255, 255,  // magenta
+			0, 255,   0, 255,  // green
+		  255, 255,   0, 255,  // yellow
+			0, 255, 255, 255,  // cyan
+		  255, 255, 255, 255,  // white
+		]);
+	
+		return function(filter) {
+		  const texture = new THREE.DataTexture(identityLUT, 4, 2, THREE.RGBAFormat);
+		  texture.minFilter = filter;
+		  texture.magFilter = filter;
+		  texture.needsUpdate = true;
+		  texture.flipY = true;
+		  return texture;
+		};
+	  }(),
+
+	makeLUTTexture: function() {
+		const imgLoader = new THREE.ImageLoader();
+		const ctx = document.createElement('canvas').getContext('2d');
+	   
+		return function(info) {
+		  const texture = this.makeIdentityLutTexture(
+		  info.filter ? THREE.LinearFilter : THREE.NearestFilter);
+	   
+		  if (info.url) {
+			const lutSize = info.size;
+	   
+			imgLoader.load(info.url, function(image) {
+			  const width = lutSize * lutSize;
+			  const height = lutSize;
+			  info.size = lutSize;
+			  ctx.canvas.width = width;
+			  ctx.canvas.height = height;
+			  ctx.drawImage(image, 0, 0);
+			  const imageData = ctx.getImageData(0, 0, width, height);
+
+			  texture.image.data = new Uint8Array(imageData.data.buffer);
+			  texture.image.width = width;
+			  texture.image.height = height;
+			  texture.needsUpdate = true;
+			});
+		  }
+	   
+		  return texture;
+		};
+	}(),
+
+	lutStringToTexture: function( lutString, lutSize ) {
+		var totalNumberOfComponents = lutSize * lutSize * lutSize * 4;
+		var floatsIdx = 0;
+	
+		var floatArray = lutString
+				.split( '\n' )
+				.map( function ( line ) {
+					return line.split( ' ' );
+				})
+				.filter( function ( components ) {
+					return components.length === 3;
+				})
+				.reduce( function ( floats, components, index ) {
+					components.forEach( function ( v, idx ) { 
+						floats[ floatsIdx++ ] = v;
+						if ( idx===2 ) {
+							floats[ floatsIdx++ ] = 1.0;
+						}
+					});
+					return floats;
+				}, new Float32Array( totalNumberOfComponents ) );
+	
+		var texture = new THREE.DataTexture( floatArray, lutSize * lutSize, lutSize );
+		texture.type = THREE.FloatType;
+		texture.format = THREE.RGBAFormat;
+		console.log(texture);
+		return texture;
+	}
+
+} );
+},{}],197:[function(_dereq_,module,exports){
+THREE.LUTShader = {
+    
+    uniforms: {
+      tDiffuse: { value: null },
+      lutMap:  { value: null },
+      lutMapSize: { value: 8.0, },
+    },
+    
+    vertexShader: [
+      "varying vec2 vUv;",
+      "void main() {",
+        "vUv = uv;",
+        "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+      "}",
+    ].join("\n"),
+    
+    fragmentShader: [
+      "#include <common>",
+   
+      //"#define FILTER_LUT true",
+   
+      "uniform sampler2D tDiffuse;",
+      "uniform sampler2D lutMap;",
+      "uniform float lutMapSize;",
+   
+      "varying vec2 vUv;",
+   
+      "vec4 sampleAs3DTexture(sampler2D tex, vec3 texCoord, float size) {",
+        "float sliceSize = 1.0 / size;                  // space of 1 slice",
+        "float slicePixelSize = sliceSize / size;       // space of 1 pixel",
+        "float width = size - 1.0;",
+        "float sliceInnerSize = slicePixelSize * width; // space of size pixels",
+        "float zSlice0 = floor( texCoord.z * width);",
+        "float zSlice1 = min( zSlice0 + 1.0, width);",
+        "float xOffset = slicePixelSize * 0.5 + texCoord.x * sliceInnerSize;",
+        "float yRange = (texCoord.y * width + 0.5) / size;",
+        "float s0 = xOffset + (zSlice0 * sliceSize);",
+        "float s1 = xOffset + (zSlice1 * sliceSize);",
+        "vec4 slice0Color = texture2D(tex, vec2(s0, yRange));",
+        "vec4 slice1Color = texture2D(tex, vec2(s1, yRange));",
+        "float zOffset = mod(texCoord.z * width, 1.0);",
+        "return mix(slice0Color, slice1Color, zOffset);",
+      "}",
+   
+      "void main() {",
+        "vec4 originalColor = texture2D(tDiffuse, vUv);",
+        "gl_FragColor = sampleAs3DTexture(lutMap, originalColor.xyz, lutMapSize);",
+        //"gl_FragColor = texture2D(lutMap, vUv);",
+      "}",
+    ].join("\n")
+};
+},{}],198:[function(_dereq_,module,exports){
+/**
+ * @author bhouston / http://clara.io/
+ *
+ * Luminosity
+ * http://en.wikipedia.org/wiki/Luminosity
+ */
+
+THREE.LuminosityHighPassShader = {
+
+  shaderID: "luminosityHighPass",
+
+  uniforms: {
+
+    "tDiffuse": { type: "t", value: null },
+    "luminosityThreshold": { type: "f", value: 1.0 },
+    "smoothWidth": { type: "f", value: 1.0 },
+    "defaultColor": { type: "c", value: new THREE.Color( 0x000000 ) },
+    "defaultOpacity":  { type: "f", value: 0.0 }
+
+  },
+
+  vertexShader: [
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vUv = uv;",
+
+      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+    "}"
+
+  ].join("\n"),
+
+  fragmentShader: [
+
+    "uniform sampler2D tDiffuse;",
+    "uniform vec3 defaultColor;",
+    "uniform float defaultOpacity;",
+    "uniform float luminosityThreshold;",
+    "uniform float smoothWidth;",
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vec4 texel = texture2D( tDiffuse, vUv );",
+
+      "vec3 luma = vec3( 0.299, 0.587, 0.114 );",
+
+      "float v = dot( texel.xyz, luma );",
+
+      "vec4 outputColor = vec4( defaultColor.rgb, defaultOpacity );",
+
+      "float alpha = smoothstep( luminosityThreshold, luminosityThreshold + smoothWidth, v );",
+
+      "gl_FragColor = mix( outputColor, texel, alpha );",
+
+    "}"
+
+  ].join("\n")
+
+};
+
+},{}],199:[function(_dereq_,module,exports){
+THREE.MKLUTShader = {
+
+    uniforms:
+    {
+        tDiffuse:   { value: null },
+        lutMap:     { value: null },
+        lutMapSize: { value: 8.0 },
+    },
+
+    // depthWrite: false,
+		// depthTest: false,
+
+    vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
+  `,
+
+    fragmentShader: `
+    #include <common>
+
+    uniform sampler2D tDiffuse;
+    uniform sampler2D lutMap;
+    uniform float lutMapSize;
+
+    varying vec2 vUv;
+
+    vec4 sampleAs3DTexture(sampler2D tex, vec3 texCoord, float size)
+    {
+      float sliceSize = 1.0 / size;                  // space of 1 slice
+      float slicePixelSize = sliceSize / size;       // space of 1 pixel
+      float width = size - 1.0;
+      float sliceInnerSize = slicePixelSize * width; // space of size pixels
+      float zSlice0 = floor( texCoord.z * width);
+      float zSlice1 = min( zSlice0 + 1.0, width);
+      float xOffset = slicePixelSize * 0.5 + texCoord.x * sliceInnerSize;
+      float yRange = (texCoord.y * width + 0.5) / size;
+      float s0 = xOffset + (zSlice0 * sliceSize);
+
+      
+      float s1 = xOffset + (zSlice1 * sliceSize);
+      vec4 slice0Color = texture2D(tex, vec2(s0, yRange));
+      vec4 slice1Color = texture2D(tex, vec2(s1, yRange));
+      float zOffset = mod(texCoord.z * width, 1.0);
+      return mix(slice0Color, slice1Color, zOffset);
+      
+      //return texture2D(tex, vec2( s0, yRange));
+      
+    }
+
+    void main() {
+      vec4 originalColor = texture2D(tDiffuse, vUv);
+      gl_FragColor = sampleAs3DTexture(lutMap, originalColor.xyz, lutMapSize);
+    }
+  `,
+}
+},{}],200:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
+
+  THREE.Pass.call( this );
+
+  this.scene = scene;
+  this.camera = camera;
+
+  this.overrideMaterial = overrideMaterial;
+
+	// normal material
+
+	this.normalMaterial = new THREE.MeshNormalMaterial();
+	this.normalMaterial.blending = THREE.NoBlending;
+
+  this.clearColor = clearColor;
+  this.clearAlpha = ( clearAlpha !== undefined ) ? clearAlpha : 0;
+
+  this.clear = true;
+  this.clearDepth = false;
+  this.needsSwap = false;
+
+};
+
+THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+  constructor: THREE.RenderPass,
+
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive, normalRenderTarget ) {
+
+    var oldAutoClear = renderer.autoClear;
+    renderer.autoClear = false;
+
+    this.scene.overrideMaterial = this.normalMaterial;
+
+    renderer.setRenderTarget( normalRenderTarget );
+    renderer.clear();
+    renderer.render( this.scene, this.camera);
+
+    this.scene.overrideMaterial = this.overrideMaterial;
+
+    var oldClearColor, oldClearAlpha;
+
+    if ( this.clearColor ) {
+
+      oldClearColor = renderer.getClearColor().getHex();
+      oldClearAlpha = renderer.getClearAlpha();
+
+      renderer.setClearColor( this.clearColor, this.clearAlpha );
+
+    }
+
+    if ( this.clearDepth ) {
+
+      renderer.clearDepth();
+
+    }
+
+    renderer.setRenderTarget(this.renderToScreen ? null : readBuffer);
+    renderer.clear();
+    renderer.render( this.scene, this.camera);
+
+    if ( this.clearColor ) {
+
+      renderer.setClearColor( oldClearColor, oldClearAlpha );
+
+    }
+
+    this.scene.overrideMaterial = null;
+    renderer.autoClear = oldAutoClear;
+    this.needsSwap = false;
+  }
+
+} );
+
+},{}],201:[function(_dereq_,module,exports){
+THREE.SMAABlendShader = {
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"tColor": { value: null },
+		"resolution": { value: new THREE.Vector2( 1 / 1024, 1 / 512 ) }
+
+	},
+
+	vertexShader: [
+
+		"uniform vec2 resolution;",
+
+		"varying vec2 vUv;",
+		"varying vec4 vOffset[ 2 ];",
+
+		"void SMAANeighborhoodBlendingVS( vec2 texcoord ) {",
+		"	vOffset[ 0 ] = texcoord.xyxy + resolution.xyxy * vec4( -1.0, 0.0, 0.0, 1.0 );", // WebGL port note: Changed sign in W component
+		"	vOffset[ 1 ] = texcoord.xyxy + resolution.xyxy * vec4( 1.0, 0.0, 0.0, -1.0 );", // WebGL port note: Changed sign in W component
+		"}",
+
+		"void main() {",
+
+		"	vUv = uv;",
+
+		"	SMAANeighborhoodBlendingVS( vUv );",
+
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"uniform sampler2D tDiffuse;",
+		"uniform sampler2D tColor;",
+		"uniform vec2 resolution;",
+
+		"varying vec2 vUv;",
+		"varying vec4 vOffset[ 2 ];",
+
+		"vec4 SMAANeighborhoodBlendingPS( vec2 texcoord, vec4 offset[ 2 ], sampler2D colorTex, sampler2D blendTex ) {",
+		// Fetch the blending weights for current pixel:
+		"	vec4 a;",
+		"	a.xz = texture2D( blendTex, texcoord ).xz;",
+		"	a.y = texture2D( blendTex, offset[ 1 ].zw ).g;",
+		"	a.w = texture2D( blendTex, offset[ 1 ].xy ).a;",
+
+		// Is there any blending weight with a value greater than 0.0?
+		"	if ( dot(a, vec4( 1.0, 1.0, 1.0, 1.0 )) < 1e-5 ) {",
+		"		return texture2D( colorTex, texcoord, 0.0 );",
+		"	} else {",
+		// Up to 4 lines can be crossing a pixel (one through each edge). We
+		// favor blending by choosing the line with the maximum weight for each
+		// direction:
+		"		vec2 offset;",
+		"		offset.x = a.a > a.b ? a.a : -a.b;", // left vs. right
+		"		offset.y = a.g > a.r ? -a.g : a.r;", // top vs. bottom // WebGL port note: Changed signs
+
+		// Then we go in the direction that has the maximum weight:
+		"		if ( abs( offset.x ) > abs( offset.y )) {", // horizontal vs. vertical
+		"			offset.y = 0.0;",
+		"		} else {",
+		"			offset.x = 0.0;",
+		"		}",
+
+		// Fetch the opposite color and lerp by hand:
+		"		vec4 C = texture2D( colorTex, texcoord, 0.0 );",
+		"		texcoord += sign( offset ) * resolution;",
+		"		vec4 Cop = texture2D( colorTex, texcoord, 0.0 );",
+		"		float s = abs( offset.x ) > abs( offset.y ) ? abs( offset.x ) : abs( offset.y );",
+
+		// WebGL port note: Added gamma correction
+		"		C.xyz = pow(C.xyz, vec3(2.2));",
+		"		Cop.xyz = pow(Cop.xyz, vec3(2.2));",
+		"		vec4 mixed = mix(C, Cop, s);",
+		"		mixed.xyz = pow(mixed.xyz, vec3(1.0 / 2.2));",
+
+		"		return mixed;",
+		"	}",
+		"}",
+
+		"void main() {",
+
+		"	gl_FragColor = SMAANeighborhoodBlendingPS( vUv, vOffset, tColor, tDiffuse );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+},{}],202:[function(_dereq_,module,exports){
+THREE.SMAAEdgesShader = {
+
+	defines: {
+
+		"SMAA_THRESHOLD": "0.1"
+
+	},
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"resolution": { value: new THREE.Vector2( 1 / 1024, 1 / 512 ) }
+
+	},
+
+	vertexShader: [
+
+		"uniform vec2 resolution;",
+
+		"varying vec2 vUv;",
+		"varying vec4 vOffset[ 3 ];",
+
+		"void SMAAEdgeDetectionVS( vec2 texcoord ) {",
+		"	vOffset[ 0 ] = texcoord.xyxy + resolution.xyxy * vec4( -1.0, 0.0, 0.0,  1.0 );", // WebGL port note: Changed sign in W component
+		"	vOffset[ 1 ] = texcoord.xyxy + resolution.xyxy * vec4(  1.0, 0.0, 0.0, -1.0 );", // WebGL port note: Changed sign in W component
+		"	vOffset[ 2 ] = texcoord.xyxy + resolution.xyxy * vec4( -2.0, 0.0, 0.0,  2.0 );", // WebGL port note: Changed sign in W component
+		"}",
+
+		"void main() {",
+
+		"	vUv = uv;",
+
+		"	SMAAEdgeDetectionVS( vUv );",
+
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"uniform sampler2D tDiffuse;",
+
+		"varying vec2 vUv;",
+		"varying vec4 vOffset[ 3 ];",
+
+		"vec4 SMAAColorEdgeDetectionPS( vec2 texcoord, vec4 offset[3], sampler2D colorTex ) {",
+		"	vec2 threshold = vec2( SMAA_THRESHOLD, SMAA_THRESHOLD );",
+
+		// Calculate color deltas:
+		"	vec4 delta;",
+		"	vec3 C = texture2D( colorTex, texcoord ).rgb;",
+
+		"	vec3 Cleft = texture2D( colorTex, offset[0].xy ).rgb;",
+		"	vec3 t = abs( C - Cleft );",
+		"	delta.x = max( max( t.r, t.g ), t.b );",
+
+		"	vec3 Ctop = texture2D( colorTex, offset[0].zw ).rgb;",
+		"	t = abs( C - Ctop );",
+		"	delta.y = max( max( t.r, t.g ), t.b );",
+
+		// We do the usual threshold:
+		"	vec2 edges = step( threshold, delta.xy );",
+
+		// Then discard if there is no edge:
+		"	if ( dot( edges, vec2( 1.0, 1.0 ) ) == 0.0 )",
+		"		discard;",
+
+		// Calculate right and bottom deltas:
+		"	vec3 Cright = texture2D( colorTex, offset[1].xy ).rgb;",
+		"	t = abs( C - Cright );",
+		"	delta.z = max( max( t.r, t.g ), t.b );",
+
+		"	vec3 Cbottom  = texture2D( colorTex, offset[1].zw ).rgb;",
+		"	t = abs( C - Cbottom );",
+		"	delta.w = max( max( t.r, t.g ), t.b );",
+
+		// Calculate the maximum delta in the direct neighborhood:
+		"	float maxDelta = max( max( max( delta.x, delta.y ), delta.z ), delta.w );",
+
+		// Calculate left-left and top-top deltas:
+		"	vec3 Cleftleft  = texture2D( colorTex, offset[2].xy ).rgb;",
+		"	t = abs( C - Cleftleft );",
+		"	delta.z = max( max( t.r, t.g ), t.b );",
+
+		"	vec3 Ctoptop = texture2D( colorTex, offset[2].zw ).rgb;",
+		"	t = abs( C - Ctoptop );",
+		"	delta.w = max( max( t.r, t.g ), t.b );",
+
+		// Calculate the final maximum delta:
+		"	maxDelta = max( max( maxDelta, delta.z ), delta.w );",
+
+		// Local contrast adaptation in action:
+		"	edges.xy *= step( 0.5 * maxDelta, delta.xy );",
+
+		"	return vec4( edges, 0.0, 0.0 );",
+		"}",
+
+		"void main() {",
+
+		"	gl_FragColor = SMAAColorEdgeDetectionPS( vUv, vOffset, tDiffuse );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+},{}],203:[function(_dereq_,module,exports){
+THREE.SMAAWeightsShader = {
+
+	defines: {
+
+		"SMAA_MAX_SEARCH_STEPS": "8",
+		"SMAA_AREATEX_MAX_DISTANCE": "16",
+		"SMAA_AREATEX_PIXEL_SIZE": "( 1.0 / vec2( 160.0, 560.0 ) )",
+		"SMAA_AREATEX_SUBTEX_SIZE": "( 1.0 / 7.0 )"
+
+	},
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"tArea": { value: null },
+		"tSearch": { value: null },
+		"resolution": { value: new THREE.Vector2( 1 / 1024, 1 / 512 ) }
+
+	},
+
+	vertexShader: [
+
+		"uniform vec2 resolution;",
+
+		"varying vec2 vUv;",
+		"varying vec4 vOffset[ 3 ];",
+		"varying vec2 vPixcoord;",
+
+		"void SMAABlendingWeightCalculationVS( vec2 texcoord ) {",
+		"	vPixcoord = texcoord / resolution;",
+
+		// We will use these offsets for the searches later on (see @PSEUDO_GATHER4):
+		"	vOffset[ 0 ] = texcoord.xyxy + resolution.xyxy * vec4( -0.25, 0.125, 1.25, 0.125 );", // WebGL port note: Changed sign in Y and W components
+		"	vOffset[ 1 ] = texcoord.xyxy + resolution.xyxy * vec4( -0.125, 0.25, -0.125, -1.25 );", // WebGL port note: Changed sign in Y and W components
+
+		// And these for the searches, they indicate the ends of the loops:
+		"	vOffset[ 2 ] = vec4( vOffset[ 0 ].xz, vOffset[ 1 ].yw ) + vec4( -2.0, 2.0, -2.0, 2.0 ) * resolution.xxyy * float( SMAA_MAX_SEARCH_STEPS );",
+
+		"}",
+
+		"void main() {",
+
+		"	vUv = uv;",
+
+		"	SMAABlendingWeightCalculationVS( vUv );",
+
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"#define SMAASampleLevelZeroOffset( tex, coord, offset ) texture2D( tex, coord + float( offset ) * resolution, 0.0 )",
+
+		"uniform sampler2D tDiffuse;",
+		"uniform sampler2D tArea;",
+		"uniform sampler2D tSearch;",
+		"uniform vec2 resolution;",
+
+		"varying vec2 vUv;",
+		"varying vec4 vOffset[3];",
+		"varying vec2 vPixcoord;",
+
+		"#if __VERSION__ == 100",
+		"vec2 round( vec2 x ) {",
+		"	return sign( x ) * floor( abs( x ) + 0.5 );",
+		"}",
+		"#endif",
+
+		"float SMAASearchLength( sampler2D searchTex, vec2 e, float bias, float scale ) {",
+		// Not required if searchTex accesses are set to point:
+		// float2 SEARCH_TEX_PIXEL_SIZE = 1.0 / float2(66.0, 33.0);
+		// e = float2(bias, 0.0) + 0.5 * SEARCH_TEX_PIXEL_SIZE +
+		//     e * float2(scale, 1.0) * float2(64.0, 32.0) * SEARCH_TEX_PIXEL_SIZE;
+		"	e.r = bias + e.r * scale;",
+		"	return 255.0 * texture2D( searchTex, e, 0.0 ).r;",
+		"}",
+
+		"float SMAASearchXLeft( sampler2D edgesTex, sampler2D searchTex, vec2 texcoord, float end ) {",
+		/**
+			* @PSEUDO_GATHER4
+			* This texcoord has been offset by (-0.25, -0.125) in the vertex shader to
+			* sample between edge, thus fetching four edges in a row.
+			* Sampling with different offsets in each direction allows to disambiguate
+			* which edges are active from the four fetched ones.
+			*/
+		"	vec2 e = vec2( 0.0, 1.0 );",
+
+		"	for ( int i = 0; i < SMAA_MAX_SEARCH_STEPS; i ++ ) {", // WebGL port note: Changed while to for
+		"		e = texture2D( edgesTex, texcoord, 0.0 ).rg;",
+		"		texcoord -= vec2( 2.0, 0.0 ) * resolution;",
+		"		if ( ! ( texcoord.x > end && e.g > 0.8281 && e.r == 0.0 ) ) break;",
+		"	}",
+
+		// We correct the previous (-0.25, -0.125) offset we applied:
+		"	texcoord.x += 0.25 * resolution.x;",
+
+		// The searches are bias by 1, so adjust the coords accordingly:
+		"	texcoord.x += resolution.x;",
+
+		// Disambiguate the length added by the last step:
+		"	texcoord.x += 2.0 * resolution.x;", // Undo last step
+		"	texcoord.x -= resolution.x * SMAASearchLength(searchTex, e, 0.0, 0.5);",
+
+		"	return texcoord.x;",
+		"}",
+
+		"float SMAASearchXRight( sampler2D edgesTex, sampler2D searchTex, vec2 texcoord, float end ) {",
+		"	vec2 e = vec2( 0.0, 1.0 );",
+
+		"	for ( int i = 0; i < SMAA_MAX_SEARCH_STEPS; i ++ ) {", // WebGL port note: Changed while to for
+		"		e = texture2D( edgesTex, texcoord, 0.0 ).rg;",
+		"		texcoord += vec2( 2.0, 0.0 ) * resolution;",
+		"		if ( ! ( texcoord.x < end && e.g > 0.8281 && e.r == 0.0 ) ) break;",
+		"	}",
+
+		"	texcoord.x -= 0.25 * resolution.x;",
+		"	texcoord.x -= resolution.x;",
+		"	texcoord.x -= 2.0 * resolution.x;",
+		"	texcoord.x += resolution.x * SMAASearchLength( searchTex, e, 0.5, 0.5 );",
+
+		"	return texcoord.x;",
+		"}",
+
+		"float SMAASearchYUp( sampler2D edgesTex, sampler2D searchTex, vec2 texcoord, float end ) {",
+		"	vec2 e = vec2( 1.0, 0.0 );",
+
+		"	for ( int i = 0; i < SMAA_MAX_SEARCH_STEPS; i ++ ) {", // WebGL port note: Changed while to for
+		"		e = texture2D( edgesTex, texcoord, 0.0 ).rg;",
+		"		texcoord += vec2( 0.0, 2.0 ) * resolution;", // WebGL port note: Changed sign
+		"		if ( ! ( texcoord.y > end && e.r > 0.8281 && e.g == 0.0 ) ) break;",
+		"	}",
+
+		"	texcoord.y -= 0.25 * resolution.y;", // WebGL port note: Changed sign
+		"	texcoord.y -= resolution.y;", // WebGL port note: Changed sign
+		"	texcoord.y -= 2.0 * resolution.y;", // WebGL port note: Changed sign
+		"	texcoord.y += resolution.y * SMAASearchLength( searchTex, e.gr, 0.0, 0.5 );", // WebGL port note: Changed sign
+
+		"	return texcoord.y;",
+		"}",
+
+		"float SMAASearchYDown( sampler2D edgesTex, sampler2D searchTex, vec2 texcoord, float end ) {",
+		"	vec2 e = vec2( 1.0, 0.0 );",
+
+		"	for ( int i = 0; i < SMAA_MAX_SEARCH_STEPS; i ++ ) {", // WebGL port note: Changed while to for
+		"		e = texture2D( edgesTex, texcoord, 0.0 ).rg;",
+		"		texcoord -= vec2( 0.0, 2.0 ) * resolution;", // WebGL port note: Changed sign
+		"		if ( ! ( texcoord.y < end && e.r > 0.8281 && e.g == 0.0 ) ) break;",
+		"	}",
+
+		"	texcoord.y += 0.25 * resolution.y;", // WebGL port note: Changed sign
+		"	texcoord.y += resolution.y;", // WebGL port note: Changed sign
+		"	texcoord.y += 2.0 * resolution.y;", // WebGL port note: Changed sign
+		"	texcoord.y -= resolution.y * SMAASearchLength( searchTex, e.gr, 0.5, 0.5 );", // WebGL port note: Changed sign
+
+		"	return texcoord.y;",
+		"}",
+
+		"vec2 SMAAArea( sampler2D areaTex, vec2 dist, float e1, float e2, float offset ) {",
+		// Rounding prevents precision errors of bilinear filtering:
+		"	vec2 texcoord = float( SMAA_AREATEX_MAX_DISTANCE ) * round( 4.0 * vec2( e1, e2 ) ) + dist;",
+
+		// We do a scale and bias for mapping to texel space:
+		"	texcoord = SMAA_AREATEX_PIXEL_SIZE * texcoord + ( 0.5 * SMAA_AREATEX_PIXEL_SIZE );",
+
+		// Move to proper place, according to the subpixel offset:
+		"	texcoord.y += SMAA_AREATEX_SUBTEX_SIZE * offset;",
+
+		"	return texture2D( areaTex, texcoord, 0.0 ).rg;",
+		"}",
+
+		"vec4 SMAABlendingWeightCalculationPS( vec2 texcoord, vec2 pixcoord, vec4 offset[ 3 ], sampler2D edgesTex, sampler2D areaTex, sampler2D searchTex, ivec4 subsampleIndices ) {",
+		"	vec4 weights = vec4( 0.0, 0.0, 0.0, 0.0 );",
+
+		"	vec2 e = texture2D( edgesTex, texcoord ).rg;",
+
+		"	if ( e.g > 0.0 ) {", // Edge at north
+		"		vec2 d;",
+
+		// Find the distance to the left:
+		"		vec2 coords;",
+		"		coords.x = SMAASearchXLeft( edgesTex, searchTex, offset[ 0 ].xy, offset[ 2 ].x );",
+		"		coords.y = offset[ 1 ].y;", // offset[1].y = texcoord.y - 0.25 * resolution.y (@CROSSING_OFFSET)
+		"		d.x = coords.x;",
+
+		// Now fetch the left crossing edges, two at a time using bilinear
+		// filtering. Sampling at -0.25 (see @CROSSING_OFFSET) enables to
+		// discern what value each edge has:
+		"		float e1 = texture2D( edgesTex, coords, 0.0 ).r;",
+
+		// Find the distance to the right:
+		"		coords.x = SMAASearchXRight( edgesTex, searchTex, offset[ 0 ].zw, offset[ 2 ].y );",
+		"		d.y = coords.x;",
+
+		// We want the distances to be in pixel units (doing this here allow to
+		// better interleave arithmetic and memory accesses):
+		"		d = d / resolution.x - pixcoord.x;",
+
+		// SMAAArea below needs a sqrt, as the areas texture is compressed
+		// quadratically:
+		"		vec2 sqrt_d = sqrt( abs( d ) );",
+
+		// Fetch the right crossing edges:
+		"		coords.y -= 1.0 * resolution.y;", // WebGL port note: Added
+		"		float e2 = SMAASampleLevelZeroOffset( edgesTex, coords, ivec2( 1, 0 ) ).r;",
+
+		// Ok, we know how this pattern looks like, now it is time for getting
+		// the actual area:
+		"		weights.rg = SMAAArea( areaTex, sqrt_d, e1, e2, float( subsampleIndices.y ) );",
+		"	}",
+
+		"	if ( e.r > 0.0 ) {", // Edge at west
+		"		vec2 d;",
+
+		// Find the distance to the top:
+		"		vec2 coords;",
+
+		"		coords.y = SMAASearchYUp( edgesTex, searchTex, offset[ 1 ].xy, offset[ 2 ].z );",
+		"		coords.x = offset[ 0 ].x;", // offset[1].x = texcoord.x - 0.25 * resolution.x;
+		"		d.x = coords.y;",
+
+		// Fetch the top crossing edges:
+		"		float e1 = texture2D( edgesTex, coords, 0.0 ).g;",
+
+		// Find the distance to the bottom:
+		"		coords.y = SMAASearchYDown( edgesTex, searchTex, offset[ 1 ].zw, offset[ 2 ].w );",
+		"		d.y = coords.y;",
+
+		// We want the distances to be in pixel units:
+		"		d = d / resolution.y - pixcoord.y;",
+
+		// SMAAArea below needs a sqrt, as the areas texture is compressed
+		// quadratically:
+		"		vec2 sqrt_d = sqrt( abs( d ) );",
+
+		// Fetch the bottom crossing edges:
+		"		coords.y -= 1.0 * resolution.y;", // WebGL port note: Added
+		"		float e2 = SMAASampleLevelZeroOffset( edgesTex, coords, ivec2( 0, 1 ) ).g;",
+
+		// Get the area for this direction:
+		"		weights.ba = SMAAArea( areaTex, sqrt_d, e1, e2, float( subsampleIndices.x ) );",
+		"	}",
+
+		"	return weights;",
+		"}",
+
+		"void main() {",
+
+		"	gl_FragColor = SMAABlendingWeightCalculationPS( vUv, vPixcoord, vOffset, tDiffuse, tArea, tSearch, ivec4( 0.0 ) );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+
+
+},{}],204:[function(_dereq_,module,exports){
+/**
+ * @author Mugen87 / https://github.com/Mugen87
+ *
+ * References:
+ * http://john-chapman-graphics.blogspot.com/2013/01/ssao-tutorial.html
+ * https://learnopengl.com/Advanced-Lighting/SSAO
+ * https://github.com/McNopper/OpenGL/blob/master/Example28/shader/ssao.frag.glsl
+ */
+THREE.SSAOBlurShader = {
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"resolution": { value: new THREE.Vector2() }
+
+	},
+
+	vertexShader: [
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vUv = uv;",
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"uniform sampler2D tDiffuse;",
+
+		"uniform vec2 resolution;",
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vec2 texelSize = ( 1.0 / resolution );",
+		"	float result = 0.0;",
+
+		"	for ( int i = - 2; i <= 2; i ++ ) {",
+
+		"		for ( int j = - 2; j <= 2; j ++ ) {",
+
+		"			vec2 offset = ( vec2( float( i ), float( j ) ) ) * texelSize;",
+		"			result += texture2D( tDiffuse, vUv + offset ).r;",
+
+		"		}",
+
+		"	}",
+
+		"	gl_FragColor = vec4( vec3( result / ( 5.0 * 5.0 ) ), 1.0 );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+},{}],205:[function(_dereq_,module,exports){
+THREE.SSAODepthShader = {
+
+	defines: {
+		"PERSPECTIVE_CAMERA": 1
+	},
+
+	uniforms: {
+
+		"tDepth": { value: null },
+		"cameraNear": { value: null },
+		"cameraFar": { value: null },
+
+	},
+
+	vertexShader: [
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vUv = uv;",
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"uniform sampler2D tDepth;",
+
+		"uniform float cameraNear;",
+		"uniform float cameraFar;",
+
+		"varying vec2 vUv;",
+
+		"#include <packing>",
+
+		"float getLinearDepth( const in vec2 screenPosition ) {",
+
+		"	#if PERSPECTIVE_CAMERA == 1",
+
+		"		float fragCoordZ = texture2D( tDepth, screenPosition ).x;",
+		"		float viewZ = perspectiveDepthToViewZ( fragCoordZ, cameraNear, cameraFar );",
+		"		return viewZToOrthographicDepth( viewZ, cameraNear, cameraFar );",
+
+		"	#else",
+
+		"		return texture2D( depthSampler, coord ).x;",
+
+		"	#endif",
+
+		"}",
+
+		"void main() {",
+
+		"	float depth = getLinearDepth( vUv );",
+		"	gl_FragColor = vec4( vec3( 1.0 - depth ), 1.0 );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+},{}],206:[function(_dereq_,module,exports){
+
+THREE.SSAOPass = function ( width, height ) {
+
+	THREE.Pass.call( this );
+
+	this.width = ( width !== undefined ) ? width : 512;
+	this.height = ( height !== undefined ) ? height : 512;
+
+	this.clear = true;
+
+    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+    this.scene = new THREE.Scene();
+
+	this.kernelRadius = 8;
+	this.kernelSize = 32;
+	this.kernel = [];
+	this.noiseTexture = null;
+	this.output = 0;
+
+	this.minDistance = 0.005;
+	this.maxDistance = 0.1;
+
+    // Generate sample Kernel
+    for ( var i = 0; i < this.kernelSize; i ++ ) {
+		var sample = new THREE.Vector3();
+        sample.x = (Math.random() * 2 ) - 1;
+		sample.y = (Math.random() * 2 ) - 1;
+		sample.z = Math.random();
+    
+        sample.normalize();
+
+		var scale = i / this.kernelSize;
+		scale = THREE.Math.lerp( 0.1, 1, scale * scale );
+		sample.multiplyScalar( scale );
+
+		this.kernel.push( sample );
+    };
+
+    // Generate random kernel rotation
+    var _width = 4, _height = 4;
+    var size = _width * _height;
+    var data = new Float32Array( size * 4 );
+    for ( var i = 0; i < size; i ++ ) {
+        var stride = i * 4;
+        var x = ( Math.random() * 2 ) - 1;
+        var y = ( Math.random() * 2 ) - 1;
+        var z = 0;
+        data[ stride ] = x;
+        data[ stride + 1 ] = y;
+        data[ stride + 2 ] = z;
+        data[ stride + 3 ] = 1;
+    }
+    this.noiseTexture = new THREE.DataTexture( data, _width, _height, THREE.RGBAFormat, THREE.FloatType );
+    this.noiseTexture.wrapS = THREE.RepeatWrapping;
+    this.noiseTexture.wrapT = THREE.RepeatWrapping;
+    this.noiseTexture.needsUpdate = true;
+
+	// beauty render target with depth buffer
+
+	var depthTexture = new THREE.DepthTexture();
+	depthTexture.type = THREE.UnsignedShortType;
+	depthTexture.minFilter = THREE.NearestFilter;
+	depthTexture.maxFilter = THREE.NearestFilter;
+
+	/*this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, {
+		minFilter: THREE.LinearFilter,
+		magFilter: THREE.LinearFilter,
+		format: THREE.RGBAFormat,
+		depthTexture: depthTexture,
+		depthBuffer: true
+	} );*/
+	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
+	this.beautyRenderTarget.texture.format = THREE.RGBFormat;
+	this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
+	this.beautyRenderTarget.texture.generateMipmaps = false;
+	this.beautyRenderTarget.stencilBuffer = false;
+	this.beautyRenderTarget.depthBuffer = true;
+	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
+	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
+
+	// normal render target
+
+	this.normalRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, {
+		minFilter: THREE.NearestFilter,
+		magFilter: THREE.NearestFilter,
+		format: THREE.RGBAFormat
+	} );
+	this.depthRenderTarget = this.normalRenderTarget.clone();
+
+	// ssao render target
+
+	this.ssaoRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, {
+		minFilter: THREE.LinearFilter,
+		magFilter: THREE.LinearFilter,
+		format: THREE.RGBAFormat
+	} );
+
+	this.blurRenderTarget = this.ssaoRenderTarget.clone();
+
+	// ssao material
+
+	if ( THREE.SSAOShader === undefined ) {
+
+		console.error( 'THREE.SSAOPass: The pass relies on SSAOShader.' );
+
+	}
+
+	this.ssaoMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.SSAOShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.SSAOShader.uniforms ),
+		vertexShader: THREE.SSAOShader.vertexShader,
+		fragmentShader: THREE.SSAOShader.fragmentShader,
+		blending: THREE.NoBlending
+	} );
+
+	this.ssaoMaterial.uniforms[ 'tNoise' ].value = this.noiseTexture;
+	this.ssaoMaterial.uniforms[ 'kernel' ].value = this.kernel;
+	this.ssaoMaterial.uniforms[ 'cameraNear' ].value = this.camera.near;
+	this.ssaoMaterial.uniforms[ 'cameraFar' ].value = this.camera.far;
+	this.ssaoMaterial.uniforms[ 'resolution' ].value.set( this.width, this.height );
+	this.ssaoMaterial.uniforms[ 'cameraProjectionMatrix' ].value.copy( this.camera.projectionMatrix );
+	this.ssaoMaterial.uniforms[ 'cameraInverseProjectionMatrix' ].value.getInverse( this.camera.projectionMatrix );
+
+	// normal material
+
+	this.normalMaterial = new THREE.MeshNormalMaterial();
+	this.normalMaterial.blending = THREE.NoBlending;
+
+	// blur material
+
+	this.blurMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.SSAOBlurShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.SSAOBlurShader.uniforms ),
+		vertexShader: THREE.SSAOBlurShader.vertexShader,
+		fragmentShader: THREE.SSAOBlurShader.fragmentShader
+	} );
+	this.blurMaterial.uniforms[ 'tDiffuse' ].value = this.ssaoRenderTarget.texture;
+	this.blurMaterial.uniforms[ 'resolution' ].value.set( this.width, this.height );
+
+	// material for rendering the depth
+
+	this.depthRenderMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.SSAODepthShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.SSAODepthShader.uniforms ),
+		vertexShader: THREE.SSAODepthShader.vertexShader,
+		fragmentShader: THREE.SSAODepthShader.fragmentShader,
+		blending: THREE.NoBlending
+	} );
+	this.depthRenderMaterial.uniforms[ 'tDepth' ].value = this.beautyRenderTarget.depthTexture;
+	this.depthRenderMaterial.uniforms[ 'cameraNear' ].value = 0.1;
+	this.depthRenderMaterial.uniforms[ 'cameraFar' ].value = 2000;
+
+	// material for rendering the content of a render target
+
+	this.copyMaterial = new THREE.ShaderMaterial( {
+		uniforms: THREE.UniformsUtils.clone( THREE.CopyShader.uniforms ),
+		vertexShader: THREE.CopyShader.vertexShader,
+		fragmentShader: THREE.CopyShader.fragmentShader,
+		transparent: true,
+		depthTest: false,
+		depthWrite: false,
+		blendSrc: THREE.DstColorFactor,
+		blendDst: THREE.ZeroFactor,
+		blendEquation: THREE.AddEquation,
+		blendSrcAlpha: THREE.DstAlphaFactor,
+		blendDstAlpha: THREE.ZeroFactor,
+		blendEquationAlpha: THREE.AddEquation
+	} );
+
+	this.originalClearColor = new THREE.Color();
+	
+	this.basic = new THREE.MeshBasicMaterial();
+
+	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+	this.quad.frustumCulled = false; // Avoid getting clipped
+	this.scene.add( this.quad );
+
+};
+
+THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+	constructor: THREE.SSAOPass,
+
+	dispose: function () {
+
+		// dispose render targets
+
+		this.beautyRenderTarget.dispose();
+		this.normalRenderTarget.dispose();
+		this.ssaoRenderTarget.dispose();
+		this.blurRenderTarget.dispose();
+
+		// dispose geometry
+
+		this.quad.geometry.dispose();
+
+		// dispose materials
+
+		this.normalMaterial.dispose();
+		this.blurMaterial.dispose();
+		this.copyMaterial.dispose();
+		this.depthRenderMaterial.dispose();
+
+	},
+
+	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive, normalRenderTarget ) {
+
+		// render beauty and depth
+
+		this.quad.material = this.basic;
+		this.basic.map = readBuffer.texture;
+		//renderer.setRenderTarget( this.beautyRenderTarget );
+
+		this.ssaoMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
+		this.ssaoMaterial.uniforms[ 'tDepth' ].value = readBuffer.depthTexture;
+		this.ssaoMaterial.uniforms[ 'tNormal' ].value = normalRenderTarget.texture;
+
+		this.quad.material = this.ssaoMaterial;
+		
+		if ( this.renderToScreen ) {
+      
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    } else {
+
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
+		/*
+		// render normals
+
+		this.renderOverride( renderer, this.normalMaterial, this.normalRenderTarget, 0x7777ff, 1.0 );
+
+		// render SSAO
+
+		this.ssaoMaterial.uniforms[ 'kernelRadius' ].value = this.kernelRadius;
+		this.ssaoMaterial.uniforms[ 'minDistance' ].value = this.minDistance;
+		this.ssaoMaterial.uniforms[ 'maxDistance' ].value = this.maxDistance;
+		this.renderPass( renderer, this.ssaoMaterial, this.ssaoRenderTarget );
+
+		// render blur
+
+		this.renderPass( renderer, this.blurMaterial, this.blurRenderTarget );
+
+		// output result to screen
+
+		this.renderPass( renderer, this.depthRenderMaterial, this.renderToScreen ? null : writeBuffer );
+		//this.copyMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
+		//this.copyMaterial.blending = THREE.NoBlending;
+		//this.renderPass( renderer, this.copyMaterial, this.renderToScreen ? null : writeBuffer );
+
+		//this.copyMaterial.uniforms[ 'tDiffuse' ].value = this.blurRenderTarget.texture;
+		//this.copyMaterial.blending = THREE.CustomBlending;
+		//this.renderPass( renderer, this.copyMaterial, this.renderToScreen ? null : writeBuffer );
+		*/
+	},
+
+	renderPass: function ( renderer, passMaterial, renderTarget, clearColor, clearAlpha ) {
+
+		// save original state
+		this.originalClearColor.copy( renderer.getClearColor() );
+		var originalClearAlpha = renderer.getClearAlpha();
+		var originalAutoClear = renderer.autoClear;
+
+		renderer.setRenderTarget( renderTarget );
+
+		// setup pass state
+		renderer.autoClear = false;
+		if ( ( clearColor !== undefined ) && ( clearColor !== null ) ) {
+
+			renderer.setClearColor( clearColor );
+			renderer.setClearAlpha( clearAlpha || 0.0 );
+			renderer.clear();
+
+		}
+
+		this.quad.material = passMaterial;
+		renderer.render( this.scene, this.camera );
+
+		// restore original state
+		renderer.autoClear = originalAutoClear;
+		renderer.setClearColor( this.originalClearColor );
+		renderer.setClearAlpha( originalClearAlpha );
+
+
+	},
+
+	renderOverride: function ( renderer, overrideMaterial, renderTarget, clearColor, clearAlpha ) {
+
+		this.originalClearColor.copy( renderer.getClearColor() );
+		var originalClearAlpha = renderer.getClearAlpha();
+		var originalAutoClear = renderer.autoClear;
+
+		renderer.setRenderTarget( renderTarget );
+		renderer.autoClear = false;
+
+		clearColor = overrideMaterial.clearColor || clearColor;
+		clearAlpha = overrideMaterial.clearAlpha || clearAlpha;
+
+		if ( ( clearColor !== undefined ) && ( clearColor !== null ) ) {
+
+			renderer.setClearColor( clearColor );
+			renderer.setClearAlpha( clearAlpha || 0.0 );
+			renderer.clear();
+
+		}
+
+		this.scene.overrideMaterial = overrideMaterial;
+		renderer.render( this.scene, this.camera );
+		this.scene.overrideMaterial = null;
+
+		// restore original state
+
+		renderer.autoClear = originalAutoClear;
+		renderer.setClearColor( this.originalClearColor );
+		renderer.setClearAlpha( originalClearAlpha );
+
+	},
+
+	setSize: function ( width, height ) {
+
+		this.width = width;
+		this.height = height;
+
+		this.beautyRenderTarget.setSize( width, height );
+		this.ssaoRenderTarget.setSize( width, height );
+		this.normalRenderTarget.setSize( width, height );
+		this.blurRenderTarget.setSize( width, height );
+
+		this.ssaoMaterial.uniforms[ 'resolution' ].value.set( width, height );
+		this.ssaoMaterial.uniforms[ 'cameraProjectionMatrix' ].value.copy( this.camera.projectionMatrix );
+		this.ssaoMaterial.uniforms[ 'cameraInverseProjectionMatrix' ].value.getInverse( this.camera.projectionMatrix );
+
+		this.blurMaterial.uniforms[ 'resolution' ].value.set( width, height );
+
+	},
+
+} );
+},{}],207:[function(_dereq_,module,exports){
+/**
+ * @author Mugen87 / https://github.com/Mugen87
+ *
+ * References:
+ * http://john-chapman-graphics.blogspot.com/2013/01/ssao-tutorial.html
+ * https://learnopengl.com/Advanced-Lighting/SSAO
+ * https://github.com/McNopper/OpenGL/blob/master/Example28/shader/ssao.frag.glsl
+ */
+
+THREE.SSAOShader = {
+
+	defines: {
+		"PERSPECTIVE_CAMERA": 1,
+		"KERNEL_SIZE": 32
+	},
+
+	uniforms: {
+
+		"tDiffuse": { value: null },
+		"tNormal": { value: null },
+		"tDepth": { value: null },
+		"tNoise": { value: null },
+		"kernel": { value: null },
+		"cameraNear": { value: null },
+		"cameraFar": { value: null },
+		"resolution": { value: new THREE.Vector2() },
+		"cameraProjectionMatrix": { value: new THREE.Matrix4() },
+		"cameraInverseProjectionMatrix": { value: new THREE.Matrix4() },
+		"kernelRadius": { value: 8 },
+		"minDistance": { value: 0.005 },
+		"maxDistance": { value: 0.05 },
+
+	},
+
+	vertexShader: [
+
+		"varying vec2 vUv;",
+
+		"void main() {",
+
+		"	vUv = uv;",
+
+		"	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+		"}"
+
+	].join( "\n" ),
+
+	fragmentShader: [
+
+		"uniform sampler2D tDiffuse;",
+		"uniform sampler2D tNormal;",
+		"uniform sampler2D tDepth;",
+		"uniform sampler2D tNoise;",
+
+		"uniform vec3 kernel[ KERNEL_SIZE ];",
+
+		"uniform vec2 resolution;",
+
+		"uniform float cameraNear;",
+		"uniform float cameraFar;",
+		"uniform mat4 cameraProjectionMatrix;",
+		"uniform mat4 cameraInverseProjectionMatrix;",
+
+		"uniform float kernelRadius;",
+		"uniform float minDistance;", // avoid artifacts caused by neighbour fragments with minimal depth difference
+		"uniform float maxDistance;", // avoid the influence of fragments which are too far away
+
+		"varying vec2 vUv;",
+
+		"#include <packing>",
+
+		"float getDepth( const in vec2 screenPosition ) {",
+
+		"	return texture2D( tDepth, screenPosition ).x;",
+
+		"}",
+
+		"float getLinearDepth( const in vec2 screenPosition ) {",
+
+		"	#if PERSPECTIVE_CAMERA == 1",
+
+		"		float fragCoordZ = texture2D( tDepth, screenPosition ).x;",
+		"		float viewZ = perspectiveDepthToViewZ( fragCoordZ, cameraNear, cameraFar );",
+		"		return viewZToOrthographicDepth( viewZ, cameraNear, cameraFar );",
+
+		"	#else",
+
+		"		return texture2D( depthSampler, coord ).x;",
+
+		"	#endif",
+
+		"}",
+
+		"float getViewZ( const in float depth ) {",
+
+		"	#if PERSPECTIVE_CAMERA == 1",
+
+		"		return perspectiveDepthToViewZ( depth, cameraNear, cameraFar );",
+
+		"	#else",
+
+		"		return orthographicDepthToViewZ( depth, cameraNear, cameraFar );",
+
+		"	#endif",
+
+		"}",
+
+		"vec3 getViewPosition( const in vec2 screenPosition, const in float depth, const in float viewZ ) {",
+
+		"	float clipW = cameraProjectionMatrix[2][3] * viewZ + cameraProjectionMatrix[3][3];",
+
+		"	vec4 clipPosition = vec4( ( vec3( screenPosition, depth ) - 0.5 ) * 2.0, 1.0 );",
+
+		"	clipPosition *= clipW; // unprojection.",
+
+		"	return ( cameraInverseProjectionMatrix * clipPosition ).xyz;",
+
+		"}",
+
+		"vec3 getViewNormal( const in vec2 screenPosition ) {",
+
+		"	return unpackRGBToNormal( texture2D( tNormal, screenPosition ).xyz );",
+
+		"}",
+
+		"void main() {",
+
+		"	float depth = getDepth( vUv );",
+		"	float viewZ = getViewZ( depth );",
+
+		"	vec3 viewPosition = getViewPosition( vUv, depth, viewZ );",
+		"	vec3 viewNormal = getViewNormal( vUv );",
+
+		" vec2 noiseScale = vec2( resolution.x / 4.0, resolution.y / 4.0 );",
+		"	vec3 random = texture2D( tNoise, vUv * noiseScale ).xyz;",
+
+		// compute matrix used to reorient a kernel vector
+
+		"	vec3 tangent = normalize( random - viewNormal * dot( random, viewNormal ) );",
+		"	vec3 bitangent = cross( viewNormal, tangent );",
+		"	mat3 kernelMatrix = mat3( tangent, bitangent, viewNormal );",
+
+		" float occlusion = 0.0;",
+
+		" for ( int i = 0; i < KERNEL_SIZE; i ++ ) {",
+
+		"		vec3 sampleVector = kernelMatrix * kernel[ i ];", // reorient sample vector in view space
+		"		vec3 samplePoint = viewPosition + ( sampleVector * kernelRadius );", // calculate sample point
+
+		"		vec4 samplePointNDC = cameraProjectionMatrix * vec4( samplePoint, 1.0 );", // project point and calculate NDC
+		"		samplePointNDC /= samplePointNDC.w;",
+
+		"		vec2 samplePointUv = samplePointNDC.xy * 0.5 + 0.5;", // compute uv coordinates
+
+		"		float realDepth = getLinearDepth( samplePointUv );", // get linear depth from depth texture
+		"		float sampleDepth = viewZToOrthographicDepth( samplePoint.z, cameraNear, cameraFar );", // compute linear depth of the sample view Z value
+		"		float delta = sampleDepth - realDepth;",
+
+		"		if ( delta > minDistance && delta < maxDistance ) {", // if fragment is before sample point, increase occlusion
+
+		"			occlusion += 1.0;",
+
+		"		}",
+
+		"	}",
+
+		"	occlusion = clamp( occlusion / float( KERNEL_SIZE ), 0.0, 1.0 );",
+
+		"	gl_FragColor = vec4( vec3( 1.0 - occlusion ), 1.0 );",
+
+		"}"
+
+	].join( "\n" )
+
+};
+},{}],208:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ *
+ * Sepia tone shader
+ * based on glfx.js sepia shader
+ * https://github.com/evanw/glfx.js
+ */
+
+THREE.SepiaShader = {
+
+  uniforms: {
+
+    "tDiffuse": { value: null },
+    "amount":   { value: 1.0 }
+
+  },
+
+  vertexShader: [
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vUv = uv;",
+      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+    "}"
+
+  ].join( "\n" ),
+
+  fragmentShader: [
+
+    "uniform float amount;",
+
+    "uniform sampler2D tDiffuse;",
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vec4 color = texture2D( tDiffuse, vUv );",
+      "vec3 c = color.rgb;",
+
+      "color.r = dot( c, vec3( 1.0 - 0.607 * amount, 0.769 * amount, 0.189 * amount ) );",
+      "color.g = dot( c, vec3( 0.349 * amount, 1.0 - 0.314 * amount, 0.168 * amount ) );",
+      "color.b = dot( c, vec3( 0.272 * amount, 0.534 * amount, 1.0 - 0.869 * amount ) );",
+
+      "gl_FragColor = vec4( min( vec3( 1.0 ), color.rgb ), color.a );",
+
+    "}"
+
+  ].join( "\n" )
+
+};
+
+},{}],209:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.ShaderPass = function ( shader, textureID ) {
+
+  THREE.Pass.call( this );
+
+  this.textureID = ( textureID !== undefined ) ? textureID : "tDiffuse";
+
+  if ( shader instanceof THREE.ShaderMaterial ) {
+
+    this.uniforms = shader.uniforms;
+
+    this.material = shader;
+
+  } else if ( shader ) {
+
+    this.uniforms = THREE.UniformsUtils.clone( shader.uniforms );
+
+    this.material = new THREE.ShaderMaterial( {
+
+      defines: Object.assign( {}, shader.defines ),
+      uniforms: this.uniforms,
+      vertexShader: shader.vertexShader,
+      fragmentShader: shader.fragmentShader
+
+    } );
+
+  }
+
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.enabled = true;
+  this.needsSwap = false;
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+ 
+};
+
+THREE.ShaderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+  constructor: THREE.ShaderPass,
+
+  render: function( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    if ( this.uniforms[ this.textureID ] ) {
+
+      this.uniforms[ this.textureID ].value = readBuffer.texture;
+
+    }
+
+    this.quad.material = this.material;
+
+    if ( this.renderToScreen ) {
+      
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+     } else {
+      
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
+
+  }
+
+} );
+
+},{}],210:[function(_dereq_,module,exports){
+/**
+ * @author spidersharma / http://eduperiment.com/
+ * 
+ * Inspired from Unreal Engine
+ * https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/Bloom/
+ */
+THREE.UnrealBloomPass = function ( resolution, strength, radius, threshold ) {
+
+  THREE.Pass.call( this );
+
+  this.strength = ( strength !== undefined ) ? strength : 1;
+  this.radius = radius;
+  this.threshold = threshold;
+  this.resolution = ( resolution !== undefined ) ? new THREE.Vector2( resolution.x, resolution.y ) : new THREE.Vector2( 256, 256 );
+
+  // render targets
+  var pars = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat };
+  this.renderTargetsHorizontal = [];
+  this.renderTargetsVertical = [];
+  this.nMips = 5;
+  var resx = Math.round( this.resolution.x / 2 );
+  var resy = Math.round( this.resolution.y / 2 );
+
+  this.renderTargetBright = new THREE.WebGLRenderTarget( resx, resy, pars );
+  this.renderTargetBright.texture.name = "UnrealBloomPass.bright";
+  this.renderTargetBright.texture.generateMipmaps = false;
+
+  for ( var i = 0; i < this.nMips; i ++ ) {
+
+    var renderTarget = new THREE.WebGLRenderTarget( resx, resy, pars );
+
+    renderTarget.texture.name = "UnrealBloomPass.h" + i;
+    renderTarget.texture.generateMipmaps = false;
+
+    this.renderTargetsHorizontal.push( renderTarget );
+
+    var renderTarget = new THREE.WebGLRenderTarget( resx, resy, pars );
+
+    renderTarget.texture.name = "UnrealBloomPass.v" + i;
+    renderTarget.texture.generateMipmaps = false;
+
+    this.renderTargetsVertical.push( renderTarget );
+
+    resx = Math.round( resx / 2 );
+
+    resy = Math.round( resy / 2 );
+
+  }
+
+  // luminosity high pass material
+
+  if ( THREE.LuminosityHighPassShader === undefined )
+    console.error( "THREE.UnrealBloomPass relies on THREE.LuminosityHighPassShader" );
+
+  var highPassShader = THREE.LuminosityHighPassShader;
+  this.highPassUniforms = THREE.UniformsUtils.clone( highPassShader.uniforms );
+
+  this.highPassUniforms[ "luminosityThreshold" ].value = threshold;
+  this.highPassUniforms[ "smoothWidth" ].value = 0.01;
+
+  this.materialHighPassFilter = new THREE.ShaderMaterial( {
+    uniforms: this.highPassUniforms,
+    vertexShader: highPassShader.vertexShader,
+    fragmentShader: highPassShader.fragmentShader,
+    defines: {}
+  } );
+
+  // Gaussian Blur Materials
+  this.separableBlurMaterials = [];
+  var kernelSizeArray = [ 3, 5, 7, 9, 11 ];
+  var resx = Math.round( this.resolution.x / 2 );
+  var resy = Math.round( this.resolution.y / 2 );
+
+  for ( var i = 0; i < this.nMips; i ++ ) {
+
+    this.separableBlurMaterials.push( this.getSeperableBlurMaterial( kernelSizeArray[ i ] ) );
+
+    this.separableBlurMaterials[ i ].uniforms[ "texSize" ].value = new THREE.Vector2( resx, resy );
+
+    resx = Math.round( resx / 2 );
+
+    resy = Math.round( resy / 2 );
+
+  }
+
+  // Composite material
+  this.compositeMaterial = this.getCompositeMaterial( this.nMips );
+  this.compositeMaterial.uniforms[ "blurTexture1" ].value = this.renderTargetsVertical[ 0 ].texture;
+  this.compositeMaterial.uniforms[ "blurTexture2" ].value = this.renderTargetsVertical[ 1 ].texture;
+  this.compositeMaterial.uniforms[ "blurTexture3" ].value = this.renderTargetsVertical[ 2 ].texture;
+  this.compositeMaterial.uniforms[ "blurTexture4" ].value = this.renderTargetsVertical[ 3 ].texture;
+  this.compositeMaterial.uniforms[ "blurTexture5" ].value = this.renderTargetsVertical[ 4 ].texture;
+  this.compositeMaterial.uniforms[ "bloomStrength" ].value = strength;
+  this.compositeMaterial.uniforms[ "bloomRadius" ].value = 0.1;
+  this.compositeMaterial.needsUpdate = true;
+
+  var bloomFactors = [ 1.0, 0.8, 0.6, 0.4, 0.2 ];
+  this.compositeMaterial.uniforms[ "bloomFactors" ].value = bloomFactors;
+  this.bloomTintColors = [ new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ),
+               new THREE.Vector3( 1, 1, 1 ), new THREE.Vector3( 1, 1, 1 ) ];
+  this.compositeMaterial.uniforms[ "bloomTintColors" ].value = this.bloomTintColors;
+
+  // copy material
+  if ( THREE.CopyShader === undefined ) {
+
+    console.error( "THREE.BloomPass relies on THREE.CopyShader" );
+
+  }
+
+  var copyShader = THREE.CopyShader;
+
+  this.copyUniforms = THREE.UniformsUtils.clone( copyShader.uniforms );
+  this.copyUniforms[ "opacity" ].value = 1.0;
+
+  this.materialCopy = new THREE.ShaderMaterial( {
+    uniforms: this.copyUniforms,
+    vertexShader: copyShader.vertexShader,
+    fragmentShader: copyShader.fragmentShader,
+    blending: THREE.AdditiveBlending,
+    depthTest: false,
+    depthWrite: false,
+    transparent: true
+  } );
+
+  this.enabled = true;
+  this.needsSwap = false;
+
+  this.oldClearColor = new THREE.Color();
+  this.oldClearAlpha = 1;
+
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.basic = new THREE.MeshBasicMaterial();
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+
+};
+
+THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+  constructor: THREE.UnrealBloomPass,
+
+  dispose: function () {
+
+    for ( var i = 0; i < this.renderTargetsHorizontal.length; i ++ ) {
+
+      this.renderTargetsHorizontal[ i ].dispose();
+
+    }
+
+    for ( var i = 0; i < this.renderTargetsVertical.length; i ++ ) {
+
+      this.renderTargetsVertical[ i ].dispose();
+
+    }
+
+    this.renderTargetBright.dispose();
+
+  },
+
+  setSize: function ( width, height ) {
+
+    var resx = Math.round( width / 2 );
+    var resy = Math.round( height / 2 );
+
+    this.renderTargetBright.setSize( resx, resy );
+
+    for ( var i = 0; i < this.nMips; i ++ ) {
+
+      this.renderTargetsHorizontal[ i ].setSize( resx, resy );
+      this.renderTargetsVertical[ i ].setSize( resx, resy );
+
+      this.separableBlurMaterials[ i ].uniforms[ "texSize" ].value = new THREE.Vector2( resx, resy );
+
+      resx = Math.round( resx / 2 );
+      resy = Math.round( resy / 2 );
+
+    }
+
+  },
+
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    this.oldClearColor.copy( renderer.getClearColor() );
+    this.oldClearAlpha = renderer.getClearAlpha();
+    var oldAutoClear = renderer.autoClear;
+    renderer.autoClear = false;
+    //renderer.antialias = true;
+
+    //console.log(renderer);
+
+    renderer.setClearColor( new THREE.Color( 0, 0, 0 ), 0 );
+
+    if ( maskActive ) renderer.context.disable( renderer.context.STENCIL_TEST );
+
+    // Render input to screen
+
+    this.quad.material = this.basic;
+    this.basic.map = readBuffer.texture;
+
+    if ( this.renderToScreen ) {
+      
+      renderer.setRenderTarget( null );
+      renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    } else {
+
+      renderer.setRenderTarget( writeBuffer );
+      renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
+
+    // 1. Extract Bright Areas
+
+    this.highPassUniforms[ "tDiffuse" ].value = readBuffer.texture;
+    this.highPassUniforms[ "luminosityThreshold" ].value = this.threshold;
+    this.quad.material = this.materialHighPassFilter;
+    
+		renderer.setRenderTarget( this.renderTargetBright );
+		renderer.clear();
+    renderer.render( this.scene, this.camera );
+
+    // 2. Blur All the mips progressively
+
+    var inputRenderTarget = this.renderTargetBright;
+
+    for ( var i = 0; i < this.nMips; i ++ ) {
+
+      this.quad.material = this.separableBlurMaterials[ i ];
+
+      this.separableBlurMaterials[ i ].uniforms[ "colorTexture" ].value = inputRenderTarget.texture;
+      this.separableBlurMaterials[ i ].uniforms[ "direction" ].value = THREE.UnrealBloomPass.BlurDirectionX;
+			renderer.setRenderTarget( this.renderTargetsHorizontal[ i ] );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+      this.separableBlurMaterials[ i ].uniforms[ "colorTexture" ].value = this.renderTargetsHorizontal[ i ].texture;
+      this.separableBlurMaterials[ i ].uniforms[ "direction" ].value = THREE.UnrealBloomPass.BlurDirectionY;
+			renderer.setRenderTarget( this.renderTargetsVertical[ i ] );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+      inputRenderTarget = this.renderTargetsVertical[ i ];
+
+    }
+
+    // Composite All the mips
+
+    this.quad.material = this.compositeMaterial;
+    this.compositeMaterial.uniforms[ "bloomStrength" ].value = this.strength;
+    this.compositeMaterial.uniforms[ "bloomRadius" ].value = this.radius;
+    this.compositeMaterial.uniforms[ "bloomTintColors" ].value = this.bloomTintColors;
+
+		renderer.setRenderTarget( this.renderTargetsHorizontal[ 0 ] );
+		renderer.clear();
+    renderer.render( this.scene, this.camera );
+
+    // Blend it additively over the input texture
+
+    this.quad.material = this.materialCopy;
+    this.copyUniforms[ "tDiffuse" ].value = this.renderTargetsHorizontal[ 0 ].texture;
+
+    if ( maskActive ) renderer.context.enable( renderer.context.STENCIL_TEST );
+
+
+    if ( this.renderToScreen ) {
+      
+      renderer.setRenderTarget( null );
+			renderer.render( this.scene, this.camera );
+
+    } else {
+
+      renderer.setRenderTarget( writeBuffer );
+			renderer.render( this.scene, this.camera );
+
+    }
+
+    // Restore renderer settings
+
+    renderer.setClearColor( this.oldClearColor, this.oldClearAlpha );
+    renderer.autoClear = oldAutoClear;
+
+  },
+
+  getSeperableBlurMaterial: function ( kernelRadius ) {
+
+    return new THREE.ShaderMaterial( {
+
+      defines: {
+        "KERNEL_RADIUS": kernelRadius,
+        "SIGMA": kernelRadius
+      },
+
+      uniforms: {
+        "colorTexture": { value: null },
+        "texSize": { value: new THREE.Vector2( 0.5, 0.5 ) },
+        "direction": { value: new THREE.Vector2( 0.5, 0.5 ) }
+      },
+
+      vertexShader:
+        "varying vec2 vUv;\n\
+        void main() {\n\
+          vUv = uv;\n\
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\
+        }",
+
+      fragmentShader:
+        "#include <common>\
+        varying vec2 vUv;\n\
+        uniform sampler2D colorTexture;\n\
+        uniform vec2 texSize;\
+        uniform vec2 direction;\
+        \
+        float gaussianPdf(in float x, in float sigma) {\
+          return 0.39894 * exp( -0.5 * x * x/( sigma * sigma))/sigma;\
+        }\
+        void main() {\n\
+          vec2 invSize = 1.0 / texSize;\
+          float fSigma = float(SIGMA);\
+          float weightSum = gaussianPdf(0.0, fSigma);\
+          vec3 diffuseSum = texture2D( colorTexture, vUv).rgb * weightSum;\
+          for( int i = 1; i < KERNEL_RADIUS; i ++ ) {\
+            float x = float(i);\
+            float w = gaussianPdf(x, fSigma);\
+            vec2 uvOffset = direction * invSize * x;\
+            vec3 sample1 = texture2D( colorTexture, vUv + uvOffset).rgb;\
+            vec3 sample2 = texture2D( colorTexture, vUv - uvOffset).rgb;\
+            diffuseSum += (sample1 + sample2) * w;\
+            weightSum += 2.0 * w;\
+          }\
+          gl_FragColor = vec4(diffuseSum/weightSum, 1.0);\n\
+        }"
+    } );
+
+  },
+
+  getCompositeMaterial: function ( nMips ) {
+
+    return new THREE.ShaderMaterial( {
+
+      defines: {
+        "NUM_MIPS": nMips
+      },
+
+      uniforms: {
+        "blurTexture1": { value: null },
+        "blurTexture2": { value: null },
+        "blurTexture3": { value: null },
+        "blurTexture4": { value: null },
+        "blurTexture5": { value: null },
+        "dirtTexture": { value: null },
+        "bloomStrength": { value: 1.0 },
+        "bloomFactors": { value: null },
+        "bloomTintColors": { value: null },
+        "bloomRadius": { value: 0.0 }
+      },
+
+      vertexShader:
+        "varying vec2 vUv;\n\
+        void main() {\n\
+          vUv = uv;\n\
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\
+        }",
+
+      fragmentShader:
+        "varying vec2 vUv;\
+        uniform sampler2D blurTexture1;\
+        uniform sampler2D blurTexture2;\
+        uniform sampler2D blurTexture3;\
+        uniform sampler2D blurTexture4;\
+        uniform sampler2D blurTexture5;\
+        uniform sampler2D dirtTexture;\
+        uniform float bloomStrength;\
+        uniform float bloomRadius;\
+        uniform float bloomFactors[NUM_MIPS];\
+        uniform vec3 bloomTintColors[NUM_MIPS];\
+        \
+        float lerpBloomFactor(const in float factor) { \
+          float mirrorFactor = 1.2 - factor;\
+          return mix(factor, mirrorFactor, bloomRadius);\
+        }\
+        \
+        void main() {\
+          gl_FragColor = bloomStrength * ( lerpBloomFactor(bloomFactors[0]) * vec4(bloomTintColors[0], 1.0) * texture2D(blurTexture1, vUv) + \
+                           lerpBloomFactor(bloomFactors[1]) * vec4(bloomTintColors[1], 1.0) * texture2D(blurTexture2, vUv) + \
+                           lerpBloomFactor(bloomFactors[2]) * vec4(bloomTintColors[2], 1.0) * texture2D(blurTexture3, vUv) + \
+                           lerpBloomFactor(bloomFactors[3]) * vec4(bloomTintColors[3], 1.0) * texture2D(blurTexture4, vUv) + \
+                           lerpBloomFactor(bloomFactors[4]) * vec4(bloomTintColors[4], 1.0) * texture2D(blurTexture5, vUv) );\
+        }"
+    } );
+
+  }
+
+} );
+
+THREE.UnrealBloomPass.BlurDirectionX = new THREE.Vector2( 1.0, 0.0 );
+THREE.UnrealBloomPass.BlurDirectionY = new THREE.Vector2( 0.0, 1.0 );
+
+},{}],211:[function(_dereq_,module,exports){
 window.glStats = function () {
 
     var _rS = null;
@@ -80815,7 +85067,7 @@ if (typeof module === 'object') {
   };
 }
 
-},{}],186:[function(_dereq_,module,exports){
+},{}],212:[function(_dereq_,module,exports){
 // performance.now() polyfill from https://gist.github.com/paulirish/5438650
 'use strict';
 
@@ -81270,7 +85522,7 @@ if (typeof module === 'object') {
   module.exports = window.rStats;
 }
 
-},{}],187:[function(_dereq_,module,exports){
+},{}],213:[function(_dereq_,module,exports){
 // https://stackoverflow.com/a/36213464
 if (!String.prototype.startsWith) {
     String.prototype.startsWith = function(searchString, position){
@@ -81279,7 +85531,7 @@ if (!String.prototype.startsWith) {
   };
 }
 
-},{}],188:[function(_dereq_,module,exports){
+},{}],214:[function(_dereq_,module,exports){
 /*
  * Copyright 2015 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -81341,7 +85593,7 @@ Util.isLandscapeMode = function() {
 
 module.exports = Util;
 
-},{}],189:[function(_dereq_,module,exports){
+},{}],215:[function(_dereq_,module,exports){
 /*
  * Copyright 2015 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -81417,6 +85669,6 @@ function getWakeLock() {
 
 module.exports = getWakeLock();
 
-},{"./util.js":188}]},{},[149])(149)
+},{"./util.js":214}]},{},[156])(156)
 });
 //# sourceMappingURL=aframe-master.js.map
