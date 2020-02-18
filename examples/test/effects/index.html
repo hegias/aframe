@@ -43,8 +43,9 @@
 </script> 
 
 <body>
-    <a-scene effect-lut="lutmap: 0" effect-aa="mode : smaa" background="color: gray" id="scene">
+    <a-scene effect-lut="" effect-aa="mode : smaa" background="color: gray" id="scene">
     <a-entity id="lutmaps" register-lutmaps></a-entity>
+    <a-entity light="type: hemisphere;" position="1 1 10"></a-entity>
     <a-entity gltf-model="url(./assets/demo15Good.glb)"></a-entity>
     <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
     </a-scene>

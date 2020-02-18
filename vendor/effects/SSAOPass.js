@@ -78,7 +78,6 @@ THREE.SSAOPass = function ( width, height ) {
 	this.beautyRenderTarget.depthBuffer = true;
 	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
 	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
-	console.log(this.beautyRenderTarget);
 
 	// normal render target
 
@@ -115,9 +114,6 @@ THREE.SSAOPass = function ( width, height ) {
 		blending: THREE.NoBlending
 	} );
 
-	this.ssaoMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
-	this.ssaoMaterial.uniforms[ 'tNormal' ].value = this.normalRenderTarget.texture;
-	this.ssaoMaterial.uniforms[ 'tDepth' ].value = this.beautyRenderTarget.depthTexture;
 	this.ssaoMaterial.uniforms[ 'tNoise' ].value = this.noiseTexture;
 	this.ssaoMaterial.uniforms[ 'kernel' ].value = this.kernel;
 	this.ssaoMaterial.uniforms[ 'cameraNear' ].value = this.camera.near;
@@ -154,8 +150,6 @@ THREE.SSAOPass = function ( width, height ) {
 	this.depthRenderMaterial.uniforms[ 'tDepth' ].value = this.beautyRenderTarget.depthTexture;
 	this.depthRenderMaterial.uniforms[ 'cameraNear' ].value = 0.1;
 	this.depthRenderMaterial.uniforms[ 'cameraFar' ].value = 2000;
-	console.log(this.depthRenderMaterial.uniforms[ 'cameraNear' ].value);
-	console.log(this.depthRenderMaterial.uniforms[ 'cameraFar' ].value);
 
 	// material for rendering the content of a render target
 
@@ -210,13 +204,19 @@ THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 	},
 
-	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive ) {
+	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive, normalRenderTarget ) {
 
 		// render beauty and depth
 
 		this.quad.material = this.basic;
 		this.basic.map = readBuffer.texture;
 		//renderer.setRenderTarget( this.beautyRenderTarget );
+
+		this.ssaoMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
+		this.ssaoMaterial.uniforms[ 'tDepth' ].value = readBuffer.depthTexture;
+		this.ssaoMaterial.uniforms[ 'tNormal' ].value = normalRenderTarget.texture;
+
+		this.quad.material = this.ssaoMaterial;
 		
 		if ( this.renderToScreen ) {
       
@@ -225,7 +225,7 @@ THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 			renderer.render( this.scene, this.camera );
 
     } else {
-      
+
 			renderer.setRenderTarget( writeBuffer );
 			renderer.clear();
 			renderer.render( this.scene, this.camera );

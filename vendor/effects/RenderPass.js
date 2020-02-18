@@ -11,6 +11,11 @@ THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clear
 
   this.overrideMaterial = overrideMaterial;
 
+	// normal material
+
+	this.normalMaterial = new THREE.MeshNormalMaterial();
+	this.normalMaterial.blending = THREE.NoBlending;
+
   this.clearColor = clearColor;
   this.clearAlpha = ( clearAlpha !== undefined ) ? clearAlpha : 0;
 
@@ -24,10 +29,16 @@ THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 
   constructor: THREE.RenderPass,
 
-  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive, normalRenderTarget ) {
 
     var oldAutoClear = renderer.autoClear;
     renderer.autoClear = false;
+
+    this.scene.overrideMaterial = this.normalMaterial;
+
+    renderer.setRenderTarget( normalRenderTarget );
+    renderer.clear();
+    renderer.render( this.scene, this.camera);
 
     this.scene.overrideMaterial = this.overrideMaterial;
 

@@ -10,7 +10,7 @@ require('../../../../vendor/effects/MKLUTShader');
 registerEffect('lut', {
 
   schema: {
-    lutmap: {default: 0},
+    lutmap: {default: 3},
     enabled: {default: true}
   },
 

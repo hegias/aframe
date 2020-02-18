@@ -31,7 +31,7 @@ THREE.EffectComposer = function ( renderer, renderTarget ) {
   this.renderTarget2.depthBuffer = true;
   this.renderTarget2.depthTexture = new THREE.DepthTexture();
   this.renderTarget2.texture.name = 'EffectComposer.rt2';
-
+  this.normalRenderTarget = renderTarget.clone();
   
   this.bloomRenderTarget = renderTarget.clone();
   this.lutRenderTarget  = renderTarget.clone();
@@ -188,7 +188,7 @@ Object.assign( THREE.EffectComposer.prototype, {
           scope.renderer.vr.enabled = true;
         }
 
-        pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
+        pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive, this.normalRenderTarget );
         
         // Restore onAfterRender
         pass.scene.onAfterRender = currentOnAfterRender;
@@ -198,7 +198,7 @@ Object.assign( THREE.EffectComposer.prototype, {
         return;
       }
 
-      pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
+      pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive, this.normalRenderTarget );
 
       this.swapBuffers(pass);
 
