@@ -2281,7 +2281,7 @@ module.exports = Array.isArray || function (arr) {
   }
 })();
 
-},{}],10:[function(_dereq_,module,exports){
+},{}],9:[function(_dereq_,module,exports){
 
 /**
  * This is the web browser implementation of `debug()`.
@@ -2450,7 +2450,7 @@ function localstorage(){
   } catch (e) {}
 }
 
-},{"./debug":11}],11:[function(_dereq_,module,exports){
+},{"./debug":10}],10:[function(_dereq_,module,exports){
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -2634,7 +2634,7 @@ function coerce(val) {
   return val;
 }
 
-},{}],12:[function(_dereq_,module,exports){
+},{}],11:[function(_dereq_,module,exports){
 'use strict';
 var isObj = _dereq_('is-obj');
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -64251,9 +64251,9 @@ var THREE = _dereq_('../lib/three');
 module.exports.Component = registerComponent('camera', {
   schema: {
     active: {default: true},
-    far: {default: 10000},
+    far: {default: 1000},
     fov: {default: 80, min: 0},
-    near: {default: 0.005, min: 0},
+    near: {default: 1, min: 0},
     spectator: {default: false},
     zoom: {default: 1, min: 0}
   },
@@ -65632,6 +65632,7 @@ _dereq_('./windows-motion-controls');
 
 _dereq_('./scene/background');
 _dereq_('./scene/debug');
+_dereq_('./scene/effects');
 _dereq_('./scene/embedded');
 _dereq_('./scene/inspector');
 _dereq_('./scene/fog');
@@ -75149,6 +75150,7 @@ module.exports.AScene = registerElement('a-scene', {
      */
     render: {
       value: function (time, frame) {
+        var effectComposer = this.effectComposer;
         var renderer = this.renderer;
 
         this.frame = frame;
@@ -75157,7 +75159,11 @@ module.exports.AScene = registerElement('a-scene', {
 
         if (this.isPlaying) { this.tick(this.time, this.delta); }
 
-        renderer.render(this.object3D, this.camera);
+        if (effectComposer) {
+          effectComposer.render();
+        } else {
+          renderer.render(this.object3D, this.camera);
+        }
       },
       writable: true
     }

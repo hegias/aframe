@@ -8,9 +8,9 @@ var THREE = require('../lib/three');
 module.exports.Component = registerComponent('camera', {
   schema: {
     active: {default: true},
-    far: {default: 10000},
+    far: {default: 1000},
     fov: {default: 80, min: 0},
-    near: {default: 0.005, min: 0},
+    near: {default: 1, min: 0},
     spectator: {default: false},
     zoom: {default: 1, min: 0}
   },

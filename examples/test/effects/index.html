@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Effects</title>
+    <meta name="description" content="Effects - A-Frame">
+    <script src="../../../dist/aframe-master.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+  </head>
+  <script>
+     AFRAME.registerComponent('register-lutmaps', {
+        init: function(){
+    
+	        this.lutTextures = [
+		        { name: 'Normal',    	   		size: 32.0,	url: './assets/Normal.png' },
+		        { name: 'B&WHighContrastOld',	size: 32.0,	url: './assets/B&WHighContrastOld.png' },
+		        { name: 'BleachBypass',   		size: 32.0,	url: './assets/BleachBypass.png' },
+		        { name: 'Blockbuster14',     	size: 32.0,	url: './assets/Blockbuster14.png' },
+		        { name: 'BlueHue',     	   		size: 32.0,	url: './assets/BlueHue.png' },
+		        { name: 'Color',     	   		size: 32.0,	url: './assets/Color.png' },
+		        { name: 'DustyOrange',     	   	size: 32.0,	url: './assets/DustyOrange.png' },
+		        { name: 'Exposure',     	   	size: 32.0,	url: './assets/Exposure.png' },
+		        { name: 'F2AA3',     	   		size: 32.0,	url: './assets/F2AA3.png' },
+		        { name: 'GamebobAC',     	   	size: 32.0,	url: './assets/GamebobAC.png' },
+		        { name: 'Invert',     	   		size: 32.0,	url: './assets/Invert.png' },
+		        { name: 'Mask',     	   		size: 32.0,	url: './assets/Mask.png' },
+		        { name: 'Max2',     	   		size: 32.0,	url: './assets/Max2.png' },
+		        { name: 'RedDawn',     	   		size: 32.0,	url: './assets/RedDawn.png' },
+		        { name: 'RobotAction',     	   	size: 32.0,	url: './assets/RobotAction.png' },
+		        { name: 'SettingSun',     	   	size: 32.0,	url: './assets/SettingSun.png' },
+		        { name: 'SharpWasteland',     	size: 32.0,	url: './assets/SharpWasteland.png' },
+		        { name: 'Stock5',     	   		size: 32.0,	url: './assets/Stock5.png' },
+		        { name: 'Toxic',     	   		size: 32.0,	url: './assets/Toxic.png' },
+		        { name: 'Underwater',     	   	size: 32.0,	url: './assets/Underwater.png' },
+		        { name: 'Vibrance',     	   	size: 32.0,	url: './assets/Vibrance.png' },
+		        { name: 'Vibrance2',     	   	size: 32.0,	url: './assets/Vibrance2.png' },
+		        { name: 'Vintage11',     	   	size: 32.0,	url: './assets/Vintage11.png' },
+		        { name: 'WarmPurple',     	   	size: 32.0,	url: './assets/WarmPurple.png' },
+            ];
+            
+        }
+    });
+</script> 
+
+<body>
+    <a-scene effect-lut="" effect-aa="mode : smaa" background="color: gray" id="scene">
+    <a-entity id="lutmaps" register-lutmaps></a-entity>
+    <a-entity light="type: hemisphere;" position="1 1 10"></a-entity>
+    <a-entity gltf-model="url(./assets/demo15Good.glb)"></a-entity>
+    <a-entity camera orbit-controls="initialPosition: 10 10 10"></a-entity>
+    </a-scene>
+</body>
+
+<script>
+
+let toggle = true;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 84){
+        let scene = document.querySelector("#scene");
+        if(toggle){
+            scene.setAttribute("effect-aa", "mode", "fxaa");
+            console.log("FXAA");
+            toggle = false;
+        }
+        else{
+            scene.setAttribute("effect-aa", "mode", "smaa");
+            console.log("SMAA");
+            toggle = true;
+        }
+    }
+})
+
+let toggle2 = true;
+let i = 0;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 82){
+        scene.setAttribute("effect-lut", "lutmap", i);
+        i++;
+        if(i > 23){
+            i = 0;
+        }
+    }
+})
+
+let toggle3 = true;
+window.addEventListener("keyup", (e) => {
+    if(e.keyCode == 66){
+        let scene = document.querySelector("#scene");
+        if(toggle3){
+            scene.setAttribute("effect-lut", "enabled", "false");
+            console.log("LUT off");
+            toggle3 = false;
+        }
+        else{
+            scene.setAttribute("effect-lut", "enabled", "true");
+            console.log("LUT on");
+            toggle3 = true;
+        }
+    }
+})
+</script>
+
+</html>
