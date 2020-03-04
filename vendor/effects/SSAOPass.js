@@ -5,6 +5,7 @@ THREE.SSAOPass = function ( width, height ) {
 
 	this.width = ( width !== undefined ) ? width : 512;
 	this.height = ( height !== undefined ) ? height : 512;
+	this.name = "ssao";
 
 	this.clear = true;
 

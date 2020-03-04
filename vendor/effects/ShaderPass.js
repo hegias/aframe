@@ -29,6 +29,8 @@ THREE.ShaderPass = function ( shader, textureID ) {
 
   }
 
+  this.name = "shader";
+
   this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
   this.scene = new THREE.Scene();
 

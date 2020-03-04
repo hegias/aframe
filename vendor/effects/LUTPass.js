@@ -5,6 +5,7 @@ THREE.LUTPass = function ( width, height, lutmapIndex ) {
 
 	this.width = ( width !== undefined ) ? width : 512;
 	this.height = ( height !== undefined ) ? height : 512;
+	this.name = "lut";
 
 	this.clear = true;
 

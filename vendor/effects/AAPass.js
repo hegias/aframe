@@ -5,6 +5,7 @@ THREE.AAPass = function ( width, height, mode ) {
     this.width = width;
     this.height = height;
 	this.mode = mode;
+	this.name = "aa";
 	
     this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
     this.scene = new THREE.Scene();

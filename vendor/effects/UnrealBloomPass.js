@@ -12,6 +12,7 @@ THREE.UnrealBloomPass = function ( resolution, strength, radius, threshold ) {
   this.radius = radius;
   this.threshold = threshold;
   this.resolution = ( resolution !== undefined ) ? new THREE.Vector2( resolution.x, resolution.y ) : new THREE.Vector2( 256, 256 );
+  this.name = "bloom";
 
   // render targets
   var pars = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat };

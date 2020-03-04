@@ -147,6 +147,79 @@ Object.assign( THREE.EffectComposer.prototype, {
 
   },
 
+  
+
+  disableAll: function ( ) {
+    
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.enabled = false;
+    });
+
+    // Enable render
+    this.passes[0].enabled = true;
+    this.passes[0].renderToScreen = true;
+
+  },
+
+  disable: function ( name ){
+    
+    let passToDisable = null;
+    for(i=0; i<this.passes.length; i++){
+      if(this.passes[i].name == name){
+        passToDisable = this.passes[i];
+      }
+    }
+    if(passToDisable == null){
+      console.error("Effect " + name + " not initialized");
+      return;
+    }
+    passToDisable.enabled = false;
+
+    // Make sure only the last enabled pass is rendered to screen
+    let lastEnabledPass = 0;
+    for(i=0; i<this.passes.length; i++){
+      if(this.passes[i].enabled){
+        lastEnabledPass = i;
+      }
+    }
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.renderToScreen = false;
+    });
+    this.passes[lastEnabledPass].renderToScreen = true;
+
+  },
+
+  enable( name ){
+    
+    let passToEnable = null;
+    for(i=0; i<this.passes.length; i++){
+      if(this.passes[i].name == name){
+        passToEnable = this.passes[i];
+      }
+    }
+    if(passToEnable == null){
+      console.error("Effect " + name + " not initialized");
+      return;
+    }
+    passToEnable.enabled = true;
+
+    // Make sure only the last enabled pass is rendered to screen
+    let lastEnabledPass = 0;
+    for(i=0; i<this.passes.length; i++){
+      if(this.passes[i].enabled){
+        lastEnabledPass = i;
+      }
+    }
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.renderToScreen = false;
+    });
+    this.passes[lastEnabledPass].renderToScreen = true;
+
+  },
+
   insertPass: function ( pass, index ) {
 
     this.passes.splice( index, 0, pass );
