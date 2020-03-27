@@ -58,7 +58,7 @@ var proto = {
     passes.render = renderPass;
     setTimeout(function () { effectComposer.resize(); }, 0);
     return effectComposer;
-  },
+  }
 };
 
 /**

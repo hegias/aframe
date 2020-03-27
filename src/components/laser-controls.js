@@ -13,20 +13,18 @@ registerComponent('laser-controls', {
     var data = this.data;
     var el = this.el;
     var self = this;
-    var modelEnabled = this.data.model && !this.el.sceneEl.hasWebXR;
-    var controlsConfiguration = {hand: data.hand, model: modelEnabled};
+    var controlsConfiguration = {hand: data.hand, model: data.model};
 
     // Set all controller models.
     el.setAttribute('daydream-controls', controlsConfiguration);
     el.setAttribute('gearvr-controls', controlsConfiguration);
+    el.setAttribute('magicleap-controls', controlsConfiguration);
     el.setAttribute('oculus-go-controls', controlsConfiguration);
     el.setAttribute('oculus-touch-controls', controlsConfiguration);
     el.setAttribute('vive-controls', controlsConfiguration);
     el.setAttribute('vive-focus-controls', controlsConfiguration);
     el.setAttribute('windows-motion-controls', controlsConfiguration);
-
-    // WebXR doesn't allow to discriminate between controllers, a default model is used.
-    if (this.data.model && this.el.sceneEl.hasWebXR) { this.initDefaultModel(); }
+    el.setAttribute('generic-tracked-controller-controls', controlsConfiguration);
 
     // Wait for controller to connect, or have a valid pointing pose, before creating ray
     el.addEventListener('controllerconnected', createRay);
@@ -80,7 +78,15 @@ registerComponent('laser-controls', {
 
     'gearvr-controls': {
       cursor: {downEvents: ['triggerdown'], upEvents: ['triggerup']},
-      raycaster: {origin: {x: 0, y: 0.0005, z: 0}}
+      raycaster: {origin: {x: 0, y: 0.0010, z: 0}}
+    },
+
+    'generic-tracked-controller-controls': {
+      cursor: {downEvents: ['triggerdown'], upEvents: ['triggerup']}
+    },
+
+    'magicleap-controls': {
+      cursor: {downEvents: ['trackpaddown', 'triggerdown'], upEvents: ['trackpadup', 'triggerup']}
     },
 
     'oculus-go-controls': {
@@ -105,15 +111,5 @@ registerComponent('laser-controls', {
       cursor: {downEvents: ['triggerdown'], upEvents: ['triggerup']},
       raycaster: {showLine: false}
     }
-  },
-
-  initDefaultModel: function () {
-    var modelEl = this.modelEl = document.createElement('a-entity');
-    modelEl.setAttribute('geometry', {
-      primitive: 'sphere',
-      radius: 0.03
-    });
-    modelEl.setAttribute('material', {color: this.data.color});
-    this.el.appendChild(modelEl);
   }
 });

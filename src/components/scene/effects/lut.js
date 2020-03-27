@@ -24,6 +24,6 @@ registerEffect('lut', {
     if (!pass) { return; }
     pass.enabled = data.enabled;
     pass.setMap(data.lutmap);
-  },
+  }
 
 });

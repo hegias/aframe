@@ -11,7 +11,7 @@ require('../../../../vendor/effects/AAPass');
 
 registerEffect('aa', {
   schema: {
-    mode: {default: "fxaa"}
+    mode: {default: 'fxaa'}
   },
 
   initPass: function () {
