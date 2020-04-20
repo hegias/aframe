@@ -1,8 +1,8 @@
 /* global THREE */
 var registerEffect = require('../../../core/effect').registerEffect;
 
-require('../../../../vendor/effects/ShaderPass');
-require('../../../../vendor/effects/SepiaShader');
+require('../../../../vendor/effects/Utility/ShaderPass');
+require('../../../../vendor/effects/LUT/SepiaShader');
 
 registerEffect('sepia', {
   schema: {

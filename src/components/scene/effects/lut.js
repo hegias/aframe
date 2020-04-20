@@ -1,17 +1,17 @@
 /* global THREE */
 var registerEffect = require('../../../core/effect').registerEffect;
 
-require('../../../../vendor/effects/CopyShader');
-require('../../../../vendor/effects/ShaderPass');
-require('../../../../vendor/effects/LUTPass');
-require('../../../../vendor/effects/LUTShader');
-require('../../../../vendor/effects/MKLUTShader');
+require('../../../../vendor/effects/Utility/CopyShader');
+require('../../../../vendor/effects/Utility/ShaderPass');
+require('../../../../vendor/effects/LUT/LUTPass');
+require('../../../../vendor/effects/LUT/LUTShader');
 
 registerEffect('lut', {
 
   schema: {
     lutmap: {default: 3},
-    enabled: {default: true}
+    enabled: {default: true},
+    lutCorrection: {default: 0.0},
   },
 
   initPass: function () {
@@ -23,7 +23,7 @@ registerEffect('lut', {
     var data = this.data;
     if (!pass) { return; }
     pass.enabled = data.enabled;
-    pass.setMap(data.lutmap);
+    pass.setMap(data.lutmap, data.lutCorrection);
   }
 
 });

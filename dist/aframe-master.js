@@ -71314,13 +71314,13 @@ function createDialog (text, buttonsContainerEl) {
 /* global THREE */
 var registerEffect = _dereq_('../../../core/effect').registerEffect;
 
-_dereq_('../../../../vendor/effects/CopyShader');
-_dereq_('../../../../vendor/effects/ShaderPass');
-_dereq_('../../../../vendor/effects/FXAAShader');
-_dereq_('../../../../vendor/effects/SMAABlendShader');
-_dereq_('../../../../vendor/effects/SMAAWeightsShader');
-_dereq_('../../../../vendor/effects/SMAAEdgesShader');
-_dereq_('../../../../vendor/effects/AAPass');
+_dereq_('../../../../vendor/effects/Utility/CopyShader');
+_dereq_('../../../../vendor/effects/Utility/ShaderPass');
+_dereq_('../../../../vendor/effects/AA/FXAAShader');
+_dereq_('../../../../vendor/effects/AA/SMAABlendShader');
+_dereq_('../../../../vendor/effects/AA/SMAAWeightsShader');
+_dereq_('../../../../vendor/effects/AA/SMAAEdgesShader');
+_dereq_('../../../../vendor/effects/AA/AAPass');
 
 registerEffect('aa', {
   schema: {
@@ -71340,14 +71340,14 @@ registerEffect('aa', {
   }
 });
 
-},{"../../../../vendor/effects/AAPass":196,"../../../../vendor/effects/CopyShader":197,"../../../../vendor/effects/FXAAShader":199,"../../../../vendor/effects/SMAABlendShader":205,"../../../../vendor/effects/SMAAEdgesShader":206,"../../../../vendor/effects/SMAAWeightsShader":207,"../../../../vendor/effects/ShaderPass":213,"../../../core/effect":113}],80:[function(_dereq_,module,exports){
+},{"../../../../vendor/effects/AA/AAPass":196,"../../../../vendor/effects/AA/FXAAShader":197,"../../../../vendor/effects/AA/SMAABlendShader":198,"../../../../vendor/effects/AA/SMAAEdgesShader":199,"../../../../vendor/effects/AA/SMAAWeightsShader":200,"../../../../vendor/effects/Utility/CopyShader":210,"../../../../vendor/effects/Utility/ShaderPass":213,"../../../core/effect":113}],80:[function(_dereq_,module,exports){
 /* global THREE */
 var registerEffect = _dereq_('../../../core/effect').registerEffect;
 
-_dereq_('../../../../vendor/effects/CopyShader');
-_dereq_('../../../../vendor/effects/ShaderPass');
-_dereq_('../../../../vendor/effects/LuminosityHighPassShader');
-_dereq_('../../../../vendor/effects/UnrealBloomPass');
+_dereq_('../../../../vendor/effects/Utility/CopyShader');
+_dereq_('../../../../vendor/effects/Utility/ShaderPass');
+_dereq_('../../../../vendor/effects/Bloom/LuminosityHighPassShader');
+_dereq_('../../../../vendor/effects/Bloom/UnrealBloomPass');
 
 registerEffect('bloom', {
   schema: {
@@ -71372,7 +71372,7 @@ registerEffect('bloom', {
   }
 });
 
-},{"../../../../vendor/effects/CopyShader":197,"../../../../vendor/effects/LuminosityHighPassShader":202,"../../../../vendor/effects/ShaderPass":213,"../../../../vendor/effects/UnrealBloomPass":214,"../../../core/effect":113}],81:[function(_dereq_,module,exports){
+},{"../../../../vendor/effects/Bloom/LuminosityHighPassShader":205,"../../../../vendor/effects/Bloom/UnrealBloomPass":206,"../../../../vendor/effects/Utility/CopyShader":210,"../../../../vendor/effects/Utility/ShaderPass":213,"../../../core/effect":113}],81:[function(_dereq_,module,exports){
 _dereq_('./bloom');
 _dereq_('./sepia');
 _dereq_('./lut');
@@ -71383,17 +71383,17 @@ _dereq_('./aa');
 /* global THREE */
 var registerEffect = _dereq_('../../../core/effect').registerEffect;
 
-_dereq_('../../../../vendor/effects/CopyShader');
-_dereq_('../../../../vendor/effects/ShaderPass');
-_dereq_('../../../../vendor/effects/LUTPass');
-_dereq_('../../../../vendor/effects/LUTShader');
-_dereq_('../../../../vendor/effects/MKLUTShader');
+_dereq_('../../../../vendor/effects/Utility/CopyShader');
+_dereq_('../../../../vendor/effects/Utility/ShaderPass');
+_dereq_('../../../../vendor/effects/LUT/LUTPass');
+_dereq_('../../../../vendor/effects/LUT/LUTShader');
 
 registerEffect('lut', {
 
   schema: {
     lutmap: {default: 3},
-    enabled: {default: true}
+    enabled: {default: true},
+    lutCorrection: {default: 0.0},
   },
 
   initPass: function () {
@@ -71405,17 +71405,17 @@ registerEffect('lut', {
     var data = this.data;
     if (!pass) { return; }
     pass.enabled = data.enabled;
-    pass.setMap(data.lutmap);
+    pass.setMap(data.lutmap, data.lutCorrection);
   }
 
 });
 
-},{"../../../../vendor/effects/CopyShader":197,"../../../../vendor/effects/LUTPass":200,"../../../../vendor/effects/LUTShader":201,"../../../../vendor/effects/MKLUTShader":203,"../../../../vendor/effects/ShaderPass":213,"../../../core/effect":113}],83:[function(_dereq_,module,exports){
+},{"../../../../vendor/effects/LUT/LUTPass":207,"../../../../vendor/effects/LUT/LUTShader":208,"../../../../vendor/effects/Utility/CopyShader":210,"../../../../vendor/effects/Utility/ShaderPass":213,"../../../core/effect":113}],83:[function(_dereq_,module,exports){
 /* global THREE */
 var registerEffect = _dereq_('../../../core/effect').registerEffect;
 
-_dereq_('../../../../vendor/effects/ShaderPass');
-_dereq_('../../../../vendor/effects/SepiaShader');
+_dereq_('../../../../vendor/effects/Utility/ShaderPass');
+_dereq_('../../../../vendor/effects/LUT/SepiaShader');
 
 registerEffect('sepia', {
   schema: {
@@ -71434,16 +71434,16 @@ registerEffect('sepia', {
   }
 });
 
-},{"../../../../vendor/effects/SepiaShader":212,"../../../../vendor/effects/ShaderPass":213,"../../../core/effect":113}],84:[function(_dereq_,module,exports){
+},{"../../../../vendor/effects/LUT/SepiaShader":209,"../../../../vendor/effects/Utility/ShaderPass":213,"../../../core/effect":113}],84:[function(_dereq_,module,exports){
 /* global THREE */
 var registerEffect = _dereq_('../../../core/effect').registerEffect;
 
-_dereq_('../../../../vendor/effects/CopyShader');
-_dereq_('../../../../vendor/effects/SSAODepthShader');
-_dereq_('../../../../vendor/effects/SSAOBlurShader');
-_dereq_('../../../../vendor/effects/ShaderPass');
-_dereq_('../../../../vendor/effects/SSAOShader');
-_dereq_('../../../../vendor/effects/SSAOPass');
+_dereq_('../../../../vendor/effects/Utility/CopyShader');
+_dereq_('../../../../vendor/effects/AO/SSAODepthShader');
+_dereq_('../../../../vendor/effects/AO/SSAOBlurShader');
+_dereq_('../../../../vendor/effects/Utility/ShaderPass');
+_dereq_('../../../../vendor/effects/AO/SSAOShader');
+_dereq_('../../../../vendor/effects/AO/SSAOPass');
 
 registerEffect('ssao', {
   schema: {
@@ -71467,7 +71467,7 @@ registerEffect('ssao', {
   }
 });
 
-},{"../../../../vendor/effects/CopyShader":197,"../../../../vendor/effects/SSAOBlurShader":208,"../../../../vendor/effects/SSAODepthShader":209,"../../../../vendor/effects/SSAOPass":210,"../../../../vendor/effects/SSAOShader":211,"../../../../vendor/effects/ShaderPass":213,"../../../core/effect":113}],85:[function(_dereq_,module,exports){
+},{"../../../../vendor/effects/AO/SSAOBlurShader":201,"../../../../vendor/effects/AO/SSAODepthShader":202,"../../../../vendor/effects/AO/SSAOPass":203,"../../../../vendor/effects/AO/SSAOShader":204,"../../../../vendor/effects/Utility/CopyShader":210,"../../../../vendor/effects/Utility/ShaderPass":213,"../../../core/effect":113}],85:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 
 /**
@@ -72187,7 +72187,7 @@ function createStats (scene) {
   });
 }
 
-},{"../../../vendor/rStats":216,"../../../vendor/rStats.extras":215,"../../core/component":112,"../../lib/rStatsAframe":160,"../../utils":186}],92:[function(_dereq_,module,exports){
+},{"../../../vendor/rStats":215,"../../../vendor/rStats.extras":214,"../../core/component":112,"../../lib/rStatsAframe":160,"../../utils":186}],92:[function(_dereq_,module,exports){
 var registerComponent = _dereq_('../../core/component').registerComponent;
 var constants = _dereq_('../../constants/');
 var utils = _dereq_('../../utils/');
@@ -77702,8 +77702,8 @@ function isObjectOrArray (value) {
 }
 
 },{"../utils/":186,"./scene/scenes":120,"./schema":122,"./system":124}],113:[function(_dereq_,module,exports){
-_dereq_('../../vendor/effects/EffectComposer');
-_dereq_('../../vendor/effects/RenderPass');
+_dereq_('../../vendor/effects/Utility/EffectComposer');
+_dereq_('../../vendor/effects/Utility/RenderPass');
 
 var registerComponent = _dereq_('./component').registerComponent;
 var THREE = _dereq_('../lib/three');
@@ -77780,7 +77780,7 @@ module.exports.registerEffect = function (name, definition) {
   registerComponent('effect-' + name, proto);
 };
 
-},{"../../vendor/effects/EffectComposer":198,"../../vendor/effects/RenderPass":204,"../lib/three":161,"../utils/":186,"./component":112}],114:[function(_dereq_,module,exports){
+},{"../../vendor/effects/Utility/EffectComposer":211,"../../vendor/effects/Utility/RenderPass":212,"../lib/three":161,"../utils/":186,"./component":112}],114:[function(_dereq_,module,exports){
 var schema = _dereq_('./schema');
 
 var processSchema = schema.process;
@@ -79208,7 +79208,7 @@ module.exports = function initWakelock (scene) {
   scene.addEventListener('exit-vr', function () { wakelock.release(); });
 };
 
-},{"../../../vendor/wakelock/wakelock":219}],122:[function(_dereq_,module,exports){
+},{"../../../vendor/wakelock/wakelock":218}],122:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils/');
 var PropertyTypes = _dereq_('./propertyTypes');
 
@@ -80831,7 +80831,7 @@ module.exports = window.AFRAME = {
   version: pkg.version
 };
 
-},{"../package":51,"../vendor/starts-with-polyfill":217,"./components/index":61,"./core/a-assets":106,"./core/a-cubemap":107,"./core/a-entity":108,"./core/a-mixin":109,"./core/a-node":110,"./core/a-register-element":111,"./core/component":112,"./core/geometry":114,"./core/scene/a-scene":116,"./core/scene/scenes":120,"./core/schema":122,"./core/shader":123,"./core/system":124,"./extras/components/":125,"./extras/primitives/":128,"./extras/primitives/getMeshMixin":127,"./extras/primitives/primitives":129,"./geometries/index":150,"./lib/three":161,"./shaders/index":163,"./style/aframe.css":168,"./style/rStats.css":169,"./systems/index":173,"./utils/":186,"./utils/isIOSOlderThan10":188,"custom-event-polyfill":8,"present":31,"promise-polyfill":32,"super-animejs":34,"webvr-polyfill":46}],160:[function(_dereq_,module,exports){
+},{"../package":51,"../vendor/starts-with-polyfill":216,"./components/index":61,"./core/a-assets":106,"./core/a-cubemap":107,"./core/a-entity":108,"./core/a-mixin":109,"./core/a-node":110,"./core/a-register-element":111,"./core/component":112,"./core/geometry":114,"./core/scene/a-scene":116,"./core/scene/scenes":120,"./core/schema":122,"./core/shader":123,"./core/system":124,"./extras/components/":125,"./extras/primitives/":128,"./extras/primitives/getMeshMixin":127,"./extras/primitives/primitives":129,"./geometries/index":150,"./lib/three":161,"./shaders/index":163,"./style/aframe.css":168,"./style/rStats.css":169,"./systems/index":173,"./utils/":186,"./utils/isIOSOlderThan10":188,"custom-event-polyfill":8,"present":31,"promise-polyfill":32,"super-animejs":34,"webvr-polyfill":46}],160:[function(_dereq_,module,exports){
 window.aframeStats = function (scene) {
   var _rS = null;
   var _scene = scene;
@@ -84595,6 +84595,16 @@ THREE.AAPass = function ( width, height, mode ) {
 		renderer.clear();
 		renderer.render( this.scene, this.camera );
 
+		if ( this.renderToScreen ) {
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+    	} else {
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
+
     },
 
     FXAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
@@ -84841,410 +84851,6 @@ THREE.AAPass.JitterVectors = [
 
   
 },{}],197:[function(_dereq_,module,exports){
-/**
- * @author alteredq / http://alteredqualia.com/
- *
- * Full-screen textured quad shader
- */
-
-THREE.CopyShader = {
-
-  uniforms: {
-
-    "tDiffuse": { value: null },
-    "opacity":  { value: 1.0 }
-
-  },
-
-  vertexShader: [
-
-    "varying vec2 vUv;",
-
-    "void main() {",
-
-      "vUv = uv;",
-      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
-
-    "}"
-
-  ].join( "\n" ),
-
-  fragmentShader: [
-
-    "uniform float opacity;",
-
-    "uniform sampler2D tDiffuse;",
-
-    "varying vec2 vUv;",
-
-    "void main() {",
-
-      "vec4 texel = texture2D( tDiffuse, vUv );",
-      "gl_FragColor = opacity * texel;",
-
-    "}"
-
-  ].join( "\n" )
-
-};
-
-},{}],198:[function(_dereq_,module,exports){
-/**
- * @author alteredq / http://alteredqualia.com/
- */
-
-THREE.EffectComposer = function ( renderer, renderTarget ) {
-
-  this.renderer = renderer;
-  window.addEventListener( 'vrdisplaypresentchange' , this.resize.bind(this) );
-  window.addEventListener( 'resize' , this.resize.bind(this) );
-
-  if ( renderTarget === undefined ) {
-
-    var parameters = {
-      minFilter: THREE.LinearFilter,
-      magFilter: THREE.LinearFilter,
-      format: THREE.RGBAFormat,
-      stencilBuffer: false
-    };
-
-    var size = new THREE.Vector2();
-    renderer.getDrawingBufferSize(size);
-    renderTarget = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
-    renderTarget.texture.name = 'EffectComposer.rt1';
-
-  }
-
-  this.renderTarget1 = renderTarget;
-  this.renderTarget1.depthBuffer = true;
-  this.renderTarget1.depthTexture = new THREE.DepthTexture();
-  this.renderTarget2 = renderTarget.clone();
-  this.renderTarget2.depthBuffer = true;
-  this.renderTarget2.depthTexture = new THREE.DepthTexture();
-  this.renderTarget2.texture.name = 'EffectComposer.rt2';
-  this.normalRenderTarget = renderTarget.clone();
-  
-  this.bloomRenderTarget = renderTarget.clone();
-  this.lutRenderTarget  = renderTarget.clone();
-
-  this.writeBuffer = this.renderTarget1;
-  this.readBuffer = this.renderTarget2;
-
-  this.passes = [];
-  this.maskActive = false;
-
-  // dependencies
-
-  if ( THREE.CopyShader === undefined ) {
-
-    console.error( 'THREE.EffectComposer relies on THREE.CopyShader' );
-
-  }
-
-  if ( THREE.ShaderPass === undefined ) {
-
-    console.error( 'THREE.EffectComposer relies on THREE.ShaderPass' );
-
-  }
-
-  this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
-
-  
-  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
-  this.scene = new THREE.Scene();
-
-  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
-  this.quad.frustumCulled = false; // Avoid getting clipped
-  this.scene.add( this.quad );
-
-};
-
-Object.assign( THREE.EffectComposer.prototype, {
-
-  swapBuffers: function ( pass ) {
-
-    if ( pass.needsSwap ) {
-
-      if ( this.maskActive ) {
-
-        var context = this.renderer.context;
-
-        context.stencilFunc( context.NOTEQUAL, 1, 0xffffffff );
-
-        this.copyPass.render( this.renderer, this.writeBuffer, this.readBuffer, delta );
-
-        context.stencilFunc( context.EQUAL, 1, 0xffffffff );
-
-      }
-
-      var tmp = this.readBuffer;
-      this.readBuffer = this.writeBuffer;
-      this.writeBuffer = tmp;
-
-    }
-
-    if ( THREE.MaskPass !== undefined ) {
-
-      if ( pass instanceof THREE.MaskPass ) {
-
-        this.maskActive = true;
-
-      } else if ( pass instanceof THREE.ClearMaskPass ) {
-
-        this.maskActive = false;
-
-      }
-
-    }
-
-  },
-
-  addPass: function ( pass ) {
-
-    // Makes certain that only the last added pass will be rendered to screen
-    this.passes.forEach(function (iteratePass) {
-      if (iteratePass == null) { return; }
-      iteratePass.needsSwap = true;
-    });
-    
-    // Makes certain that only the last added pass will be rendered to screen
-    this.passes.forEach(function (iteratePass) {
-      if (iteratePass == null) { return; }
-      iteratePass.renderToScreen = false;
-    });
-    
-    pass.renderToScreen = true;
-    pass.needsSwap = false;
-
-    this.passes.push( pass );
-
-    var size = new THREE.Vector2();
-    this.renderer.getDrawingBufferSize(size);
-    pass.setSize( size.width, size.height );
-
-  },
-
-  removePass: function ( pass ) {
-
-    var index = this.passes.indexOf(pass);
-
-    if ( index === -1 ) { return; }
-
-    this.passes.splice( this.passes.indexOf(pass), 1 );
-
-    this.passes[this.passes.length - 1].renderToScreen = true;
-
-    this.resize();
-
-  },
-
-  
-
-  disableAll: function ( ) {
-    
-    this.passes.forEach(function (iteratePass) {
-      if (iteratePass == null) { return; }
-      iteratePass.enabled = false;
-    });
-
-    // Enable render
-    this.passes[0].enabled = true;
-    this.passes[0].renderToScreen = true;
-
-  },
-
-  disable: function ( name ){
-    
-    let passToDisable = null;
-    for(i=0; i<this.passes.length; i++){
-      if(this.passes[i].name == name){
-        passToDisable = this.passes[i];
-      }
-    }
-    if(passToDisable == null){
-      console.error("Effect " + name + " not initialized");
-      return;
-    }
-    passToDisable.enabled = false;
-
-    // Make sure only the last enabled pass is rendered to screen
-    let lastEnabledPass = 0;
-    for(i=0; i<this.passes.length; i++){
-      if(this.passes[i].enabled){
-        lastEnabledPass = i;
-      }
-    }
-    this.passes.forEach(function (iteratePass) {
-      if (iteratePass == null) { return; }
-      iteratePass.renderToScreen = false;
-    });
-    this.passes[lastEnabledPass].renderToScreen = true;
-
-  },
-
-  enable( name ){
-    
-    let passToEnable = null;
-    for(i=0; i<this.passes.length; i++){
-      if(this.passes[i].name == name){
-        passToEnable = this.passes[i];
-      }
-    }
-    if(passToEnable == null){
-      console.error("Effect " + name + " not initialized");
-      return;
-    }
-    passToEnable.enabled = true;
-
-    // Make sure only the last enabled pass is rendered to screen
-    let lastEnabledPass = 0;
-    for(i=0; i<this.passes.length; i++){
-      if(this.passes[i].enabled){
-        lastEnabledPass = i;
-      }
-    }
-    this.passes.forEach(function (iteratePass) {
-      if (iteratePass == null) { return; }
-      iteratePass.renderToScreen = false;
-    });
-    this.passes[lastEnabledPass].renderToScreen = true;
-
-  },
-
-  insertPass: function ( pass, index ) {
-
-    this.passes.splice( index, 0, pass );
-
-  },
-
-  render: function ( delta, starti ) {
-
-    var maskActive = this.maskActive;
-
-    var pass, i, il = this.passes.length;
-
-    var scope = this;
-
-    var currentOnAfterRender;
-
-    for ( i = starti || 0; i < il; i ++ ) {
-
-      pass = this.passes[ i ];
-      
-      if ( pass.enabled === false ) continue;
-
-      // If VR mode is enabled and rendering the whole scene is required.
-      // The pass renders the scene and and postprocessing is resumed before
-      // submitting the frame to the headset by using the onAfterRender callback.
-      if ( this.renderer.vr.enabled && pass.scene ) {
-
-        currentOnAfterRender = pass.scene.onAfterRender;
-
-        pass.scene.onAfterRender = function () {
-
-          // Disable stereo rendering when doing postprocessing
-          // on a render target.
-          scope.renderer.vr.enabled = false;
-
-          scope.render( delta, i + 1, maskActive );
-
-          // Renable vr mode.
-          scope.renderer.vr.enabled = true;
-        }
-
-        pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive, this.normalRenderTarget );
-        
-        // Restore onAfterRender
-        pass.scene.onAfterRender = currentOnAfterRender;
-
-        this.swapBuffers( pass );
-
-        return;
-      }
-
-      pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive, this.normalRenderTarget );
-
-      this.swapBuffers(pass);
-
-    }
-
-  },
-
-  reset: function ( renderTarget ) {
-
-    if ( renderTarget === undefined ) {
-
-      var size = new THREE.Vector2();
-      this.renderer.getDrawingBufferSize(size);
-
-      renderTarget = this.renderTarget1.clone();
-      renderTarget.setSize( size.width, size.height );
-
-    }
-
-    this.renderTarget1.dispose();
-    this.renderTarget2.dispose();
-    this.renderTarget1 = renderTarget;
-    this.renderTarget2 = renderTarget.clone();
-
-    this.writeBuffer = this.renderTarget1;
-    this.readBuffer = this.renderTarget2;
-
-  },
-
-  setSize: function ( width, height ) {
-
-    this.renderTarget1.setSize( width, height );
-    this.renderTarget2.setSize( width, height );
-
-    for ( var i = 0; i < this.passes.length; i ++ ) {
-
-      this.passes[ i ].setSize( width, height );
-
-    }
-
-  },
-
-  resize: function ( ) {
-
-    var size = new THREE.Vector2();
-    this.renderer.getDrawingBufferSize(size);
-    this.setSize( size.width, size.height );
-
-  },
-
-} );
-
-
-THREE.Pass = function () {
-
-  // if set to true, the pass is processed by the composer
-  this.enabled = true;
-
-  // if set to true, the pass indicates to swap read and write buffer after rendering
-  this.needsSwap = true;
-
-  // if set to true, the pass clears its buffer before rendering
-  this.clear = false;
-
-  // if set to true, the result of the pass is rendered to screen
-  this.renderToScreen = false;
-
-};
-
-Object.assign( THREE.Pass.prototype, {
-
-  setSize: function ( width, height ) {},
-
-  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
-
-    console.error( 'THREE.Pass: .render() must be implemented in derived pass.' );
-
-  }
-
-} );
-
-},{}],199:[function(_dereq_,module,exports){
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author davidedc / http://www.sketchpatch.net/
@@ -86360,509 +85966,7 @@ THREE.FXAAShader = {
 	].join( "\n" )
 
 };
-},{}],200:[function(_dereq_,module,exports){
-
-THREE.LUTPass = function ( width, height, lutmapIndex ) {
-
-	THREE.Pass.call( this );
-
-	this.width = ( width !== undefined ) ? width : 512;
-	this.height = ( height !== undefined ) ? height : 512;
-	this.name = "lut";
-
-	this.clear = true;
-
-    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
-	this.scene = new THREE.Scene();
-
-	// Basic pass render target
-	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
-	this.beautyRenderTarget.texture.format = THREE.RGBAFormat;
-	this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
-	this.beautyRenderTarget.texture.magFilter = THREE.NearestFilter;
-	this.beautyRenderTarget.texture.generateMipmaps = false;
-	this.beautyRenderTarget.stencilBuffer = false;
-	this.beautyRenderTarget.depthBuffer = false;
-	this.beautyRenderTarget.depthTexture = new THREE.DepthTexture();
-	this.beautyRenderTarget.depthTexture.type = THREE.UnsignedShortType;
-
-	if ( THREE.MKLUTShader === undefined ) {
-
-		console.error( 'THREE.LUTPass: The pass relies on LUTShader.' );
-
-	}
-
-	this.lutMaterial = new THREE.ShaderMaterial( {
-		defines: Object.assign( {}, THREE.MKLUTShader.defines ),
-		uniforms: THREE.UniformsUtils.clone( THREE.MKLUTShader.uniforms ),
-		vertexShader: THREE.MKLUTShader.vertexShader,
-		fragmentShader: THREE.MKLUTShader.fragmentShader,
-		blending: THREE.NoBlending
-	} );
-
-	this.lutMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
-
-	// material for rendering the content of a render target
-
-	this.copyMaterial = new THREE.ShaderMaterial( {
-		uniforms: THREE.UniformsUtils.clone( THREE.CopyShader.uniforms ),
-		vertexShader: THREE.CopyShader.vertexShader,
-		fragmentShader: THREE.CopyShader.fragmentShader,
-		transparent: true,
-		depthTest: false,
-		depthWrite: false,
-		blendSrc: THREE.DstColorFactor,
-		blendDst: THREE.ZeroFactor,
-		blendEquation: THREE.AddEquation,
-		blendSrcAlpha: THREE.DstAlphaFactor,
-		blendDstAlpha: THREE.ZeroFactor,
-		blendEquationAlpha: THREE.AddEquation
-	} );
-
-	this.lutTextures = [
-		{ name: 'Normal',    	   		size: 32.0,	url: '../media/LUTMaps/Normal.png' },
-		{ name: 'B&WHighContrastOld',	size: 32.0,	url: '../media/LUTMaps/B&WHighContrastOld.png' },
-		{ name: 'BleachBypass',   		size: 32.0,	url: '../media/LUTMaps/BleachBypass.png' },
-		{ name: 'Blockbuster14',     	size: 32.0,	url: '../media/LUTMaps/Blockbuster14.png' },
-		{ name: 'BlueHue',     	   		size: 32.0,	url: '../media/LUTMaps/BlueHue.png' },
-		{ name: 'Color',     	   		size: 32.0,	url: '../media/LUTMaps/Color.png' },
-		{ name: 'DustyOrange',     	   	size: 32.0,	url: '../media/LUTMaps/DustyOrange.png' },
-		{ name: 'Exposure',     	   	size: 32.0,	url: '../media/LUTMaps/Exposure.png' },
-		{ name: 'F2AA3',     	   		size: 32.0,	url: '../media/LUTMaps/F2AA3.png' },
-		{ name: 'GamebobAC',     	   	size: 32.0,	url: '../media/LUTMaps/GamebobAC.png' },
-		{ name: 'Invert',     	   		size: 32.0,	url: '../media/LUTMaps/Invert.png' },
-		{ name: 'Mask',     	   		size: 32.0,	url: '../media/LUTMaps/Mask.png' },
-		{ name: 'Max2',     	   		size: 32.0,	url: '../media/LUTMaps/Max2.png' },
-		{ name: 'RedDawn',     	   		size: 32.0,	url: '../media/LUTMaps/RedDawn.png' },
-		{ name: 'RobotAction',     	   	size: 32.0,	url: '../media/LUTMaps/RobotAction.png' },
-		{ name: 'SettingSun',     	   	size: 32.0,	url: '../media/LUTMaps/SettingSun.png' },
-		{ name: 'SharpWasteland',     	size: 32.0,	url: '../media/LUTMaps/SharpWasteland.png' },
-		{ name: 'Stock5',     	   		size: 32.0,	url: '../media/LUTMaps/Stock5.png' },
-		{ name: 'Toxic',     	   		size: 32.0,	url: '../media/LUTMaps/Toxic.png' },
-		{ name: 'Underwater',     	   	size: 32.0,	url: '../media/LUTMaps/Underwater.png' },
-		{ name: 'Vibrance',     	   	size: 32.0,	url: '../media/LUTMaps/Vibrance.png' },
-		{ name: 'Vibrance2',     	   	size: 32.0,	url: '../media/LUTMaps/Vibrance2.png' },
-		{ name: 'Vintage11',     	   	size: 32.0,	url: '../media/LUTMaps/Vintage11.png' },
-		{ name: 'WarmPurple',     	   	size: 32.0,	url: '../media/LUTMaps/WarmPurple.png' },
-	];
-
-	this.lutTextures.forEach((info) => {
-		info.filter = undefined;
-		info.texture = this.makeLUTTexture(info);
-	});	
-
-	this.setMap(lutmapIndex);
-
-	this.originalClearColor = new THREE.Color();
-	
-	this.basic = new THREE.MeshBasicMaterial();
-
-	this.enabled = true;
-	this.needsSwap = false;
-
-	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
-	this.quad.frustumCulled = false; // Avoid getting clipped
-	this.scene.add( this.quad );
-
-};
-
-THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
-
-	constructor: THREE.LUTPass,
-
-	dispose: function () {
-
-		// dispose render targets
-		this.beautyRenderTarget.dispose();
-
-		// dispose geometry
-		this.quad.geometry.dispose();
-
-		// dispose materials
-		this.copyMaterial.dispose();
-
-	},
-
-	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive ) {
-		
-		this.lutMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
-		
-		this.quad.material = this.lutMaterial;
-
-		if ( this.renderToScreen ) {
-			renderer.setRenderTarget( null );
-			renderer.clear();
-			renderer.render( this.scene, this.camera );
-    	} else {
-			renderer.setRenderTarget( writeBuffer );
-			renderer.clear();
-			renderer.render( this.scene, this.camera );
-		}
-	},
-
-	setSize: function ( width, height ) {
-
-		this.width = width;
-		this.height = height;
-
-		this.beautyRenderTarget.setSize( width, height );
-
-	},
-
-	setMap: function( lutMapIndex ) {
-		//let selectedMap = this.lutmaps.get(nlutMap);
-		//if(selectedMap == undefined)
-		//	console.error("LUTmap " + nlutMap + " does not exist");
-		//console.log(selectedMap.title);
-		//this.lutMaterial.uniforms[ 'lutMapSize' ].value = selectedMap.size;
-		//this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutStringToTexture(selectedMap.map, selectedMap.size);
-		console.log("LUT name: " + this.lutTextures[lutMapIndex].name);
-		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutTextures[lutMapIndex].texture;
-		this.lutMaterial.uniforms[ 'lutMapSize' ].value = this.lutTextures[lutMapIndex].size;
-		console.log("LUT size: " + this.lutMaterial.uniforms[ 'lutMapSize' ].value);
-	},
-
-	makeIdentityLutTexture: function() {
-		const identityLUT = new Uint8Array([
-			0,   0,   0, 255,  // black
-		  255,   0,   0, 255,  // red
-			0,   0, 255, 255,  // blue
-		  255,   0, 255, 255,  // magenta
-			0, 255,   0, 255,  // green
-		  255, 255,   0, 255,  // yellow
-			0, 255, 255, 255,  // cyan
-		  255, 255, 255, 255,  // white
-		]);
-	
-		return function(filter) {
-		  const texture = new THREE.DataTexture(identityLUT, 4, 2, THREE.RGBAFormat);
-		  texture.minFilter = filter;
-		  texture.magFilter = filter;
-		  texture.needsUpdate = true;
-		  texture.flipY = true;
-		  return texture;
-		};
-	  }(),
-
-	makeLUTTexture: function() {
-		const imgLoader = new THREE.ImageLoader();
-		const ctx = document.createElement('canvas').getContext('2d');
-	   
-		return function(info) {
-		  const texture = this.makeIdentityLutTexture(
-		  info.filter ? THREE.LinearFilter : THREE.NearestFilter);
-	   
-		  if (info.url) {
-			const lutSize = info.size;
-	   
-			imgLoader.load(info.url, function(image) {
-			  const width = lutSize * lutSize;
-			  const height = lutSize;
-			  info.size = lutSize;
-			  ctx.canvas.width = width;
-			  ctx.canvas.height = height;
-			  ctx.drawImage(image, 0, 0);
-			  const imageData = ctx.getImageData(0, 0, width, height);
-
-			  texture.image.data = new Uint8Array(imageData.data.buffer);
-			  texture.image.width = width;
-			  texture.image.height = height;
-			  texture.needsUpdate = true;
-			});
-		  }
-	   
-		  return texture;
-		};
-	}(),
-
-	lutStringToTexture: function( lutString, lutSize ) {
-		var totalNumberOfComponents = lutSize * lutSize * lutSize * 4;
-		var floatsIdx = 0;
-	
-		var floatArray = lutString
-				.split( '\n' )
-				.map( function ( line ) {
-					return line.split( ' ' );
-				})
-				.filter( function ( components ) {
-					return components.length === 3;
-				})
-				.reduce( function ( floats, components, index ) {
-					components.forEach( function ( v, idx ) { 
-						floats[ floatsIdx++ ] = v;
-						if ( idx===2 ) {
-							floats[ floatsIdx++ ] = 1.0;
-						}
-					});
-					return floats;
-				}, new Float32Array( totalNumberOfComponents ) );
-	
-		var texture = new THREE.DataTexture( floatArray, lutSize * lutSize, lutSize );
-		texture.type = THREE.FloatType;
-		texture.format = THREE.RGBAFormat;
-		console.log(texture);
-		return texture;
-	}
-
-} );
-},{}],201:[function(_dereq_,module,exports){
-THREE.LUTShader = {
-    
-    uniforms: {
-      tDiffuse: { value: null },
-      lutMap:  { value: null },
-      lutMapSize: { value: 8.0, },
-    },
-    
-    vertexShader: [
-      "varying vec2 vUv;",
-      "void main() {",
-        "vUv = uv;",
-        "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
-      "}",
-    ].join("\n"),
-    
-    fragmentShader: [
-      "#include <common>",
-   
-      //"#define FILTER_LUT true",
-   
-      "uniform sampler2D tDiffuse;",
-      "uniform sampler2D lutMap;",
-      "uniform float lutMapSize;",
-   
-      "varying vec2 vUv;",
-   
-      "vec4 sampleAs3DTexture(sampler2D tex, vec3 texCoord, float size) {",
-        "float sliceSize = 1.0 / size;                  // space of 1 slice",
-        "float slicePixelSize = sliceSize / size;       // space of 1 pixel",
-        "float width = size - 1.0;",
-        "float sliceInnerSize = slicePixelSize * width; // space of size pixels",
-        "float zSlice0 = floor( texCoord.z * width);",
-        "float zSlice1 = min( zSlice0 + 1.0, width);",
-        "float xOffset = slicePixelSize * 0.5 + texCoord.x * sliceInnerSize;",
-        "float yRange = (texCoord.y * width + 0.5) / size;",
-        "float s0 = xOffset + (zSlice0 * sliceSize);",
-        "float s1 = xOffset + (zSlice1 * sliceSize);",
-        "vec4 slice0Color = texture2D(tex, vec2(s0, yRange));",
-        "vec4 slice1Color = texture2D(tex, vec2(s1, yRange));",
-        "float zOffset = mod(texCoord.z * width, 1.0);",
-        "return mix(slice0Color, slice1Color, zOffset);",
-      "}",
-   
-      "void main() {",
-        "vec4 originalColor = texture2D(tDiffuse, vUv);",
-        "gl_FragColor = sampleAs3DTexture(lutMap, originalColor.xyz, lutMapSize);",
-        //"gl_FragColor = texture2D(lutMap, vUv);",
-      "}",
-    ].join("\n")
-};
-},{}],202:[function(_dereq_,module,exports){
-/**
- * @author bhouston / http://clara.io/
- *
- * Luminosity
- * http://en.wikipedia.org/wiki/Luminosity
- */
-
-THREE.LuminosityHighPassShader = {
-
-  shaderID: "luminosityHighPass",
-
-  uniforms: {
-
-    "tDiffuse": { type: "t", value: null },
-    "luminosityThreshold": { type: "f", value: 1.0 },
-    "smoothWidth": { type: "f", value: 1.0 },
-    "defaultColor": { type: "c", value: new THREE.Color( 0x000000 ) },
-    "defaultOpacity":  { type: "f", value: 0.0 }
-
-  },
-
-  vertexShader: [
-
-    "varying vec2 vUv;",
-
-    "void main() {",
-
-      "vUv = uv;",
-
-      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
-
-    "}"
-
-  ].join("\n"),
-
-  fragmentShader: [
-
-    "uniform sampler2D tDiffuse;",
-    "uniform vec3 defaultColor;",
-    "uniform float defaultOpacity;",
-    "uniform float luminosityThreshold;",
-    "uniform float smoothWidth;",
-
-    "varying vec2 vUv;",
-
-    "void main() {",
-
-      "vec4 texel = texture2D( tDiffuse, vUv );",
-
-      "vec3 luma = vec3( 0.299, 0.587, 0.114 );",
-
-      "float v = dot( texel.xyz, luma );",
-
-      "vec4 outputColor = vec4( defaultColor.rgb, defaultOpacity );",
-
-      "float alpha = smoothstep( luminosityThreshold, luminosityThreshold + smoothWidth, v );",
-
-      "gl_FragColor = mix( outputColor, texel, alpha );",
-
-    "}"
-
-  ].join("\n")
-
-};
-
-},{}],203:[function(_dereq_,module,exports){
-THREE.MKLUTShader = {
-
-    uniforms:
-    {
-        tDiffuse:   { value: null },
-        lutMap:     { value: null },
-        lutMapSize: { value: 8.0 },
-    },
-
-    // depthWrite: false,
-		// depthTest: false,
-
-    vertexShader: `
-    varying vec2 vUv;
-    void main() {
-      vUv = uv;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-    }
-  `,
-
-    fragmentShader: `
-    #include <common>
-
-    uniform sampler2D tDiffuse;
-    uniform sampler2D lutMap;
-    uniform float lutMapSize;
-
-    varying vec2 vUv;
-
-    vec4 sampleAs3DTexture(sampler2D tex, vec3 texCoord, float size)
-    {
-      float sliceSize = 1.0 / size;                  // space of 1 slice
-      float slicePixelSize = sliceSize / size;       // space of 1 pixel
-      float width = size - 1.0;
-      float sliceInnerSize = slicePixelSize * width; // space of size pixels
-      float zSlice0 = floor( texCoord.z * width);
-      float zSlice1 = min( zSlice0 + 1.0, width);
-      float xOffset = slicePixelSize * 0.5 + texCoord.x * sliceInnerSize;
-      float yRange = (texCoord.y * width + 0.5) / size;
-      float s0 = xOffset + (zSlice0 * sliceSize);
-
-      
-      float s1 = xOffset + (zSlice1 * sliceSize);
-      vec4 slice0Color = texture2D(tex, vec2(s0, yRange));
-      vec4 slice1Color = texture2D(tex, vec2(s1, yRange));
-      float zOffset = mod(texCoord.z * width, 1.0);
-      return mix(slice0Color, slice1Color, zOffset);
-      
-      //return texture2D(tex, vec2( s0, yRange));
-      
-    }
-
-    void main() {
-      vec4 originalColor = texture2D(tDiffuse, vUv);
-      gl_FragColor = sampleAs3DTexture(lutMap, originalColor.xyz, lutMapSize);
-    }
-  `,
-}
-},{}],204:[function(_dereq_,module,exports){
-/**
- * @author alteredq / http://alteredqualia.com/
- */
-
-THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
-
-  THREE.Pass.call( this );
-
-  this.scene = scene;
-  this.camera = camera;
-  this.name = "render";
-
-  this.overrideMaterial = overrideMaterial;
-
-	// normal material
-
-	this.normalMaterial = new THREE.MeshNormalMaterial();
-	this.normalMaterial.blending = THREE.NoBlending;
-
-  this.clearColor = clearColor;
-  this.clearAlpha = ( clearAlpha !== undefined ) ? clearAlpha : 0;
-
-  this.clear = true;
-  this.clearDepth = false;
-  this.needsSwap = false;
-
-};
-
-THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
-
-  constructor: THREE.RenderPass,
-
-  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive, normalRenderTarget ) {
-
-    var oldAutoClear = renderer.autoClear;
-    renderer.autoClear = false;
-
-    this.scene.overrideMaterial = this.normalMaterial;
-
-    renderer.setRenderTarget( normalRenderTarget );
-    renderer.clear();
-    renderer.render( this.scene, this.camera);
-
-    this.scene.overrideMaterial = this.overrideMaterial;
-
-    var oldClearColor, oldClearAlpha;
-
-    if ( this.clearColor ) {
-
-      oldClearColor = renderer.getClearColor().getHex();
-      oldClearAlpha = renderer.getClearAlpha();
-
-      renderer.setClearColor( this.clearColor, this.clearAlpha );
-
-    }
-
-    if ( this.clearDepth ) {
-
-      renderer.clearDepth();
-
-    }
-
-    renderer.setRenderTarget(this.renderToScreen ? null : readBuffer);
-    renderer.clear();
-    renderer.render( this.scene, this.camera);
-
-    if ( this.clearColor ) {
-
-      renderer.setClearColor( oldClearColor, oldClearAlpha );
-
-    }
-
-    this.scene.overrideMaterial = null;
-    renderer.autoClear = oldAutoClear;
-    this.needsSwap = false;
-  }
-
-} );
-
-},{}],205:[function(_dereq_,module,exports){
+},{}],198:[function(_dereq_,module,exports){
 THREE.SMAABlendShader = {
 
 	uniforms: {
@@ -86956,7 +86060,7 @@ THREE.SMAABlendShader = {
 	].join( "\n" )
 
 };
-},{}],206:[function(_dereq_,module,exports){
+},{}],199:[function(_dereq_,module,exports){
 THREE.SMAAEdgesShader = {
 
 	defines: {
@@ -87065,7 +86169,7 @@ THREE.SMAAEdgesShader = {
 	].join( "\n" )
 
 };
-},{}],207:[function(_dereq_,module,exports){
+},{}],200:[function(_dereq_,module,exports){
 THREE.SMAAWeightsShader = {
 
 	defines: {
@@ -87325,7 +86429,7 @@ THREE.SMAAWeightsShader = {
 };
 
 
-},{}],208:[function(_dereq_,module,exports){
+},{}],201:[function(_dereq_,module,exports){
 /**
  * @author Mugen87 / https://github.com/Mugen87
  *
@@ -87387,7 +86491,7 @@ THREE.SSAOBlurShader = {
 	].join( "\n" )
 
 };
-},{}],209:[function(_dereq_,module,exports){
+},{}],202:[function(_dereq_,module,exports){
 THREE.SSAODepthShader = {
 
 	defines: {
@@ -87452,7 +86556,7 @@ THREE.SSAODepthShader = {
 	].join( "\n" )
 
 };
-},{}],210:[function(_dereq_,module,exports){
+},{}],203:[function(_dereq_,module,exports){
 
 THREE.SSAOPass = function ( width, height ) {
 
@@ -87797,7 +86901,7 @@ THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 	},
 
 } );
-},{}],211:[function(_dereq_,module,exports){
+},{}],204:[function(_dereq_,module,exports){
 /**
  * @author Mugen87 / https://github.com/Mugen87
  *
@@ -87974,21 +87078,25 @@ THREE.SSAOShader = {
 	].join( "\n" )
 
 };
-},{}],212:[function(_dereq_,module,exports){
+},{}],205:[function(_dereq_,module,exports){
 /**
- * @author alteredq / http://alteredqualia.com/
+ * @author bhouston / http://clara.io/
  *
- * Sepia tone shader
- * based on glfx.js sepia shader
- * https://github.com/evanw/glfx.js
+ * Luminosity
+ * http://en.wikipedia.org/wiki/Luminosity
  */
 
-THREE.SepiaShader = {
+THREE.LuminosityHighPassShader = {
+
+  shaderID: "luminosityHighPass",
 
   uniforms: {
 
-    "tDiffuse": { value: null },
-    "amount":   { value: 1.0 }
+    "tDiffuse": { type: "t", value: null },
+    "luminosityThreshold": { type: "f", value: 1.0 },
+    "smoothWidth": { type: "f", value: 1.0 },
+    "defaultColor": { type: "c", value: new THREE.Color( 0x000000 ) },
+    "defaultOpacity":  { type: "f", value: 0.0 }
 
   },
 
@@ -87999,116 +87107,44 @@ THREE.SepiaShader = {
     "void main() {",
 
       "vUv = uv;",
+
       "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
 
     "}"
 
-  ].join( "\n" ),
+  ].join("\n"),
 
   fragmentShader: [
 
-    "uniform float amount;",
-
     "uniform sampler2D tDiffuse;",
+    "uniform vec3 defaultColor;",
+    "uniform float defaultOpacity;",
+    "uniform float luminosityThreshold;",
+    "uniform float smoothWidth;",
 
     "varying vec2 vUv;",
 
     "void main() {",
 
-      "vec4 color = texture2D( tDiffuse, vUv );",
-      "vec3 c = color.rgb;",
+      "vec4 texel = texture2D( tDiffuse, vUv );",
 
-      "color.r = dot( c, vec3( 1.0 - 0.607 * amount, 0.769 * amount, 0.189 * amount ) );",
-      "color.g = dot( c, vec3( 0.349 * amount, 1.0 - 0.314 * amount, 0.168 * amount ) );",
-      "color.b = dot( c, vec3( 0.272 * amount, 0.534 * amount, 1.0 - 0.869 * amount ) );",
+      "vec3 luma = vec3( 0.299, 0.587, 0.114 );",
 
-      "gl_FragColor = vec4( min( vec3( 1.0 ), color.rgb ), color.a );",
+      "float v = dot( texel.xyz, luma );",
+
+      "vec4 outputColor = vec4( defaultColor.rgb, defaultOpacity );",
+
+      "float alpha = smoothstep( luminosityThreshold, luminosityThreshold + smoothWidth, v );",
+
+      "gl_FragColor = mix( outputColor, texel, alpha );",
 
     "}"
 
-  ].join( "\n" )
+  ].join("\n")
 
 };
 
-},{}],213:[function(_dereq_,module,exports){
-/**
- * @author alteredq / http://alteredqualia.com/
- */
-
-THREE.ShaderPass = function ( shader, textureID ) {
-
-  THREE.Pass.call( this );
-
-  this.textureID = ( textureID !== undefined ) ? textureID : "tDiffuse";
-
-  if ( shader instanceof THREE.ShaderMaterial ) {
-
-    this.uniforms = shader.uniforms;
-
-    this.material = shader;
-
-  } else if ( shader ) {
-
-    this.uniforms = THREE.UniformsUtils.clone( shader.uniforms );
-
-    this.material = new THREE.ShaderMaterial( {
-
-      defines: Object.assign( {}, shader.defines ),
-      uniforms: this.uniforms,
-      vertexShader: shader.vertexShader,
-      fragmentShader: shader.fragmentShader
-
-    } );
-
-  }
-
-  this.name = "shader";
-
-  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
-  this.scene = new THREE.Scene();
-
-  this.enabled = true;
-  this.needsSwap = false;
-
-  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
-  this.quad.frustumCulled = false; // Avoid getting clipped
-  this.scene.add( this.quad );
- 
-};
-
-THREE.ShaderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
-
-  constructor: THREE.ShaderPass,
-
-  render: function( renderer, writeBuffer, readBuffer, delta, maskActive ) {
-
-    if ( this.uniforms[ this.textureID ] ) {
-
-      this.uniforms[ this.textureID ].value = readBuffer.texture;
-
-    }
-
-    this.quad.material = this.material;
-
-    if ( this.renderToScreen ) {
-      
-			renderer.setRenderTarget( null );
-			renderer.clear();
-			renderer.render( this.scene, this.camera );
-
-     } else {
-      
-			renderer.setRenderTarget( writeBuffer );
-			renderer.clear();
-			renderer.render( this.scene, this.camera );
-
-    }
-
-  }
-
-} );
-
-},{}],214:[function(_dereq_,module,exports){
+},{}],206:[function(_dereq_,module,exports){
 /**
  * @author spidersharma / http://eduperiment.com/
  * 
@@ -88513,7 +87549,909 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 THREE.UnrealBloomPass.BlurDirectionX = new THREE.Vector2( 1.0, 0.0 );
 THREE.UnrealBloomPass.BlurDirectionY = new THREE.Vector2( 0.0, 1.0 );
 
-},{}],215:[function(_dereq_,module,exports){
+},{}],207:[function(_dereq_,module,exports){
+
+THREE.LUTPass = function ( width, height, lutmapIndex ) {
+
+	THREE.Pass.call( this );
+
+	this.width = ( width !== undefined ) ? width : 512;
+	this.height = ( height !== undefined ) ? height : 512;
+	this.name = "lut";
+
+	this.clear = true;
+
+    this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+	this.scene = new THREE.Scene();
+
+	if ( THREE.LUTShader === undefined ) {
+
+		console.error( 'THREE.LUTPass: The pass relies on LUTShader.' );
+
+	}
+
+	this.lutMaterial = new THREE.ShaderMaterial( {
+		defines: Object.assign( {}, THREE.LUTShader.defines ),
+		uniforms: THREE.UniformsUtils.clone( THREE.LUTShader.uniforms ),
+		vertexShader: THREE.LUTShader.vertexShader,
+		fragmentShader: THREE.LUTShader.fragmentShader,
+		blending: THREE.NoBlending
+	} );
+
+	this.lutTextures = [
+		{ name: 'Normal',    	   		size: 32.0,	factor: 0.0, 	url: '../media/LUTMaps/Normal.png' },
+		{ name: 'B&WHighContrastOld',	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/B&WHighContrastOld.png' },
+		{ name: 'BleachBypass',   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/BleachBypass.png' },
+		{ name: 'Blockbuster14',     	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Blockbuster14.png' },
+		{ name: 'BlueHue',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/BlueHue.png' },
+		{ name: 'Color',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Color.png' },
+		{ name: 'DustyOrange',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/DustyOrange.png' },
+		{ name: 'Exposure',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Exposure.png' },
+		{ name: 'F2AA3',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/F2AA3.png' },
+		{ name: 'GamebobAC',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/GamebobAC.png' },
+		{ name: 'Invert',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Invert.png' },
+		{ name: 'Mask',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Mask.png' },
+		{ name: 'Max2',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Max2.png' },
+		{ name: 'RedDawn',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/RedDawn.png' },
+		{ name: 'RobotAction',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/RobotAction.png' },
+		{ name: 'SettingSun',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/SettingSun.png' },
+		{ name: 'SharpWasteland',     	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/SharpWasteland.png' },
+		{ name: 'Stock5',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Stock5.png' },
+		{ name: 'Toxic',     	   		size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Toxic.png' },
+		{ name: 'Underwater',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Underwater.png' },
+		{ name: 'Vibrance',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Vibrance.png' },
+		{ name: 'Vibrance2',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Vibrance2.png' },
+		{ name: 'Vintage11',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/Vintage11.png' },
+		{ name: 'WarmPurple',     	   	size: 32.0,	factor: 0.3, 	url: '../media/LUTMaps/WarmPurple.png' },
+	];
+
+	this.lutTextures.forEach((info) => {
+		info.filter = undefined;
+		info.texture = this.makeLUTTexture(info);
+	});	
+
+	this.setMap(lutmapIndex);
+
+	this.originalClearColor = new THREE.Color();
+	
+	this.basic = new THREE.MeshBasicMaterial();
+
+	this.enabled = true;
+	this.needsSwap = false;
+
+	this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+	this.quad.frustumCulled = false; // Avoid getting clipped
+	this.scene.add( this.quad );
+
+};
+
+THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+	constructor: THREE.LUTPass,
+
+	dispose: function () {
+
+		// dispose render targets
+		this.beautyRenderTarget.dispose();
+
+		// dispose geometry
+		this.quad.geometry.dispose();
+
+		// dispose materials
+		this.copyMaterial.dispose();
+
+	},
+
+	render: function ( renderer, writeBuffer , readBuffer, deltaTime, maskActive ) {
+		
+		this.lutMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
+		this.quad.material = this.lutMaterial;
+
+		if ( this.renderToScreen ) {
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+    	} else {
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
+	},
+
+	setSize: function ( width, height ) {
+
+		this.width = width;
+		this.height = height;
+
+	},
+
+	setMap: function( lutMapIndex, correction ) {
+		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutTextures[lutMapIndex].texture;
+		this.lutMaterial.uniforms[ 'lutMapSize' ].value = this.lutTextures[lutMapIndex].size;
+		this.lutMaterial.uniforms[ 'lutFactor' ].value = this.clamp(this.lutTextures[lutMapIndex].factor + correction, 0.0, 1.0);
+
+		console.log("LUT map " + lutMapIndex + ": " + this.lutTextures[lutMapIndex].name);
+		console.log("LUT size: " + this.lutMaterial.uniforms[ 'lutMapSize' ].value);
+		console.log("LUT factor: " + this.lutMaterial.uniforms[ 'lutFactor' ].value);
+	},
+
+	clamp: function(num, min, max) {
+		return num <= min ? min : num >= max ? max : num;
+	},
+
+	makeIdentityLutTexture: function() {
+		const identityLUT = new Uint8Array([
+			0,   0,   0, 255,  // black
+		  255,   0,   0, 255,  // red
+			0,   0, 255, 255,  // blue
+		  255,   0, 255, 255,  // magenta
+			0, 255,   0, 255,  // green
+		  255, 255,   0, 255,  // yellow
+			0, 255, 255, 255,  // cyan
+		  255, 255, 255, 255,  // white
+		]);
+	
+		return function(filter) {
+		  const texture = new THREE.DataTexture(identityLUT, 4, 2, THREE.RGBAFormat);
+		  texture.minFilter = filter;
+		  texture.magFilter = filter;
+		  texture.needsUpdate = true;
+		  texture.flipY = true;
+		  return texture;
+		};
+	  }(),
+
+	makeLUTTexture: function() {
+		const imgLoader = new THREE.ImageLoader();
+		const ctx = document.createElement('canvas').getContext('2d');
+	   
+		return function(info) {
+		  const texture = this.makeIdentityLutTexture(
+		  info.filter ? THREE.LinearFilter : THREE.NearestFilter);
+	   
+		  if (info.url) {
+			const lutSize = info.size;
+	   
+			imgLoader.load(info.url, function(image) {
+			  const width = lutSize * lutSize;
+			  const height = lutSize;
+			  info.size = lutSize;
+			  ctx.canvas.width = width;
+			  ctx.canvas.height = height;
+			  ctx.drawImage(image, 0, 0);
+			  const imageData = ctx.getImageData(0, 0, width, height);
+
+			  texture.image.data = new Uint8Array(imageData.data.buffer);
+			  texture.image.width = width;
+			  texture.image.height = height;
+			  texture.needsUpdate = true;
+			});
+		  }
+	   
+		  return texture;
+		};
+	}(),
+
+	lutStringToTexture: function( lutString, lutSize ) {
+		var totalNumberOfComponents = lutSize * lutSize * lutSize * 4;
+		var floatsIdx = 0;
+	
+		var floatArray = lutString
+				.split( '\n' )
+				.map( function ( line ) {
+					return line.split( ' ' );
+				})
+				.filter( function ( components ) {
+					return components.length === 3;
+				})
+				.reduce( function ( floats, components, index ) {
+					components.forEach( function ( v, idx ) { 
+						floats[ floatsIdx++ ] = v;
+						if ( idx===2 ) {
+							floats[ floatsIdx++ ] = 1.0;
+						}
+					});
+					return floats;
+				}, new Float32Array( totalNumberOfComponents ) );
+	
+		var texture = new THREE.DataTexture( floatArray, lutSize * lutSize, lutSize );
+		texture.type = THREE.FloatType;
+		texture.format = THREE.RGBAFormat;
+		console.log(texture);
+		return texture;
+	}
+
+} );
+},{}],208:[function(_dereq_,module,exports){
+THREE.LUTShader = {
+
+    uniforms:
+    {
+        tDiffuse:   { value: null },
+        lutMap:     { value: null },
+        lutMapSize: { value: 8.0  },
+        lutFactor:  { value: 1.0  },
+    },
+
+    // depthWrite: false,
+		// depthTest: false,
+
+    vertexShader: `
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
+  `,
+
+    fragmentShader: `
+    #include <common>
+
+    uniform sampler2D tDiffuse;
+    uniform sampler2D lutMap;
+    uniform float lutMapSize;
+    uniform float lutFactor;
+
+    varying vec2 vUv;
+
+    vec4 mixFixed(vec4 v1, vec4 v2, float a )
+    {
+      vec4 result;
+      result.x = v1.x * v1.x * (1.0 - a) + v2.x * v2.x * a;
+      result.y = v1.y * v1.y  * (1.0 - a) + v2.y * v2.y * a;
+      result.z = v1.z * v1.z  * (1.0 - a) + v2.z * v2.z * a;
+      result.w = v1.w * v1.w  * (1.0 - a) + v2.w * v2.w * a;
+
+      result.x = sqrt(result.x);
+      result.y = sqrt(result.y);
+      result.z = sqrt(result.z);
+      result.w = sqrt(result.w);
+   
+      return result;
+    }
+
+    vec4 sampleAs3DTexture(sampler2D tex, vec3 texCoord, float size)
+    {
+      float sliceSize = 1.0 / size;                  // space of 1 slice
+      float slicePixelSize = sliceSize / size;       // space of 1 pixel
+      float width = size - 1.0;
+      float sliceInnerSize = slicePixelSize * width; // space of size pixels
+      float zSlice0 = floor( texCoord.z * width);
+      float zSlice1 = min( zSlice0 + 1.0, width);
+      float xOffset = slicePixelSize * 0.5 + texCoord.x * sliceInnerSize;
+      float yRange = (texCoord.y * width + 0.5) / size;
+      float s0 = xOffset + (zSlice0 * sliceSize);
+
+      
+      float s1 = xOffset + (zSlice1 * sliceSize);
+      vec4 slice0Color = texture2D(tex, vec2(s0, yRange));
+      vec4 slice1Color = texture2D(tex, vec2(s1, yRange));
+      float zOffset = mod(texCoord.z * width, 1.0);
+      return mixFixed(slice0Color, slice1Color, zOffset);
+      
+      //return texture2D(tex, vec2( s0, yRange));
+      
+    }
+
+    void main() {
+      vec4 originalColor = texture2D(tDiffuse, vUv);
+      vec4 lutColor = sampleAs3DTexture(lutMap, originalColor.xyz, lutMapSize); 
+      gl_FragColor = mix(originalColor, lutColor, lutFactor);
+    }
+  `,
+}
+},{}],209:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ *
+ * Sepia tone shader
+ * based on glfx.js sepia shader
+ * https://github.com/evanw/glfx.js
+ */
+
+THREE.SepiaShader = {
+
+  uniforms: {
+
+    "tDiffuse": { value: null },
+    "amount":   { value: 1.0 }
+
+  },
+
+  vertexShader: [
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vUv = uv;",
+      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+    "}"
+
+  ].join( "\n" ),
+
+  fragmentShader: [
+
+    "uniform float amount;",
+
+    "uniform sampler2D tDiffuse;",
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vec4 color = texture2D( tDiffuse, vUv );",
+      "vec3 c = color.rgb;",
+
+      "color.r = dot( c, vec3( 1.0 - 0.607 * amount, 0.769 * amount, 0.189 * amount ) );",
+      "color.g = dot( c, vec3( 0.349 * amount, 1.0 - 0.314 * amount, 0.168 * amount ) );",
+      "color.b = dot( c, vec3( 0.272 * amount, 0.534 * amount, 1.0 - 0.869 * amount ) );",
+
+      "gl_FragColor = vec4( min( vec3( 1.0 ), color.rgb ), color.a );",
+
+    "}"
+
+  ].join( "\n" )
+
+};
+
+},{}],210:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ *
+ * Full-screen textured quad shader
+ */
+
+THREE.CopyShader = {
+
+  uniforms: {
+
+    "tDiffuse": { value: null },
+    "opacity":  { value: 1.0 }
+
+  },
+
+  vertexShader: [
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vUv = uv;",
+      "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+
+    "}"
+
+  ].join( "\n" ),
+
+  fragmentShader: [
+
+    "uniform float opacity;",
+
+    "uniform sampler2D tDiffuse;",
+
+    "varying vec2 vUv;",
+
+    "void main() {",
+
+      "vec4 texel = texture2D( tDiffuse, vUv );",
+      "gl_FragColor = opacity * texel;",
+
+    "}"
+
+  ].join( "\n" )
+
+};
+
+},{}],211:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.EffectComposer = function ( renderer, renderTarget ) {
+
+  this.renderer = renderer;
+  window.addEventListener( 'vrdisplaypresentchange' , this.resize.bind(this) );
+  window.addEventListener( 'resize' , this.resize.bind(this) );
+
+  if ( renderTarget === undefined ) {
+
+    var parameters = {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      format: THREE.RGBAFormat,
+      stencilBuffer: false
+    };
+
+    var size = new THREE.Vector2();
+    renderer.getDrawingBufferSize(size);
+    renderTarget = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
+    renderTarget.texture.type = THREE.HalfFloatType;
+    renderTarget.texture.name = 'EffectComposer.rt1';
+
+  }
+
+  this.renderTarget1 = renderTarget;
+  this.renderTarget2 = renderTarget.clone();
+  this.renderTarget2.texture.name = 'EffectComposer.rt2';
+
+  this.writeBuffer = this.renderTarget1;
+  this.readBuffer = this.renderTarget2;
+
+  this.passes = [];
+  this.maskActive = false;
+
+  // dependencies
+
+  if ( THREE.CopyShader === undefined ) {
+
+    console.error( 'THREE.EffectComposer relies on THREE.CopyShader' );
+
+  }
+
+  if ( THREE.ShaderPass === undefined ) {
+
+    console.error( 'THREE.EffectComposer relies on THREE.ShaderPass' );
+
+  }
+
+  this.copyPass = new THREE.ShaderPass( THREE.CopyShader );
+
+  
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+
+};
+
+Object.assign( THREE.EffectComposer.prototype, {
+
+  swapBuffers: function ( pass ) {
+
+    if ( pass.needsSwap ) {
+
+      if ( this.maskActive ) {
+
+        var context = this.renderer.context;
+
+        context.stencilFunc( context.NOTEQUAL, 1, 0xffffffff );
+
+        this.copyPass.render( this.renderer, this.writeBuffer, this.readBuffer, delta );
+
+        context.stencilFunc( context.EQUAL, 1, 0xffffffff );
+
+      }
+
+      var tmp = this.readBuffer;
+      this.readBuffer = this.writeBuffer;
+      this.writeBuffer = tmp;
+
+    }
+
+    if ( THREE.MaskPass !== undefined ) {
+
+      if ( pass instanceof THREE.MaskPass ) {
+
+        this.maskActive = true;
+
+      } else if ( pass instanceof THREE.ClearMaskPass ) {
+
+        this.maskActive = false;
+
+      }
+
+    }
+
+  },
+
+  addPass: function ( pass ) {
+
+    // Makes certain that only the last added pass will be rendered to screen
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.needsSwap = true;
+    });
+    
+    // Makes certain that only the last added pass will be rendered to screen
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.renderToScreen = false;
+    });
+    
+    pass.renderToScreen = true;
+    pass.needsSwap = false;
+
+    this.passes.push( pass );
+
+    var size = new THREE.Vector2();
+    this.renderer.getDrawingBufferSize(size);
+    pass.setSize( size.width, size.height );
+
+  },
+
+  removePass: function ( pass ) {
+
+    var index = this.passes.indexOf(pass);
+
+    if ( index === -1 ) { return; }
+
+    this.passes.splice( this.passes.indexOf(pass), 1 );
+
+    this.passes[this.passes.length - 1].renderToScreen = true;
+
+    this.resize();
+
+  },
+
+  
+
+  disableAll: function ( ) {
+    
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.enabled = false;
+    });
+
+    // Enable render
+    this.passes[0].enabled = true;
+    this.passes[0].renderToScreen = true;
+
+  },
+
+  disable: function ( name ){
+    
+    let passToDisable = null;
+    for(i=0; i<this.passes.length; i++){
+      if(this.passes[i].name == name){
+        passToDisable = this.passes[i];
+      }
+    }
+    if(passToDisable == null){
+      console.error("Effect " + name + " not initialized");
+      return;
+    }
+    passToDisable.enabled = false;
+
+    // Make sure only the last enabled pass is rendered to screen
+    let lastEnabledPass = 0;
+    for(i=0; i<this.passes.length; i++){
+      if(this.passes[i].enabled){
+        lastEnabledPass = i;
+      }
+    }
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.renderToScreen = false;
+    });
+    this.passes[lastEnabledPass].renderToScreen = true;
+
+  },
+
+  enable( name ){
+    
+    let passToEnable = null;
+    for(i=0; i<this.passes.length; i++){
+      if(this.passes[i].name == name){
+        passToEnable = this.passes[i];
+      }
+    }
+    if(passToEnable == null){
+      console.error("Effect " + name + " not initialized");
+      return;
+    }
+    passToEnable.enabled = true;
+
+    // Make sure only the last enabled pass is rendered to screen
+    let lastEnabledPass = 0;
+    for(i=0; i<this.passes.length; i++){
+      if(this.passes[i].enabled){
+        lastEnabledPass = i;
+      }
+    }
+    this.passes.forEach(function (iteratePass) {
+      if (iteratePass == null) { return; }
+      iteratePass.renderToScreen = false;
+    });
+    this.passes[lastEnabledPass].renderToScreen = true;
+
+  },
+
+  insertPass: function ( pass, index ) {
+
+    this.passes.splice( index, 0, pass );
+
+  },
+
+  render: function ( delta, starti ) {
+
+    var maskActive = this.maskActive;
+
+    var pass, i, il = this.passes.length;
+
+    var scope = this;
+
+    var currentOnAfterRender;
+
+    for ( i = starti || 0; i < il; i ++ ) {
+
+      pass = this.passes[ i ];
+      
+      if ( pass.enabled === false ) continue;
+
+      // If VR mode is enabled and rendering the whole scene is required.
+      // The pass renders the scene and and postprocessing is resumed before
+      // submitting the frame to the headset by using the onAfterRender callback.
+      if ( this.renderer.xr.enabled && pass.scene ) {
+
+        currentOnAfterRender = pass.scene.onAfterRender;
+
+        pass.scene.onAfterRender = function () {
+
+          // Disable stereo rendering when doing postprocessing
+          // on a render target.
+          scope.renderer.xr.enabled = false;
+
+          scope.render( delta, i + 1, maskActive );
+
+          // Renable vr mode.
+          scope.renderer.xr.enabled = true;
+        }
+
+        pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
+        
+        // Restore onAfterRender
+        pass.scene.onAfterRender = currentOnAfterRender;
+
+        this.swapBuffers( pass );
+
+        return;
+      }
+
+      pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
+
+      this.swapBuffers(pass);
+
+    }
+
+  },
+
+  reset: function ( renderTarget ) {
+
+    if ( renderTarget === undefined ) {
+
+      var size = new THREE.Vector2();
+      this.renderer.getDrawingBufferSize(size);
+
+      renderTarget = this.renderTarget1.clone();
+      renderTarget.setSize( size.width, size.height );
+
+    }
+
+    this.renderTarget1.dispose();
+    this.renderTarget2.dispose();
+    this.renderTarget1 = renderTarget;
+    this.renderTarget2 = renderTarget.clone();
+
+    this.writeBuffer = this.renderTarget1;
+    this.readBuffer = this.renderTarget2;
+
+  },
+
+  setSize: function ( width, height ) {
+
+    this.renderTarget1.setSize( width, height );
+    this.renderTarget2.setSize( width, height );
+
+    for ( var i = 0; i < this.passes.length; i ++ ) {
+
+      this.passes[ i ].setSize( width, height );
+
+    }
+
+  },
+
+  resize: function ( ) {
+
+    var size = new THREE.Vector2();
+    this.renderer.getDrawingBufferSize(size);
+    this.setSize( size.width, size.height );
+
+  },
+
+} );
+
+
+THREE.Pass = function () {
+
+  // if set to true, the pass is processed by the composer
+  this.enabled = true;
+
+  // if set to true, the pass indicates to swap read and write buffer after rendering
+  this.needsSwap = true;
+
+  // if set to true, the pass clears its buffer before rendering
+  this.clear = false;
+
+  // if set to true, the result of the pass is rendered to screen
+  this.renderToScreen = false;
+
+};
+
+Object.assign( THREE.Pass.prototype, {
+
+  setSize: function ( width, height ) {},
+
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    console.error( 'THREE.Pass: .render() must be implemented in derived pass.' );
+
+  }
+
+} );
+
+},{}],212:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
+
+  THREE.Pass.call( this );
+
+  this.scene = scene;
+  this.camera = camera;
+  this.name = "render";
+
+  this.overrideMaterial = overrideMaterial;
+
+	// normal material
+
+	this.normalMaterial = new THREE.MeshNormalMaterial();
+	this.normalMaterial.blending = THREE.NoBlending;
+
+  this.clearColor = clearColor;
+  this.clearAlpha = ( clearAlpha !== undefined ) ? clearAlpha : 0;
+
+  this.clear = true;
+  this.clearDepth = false;
+  this.needsSwap = false;
+
+};
+
+THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+  constructor: THREE.RenderPass,
+
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    var oldAutoClear = renderer.autoClear;
+    renderer.autoClear = false;
+
+    // this.scene.overrideMaterial = this.normalMaterial;
+
+    // renderer.setRenderTarget( normalRenderTarget );
+    // renderer.clear();
+    // renderer.render( this.scene, this.camera);
+
+    this.scene.overrideMaterial = this.overrideMaterial;
+
+    var oldClearColor, oldClearAlpha;
+
+    if ( this.clearColor ) {
+
+      oldClearColor = renderer.getClearColor().getHex();
+      oldClearAlpha = renderer.getClearAlpha();
+
+      renderer.setClearColor( this.clearColor, this.clearAlpha );
+
+    }
+
+    if ( this.clearDepth ) {
+
+      renderer.clearDepth();
+
+    }
+
+    renderer.setRenderTarget(this.renderToScreen ? null : readBuffer);
+    renderer.clear();
+    renderer.render( this.scene, this.camera);
+
+    if ( this.clearColor ) {
+
+      renderer.setClearColor( oldClearColor, oldClearAlpha );
+
+    }
+
+    this.scene.overrideMaterial = null;
+    renderer.autoClear = oldAutoClear;
+    this.needsSwap = false;
+  }
+
+} );
+
+},{}],213:[function(_dereq_,module,exports){
+/**
+ * @author alteredq / http://alteredqualia.com/
+ */
+
+THREE.ShaderPass = function ( shader, textureID ) {
+
+  THREE.Pass.call( this );
+
+  this.textureID = ( textureID !== undefined ) ? textureID : "tDiffuse";
+
+  if ( shader instanceof THREE.ShaderMaterial ) {
+
+    this.uniforms = shader.uniforms;
+
+    this.material = shader;
+
+  } else if ( shader ) {
+
+    this.uniforms = THREE.UniformsUtils.clone( shader.uniforms );
+
+    this.material = new THREE.ShaderMaterial( {
+
+      defines: Object.assign( {}, shader.defines ),
+      uniforms: this.uniforms,
+      vertexShader: shader.vertexShader,
+      fragmentShader: shader.fragmentShader
+
+    } );
+
+  }
+
+  this.name = "shader";
+
+  this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+  this.scene = new THREE.Scene();
+
+  this.enabled = true;
+  this.needsSwap = false;
+
+  this.quad = new THREE.Mesh( new THREE.PlaneBufferGeometry( 2, 2 ), null );
+  this.quad.frustumCulled = false; // Avoid getting clipped
+  this.scene.add( this.quad );
+ 
+};
+
+THREE.ShaderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), {
+
+  constructor: THREE.ShaderPass,
+
+  render: function( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+
+    if ( this.uniforms[ this.textureID ] ) {
+
+      this.uniforms[ this.textureID ].value = readBuffer.texture;
+
+    }
+
+    this.quad.material = this.material;
+
+    if ( this.renderToScreen ) {
+      
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+     } else {
+      
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+
+    }
+
+  }
+
+} );
+
+},{}],214:[function(_dereq_,module,exports){
 window.glStats = function () {
 
     var _rS = null;
@@ -88774,7 +88712,7 @@ if (typeof module === 'object') {
   };
 }
 
-},{}],216:[function(_dereq_,module,exports){
+},{}],215:[function(_dereq_,module,exports){
 // performance.now() polyfill from https://gist.github.com/paulirish/5438650
 'use strict';
 
@@ -89229,7 +89167,7 @@ if (typeof module === 'object') {
   module.exports = window.rStats;
 }
 
-},{}],217:[function(_dereq_,module,exports){
+},{}],216:[function(_dereq_,module,exports){
 // https://stackoverflow.com/a/36213464
 if (!String.prototype.startsWith) {
     String.prototype.startsWith = function(searchString, position){
@@ -89238,7 +89176,7 @@ if (!String.prototype.startsWith) {
   };
 }
 
-},{}],218:[function(_dereq_,module,exports){
+},{}],217:[function(_dereq_,module,exports){
 /*
  * Copyright 2015 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -89300,7 +89238,7 @@ Util.isLandscapeMode = function() {
 
 module.exports = Util;
 
-},{}],219:[function(_dereq_,module,exports){
+},{}],218:[function(_dereq_,module,exports){
 /*
  * Copyright 2015 Google Inc. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -89376,6 +89314,6 @@ function getWakeLock() {
 
 module.exports = getWakeLock();
 
-},{"./util.js":218}]},{},[159])(159)
+},{"./util.js":217}]},{},[159])(159)
 });
 //# sourceMappingURL=aframe-master.js.map
