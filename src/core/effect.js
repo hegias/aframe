@@ -1,5 +1,5 @@
-require('../../vendor/effects/EffectComposer');
-require('../../vendor/effects/RenderPass');
+require('../../vendor/effects/Utility/EffectComposer');
+require('../../vendor/effects/Utility/RenderPass');
 
 var registerComponent = require('./component').registerComponent;
 var THREE = require('../lib/three');

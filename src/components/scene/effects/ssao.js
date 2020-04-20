@@ -1,12 +1,12 @@
 /* global THREE */
 var registerEffect = require('../../../core/effect').registerEffect;
 
-require('../../../../vendor/effects/CopyShader');
-require('../../../../vendor/effects/SSAODepthShader');
-require('../../../../vendor/effects/SSAOBlurShader');
-require('../../../../vendor/effects/ShaderPass');
-require('../../../../vendor/effects/SSAOShader');
-require('../../../../vendor/effects/SSAOPass');
+require('../../../../vendor/effects/Utility/CopyShader');
+require('../../../../vendor/effects/AO/SSAODepthShader');
+require('../../../../vendor/effects/AO/SSAOBlurShader');
+require('../../../../vendor/effects/Utility/ShaderPass');
+require('../../../../vendor/effects/AO/SSAOShader');
+require('../../../../vendor/effects/AO/SSAOPass');
 
 registerEffect('ssao', {
   schema: {

@@ -1,13 +1,13 @@
 /* global THREE */
 var registerEffect = require('../../../core/effect').registerEffect;
 
-require('../../../../vendor/effects/CopyShader');
-require('../../../../vendor/effects/ShaderPass');
-require('../../../../vendor/effects/FXAAShader');
-require('../../../../vendor/effects/SMAABlendShader');
-require('../../../../vendor/effects/SMAAWeightsShader');
-require('../../../../vendor/effects/SMAAEdgesShader');
-require('../../../../vendor/effects/AAPass');
+require('../../../../vendor/effects/Utility/CopyShader');
+require('../../../../vendor/effects/Utility/ShaderPass');
+require('../../../../vendor/effects/AA/FXAAShader');
+require('../../../../vendor/effects/AA/SMAABlendShader');
+require('../../../../vendor/effects/AA/SMAAWeightsShader');
+require('../../../../vendor/effects/AA/SMAAEdgesShader');
+require('../../../../vendor/effects/AA/AAPass');
 
 registerEffect('aa', {
   schema: {

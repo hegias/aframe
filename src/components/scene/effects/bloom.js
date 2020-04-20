@@ -1,10 +1,10 @@
 /* global THREE */
 var registerEffect = require('../../../core/effect').registerEffect;
 
-require('../../../../vendor/effects/CopyShader');
-require('../../../../vendor/effects/ShaderPass');
-require('../../../../vendor/effects/LuminosityHighPassShader');
-require('../../../../vendor/effects/UnrealBloomPass');
+require('../../../../vendor/effects/Utility/CopyShader');
+require('../../../../vendor/effects/Utility/ShaderPass');
+require('../../../../vendor/effects/Bloom/LuminosityHighPassShader');
+require('../../../../vendor/effects/Bloom/UnrealBloomPass');
 
 registerEffect('bloom', {
   schema: {
