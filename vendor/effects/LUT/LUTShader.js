@@ -72,6 +72,7 @@ THREE.LUTShader = {
       vec4 originalColor = texture2D(tDiffuse, vUv);
       vec4 lutColor = sampleAs3DTexture(lutMap, originalColor.xyz, lutMapSize); 
       gl_FragColor = mix(originalColor, lutColor, lutFactor);
+      gl_FragColor.a = originalColor.a;
     }
   `,
 }

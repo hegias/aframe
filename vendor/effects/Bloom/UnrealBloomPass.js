@@ -310,7 +310,7 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
           gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n\
         }",
 
-      fragmentShader:
+        fragmentShader:
         "#include <common>\
         varying vec2 vUv;\n\
         uniform sampler2D colorTexture;\n\
@@ -324,17 +324,27 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
           vec2 invSize = 1.0 / texSize;\
           float fSigma = float(SIGMA);\
           float weightSum = gaussianPdf(0.0, fSigma);\
-          vec3 diffuseSum = texture2D( colorTexture, vUv).rgb * weightSum;\
-          for( int i = 1; i < KERNEL_RADIUS; i ++ ) {\
-            float x = float(i);\
-            float w = gaussianPdf(x, fSigma);\
-            vec2 uvOffset = direction * invSize * x;\
-            vec3 sample1 = texture2D( colorTexture, vUv + uvOffset).rgb;\
-            vec3 sample2 = texture2D( colorTexture, vUv - uvOffset).rgb;\
-            diffuseSum += (sample1 + sample2) * w;\
-            weightSum += 2.0 * w;\
+          float alphaSum = 0.0;\
+          vec3 diffuseSum = texture2D(colorTexture, vUv).rgb * weightSum;\
+          for( int i = 1; i < KERNEL_RADIUS; i ++ )\
+          {\
+              float x = float(i);\
+              float weight = gaussianPdf(x, fSigma);\
+              vec2 uvOffset = direction * invSize * x;\
+              vec4 sample1 = texture2D( colorTexture, vUv + uvOffset);\
+              float weightAlpha = sample1.a * weight;\
+              diffuseSum += sample1.rgb * weightAlpha;\
+              alphaSum += weightAlpha;\
+              weightSum += weight;\
+              vec4 sample2 = texture2D( colorTexture, vUv - uvOffset);\
+              weightAlpha = sample2.a * weight;\
+              diffuseSum += sample2.rgb * weightAlpha;\
+              alphaSum += weightAlpha;\
+              weightSum += weight;\
           }\
-          gl_FragColor = vec4(diffuseSum/weightSum, 1.0);\n\
+          alphaSum /= weightSum;\
+          diffuseSum /= alphaSum;\
+          gl_FragColor = vec4(diffuseSum.rgb, alphaSum);\n\
         }"
     } );
 
