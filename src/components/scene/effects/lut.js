@@ -11,7 +11,7 @@ registerEffect('lut', {
   schema: {
     lutmap: {default: 3},
     enabled: {default: true},
-    lutCorrection: {default: 0.0},
+    lutCorrection: {default: 0.0}
   },
 
   initPass: function () {

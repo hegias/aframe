@@ -319,7 +319,8 @@ module.exports.Component = registerComponent('cursor', {
   },
 
   onEnterVR: function () {
-    var xrSession = this.el.xrSession;
+    this.clearCurrentIntersection(true);
+    var xrSession = this.el.sceneEl.xrSession;
     var self = this;
     if (!xrSession) { return; }
     WEBXR_EVENTS.DOWN.forEach(function (downEvent) {
