@@ -21,6 +21,8 @@ THREE.EffectComposer = function ( renderer, renderTarget ) {
     renderer.getDrawingBufferSize(size);
     renderTarget = new THREE.WebGLRenderTarget( size.width, size.height, parameters );
     renderTarget.texture.type = THREE.HalfFloatType;
+    renderTarget.depthBuffer = true;
+    renderTarget.depthTexture = new THREE.DepthTexture();
     renderTarget.texture.name = 'EffectComposer.rt1';
 
   }
@@ -28,6 +30,8 @@ THREE.EffectComposer = function ( renderer, renderTarget ) {
   this.renderTarget1 = renderTarget;
   this.renderTarget2 = renderTarget.clone();
   this.renderTarget2.texture.name = 'EffectComposer.rt2';
+
+  this.normalRenderTarget = renderTarget.clone();
 
   this.writeBuffer = this.renderTarget1;
   this.readBuffer = this.renderTarget2;
@@ -73,7 +77,7 @@ Object.assign( THREE.EffectComposer.prototype, {
 
         context.stencilFunc( context.NOTEQUAL, 1, 0xffffffff );
 
-        this.copyPass.render( this.renderer, this.writeBuffer, this.readBuffer, delta );
+        this.copyPass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, this.normalRenderTarget );
 
         context.stencilFunc( context.EQUAL, 1, 0xffffffff );
 
@@ -254,7 +258,7 @@ Object.assign( THREE.EffectComposer.prototype, {
           scope.renderer.xr.enabled = true;
         }
 
-        pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
+        pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive, this.normalRenderTarget );
         
         // Restore onAfterRender
         pass.scene.onAfterRender = currentOnAfterRender;
@@ -264,7 +268,7 @@ Object.assign( THREE.EffectComposer.prototype, {
         return;
       }
 
-      pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive );
+      pass.render( this.renderer, this.writeBuffer, this.readBuffer, delta, maskActive, this.normalRenderTarget );
 
       this.swapBuffers(pass);
 

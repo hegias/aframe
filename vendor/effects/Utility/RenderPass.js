@@ -30,16 +30,16 @@ THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 
   constructor: THREE.RenderPass,
 
-  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+  render: function ( renderer, writeBuffer, readBuffer, delta, maskActive, normalRenderTarget ) {
 
     var oldAutoClear = renderer.autoClear;
     renderer.autoClear = false;
 
-    // this.scene.overrideMaterial = this.normalMaterial;
+    this.scene.overrideMaterial = this.normalMaterial;
 
-    // renderer.setRenderTarget( normalRenderTarget );
-    // renderer.clear();
-    // renderer.render( this.scene, this.camera);
+    renderer.setRenderTarget( normalRenderTarget );
+    renderer.clear();
+    renderer.render( this.scene, this.camera);
 
     this.scene.overrideMaterial = this.overrideMaterial;
 

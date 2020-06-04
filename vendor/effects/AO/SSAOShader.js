@@ -1,4 +1,4 @@
-/**
+ /**
  * @author Mugen87 / https://github.com/Mugen87
  *
  * References:
@@ -132,7 +132,7 @@ THREE.SSAOShader = {
 		"	vec3 viewPosition = getViewPosition( vUv, depth, viewZ );",
 		"	vec3 viewNormal = getViewNormal( vUv );",
 
-		" vec2 noiseScale = vec2( resolution.x / 4.0, resolution.y / 4.0 );",
+		" 	vec2 noiseScale = vec2( resolution.x / 4.0, resolution.y / 4.0 );",
 		"	vec3 random = texture2D( tNoise, vUv * noiseScale ).xyz;",
 
 		// compute matrix used to reorient a kernel vector
@@ -168,6 +168,7 @@ THREE.SSAOShader = {
 		"	occlusion = clamp( occlusion / float( KERNEL_SIZE ), 0.0, 1.0 );",
 
 		"	gl_FragColor = vec4( vec3( 1.0 - occlusion ), 1.0 );",
+		//"	gl_FragColor = vec4( viewPosition, 1.0 );",
 
 		"}"
 
