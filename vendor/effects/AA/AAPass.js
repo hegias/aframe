@@ -165,14 +165,22 @@ THREE.AAPass = function ( width, height, mode ) {
         
         if(this.mode === "smaa"){
             this.SMAAPass(renderer, writeBuffer, readBuffer);
-        }
+		}
+		else if(this.mode === "ssaa"){
+			this.SSAAPass(renderer, writeBuffer, readBuffer);
+		}
         else if(this.mode === "taa"){
-            this.SSAAPass(renderer, writeBuffer, readBuffer);
+            this.TAAPass(renderer, writeBuffer, readBuffer);
         }
         else{
             this.FXAAPass(renderer, writeBuffer, readBuffer);
         }
-      
+
+    },
+
+    FXAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
+        this.fxaaPassUniforms[ "tDiffuse" ].value = readBuffer.texture;
+        this.quad.material = this.materialFXAAPassFilter;
 		renderer.setRenderTarget( null );
 		renderer.clear();
 		renderer.render( this.scene, this.camera );
@@ -186,12 +194,6 @@ THREE.AAPass = function ( width, height, mode ) {
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 		}
-
-    },
-
-    FXAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
-        this.fxaaPassUniforms[ "tDiffuse" ].value = readBuffer.texture;
-        this.quad.material = this.materialFXAAPassFilter;
     },
 
     SMAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
@@ -218,9 +220,22 @@ THREE.AAPass = function ( width, height, mode ) {
 		this.uniformsBlend[ "tColor" ].value = readBuffer.texture;
 
 		this.quad.material = this.materialBlend;
+      
+		renderer.setRenderTarget( null );
+		renderer.clear();
+		renderer.render( this.scene, this.camera );
+
+		if ( this.renderToScreen ) {
+			renderer.setRenderTarget( null );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+    	} else {
+			renderer.setRenderTarget( writeBuffer );
+			renderer.clear();
+			renderer.render( this.scene, this.camera );
+		}
 	},
 
-	// TODO
 	SSAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
 		if ( ! this.sampleRenderTarget ) {
 			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
@@ -234,7 +249,7 @@ THREE.AAPass = function ( width, height, mode ) {
 
 		var baseSampleWeight = 1.0 / jitterOffsets.length;
 		var roundingRange = 1 / 32;
-		this.copyUniforms[ "tDiffuse" ].value = this.sampleRenderTarget.texture;
+		this.copyUniforms[ "tDiffuse" ].value = readBuffer.texture;
 
 		var width = readBuffer.width, height = readBuffer.height;
 
@@ -243,13 +258,11 @@ THREE.AAPass = function ( width, height, mode ) {
 
 			var jitterOffset = jitterOffsets[ i ];
 
-			//if ( this.camera.setViewOffset ) {
-
+			if ( this.camera.setViewOffset ) {
 				this.camera.setViewOffset( width, height,
 					jitterOffset[ 0 ] * 0.0625, jitterOffset[ 1 ] * 0.0625, // 0.0625 = 1 / 16
 					width, height );
-
-			//}
+			}
 
 			var sampleWeight = baseSampleWeight;
 
@@ -270,7 +283,7 @@ THREE.AAPass = function ( width, height, mode ) {
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 
-			renderer.setRenderTarget( this.renderToScreen ? null : writeBuffer );
+			renderer.setRenderTarget( null );
 
 			if ( i === 0 ) {
 
@@ -288,23 +301,24 @@ THREE.AAPass = function ( width, height, mode ) {
 
 	// TODO
     TAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
-        if ( ! this.accumulate ) {
-			this.SSAAPass( renderer, writeBuffer, readBuffer );
+		
+		if ( ! this.accumulate ) {
+			//this.SSAAPass( renderer, writeBuffer, readBuffer );
 			this.accumulateIndex = - 1;
-			//this.accumulate = true;
+			this.accumulate = true;
 			return;
 		}
 
-		console.log("TAA");
+		//console.log("TAA");
 		var jitterOffsets = THREE.AAPass.JitterVectors[ 5 ];
 
 		if ( ! this.sampleRenderTarget ) {
-			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, this.params );
+			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
 			this.sampleRenderTarget.texture.name = "TAARenderPass.sample";
 		}
 
 		if ( ! this.holdRenderTarget ) {
-			this.holdRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, this.params );
+			this.holdRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
 			this.holdRenderTarget.texture.name = "TAARenderPass.hold";
 		}
 
@@ -333,7 +347,7 @@ THREE.AAPass = function ( width, height, mode ) {
 						jitterOffset[ 0 ] * 0.0625, jitterOffset[ 1 ] * 0.0625, // 0.0625 = 1 / 16
 						readBuffer.width, readBuffer.height );
 
-				renderer.setRenderTarget( writeBuffer );
+				renderer.setRenderTarget( null );
 				renderer.clear();
 				renderer.render( this.scene, this.camera );
 
@@ -346,17 +360,17 @@ THREE.AAPass = function ( width, height, mode ) {
 				if ( this.accumulateIndex >= jitterOffsets.length ) break;
 
 			}
-
 			this.camera.clearViewOffset();
 
 		}
 
 		var accumulationWeight = this.accumulateIndex * sampleWeight;
-
+		
 		if ( accumulationWeight > 0 ) {
-			this.copyUniforms[ "opacity" ].value = 1.0;
+			this.copyUniforms[ "opacity" ].value = 0.5;
 			this.copyUniforms[ "tDiffuse" ].value = this.sampleRenderTarget.texture;
-			renderer.setRenderTarget( writeBuffer );
+			//this.quad.material = this.copyMaterial;
+			renderer.setRenderTarget( null );
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 		}
@@ -364,7 +378,7 @@ THREE.AAPass = function ( width, height, mode ) {
 		if ( accumulationWeight < 1.0 ) {
 			this.copyUniforms[ "opacity" ].value = 1.0 - accumulationWeight;
 			this.copyUniforms[ "tDiffuse" ].value = this.holdRenderTarget.texture;
-			renderer.setRenderTarget( writeBuffer );
+			renderer.setRenderTarget( null );
 			if ( accumulationWeight === 0 ) renderer.clear();
 			renderer.render( this.scene, this.camera );
 		}
