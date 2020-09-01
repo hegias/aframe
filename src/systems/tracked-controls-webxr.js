@@ -31,8 +31,14 @@ module.exports.System = registerSystem('tracked-controls-webxr', {
       }
       return;
     }
-    xrSession.requestReferenceSpace('local-floor').then(function (referenceSpace) {
+    var refspace = self.el.sceneEl.systems.webxr.sessionReferenceSpaceType;
+    xrSession.requestReferenceSpace(refspace).then(function (referenceSpace) {
       self.referenceSpace = referenceSpace;
+    }).catch(function (err) {
+      self.el.sceneEl.systems.webxr.warnIfFeatureNotRequested(
+          refspace,
+          'tracked-controls-webxr uses reference space "' + refspace + '".');
+      throw err;
     });
   },
 
