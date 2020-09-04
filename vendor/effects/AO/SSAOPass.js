@@ -1,4 +1,4 @@
-
+// WIP, NOT WORKING
 THREE.SSAOPass = function ( width, height ) {
 
 	THREE.Pass.call( this );
@@ -63,13 +63,6 @@ THREE.SSAOPass = function ( width, height ) {
 	depthTexture.minFilter = THREE.NearestFilter;
 	depthTexture.maxFilter = THREE.NearestFilter;
 
-	/*this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, {
-		minFilter: THREE.LinearFilter,
-		magFilter: THREE.LinearFilter,
-		format: THREE.RGBAFormat,
-		depthTexture: depthTexture,
-		depthBuffer: true
-	} );*/
 	this.beautyRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height );
 	this.beautyRenderTarget.texture.format = THREE.RGBFormat;
 	this.beautyRenderTarget.texture.minFilter = THREE.NearestFilter;
@@ -211,7 +204,6 @@ THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 		this.quad.material = this.basic;
 		this.basic.map = readBuffer.texture;
-		//renderer.setRenderTarget( this.beautyRenderTarget );
 
 		this.ssaoMaterial.uniforms[ 'tDiffuse' ].value = readBuffer.texture;
 		this.ssaoMaterial.uniforms[ 'tDepth' ].value = readBuffer.depthTexture;
@@ -225,40 +217,13 @@ THREE.SSAOPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 
-    } else {
+    	} else {
 
 			renderer.setRenderTarget( writeBuffer );
 			renderer.clear();
 			renderer.render( this.scene, this.camera );
 
-    }
-		/*
-		// render normals
-
-		this.renderOverride( renderer, this.normalMaterial, this.normalRenderTarget, 0x7777ff, 1.0 );
-
-		// render SSAO
-
-		this.ssaoMaterial.uniforms[ 'kernelRadius' ].value = this.kernelRadius;
-		this.ssaoMaterial.uniforms[ 'minDistance' ].value = this.minDistance;
-		this.ssaoMaterial.uniforms[ 'maxDistance' ].value = this.maxDistance;
-		this.renderPass( renderer, this.ssaoMaterial, this.ssaoRenderTarget );
-
-		// render blur
-
-		this.renderPass( renderer, this.blurMaterial, this.blurRenderTarget );
-
-		// output result to screen
-
-		this.renderPass( renderer, this.depthRenderMaterial, this.renderToScreen ? null : writeBuffer );
-		//this.copyMaterial.uniforms[ 'tDiffuse' ].value = this.beautyRenderTarget.texture;
-		//this.copyMaterial.blending = THREE.NoBlending;
-		//this.renderPass( renderer, this.copyMaterial, this.renderToScreen ? null : writeBuffer );
-
-		//this.copyMaterial.uniforms[ 'tDiffuse' ].value = this.blurRenderTarget.texture;
-		//this.copyMaterial.blending = THREE.CustomBlending;
-		//this.renderPass( renderer, this.copyMaterial, this.renderToScreen ? null : writeBuffer );
-		*/
+    	}
 	},
 
 	renderPass: function ( renderer, passMaterial, renderTarget, clearColor, clearAlpha ) {
