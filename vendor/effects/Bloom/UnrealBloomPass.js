@@ -189,9 +189,6 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
     this.oldClearAlpha = renderer.getClearAlpha();
     var oldAutoClear = renderer.autoClear;
     renderer.autoClear = false;
-    //renderer.antialias = true;
-
-    //console.log(renderer);
 
     renderer.setClearColor( new THREE.Color( 0, 0, 0 ), 0 );
 

@@ -238,7 +238,8 @@ THREE.AAPass = function ( width, height, mode ) {
 
 	SSAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
 		if ( ! this.sampleRenderTarget ) {
-			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
+			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, 
+																	{ minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
 			this.sampleRenderTarget.texture.name = "SSAARenderPass.sample";
 		}
 
@@ -299,7 +300,7 @@ THREE.AAPass = function ( width, height, mode ) {
 		this.camera.clearViewOffset();
 	},
 
-	// TODO
+	// WIP, NOT WORKING
     TAAPass: function(renderer, writeBuffer, readBuffer, delta, maskActive){
 		
 		if ( ! this.accumulate ) {
@@ -313,12 +314,14 @@ THREE.AAPass = function ( width, height, mode ) {
 		var jitterOffsets = THREE.AAPass.JitterVectors[ 5 ];
 
 		if ( ! this.sampleRenderTarget ) {
-			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
+			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, 
+																	{ minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
 			this.sampleRenderTarget.texture.name = "TAARenderPass.sample";
 		}
 
 		if ( ! this.holdRenderTarget ) {
-			this.holdRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
+			this.holdRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, 
+																	{ minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
 			this.holdRenderTarget.texture.name = "TAARenderPass.hold";
 		}
 

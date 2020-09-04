@@ -117,10 +117,6 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		this.lutMaterial.uniforms[ 'lutMap' ].value = this.lutTextures[lutMapIndex].texture;
 		this.lutMaterial.uniforms[ 'lutMapSize' ].value = this.lutTextures[lutMapIndex].size;
 		this.lutMaterial.uniforms[ 'lutFactor' ].value = this.clamp(this.lutTextures[lutMapIndex].factor + correction, 0.0, 1.0);
-
-		console.log("LUT map " + lutMapIndex + ": " + this.lutTextures[lutMapIndex].name);
-		console.log("LUT size: " + this.lutMaterial.uniforms[ 'lutMapSize' ].value);
-		console.log("LUT factor: " + this.lutMaterial.uniforms[ 'lutFactor' ].value);
 	},
 
 	clamp: function(num, min, max) {
@@ -205,7 +201,6 @@ THREE.LUTPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ), 
 		var texture = new THREE.DataTexture( floatArray, lutSize * lutSize, lutSize );
 		texture.type = THREE.FloatType;
 		texture.format = THREE.RGBAFormat;
-		console.log(texture);
 		return texture;
 	}
 
